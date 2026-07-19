@@ -2,6 +2,7 @@
 
 Tomorrow's Close is an open-source platform for calculating **Signal Zones**: the market prices at which technical indicators and trading strategies become true.
 
+
 Instead of asking:
 
 > "What is my indicator value?"
