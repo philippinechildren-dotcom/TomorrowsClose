@@ -8,6 +8,7 @@ where market data comes from.
 """
 
 import yfinance as yf
+import pandas as pd
 
 
 def get_market_data(ticker):
@@ -33,3 +34,46 @@ def get_market_data(ticker):
         "volume": int(latest["Volume"]),
         "source": "Yahoo Finance"
     }
+
+
+def get_market_history(ticker, bars=500):
+    """
+    Returns historical daily market data for a ticker.
+
+    Parameters:
+        ticker: ETF or stock symbol
+        bars: number of daily bars requested
+
+    Returns:
+        pandas DataFrame containing OHLCV data
+    """
+
+    stock = yf.Ticker(ticker)
+
+    history = stock.history(
+        period="max",
+        interval="1d"
+    )
+
+    if history.empty:
+        raise ValueError(f"No historical data found for ticker '{ticker}'")
+
+    history = history.tail(bars)
+
+    history = history.rename(
+        columns={
+            "Open": "open",
+            "High": "high",
+            "Low": "low",
+            "Close": "close",
+            "Volume": "volume"
+        }
+    )
+
+    history = history[
+        ["open", "high", "low", "close", "volume"]
+    ]
+
+    history = history.round(2)
+
+    return history
