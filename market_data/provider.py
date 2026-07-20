@@ -12,7 +12,7 @@ import yfinance as yf
 
 def get_market_data(ticker):
     """
-    Returns the latest market data for a ticker.
+    Returns the latest daily market data for a ticker.
     """
 
     stock = yf.Ticker(ticker)
@@ -25,7 +25,11 @@ def get_market_data(ticker):
 
     return {
         "ticker": ticker.upper(),
-        "close": round(float(latest["Close"]), 3),
         "date": str(history.index[-1].date()),
+        "open": round(float(latest["Open"]), 2),
+        "high": round(float(latest["High"]), 2),
+        "low": round(float(latest["Low"]), 2),
+        "close": round(float(latest["Close"]), 2),
+        "volume": int(latest["Volume"]),
         "source": "Yahoo Finance"
     }
