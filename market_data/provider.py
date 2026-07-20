@@ -5,27 +5,27 @@ Market Data Layer
 
 This module is the only part of Tomorrow's Close that knows
 where market data comes from.
-
-Version 0.1 returns dummy data for testing.
 """
+
+import yfinance as yf
 
 
 def get_market_data(ticker):
     """
-    Returns market data for a ticker.
-
-    Parameters
-    ----------
-    ticker : str
-
-    Returns
-    -------
-    dict
+    Returns the latest market data for a ticker.
     """
+
+    stock = yf.Ticker(ticker)
+    history = stock.history(period="5d")
+
+    if history.empty:
+        raise ValueError(f"No market data found for ticker '{ticker}'")
+
+    latest = history.iloc[-1]
 
     return {
         "ticker": ticker.upper(),
-        "close": 527.183,
-        "date": "2026-07-20",
-        "source": "Dummy Data"
+        "close": round(float(latest["Close"]), 3),
+        "date": str(history.index[-1].date()),
+        "source": "Yahoo Finance"
     }
