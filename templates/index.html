@@ -1,18 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Tomorrow's Close</title>
+
+<title>Tomorrow's Close</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    max-width: 700px;
+}
+
+.order-level {
+
+    font-size: 32px;
+    font-weight: bold;
+    margin: 25px 0;
+
+}
+
+.signal {
+
+    font-size: 24px;
+    font-weight: bold;
+
+}
+
+.info {
+
+    font-size: 16px;
+
+}
+
+input {
+
+    width: 120px;
+    padding: 5px;
+
+}
+
+button {
+
+    padding: 10px 20px;
+    font-size: 16px;
+
+}
+
+
+</style>
+
 </head>
+
 
 <body>
 
-    <h1>Tomorrow's Close</h1>
 
-    <h2>RSI PriceSolver</h2>
+<h1>
+Tomorrow's Close
+</h1>
 
-    <p>Website is working.</p>
+
+<h2>
+RSI PriceSolver System
+</h2>
+
+
+<div class="info">
+
+<p>
+<strong>Security:</strong>
+{{ result.ticker }}
+</p>
+
+
+<p>
+<strong>Status:</strong>
+{{ result.status }}
+</p>
+
+
+</div>
+
+
+
+<div class="order-level">
+
+{{ result.signal }}
+
+<br>
+
+{{ result.comparison }}
+
+{{ result.trigger_price }}
+
+</div>
+
+
+
+<p class="signal">
+
+{{ result.execution }}
+
+</p>
+
+
+
+<hr>
+
+
+
+<h3>
+Parameters
+</h3>
+
+
+<form action="/calculate" method="get">
+
+
+<p>
+
+ETF:
+
+<input
+type="text"
+name="ticker"
+value="{{ result.ticker }}"
+>
+
+</p>
+
+
+<p>
+
+RSI Period:
+
+<input
+type="number"
+name="rsi_period"
+value="{{ result.rsi_period }}"
+>
+
+</p>
+
+
+
+<p>
+
+RSI Threshold:
+
+<input
+type="number"
+name="threshold"
+value="{{ result.threshold }}"
+>
+
+</p>
+
+
+
+<button type="submit">
+
+Calculate
+
+</button>
+
+
+</form>
+
+
+
+<hr>
+
+
+
+<p>
+
+<strong>
+Current Price:
+</strong>
+
+{{ result.current_price }}
+
+</p>
+
+
+
+<p>
+
+<strong>
+Data Confidence:
+</strong>
+
+{{ result.data_confidence }}
+
+</p>
+
+
+
+<p>
+
+<strong>
+Data Source:
+</strong>
+
+{{ result.data_source }}
+
+</p>
+
+
+
+<p>
+
+<strong>
+Last Updated:
+</strong>
+
+<br>
+
+{{ result.last_updated }}
+
+<br>
+
+{{ result.last_updated_time }}
+
+</p>
+
+
 
 </body>
 
