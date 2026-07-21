@@ -51,5 +51,11 @@ STRATEGY_METADATA = {
 
     "template": "pricesolver",
 
+    "default_parameters": {
+       "ticker": "QQQ",
+        "rsi_period": 3,
+       "threshold": 30
+    },
+
     "strategy_module": "rsi_pricesolver_mean_reversion"
 }
