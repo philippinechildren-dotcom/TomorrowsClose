@@ -1,61 +1,50 @@
 STRATEGY_METADATA = {
+
+    "type": "strategy",
+
     "name": "RSI PriceSolver System",
 
     "slug": "rsi-pricesolver",
 
-    "description": (
-        "A mean reversion system using RSI PriceSolver "
-        "to calculate the exact closing price required "
-        "to trigger an entry or exit before the market close."
-    ),
+    "description":
+        "A mean reversion strategy that reverse-calculates the closing price required to produce an RSI buy or sell signal before the market closes.",
 
     "authors": [
-        "William Michael DeJonge"
+        "william-michael-dejonge"
     ],
 
-    "category": [
-        "Mean Reversion"
+    "indicators": [
+        "rsi"
     ],
+
+    "category": "mean-reversion",
 
     "markets": [
-        "Stocks",
-        "ETFs"
+        "etfs"
     ],
 
     "timeframe": "Daily",
 
     "difficulty": "Beginner",
 
+    "execution": "loc",
+
+    "supports_pricesolver": True,
+
+    "supports_intraday": False,
+
     "tags": [
-        "RSI",
-        "Mean Reversion",
-        "PriceSolver",
-        "Limit-on-Close",
-        "Daily Trading"
+        "pricesolver"
     ],
-
-    "indicators": [
-        "RSI"
-    ],
-
-    "related_strategies": [
-        "rsi-threshold",
-        "ulcershield"
-    ],
-
-    "related_indicators": [
-        "rsi"
-    ],
-
-    "execution": "Limit-on-Close",
-
-    "template": "pricesolver",
 
     "default_parameters": {
-       "ticker": "QQQ",
-        "rsi_period": 3,
-       "threshold": 30
-    },
 
-    "strategy_module": "rsi_pricesolver_mean_reversion"
+        "ticker": "QQQ",
+
+        "rsi_period": 3,
+
+        "threshold": 30
+
+    }
+
 }
