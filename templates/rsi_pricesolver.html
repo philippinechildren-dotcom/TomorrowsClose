@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Tomorrow's Close - RSI PriceSolver</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+</head>
+
+<body>
+
+<h1>Tomorrow's Close</h1>
+
+<h2>RSI PriceSolver</h2>
+
+<p>
+
+<strong>Security:</strong>
+
+{{ result.ticker }}
+
+</p>
+
+<hr>
+
+<h3>
+
+<strong>BUY ENTRY ZONE</strong>
+
+</h3>
+
+<div>
+
+    <div
+        style="font-size:2em; margin:10px 0;"
+    >
+
+        <strong>
+
+            {{ result.trigger_price|price }}
+
+        </strong>
+
+    </div>
+
+    {{ result.execution }}
+
+</div>
+
+<hr>
+
+<h3>Parameters</h3>
+
+<form
+    action="/calculate"
+    method="get"
+>
+
+<p>
+
+<label>
+
+ETF:
+
+<input
+    type="text"
+    name="ticker"
+    value="{{ result.ticker }}"
+>
+
+</label>
+
+</p>
+
+<p>
+
+<label>
+
+RSI Period:
+
+<input
+    type="number"
+    name="rsi_period"
+    value="{{ result.rsi_period }}"
+    style="width:4ch;"
+>
+
+</label>
+
+</p>
+
+<p>
+
+<label>
+
+Threshold:
+
+<input
+    type="number"
+    name="threshold"
+    value="{{ result.threshold }}"
+    style="width:4ch;"
+>
+
+</label>
+
+</p>
+
+<button
+    type="submit"
+>
+
+Calculate
+
+</button>
+
+</form>
+
+<hr>
+
+<p>
+
+<strong>Data Confidence:</strong>
+
+{{ result.data_confidence }}
+
+</p>
+
+<p>
+
+<strong>Data Source:</strong>
+
+{{ result.data_source }}
+
+</p>
+
+<p>
+
+<strong>Last Updated:</strong><br>
+
+{{ result.last_updated }}<br>
+
+{{ result.last_updated_time }}
+
+</p>
+
+</body>
+
+</html>

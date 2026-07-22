@@ -1,3 +1,9 @@
+from shared.order_rounding import (
+    round_down_cent,
+    round_up_cent,
+)
+
+
 def evaluate_rsi_pricesolver_mean_reversion(
     current_price: float,
     trigger_price: float
@@ -10,18 +16,12 @@ def evaluate_rsi_pricesolver_mean_reversion(
 
         return {
             "status": "LONG",
-            "signal": "SELL EXIT",
-            "comparison": "Close Above",
-            "execution": "Limit-on-Close",
-            "rounding": "UP",
-            "trigger_price": trigger_price,
+            "execution": "Sell Limit-on-Close",
+            "trigger_price": round_up_cent(trigger_price),
         }
 
     return {
         "status": "FLAT",
-        "signal": "BUY ENTRY",
-        "comparison": "Close Below",
-        "execution": "Limit-on-Close",
-        "rounding": "DOWN",
-        "trigger_price": trigger_price,
+        "execution": "Buy Limit-on-Close",
+        "trigger_price": round_down_cent(trigger_price),
     }

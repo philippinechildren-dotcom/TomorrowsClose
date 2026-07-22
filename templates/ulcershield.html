@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Tomorrow's Close - UlcerShield</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+</head>
+
+<body>
+
+<h1>Tomorrow's Close</h1>
+
+<h2>UlcerShield System</h2>
+
+<p>
+
+<strong>Security:</strong>
+
+{{ result.ticker }}
+
+</p>
+
+<p>
+
+<strong>Campaign Status:</strong>
+
+{{ result.campaign_status }}
+
+</p>
+
+<hr>
+
+<table
+    border="1"
+    cellpadding="10"
+    cellspacing="0"
+>
+
+    <tr>
+
+        <th>System</th>
+
+        <th>Trigger Price</th>
+
+        <th>Execution</th>
+
+    </tr>
+
+    {% for component in result.components %}
+
+    <tr>
+
+        <td>
+
+            <strong>{{ component.name }}</strong>
+
+        </td>
+
+        <td>
+
+            <strong>
+
+                {{ component.trigger_price|price }}
+
+            </strong>
+
+        </td>
+
+        <td>
+
+            {{ component.execution }}
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<hr>
+
+<h3>Parameters</h3>
+
+<form
+    action="/ulcershield"
+    method="get"
+>
+
+    <p>
+
+        <label>
+
+            ETF:
+
+            <input
+                type="text"
+                name="ticker"
+                value="{{ result.ticker }}"
+                style="width:6em;"
+            >
+
+        </label>
+
+    </p>
+
+    <table
+        border="1"
+        cellpadding="8"
+        cellspacing="0"
+    >
+
+        <tr>
+
+            <th>System</th>
+
+            <th>RSI Period</th>
+
+            <th>Threshold</th>
+
+        </tr>
+
+        {% for system in result.strategy.rsi_systems %}
+
+        <tr>
+
+            <td>
+
+                <strong>
+
+                    {{ system.name }}
+
+                </strong>
+
+            </td>
+
+            <td>
+
+                <input
+                    type="number"
+                    name="period{{ loop.index }}"
+                    value="{{ system.period }}"
+                    min="1"
+                    style="width:4em;"
+                >
+
+            </td>
+
+            <td>
+
+                <input
+                    type="number"
+                    name="threshold{{ loop.index }}"
+                    value="{{ system.threshold }}"
+                    style="width:4em;"
+                >
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <button
+        type="submit"
+    >
+
+        Calculate
+
+    </button>
+
+</form>
+
+<hr>
+
+<p>
+
+<strong>Data Confidence:</strong>
+
+{{ result.data_confidence }}
+
+</p>
+
+<p>
+
+<strong>Data Source:</strong>
+
+{{ result.data_source }}
+
+</p>
+
+<p>
+
+<strong>Last Updated:</strong><br>
+
+{{ result.last_updated }}<br>
+
+{{ result.last_updated_time }}
+
+</p>
+
+</body>
+
+</html>
