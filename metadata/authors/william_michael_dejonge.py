@@ -1,5 +1,7 @@
 AUTHOR_METADATA = {
 
+    "type": "author",
+    
     "name": "William Michael DeJonge",
 
     "slug": "william-michael-dejonge",

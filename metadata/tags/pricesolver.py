@@ -1,4 +1,4 @@
-METADATA = {
+TAG_METADATA = {
 
     "type": "tag",
 

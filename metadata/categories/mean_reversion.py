@@ -1,4 +1,4 @@
-METADATA = {
+CATEGORY_METADATA = {
 
     "type": "category",
 

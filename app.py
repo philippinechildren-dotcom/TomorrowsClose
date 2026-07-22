@@ -4,7 +4,9 @@ from zoneinfo import ZoneInfo
 from flask import Flask, render_template, request
 
 from market_data.provider import get_market_history
+
 from indicators.rsi_pricesolver import solve_rsi_price
+
 from strategies.rsi_pricesolver_mean_reversion import (
     evaluate_rsi_pricesolver_mean_reversion,
 )
@@ -14,7 +16,8 @@ from shared.order_rounding import (
     round_up_cent,
 )
 
-from metadata.strategies.rsi_pricesolver import STRATEGY_METADATA
+from catalog.strategies import get_strategy
+from catalog.indicators import get_indicator
 
 
 app = Flask(__name__)
@@ -22,7 +25,11 @@ app = Flask(__name__)
 
 def build_result():
 
-    defaults = STRATEGY_METADATA["default_parameters"]
+    strategy = get_strategy("rsi-pricesolver")
+
+    indicator = get_indicator("rsi")
+
+    defaults = strategy["default_parameters"]
 
     ticker = request.args.get(
         "ticker",
@@ -73,7 +80,6 @@ def build_result():
             float(solver_result["exact_price"])
         )
 
-
     market_date = history.index[-1].strftime(
         "%B %d, %Y"
     )
@@ -85,7 +91,6 @@ def build_result():
         .strftime("%I:%M %p ET")
     )
 
-
     return {
 
         "ticker": ticker,
@@ -94,14 +99,12 @@ def build_result():
 
         "threshold": threshold,
 
-
         "current_price": round(
             float(current_price),
             2
         ),
 
         "trigger_price": trigger_price,
-
 
         "status": strategy_result["status"],
 
@@ -111,18 +114,19 @@ def build_result():
 
         "execution": strategy_result["execution"],
 
-
         "data_confidence": "★★★★★",
 
         "data_source": "Yahoo Finance",
-
 
         "last_updated": market_date,
 
         "last_updated_time": calculation_time,
 
-    }
+        "strategy": strategy,
 
+        "indicator": indicator,
+
+    }
 
 
 @app.route("/")
@@ -134,7 +138,6 @@ def home():
     )
 
 
-
 @app.route("/calculate")
 def calculate():
 
@@ -142,7 +145,6 @@ def calculate():
         "index.html",
         result=build_result()
     )
-
 
 
 if __name__ == "__main__":

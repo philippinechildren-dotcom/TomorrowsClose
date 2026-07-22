@@ -1,4 +1,4 @@
-METADATA = {
+INDICATOR_METADATA = {
 
     "type": "indicator",
 

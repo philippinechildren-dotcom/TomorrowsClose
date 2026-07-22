@@ -1,4 +1,4 @@
-METADATA = {
+MARKET_METADATA = {
 
     "type": "market",
 

@@ -9,24 +9,17 @@
 
 <h1>Tomorrow's Close</h1>
 
-<h2>RSI PriceSolver Result</h2>
+<h2>{{ result.strategy.name }}</h2>
+
+<p>{{ result.strategy.description }}</p>
 
 <p>
 <strong>Security:</strong> {{ result.ticker }}
 </p>
 
-<p>
-<strong>Current Price:</strong> {{ result.current_price }}
-</p>
+<h2>{{ result.signal }}</h2>
 
-<p>
-<strong>Order Level:</strong> {{ result.signal }}
-</p>
-
-<p>
-<strong>{{ result.comparison }}:</strong>
-{{ result.trigger_price }}
-</p>
+<h1>{{ result.comparison }} {{ result.trigger_price }}</h1>
 
 <p>
 <strong>Execution:</strong>

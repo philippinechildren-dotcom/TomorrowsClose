@@ -21,7 +21,23 @@ def load_metadata(folder):
             f"metadata.{folder}.{file.stem}"
         )
 
-        metadata = module.METADATA
+        metadata = None
+
+        for name, value in vars(module).items():
+
+            if (
+                name.endswith("_METADATA")
+                and isinstance(value, dict)
+            ):
+
+                metadata = value
+                break
+
+        if metadata is None:
+
+            raise ValueError(
+                f"No *_METADATA object found in {file.name}"
+            )
 
         objects[
             metadata["slug"]
