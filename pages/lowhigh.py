@@ -1,5 +1,8 @@
 from flask import request
 
+import json
+from pathlib import Path
+
 from market_data.provider import get_market_history
 
 from strategies.lowhigh import (
@@ -12,6 +15,24 @@ from pages.common import (
     add_common_page_data,
 )
 
+
+def get_performance_metrics():
+
+    path = Path(
+        "analytics/data/cache/lowhigh_qld.json"
+    )
+
+    with open(path) as f:
+        data = json.load(f)
+
+    return {
+        "performance": {
+            "period": "Rolling 1-Year",
+            "cagr": data["performance"]["cagr"],
+            "max_eod_drawdown": data["performance"]["max_eod_drawdown"],
+            "ulcer_index": data["performance"]["ulcer_index"],
+        }
+    }
 
 def build_result():
 
@@ -48,6 +69,10 @@ def build_result():
         history=history,
         entry_lookback=entry_lookback,
         exit_lookback=exit_lookback,
+    )
+
+    result.update(
+        get_performance_metrics()
     )
 
     return add_common_page_data(
