@@ -43,7 +43,7 @@ def calculate_lowhigh(
             "execution": "Sell Limit-on-Close",
 
             "trigger_price": round_up_cent(
-                exit["exact_price"] + 0.01
+                exit["exact_price"]
             ),
 
         },
@@ -53,7 +53,7 @@ def calculate_lowhigh(
             "execution": "Buy Limit-on-Close",
 
             "trigger_price": round_down_cent(
-                entry["exact_price"] - 0.01
+                entry["exact_price"]
             ),
 
         },
