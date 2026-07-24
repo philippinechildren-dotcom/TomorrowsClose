@@ -1,8 +1,8 @@
 {
-    "last_updated": "2026-07-24T02:48:31.208908+00:00",
-    "last_checked": "2026-07-24T02:48:31.392591+00:00",
-    "market_date": "2026-07-23",
-    "latest_market_date": "2026-07-23",
+    "last_updated": "2026-07-24T05:14:32.926092+00:00",
+    "last_checked": "2026-07-24T05:14:33.196977+00:00",
+    "market_date": "2026-07-24",
+    "latest_market_date": "2026-07-24",
     "data_status": "current",
     "strategy_count": 4,
     "strategies": [
@@ -17,9 +17,9 @@
             "file": "lowhigh_qld.json"
         },
         {
-            "name": "RSI PriceSolver",
-            "ticker": "QQQ",
-            "file": "rsi_pricesolver_qqq.json"
+            "name": "LowHigh",
+            "ticker": "QLD",
+            "file": "lowhigh_qld.json"
         },
         {
             "name": "UlcerShield",

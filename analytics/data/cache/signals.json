@@ -1,8 +1,8 @@
 {
     "signals": [
         {
-            "strategy": "RSI PriceSolver",
-            "ticker": "QQQ",
+            "strategy": "LowHigh",
+            "ticker": "QLD",
             "signal": "COMING SOON",
             "position": "UNKNOWN",
             "trigger_price": null
@@ -15,8 +15,8 @@
             "trigger_price": null
         },
         {
-            "strategy": "LowHigh",
-            "ticker": "QLD",
+            "strategy": "RSI PriceSolver",
+            "ticker": "QQQ",
             "signal": "COMING SOON",
             "position": "UNKNOWN",
             "trigger_price": null
