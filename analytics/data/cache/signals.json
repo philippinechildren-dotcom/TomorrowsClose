@@ -1,13 +1,6 @@
 {
     "signals": [
         {
-            "strategy": "Buy & Hold",
-            "ticker": "QQQ",
-            "signal": "COMING SOON",
-            "position": "UNKNOWN",
-            "trigger_price": null
-        },
-        {
             "strategy": "RSI PriceSolver",
             "ticker": "QQQ",
             "signal": "COMING SOON",
@@ -15,7 +8,7 @@
             "trigger_price": null
         },
         {
-            "strategy": "UlcerShield",
+            "strategy": "Buy & Hold",
             "ticker": "QQQ",
             "signal": "COMING SOON",
             "position": "UNKNOWN",
@@ -24,6 +17,13 @@
         {
             "strategy": "LowHigh",
             "ticker": "QLD",
+            "signal": "COMING SOON",
+            "position": "UNKNOWN",
+            "trigger_price": null
+        },
+        {
+            "strategy": "UlcerShield",
+            "ticker": "QQQ",
             "signal": "COMING SOON",
             "position": "UNKNOWN",
             "trigger_price": null
