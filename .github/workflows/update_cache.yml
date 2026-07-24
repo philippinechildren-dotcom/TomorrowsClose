@@ -27,7 +27,7 @@ jobs:
 
       - name: Build cache
         run: |
-          python -m analytics.data.update_cache
+          PYTHONPATH=. python -m analytics.data.update_cache
 
       - name: Commit updated cache
         run: |
