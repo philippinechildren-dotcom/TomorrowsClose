@@ -93,7 +93,7 @@ def get_market_data(ticker):
     }
 
 
-def get_market_history(ticker, bars=500):
+def get_market_history(ticker, bars=None):
     """
     Returns historical completed daily market data.
 
@@ -121,7 +121,8 @@ def get_market_history(ticker, bars=500):
         history
     )
 
-    history = history.tail(bars)
+    if bars is not None:
+        history = history.tail(bars)
 
     history = history.rename(
         columns={

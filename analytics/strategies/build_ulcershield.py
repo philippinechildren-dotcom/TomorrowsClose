@@ -4,8 +4,16 @@ from zoneinfo import ZoneInfo
 
 from market_data.provider import get_market_history
 
-from analytics.common.reporting_windows import rolling_one_year
+from analytics.common.constants import (
+    DEFAULT_REPORTING_PERIOD,
+)
+
+from analytics.common.reporting_windows import (
+    get_reporting_window,
+)
+
 from analytics.strategies.build_rsi_pricesolver import calculate_rsi
+
 from analytics.trade.engine import Trade
 from analytics.portfolio.engine import PortfolioEngine
 from analytics.campaign.engine import Campaign
@@ -38,6 +46,7 @@ def build_ulcershield_trades(
             }
 
         elif signal["signal"] == "SELL":
+
             if sleeve not in positions:
                 continue
 
@@ -68,6 +77,7 @@ def build_ulcershield_campaigns(
     daily_states,
     starting_equity,
 ):
+
     campaigns = []
 
     active = False
@@ -75,25 +85,35 @@ def build_ulcershield_campaigns(
     start_equity = starting_equity
 
     closed_equity = starting_equity
+
     bars = 0
 
     for state in daily_states:
+
         date = state["date"]
+
         equity = state["equity"]
+
         active_sleeves = state["active_sleeves"]
 
         portfolio_active = active_sleeves > 0
 
         if portfolio_active and not active:
+
             active = True
+
             start_date = date
+
             start_equity = closed_equity
+
             bars = 0
 
         if active:
+
             bars += 1
 
         if active and not portfolio_active:
+
             closed_equity = equity
 
             ret = (
@@ -119,11 +139,11 @@ def build_ulcershield_campaigns(
 
     return campaigns
 
-
 def build_ulcershield(
     ticker="TQQQ",
     rsi_lengths=None,
     thresholds=None,
+    period: str = DEFAULT_REPORTING_PERIOD,
     starting_equity=100000.0,
 ):
     if rsi_lengths is None:
@@ -136,24 +156,33 @@ def build_ulcershield(
         ZoneInfo("America/New_York")
     )
 
-    start_date,end_date = rolling_one_year(today)
+    start_date, end_date = get_reporting_window(
+        today,
+        period,
+    )
 
     full_history = get_market_history(
         ticker,
-        bars=1000,
     )
 
-    history = full_history[
-        (full_history.index >= start_date)
-        &
-        (full_history.index <= end_date)
-    ]
+    if start_date is not None:
+
+        history = full_history[
+            (full_history.index >= start_date)
+            &
+            (full_history.index <= end_date)
+        ]
+
+    else:
+
+        history = full_history
 
     closes = history["close"]
 
     rsi_values = []
 
     for length in rsi_lengths:
+
         rsi_values.append(
             calculate_rsi(
                 full_history["close"],
@@ -170,7 +199,7 @@ def build_ulcershield(
 
     for date, close in closes.items():
 
-        for sleeve,length in enumerate(rsi_lengths):
+        for sleeve, length in enumerate(rsi_lengths):
 
             value = rsi_values[sleeve].loc[date]
 
@@ -205,7 +234,6 @@ def build_ulcershield(
 
                 positions[sleeve] = False
 
-
     engine = PortfolioEngine(
         sleeve_count=5,
         allocation_pct=0.20,
@@ -215,18 +243,20 @@ def build_ulcershield(
     signal_map = {}
 
     for signal in signals:
+
         signal_map.setdefault(
             signal["date"],
             []
         ).append(signal)
 
-
     for date, close in closes.items():
 
         if date in signal_map:
+
             for signal in signal_map[date]:
 
                 if signal["signal"] == "BUY":
+
                     engine.buy(
                         signal["sleeve"],
                         date,
@@ -234,6 +264,7 @@ def build_ulcershield(
                     )
 
                 else:
+
                     engine.sell(
                         signal["sleeve"],
                         signal["price"],
@@ -243,7 +274,6 @@ def build_ulcershield(
             date,
             float(close),
         )
-
 
     result = engine.results()
 
@@ -263,17 +293,33 @@ def build_ulcershield(
     )
 
     return {
+
         "ticker": ticker,
+
         "starting_equity": starting_equity,
+
         "ending_equity": result["ending_equity"],
+
         "equity_curve": result["equity_curve"],
+
         "start_date": history.index[0],
+
         "end_date": history.index[-1],
+
         "trades": trades,
+
         "signals": signals,
+
         "campaigns": campaigns,
+
         "closed_equity": closed_equity,
+
         "daily_states": result["daily_states"],
+
         "rsi_lengths": rsi_lengths,
+
         "thresholds": thresholds,
+
+        "period": period,
+
     }

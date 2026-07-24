@@ -3,53 +3,60 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 
-def rolling_one_year(today: datetime) -> tuple:
+def get_reporting_window(
+    today: datetime,
+    period: str = "1y",
+) -> tuple:
     """
-    Return the nominal rolling one-year reporting window.
+    Return the requested reporting window.
+
+    Supported periods:
+
+        ytd
+        1y
+        3y
+        5y
+        10y
+        all
 
     The returned dates are adjusted later by
-    rolling_window.filter_complete_positions().
+    filter_complete_positions().
     """
-
-    start_date = today - relativedelta(years=1)
 
     end_date = today
 
+    if period == "ytd":
+
+        start_date = datetime(
+            year=today.year,
+            month=1,
+            day=1,
+        )
+
+    elif period == "1y":
+
+        start_date = today - relativedelta(years=1)
+
+    elif period == "3y":
+
+        start_date = today - relativedelta(years=3)
+
+    elif period == "5y":
+
+        start_date = today - relativedelta(years=5)
+
+    elif period == "10y":
+
+        start_date = today - relativedelta(years=10)
+
+    elif period == "all":
+
+        start_date = None
+
+    else:
+
+        raise ValueError(
+            f"Unknown reporting period: {period}"
+        )
+
     return start_date, end_date
-
-
-def rolling_six_months(today: datetime) -> tuple:
-    """
-    Return the nominal rolling six-month reporting window.
-    """
-
-    start_date = today - relativedelta(months=6)
-
-    end_date = today
-
-    return start_date, end_date
-
-
-def year_to_date(today: datetime) -> tuple:
-    """
-    Return the current calendar year reporting window.
-    """
-
-    start_date = datetime(
-        year=today.year,
-        month=1,
-        day=1,
-    )
-
-    end_date = today
-
-    return start_date, end_date
-
-
-def since_inception(first_trade_date: datetime,
-                    today: datetime) -> tuple:
-    """
-    Return the full reporting window.
-    """
-
-    return first_trade_date, today

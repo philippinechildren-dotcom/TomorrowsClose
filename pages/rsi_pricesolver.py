@@ -53,6 +53,11 @@ def build_result():
         )
     )
 
+    period = request.args.get(
+        "period",
+        "1y"
+    )
+
     history = get_market_history(
         ticker,
         bars=500
@@ -75,6 +80,7 @@ def build_result():
         ticker=ticker,
         rsi_length=rsi_period,
         threshold=threshold,
+        period=period,
     )
 
     performance = calculate_performance(
@@ -84,6 +90,8 @@ def build_result():
     result = {
 
         "ticker": ticker,
+
+        "period": period,
 
         "rsi_period": rsi_period,
 

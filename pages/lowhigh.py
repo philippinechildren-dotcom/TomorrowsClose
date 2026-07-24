@@ -46,6 +46,11 @@ def build_result():
         )
     )
 
+    period = request.args.get(
+        "period",
+        defaults.get("period", "1y")
+    )
+
     history = get_market_history(
         ticker,
         bars=500
@@ -62,11 +67,14 @@ def build_result():
         ticker=ticker,
         entry_lookback=entry_lookback,
         exit_lookback=exit_lookback,
+        period=period,
     )
 
     result["performance"] = calculate_performance(
         performance_result["equity_curve"]
     )
+
+    result["period"] = period
 
     return add_common_page_data(
         result=result,

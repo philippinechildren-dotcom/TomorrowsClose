@@ -6,18 +6,21 @@ from market_data.provider import (
     get_market_history,
 )
 
+from analytics.common.constants import (
+    DEFAULT_REPORTING_PERIOD,
+)
+
 from analytics.common.equity_curve import (
     build_strategy_equity_curve,
 )
 
 from analytics.common.reporting_windows import (
-    rolling_one_year,
+    get_reporting_window,
 )
 
 from analytics.trade.engine import (
     build_trades,
 )
-
 
 
 def calculate_rsi(
@@ -38,7 +41,6 @@ def calculate_rsi(
         upper=0
     )
 
-
     avg_gain = (
         gain
         .ewm(
@@ -47,7 +49,6 @@ def calculate_rsi(
         )
         .mean()
     )
-
 
     avg_loss = (
         loss
@@ -58,24 +59,21 @@ def calculate_rsi(
         .mean()
     )
 
-
     rs = avg_gain / avg_loss
-
 
     rsi = 100 - (
         100 /
         (1 + rs)
     )
 
-
     return rsi
-
 
 
 def build_rsi_pricesolver(
     ticker: str = "TQQQ",
     rsi_length: int = 3,
     threshold: float = 28,
+    period: str = DEFAULT_REPORTING_PERIOD,
     starting_equity: float = 100000.0,
 ) -> dict:
     """
@@ -96,110 +94,80 @@ def build_rsi_pricesolver(
         100% of current equity
     """
 
-
     today = datetime.now(
         ZoneInfo("America/New_York")
     )
 
-
-    start_date, end_date = rolling_one_year(
-        today
+    start_date, end_date = get_reporting_window(
+        today,
+        period,
     )
-
 
     history = get_market_history(
         ticker,
-        bars=500,
     )
 
+    if start_date is not None:
 
-    history = history[
-        (history.index >= start_date)
-        &
-        (history.index <= end_date)
-    ]
-
+        history = history[
+            (history.index >= start_date)
+            &
+            (history.index <= end_date)
+        ]
 
     closes = history["close"]
-
 
     rsi = calculate_rsi(
         closes,
         rsi_length,
     )
 
-
     signals = []
 
     position = False
-
 
     for date, close in closes.items():
 
         value = rsi.loc[date]
 
-
         if pd.isna(value):
 
             continue
 
-
-
         if not position and value < threshold:
 
             signals.append(
-
                 {
                     "date": date,
-
                     "signal": "BUY",
-
                     "price": float(close),
-
                 }
-
             )
 
             position = True
 
-
-
         elif position and value > threshold:
 
             signals.append(
-
                 {
                     "date": date,
-
                     "signal": "SELL",
-
                     "price": float(close),
-
                 }
-
             )
 
             position = False
-
-
 
     trades = build_trades(
         signals,
         starting_equity=starting_equity,
     )
 
-
-
     equity_result = build_strategy_equity_curve(
-
         closes=closes,
-
         signals=signals,
-
         starting_equity=starting_equity,
-
     )
-
 
     return {
 
@@ -222,5 +190,7 @@ def build_rsi_pricesolver(
         "rsi_length": rsi_length,
 
         "threshold": threshold,
+
+        "period": period,
 
     }

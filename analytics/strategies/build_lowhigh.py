@@ -6,12 +6,16 @@ from market_data.provider import (
     get_market_history,
 )
 
+from analytics.common.constants import (
+    DEFAULT_REPORTING_PERIOD,
+)
+
 from analytics.common.equity_curve import (
     build_strategy_equity_curve,
 )
 
 from analytics.common.reporting_windows import (
-    rolling_one_year,
+    get_reporting_window,
 )
 
 from analytics.trade.engine import (
@@ -23,6 +27,7 @@ def build_lowhigh(
     ticker: str = "QLD",
     entry_lookback: int = 3,
     exit_lookback: int = 1,
+    period: str = DEFAULT_REPORTING_PERIOD,
     starting_equity: float = 100000.0,
 ) -> dict:
     """
@@ -47,20 +52,23 @@ def build_lowhigh(
         ZoneInfo("America/New_York")
     )
 
-    start_date, end_date = rolling_one_year(
-        today
+    start_date, end_date = get_reporting_window(
+        today,
+        period,
     )
 
     history = get_market_history(
         ticker,
-        bars=500,
+        bars=5000,
     )
 
-    history = history[
-        (history.index >= start_date)
-        &
-        (history.index <= end_date)
-    ]
+    if start_date is not None:
+
+        history = history[
+            (history.index >= start_date)
+            &
+            (history.index <= end_date)
+        ]
 
     closes = history["close"]
 
@@ -157,5 +165,7 @@ def build_lowhigh(
         "entry_lookback": entry_lookback,
 
         "exit_lookback": exit_lookback,
+
+        "period": period,
 
     }

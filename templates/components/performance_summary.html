@@ -4,6 +4,63 @@
         {{ result.performance.period }} Performance
     </h3>
 
+    <form
+        method="get"
+    >
+
+        <label>
+
+            Period:
+
+            <select
+                name="period"
+                onchange="this.form.submit()"
+            >
+
+                <option value="ytd"
+                {% if result.period == "ytd" %}selected{% endif %}
+                >
+                    YTD
+                </option>
+
+                <option value="1y"
+                {% if result.period == "1y" %}selected{% endif %}
+                >
+                    1 Year
+                </option>
+
+                <option value="3y"
+                {% if result.period == "3y" %}selected{% endif %}
+                >
+                    3 Years
+                </option>
+
+                <option value="5y"
+                {% if result.period == "5y" %}selected{% endif %}
+                >
+                    5 Years
+                </option>
+
+                <option value="10y"
+                {% if result.period == "10y" %}selected{% endif %}
+                >
+                    10 Years
+                </option>
+
+                <option value="all"
+                {% if result.period == "all" %}selected{% endif %}
+                >
+                    All
+                </option>
+
+            </select>
+
+        </label>
+
+    </form>
+
+    <br>
+
     <table
         border="1"
         cellpadding="10"

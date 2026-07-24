@@ -1,12 +1,16 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+from analytics.common.constants import (
+    DEFAULT_REPORTING_PERIOD,
+)
+
 from analytics.common.equity_curve import (
     build_buy_and_hold_equity_curve,
 )
 
 from analytics.common.reporting_windows import (
-    rolling_one_year,
+    get_reporting_window,
 )
 
 from market_data.provider import (
@@ -16,6 +20,7 @@ from market_data.provider import (
 
 def build_buy_and_hold(
     ticker: str,
+    period: str = DEFAULT_REPORTING_PERIOD,
     starting_equity: float = 100000.0,
 ) -> dict:
     """
@@ -26,20 +31,22 @@ def build_buy_and_hold(
         ZoneInfo("America/New_York")
     )
 
-    start_date, end_date = rolling_one_year(
-        today
+    start_date, end_date = get_reporting_window(
+        today,
+        period,
     )
 
     history = get_market_history(
         ticker,
-        bars=500,
     )
 
-    history = history[
-        (history.index >= start_date)
-        &
-        (history.index <= end_date)
-    ]
+    if start_date is not None:
+
+        history = history[
+            (history.index >= start_date)
+            &
+            (history.index <= end_date)
+        ]
 
     closes = history["close"]
 
@@ -49,6 +56,7 @@ def build_buy_and_hold(
     )
 
     return {
+
         "ticker": ticker,
 
         "starting_equity": equity_result["starting_equity"],
@@ -62,4 +70,7 @@ def build_buy_and_hold(
         "start_date": history.index[0],
 
         "end_date": history.index[-1],
+
+        "period": period,
+
     }

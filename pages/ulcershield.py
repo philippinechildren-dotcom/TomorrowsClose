@@ -32,6 +32,11 @@ def build_result():
         defaults["ticker"]
     )
 
+    period = request.args.get(
+        "period",
+        "1y"
+    )
+
     history = get_market_history(
         ticker,
         bars=500
@@ -45,11 +50,14 @@ def build_result():
 
     performance_result = build_ulcershield(
         ticker=ticker,
+        period=period,
     )
 
     result["performance"] = calculate_performance(
         performance_result["equity_curve"]
     )
+
+    result["period"] = period
 
     return add_common_page_data(
         result=result,

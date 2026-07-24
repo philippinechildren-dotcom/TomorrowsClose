@@ -1,12 +1,6 @@
 {
     "campaigns": [
         {
-            "strategy": "LowHigh",
-            "ticker": "QLD",
-            "campaign_count": 0,
-            "max_closed_drawdown": 0.06552203910619298
-        },
-        {
             "strategy": "Buy & Hold",
             "ticker": "QQQ",
             "campaign_count": 0,
@@ -23,6 +17,12 @@
             "ticker": "QQQ",
             "campaign_count": 0,
             "max_closed_drawdown": 0.0066480182555152135
+        },
+        {
+            "strategy": "LowHigh",
+            "ticker": "QLD",
+            "campaign_count": 0,
+            "max_closed_drawdown": 0.06552203910619298
         }
     ]
 }

@@ -47,6 +47,8 @@ STRATEGY_METADATA = {
 
         "exit_lookback": 1,
 
+        "period": "1y",
+
     }
 
 }
