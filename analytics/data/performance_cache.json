@@ -1,0 +1,95 @@
+{
+    "strategies": [
+        {
+            "strategy": "Buy & Hold",
+            "ticker": "QQQ",
+            "report": {
+                "starting_equity": 100000.0,
+                "ending_equity": 123058.86537435534,
+                "total_return": 0.23058865374355353,
+                "cagr": 0.23146581402490862,
+                "max_eod_drawdown": 0.11964449215420082,
+                "max_closed_drawdown": 0.0,
+                "ulcer_index": 3.48296966149475,
+                "upi": 6.645645426769892,
+                "trade_metrics": {},
+                "years": 0.9965776865160849
+            }
+        },
+        {
+            "strategy": "LowHigh",
+            "ticker": "QLD",
+            "report": {
+                "starting_equity": 100000.0,
+                "ending_equity": 116159.47302520736,
+                "total_return": 0.16159473025207371,
+                "cagr": 0.16219241047981425,
+                "max_eod_drawdown": 0.14478215301691885,
+                "max_closed_drawdown": 0.06552203910619298,
+                "ulcer_index": 4.691141150588054,
+                "upi": 3.4574191070648723,
+                "trade_metrics": {
+                    "trade_count": 15,
+                    "win_rate": 0.7333333333333333,
+                    "profit_factor": 2.4266609316829606,
+                    "expectancy": 1077.2982016804935,
+                    "average_win": 2498.750180547753,
+                    "average_loss": -2831.6947402044716,
+                    "max_consecutive_wins": 4,
+                    "max_consecutive_losses": 1
+                },
+                "years": 0.9965776865160849
+            }
+        },
+        {
+            "strategy": "RSI PriceSolver",
+            "ticker": "QQQ",
+            "report": {
+                "starting_equity": 100000.0,
+                "ending_equity": 118310.88245656218,
+                "total_return": 0.18310882456562183,
+                "cagr": 0.18379217605845977,
+                "max_eod_drawdown": 0.034048026503291265,
+                "max_closed_drawdown": 0.014022006301654647,
+                "ulcer_index": 0.696102496474211,
+                "upi": 26.403033603438434,
+                "trade_metrics": {
+                    "trade_count": 23,
+                    "win_rate": 0.8260869565217391,
+                    "profit_factor": 5.2604097979388555,
+                    "expectancy": 796.1253241983553,
+                    "average_win": 1189.936748758255,
+                    "average_loss": -1074.4789424611686,
+                    "max_consecutive_wins": 6,
+                    "max_consecutive_losses": 1
+                },
+                "years": 0.9965776865160849
+            }
+        },
+        {
+            "strategy": "UlcerShield",
+            "ticker": "QQQ",
+            "report": {
+                "starting_equity": 100000.0,
+                "ending_equity": 112512.89552278875,
+                "total_return": 0.12512895522788758,
+                "cagr": 0.1255845765293968,
+                "max_eod_drawdown": 0.020467539342260085,
+                "max_closed_drawdown": 0.0066480182555152135,
+                "ulcer_index": 0.25034063847879734,
+                "upi": 50.165477444059974,
+                "trade_metrics": {
+                    "trade_count": 72,
+                    "win_rate": 0.8194444444444444,
+                    "profit_factor": 6.786813787062582,
+                    "expectancy": 164.48705203386268,
+                    "average_win": 235.41743736317724,
+                    "average_loss": -157.42777369148791,
+                    "max_consecutive_wins": 23,
+                    "max_consecutive_losses": 3
+                },
+                "years": 0.9965776865160849
+            }
+        }
+    ]
+}

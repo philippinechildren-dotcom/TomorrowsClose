@@ -1,0 +1,13 @@
+{
+    "files": [
+        "buy_and_hold_qqq.json",
+        "campaigns.json",
+        "index.json",
+        "lowhigh_qld.json",
+        "rankings.json",
+        "rsi_pricesolver_qqq.json",
+        "signals.json",
+        "trade_log.json",
+        "ulcershield_qqq.json"
+    ]
+}

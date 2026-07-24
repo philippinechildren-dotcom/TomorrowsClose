@@ -1,0 +1,30 @@
+{
+    "last_updated": "2026-07-24T02:06:39.068880+00:00",
+    "last_checked": "2026-07-24T02:06:39.492085+00:00",
+    "market_date": "2026-07-23",
+    "latest_market_date": "2026-07-23",
+    "data_status": "current",
+    "strategy_count": 4,
+    "strategies": [
+        {
+            "name": "Buy & Hold",
+            "ticker": "QQQ",
+            "file": "buy_and_hold_qqq.json"
+        },
+        {
+            "name": "LowHigh",
+            "ticker": "QLD",
+            "file": "lowhigh_qld.json"
+        },
+        {
+            "name": "RSI PriceSolver",
+            "ticker": "QQQ",
+            "file": "rsi_pricesolver_qqq.json"
+        },
+        {
+            "name": "UlcerShield",
+            "ticker": "QQQ",
+            "file": "ulcershield_qqq.json"
+        }
+    ]
+}

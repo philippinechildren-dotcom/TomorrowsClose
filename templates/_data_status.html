@@ -1,0 +1,22 @@
+<div class="data-status">
+
+{% if index.data_status == "current" %}
+
+✅ Signal data current for {{ index.market_date }} close.
+<br>
+Updated:
+{{ index.last_updated }}
+
+{% else %}
+
+⚠️ Signal data may be stale.
+<br>
+Latest cached market date:
+{{ index.market_date }}
+<br>
+Latest expected market date:
+{{ index.latest_market_date }}
+
+{% endif %}
+
+</div>
