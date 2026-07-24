@@ -1,0 +1,38 @@
+name: Update Analytics Cache
+
+on:
+  schedule:
+    - cron: "20 20 * * 1-5"
+
+  workflow_dispatch:
+
+jobs:
+  update-cache:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Build cache
+        run: |
+          python -m analytics.data.update_cache
+
+      - name: Commit updated cache
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add analytics/data/cache
+          git commit -m "Update analytics cache" || echo "No changes"
+          git push
