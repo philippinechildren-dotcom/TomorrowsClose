@@ -38,6 +38,10 @@ def calculate_lowhigh(
 
         "ticker": ticker,
 
+        "entry_lookback": entry_lookback,
+
+        "exit_lookback": exit_lookback,
+
         "sell_exit": {
 
             "execution": "Sell Limit-on-Close",

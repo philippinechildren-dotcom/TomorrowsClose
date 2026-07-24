@@ -6,6 +6,14 @@ from strategies.ulcershield import (
     calculate_ulcershield,
 )
 
+from analytics.strategies.build_ulcershield import (
+    build_ulcershield,
+)
+
+from analytics.performance.metrics import (
+    calculate_performance,
+)
+
 from catalog.strategies import get_strategy
 
 from pages.common import (
@@ -33,6 +41,14 @@ def build_result():
         ticker=ticker,
         history=history,
         rsi_systems=strategy["rsi_systems"]
+    )
+
+    performance_result = build_ulcershield(
+        ticker=ticker,
+    )
+
+    result["performance"] = calculate_performance(
+        performance_result["equity_curve"]
     )
 
     return add_common_page_data(

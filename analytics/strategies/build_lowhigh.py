@@ -19,10 +19,10 @@ from analytics.trade.engine import (
 )
 
 
-
 def build_lowhigh(
     ticker: str = "QLD",
-    lookback: int = 3,
+    entry_lookback: int = 3,
+    exit_lookback: int = 1,
     starting_equity: float = 100000.0,
 ) -> dict:
     """
@@ -34,7 +34,7 @@ def build_lowhigh(
         Close below previous N-day low
 
     Exit:
-        Close above previous day high
+        Close above previous N-day high
 
     Execution:
         End-of-day close
@@ -43,22 +43,18 @@ def build_lowhigh(
         100% equity
     """
 
-
     today = datetime.now(
         ZoneInfo("America/New_York")
     )
-
 
     start_date, end_date = rolling_one_year(
         today
     )
 
-
     history = get_market_history(
         ticker,
         bars=500,
     )
-
 
     history = history[
         (history.index >= start_date)
@@ -66,16 +62,18 @@ def build_lowhigh(
         (history.index <= end_date)
     ]
 
-
     closes = history["close"]
-
 
     signals = []
 
     position = False
 
+    warmup = max(
+        entry_lookback,
+        exit_lookback,
+    )
 
-    for i in range(lookback, len(history)):
+    for i in range(warmup, len(history)):
 
         date = history.index[i]
 
@@ -83,74 +81,60 @@ def build_lowhigh(
             history["close"].iloc[i]
         )
 
-
         previous_low = (
             history["low"]
-            .iloc[i-lookback:i]
+            .iloc[
+                i-entry_lookback:i
+            ]
             .min()
         )
 
-
         previous_high = (
             history["high"]
-            .iloc[i-1]
+            .iloc[
+                i-exit_lookback:i
+            ]
+            .max()
         )
-
 
         if not position:
 
             if close < previous_low:
 
                 signals.append(
-
                     {
                         "date": date,
-
                         "signal": "BUY",
-
                         "price": close,
-
                     }
-
                 )
 
                 position = True
-
-
 
         else:
 
             if close > previous_high:
 
                 signals.append(
-
                     {
                         "date": date,
-
                         "signal": "SELL",
-
                         "price": close,
-
                     }
-
                 )
 
                 position = False
-
-
 
     trades = build_trades(
         signals,
         starting_equity=starting_equity,
     )
 
-
     equity_result = build_strategy_equity_curve(
         closes=closes,
         signals=signals,
         starting_equity=starting_equity,
     )
-
 
     return {
 
@@ -170,6 +154,8 @@ def build_lowhigh(
 
         "signals": signals,
 
-        "lookback": lookback,
+        "entry_lookback": entry_lookback,
+
+        "exit_lookback": exit_lookback,
 
     }

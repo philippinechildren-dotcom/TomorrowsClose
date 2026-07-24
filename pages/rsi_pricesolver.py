@@ -10,6 +10,14 @@ from strategies.rsi_pricesolver_mean_reversion import (
     evaluate_rsi_pricesolver_mean_reversion,
 )
 
+from analytics.strategies.build_rsi_pricesolver import (
+    build_rsi_pricesolver,
+)
+
+from analytics.performance.metrics import (
+    calculate_performance,
+)
+
 from catalog.strategies import get_strategy
 from catalog.indicators import get_indicator
 
@@ -63,6 +71,16 @@ def build_result():
         trigger_price=solver_result["exact_price"]
     )
 
+    performance_result = build_rsi_pricesolver(
+        ticker=ticker,
+        rsi_length=rsi_period,
+        threshold=threshold,
+    )
+
+    performance = calculate_performance(
+        performance_result["equity_curve"]
+    )
+
     result = {
 
         "ticker": ticker,
@@ -83,6 +101,8 @@ def build_result():
         "execution": strategy_result["execution"],
 
         "indicator": indicator,
+
+        "performance": performance,
 
     }
 

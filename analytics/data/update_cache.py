@@ -100,10 +100,12 @@ def update_cache():
 
     strategies.append(
         write_strategy_file(
-            "RSI PriceSolver",
-            "QQQ",
-            build_rsi_pricesolver(
-                ticker="QQQ",
+            "LowHigh",
+            "QLD",
+            build_lowhigh(
+                ticker="QLD",
+                entry_lookback=3,
+                exit_lookback=1,
             ),
         )
     )
