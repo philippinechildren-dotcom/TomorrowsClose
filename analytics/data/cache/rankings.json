@@ -4,8 +4,8 @@
             "strategy": "UlcerShield",
             "ticker": "QQQ",
             "category": "EasyMode",
-            "cagr": 0.12595146688075531,
-            "upi": 50.21171069522416,
+            "cagr": 0.1205377063608073,
+            "upi": 47.84676301536865,
             "max_eod_drawdown": 0.020467539342260085,
             "max_closed_drawdown": 0.0066480182555152135,
             "rank": 1
@@ -24,8 +24,8 @@
             "strategy": "Buy & Hold",
             "ticker": "QQQ",
             "category": "Benchmark",
-            "cagr": 0.22918095281398543,
-            "upi": 6.5669248295202145,
+            "cagr": 0.21471387450054968,
+            "upi": 6.097735499056824,
             "max_eod_drawdown": 0.1196444921542009,
             "max_closed_drawdown": 0.0,
             "rank": 3
@@ -34,8 +34,8 @@
             "strategy": "LowHigh",
             "ticker": "QLD",
             "category": "EasyMode",
-            "cagr": 0.1626737417637143,
-            "upi": 3.460764915593251,
+            "cagr": 0.1347539171037182,
+            "upi": 2.8660200298405,
             "max_eod_drawdown": 0.14478215301691885,
             "max_closed_drawdown": 0.06552203910619298,
             "rank": 4
