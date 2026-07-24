@@ -162,6 +162,8 @@ class PortfolioEngine:
         sleeve.entry_date = None
 
         if self.active_sleeves() == 0:
+            self.state.campaign.current_equity = self.state.campaign.cash
+            self.state.campaign.closed_equity = self.state.campaign.current_equity
             self.end_campaign()
 
     # -------------------------------------------------
@@ -217,6 +219,7 @@ class PortfolioEngine:
         snapshot = {
             "date": date,
             "equity": self.state.campaign.current_equity,
+            "closed_equity": self.state.campaign.closed_equity,
             "cash": self.state.campaign.cash,
             "campaign_active": self.state.campaign.active,
             "active_sleeves": self.active_sleeves(),
