@@ -216,6 +216,10 @@ class PortfolioEngine:
             self.state.campaign.current_equity
         )
 
+        self.state.equity_dates.append(
+            date
+        )
+
         snapshot = {
             "date": date,
             "equity": self.state.campaign.current_equity,
@@ -260,6 +264,9 @@ class PortfolioEngine:
 
             "equity_curve":
                 self.state.equity_curve,
+
+            "equity_dates":
+                self.state.equity_dates,
 
             "daily_states":
                 deepcopy(

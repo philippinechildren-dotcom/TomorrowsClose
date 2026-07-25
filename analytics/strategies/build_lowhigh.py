@@ -10,6 +10,14 @@ from analytics.common.constants import (
     DEFAULT_REPORTING_PERIOD,
 )
 
+from analytics.performance.build_annual_returns import (
+    build_annual_returns,
+)
+
+from analytics.performance.build_annual_table import (
+    build_annual_table,
+)
+
 from analytics.common.equity_curve import (
     build_strategy_equity_curve,
 )
@@ -138,6 +146,12 @@ def build_lowhigh(
         starting_equity=starting_equity,
     )
 
+    annual_table = build_annual_table(
+        trades=trade_result["trades"],
+        equity_curve=equity_result["equity_curve"],
+        equity_dates=equity_result["equity_dates"],
+    )
+
     return {
 
         "ticker": ticker,
@@ -145,12 +159,15 @@ def build_lowhigh(
         "starting_equity": starting_equity,
 
         "ending_equity": equity_result["ending_equity"],
-
         "equity_curve": equity_result["equity_curve"],
+
+        "equity_dates": equity_result["equity_dates"],
 
         "closed_equity": trade_result["closed_equity"],
 
         "trade_metrics": trade_metrics,
+
+        "annual_table": annual_table,
 
         "start_date": history.index[0],
 

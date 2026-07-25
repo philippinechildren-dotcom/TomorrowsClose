@@ -7,14 +7,13 @@ from analytics.strategies.performance import (
 )
 
 
-
 def run_test():
 
     result = build_lowhigh(
         ticker="QLD",
-        lookback=3,
+        entry_lookback=3,
+        exit_lookback=1,
     )
-
 
     report = build_performance_report(
 
@@ -32,6 +31,10 @@ def run_test():
 
     )
 
+    print(len(result["equity_curve"]))
+    print(len(result["equity_dates"]))
+    print(result["equity_dates"][0])
+    print(result["equity_dates"][-1])
 
     print()
 
@@ -39,16 +42,11 @@ def run_test():
 
     print("-------------------")
 
-
     for key, value in report.items():
 
         if key != "equity_curve":
 
-            print(
-                f"{key}: {value}"
-            )
-
-
+            print(f"{key}: {value}")
 
     print()
 
@@ -61,9 +59,12 @@ def run_test():
     )
 
     print(
-        f"Lookback: {result['lookback']}"
+        f"Entry Lookback: {result['entry_lookback']}"
     )
 
+    print(
+        f"Exit Lookback: {result['exit_lookback']}"
+    )
 
 
 if __name__ == "__main__":

@@ -17,6 +17,10 @@ from market_data.provider import (
     get_market_history,
 )
 
+from analytics.performance.build_annual_table import (
+    build_annual_table,
+)
+
 
 def build_buy_and_hold(
     ticker: str,
@@ -55,6 +59,12 @@ def build_buy_and_hold(
         starting_equity=starting_equity,
     )
 
+    annual_table = build_annual_table(
+        trades=[],
+        equity_curve=equity_result["equity_curve"],
+        equity_dates=equity_result["equity_dates"],
+    )
+
     return {
 
         "ticker": ticker,
@@ -64,6 +74,10 @@ def build_buy_and_hold(
         "ending_equity": equity_result["ending_equity"],
 
         "equity_curve": equity_result["equity_curve"],
+
+        "equity_dates": equity_result["equity_dates"],
+
+        "annual_table": annual_table,
 
         "shares": equity_result["shares"],
 

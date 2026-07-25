@@ -28,23 +28,21 @@ def build_buy_and_hold_equity_curve(
             "starting_equity": starting_equity,
             "ending_equity": starting_equity,
             "equity_curve": [],
+            "equity_dates": [],
         }
-
 
     entry_price = float(
         closes.iloc[0]
     )
 
-
     shares = (
         starting_equity / entry_price
     )
 
-
     equity_curve = []
+    equity_dates = []
 
-
-    for close in closes:
+    for date, close in closes.items():
 
         equity = (
             shares
@@ -56,6 +54,9 @@ def build_buy_and_hold_equity_curve(
             equity
         )
 
+        equity_dates.append(
+            date
+        )
 
     return {
 
@@ -67,8 +68,9 @@ def build_buy_and_hold_equity_curve(
 
         "equity_curve": equity_curve,
 
-    }
+        "equity_dates": equity_dates,
 
+    }
 
 
 def build_strategy_equity_curve(
@@ -101,13 +103,11 @@ def build_strategy_equity_curve(
     dict
     """
 
-
     position = None
 
     cash = starting_equity
 
     shares = 0.0
-
 
     signal_map = {
 
@@ -117,20 +117,16 @@ def build_strategy_equity_curve(
 
     }
 
-
     equity_curve = []
-
+    equity_dates = []
 
     for date, close in closes.items():
 
-
         price = float(close)
-
 
         if date in signal_map:
 
             signal = signal_map[date]
-
 
             if signal["signal"] == "BUY":
 
@@ -140,10 +136,7 @@ def build_strategy_equity_curve(
 
                 cash = 0.0
 
-
                 position = True
-
-
 
             elif signal["signal"] == "SELL":
 
@@ -157,8 +150,6 @@ def build_strategy_equity_curve(
 
                 position = False
 
-
-
         if shares > 0:
 
             equity = (
@@ -171,11 +162,13 @@ def build_strategy_equity_curve(
 
             equity = cash
 
-
         equity_curve.append(
             equity
         )
 
+        equity_dates.append(
+            date
+        )
 
     return {
 
@@ -186,5 +179,7 @@ def build_strategy_equity_curve(
         else starting_equity,
 
         "equity_curve": equity_curve,
+
+        "equity_dates": equity_dates,
 
     }

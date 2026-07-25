@@ -7,29 +7,31 @@ from analytics.strategies.performance import (
 )
 
 
-result = build_buy_and_hold(
-    "QQQ"
-)
-
+result = build_buy_and_hold("QQQ")
 
 report = build_performance_report(
-
     starting_equity=result["starting_equity"],
-
     ending_equity=result["ending_equity"],
-
     equity_curve=result["equity_curve"],
-
     start_date=result["start_date"],
     end_date=result["end_date"],
-
 )
 
 
 print()
+print("Buy & Hold Performance")
+print("----------------------")
 
 for key, value in report.items():
 
     if key != "equity_curve":
 
         print(f"{key}: {value}")
+
+
+print()
+print("Annual Table")
+print("------------")
+
+for row in result["annual_table"]:
+    print(row)

@@ -16,6 +16,10 @@ from analytics.strategies.build_rsi_pricesolver import (
     calculate_rsi,
 )
 
+from analytics.performance.build_annual_returns import (
+    build_annual_returns,
+)
+
 from analytics.trade.engine import (
     Trade,
 )
@@ -352,9 +356,10 @@ def build_ulcershield(
 
     result = engine.results()
 
-    trades = build_ulcershield_trades(
-        signals,
-        starting_equity,
+    annual_table = build_annual_table(
+        trades=trades,
+        equity_curve=result["equity_curve"],
+        equity_dates=result["equity_dates"],
     )
 
     closed_equity = [
@@ -380,6 +385,8 @@ def build_ulcershield(
         "ending_equity": result["ending_equity"],
 
         "equity_curve": result["equity_curve"],
+
+        "equity_dates": result["equity_dates"],
 
         "closed_equity": closed_equity,
 

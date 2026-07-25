@@ -46,7 +46,7 @@ def calculate_max_closed_drawdown(
     if (
         closed_equity is None
         or
-        len(closed_equity) == 0
+        len(closed_equity) < 2
     ):
 
         return None

@@ -14,6 +14,7 @@ from analytics.common.equity_curve import (
     build_strategy_equity_curve,
 )
 
+
 from analytics.common.reporting_windows import (
     get_reporting_window,
 )
@@ -26,6 +27,13 @@ from analytics.campaign.metrics import (
     build_trade_metrics,
 )
 
+from analytics.performance.build_annual_returns import (
+    build_annual_returns,
+)
+
+from analytics.performance.build_annual_table import (
+    build_annual_table,
+)
 
 def calculate_rsi(
     closes: pd.Series,
@@ -163,6 +171,12 @@ def build_rsi_pricesolver(
         starting_equity=starting_equity,
     )
 
+    annual_table = build_annual_table(
+        trades=trade_result["trades"],
+        equity_curve=equity_result["equity_curve"],
+        equity_dates=equity_result["equity_dates"],
+    )
+
     return {
 
         "ticker": ticker,
@@ -172,10 +186,13 @@ def build_rsi_pricesolver(
         "ending_equity": equity_result["ending_equity"],
 
         "equity_curve": equity_result["equity_curve"],
+        "equity_dates": equity_result["equity_dates"],
 
         "closed_equity": trade_result["closed_equity"],
 
         "trade_metrics": trade_metrics,
+
+        "annual_table": annual_table,
 
         "start_date": history.index[0],
 
