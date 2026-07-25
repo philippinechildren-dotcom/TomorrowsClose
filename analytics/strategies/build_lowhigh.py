@@ -22,6 +22,10 @@ from analytics.trade.engine import (
     build_trades,
 )
 
+from analytics.campaign.metrics import (
+    build_trade_metrics,
+)
+
 
 def build_lowhigh(
     ticker: str = "QLD",
@@ -32,20 +36,6 @@ def build_lowhigh(
 ) -> dict:
     """
     Build LowHigh mean reversion strategy.
-
-    Rules:
-
-    Entry:
-        Close below previous N-day low
-
-    Exit:
-        Close above previous N-day high
-
-    Execution:
-        End-of-day close
-
-    Position:
-        100% equity
     """
 
     today = datetime.now(
@@ -133,9 +123,13 @@ def build_lowhigh(
 
                 position = False
 
-    trades = build_trades(
+    trade_result = build_trades(
         signals,
         starting_equity=starting_equity,
+    )
+
+    trade_metrics = build_trade_metrics(
+        trade_result["trades"]
     )
 
     equity_result = build_strategy_equity_curve(
@@ -154,11 +148,15 @@ def build_lowhigh(
 
         "equity_curve": equity_result["equity_curve"],
 
+        "closed_equity": trade_result["closed_equity"],
+
+        "trade_metrics": trade_metrics,
+
         "start_date": history.index[0],
 
         "end_date": history.index[-1],
 
-        "trades": trades,
+        "trades": trade_result["trades"],
 
         "signals": signals,
 

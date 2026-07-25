@@ -57,6 +57,8 @@ def build_result():
         performance_result["equity_curve"]
     )
 
+    result["trade_metrics"] = performance_result["campaign_metrics"]
+
     result["period"] = period
 
     return add_common_page_data(

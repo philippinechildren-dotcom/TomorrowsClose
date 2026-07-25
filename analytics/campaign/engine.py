@@ -24,7 +24,7 @@ class Campaign:
 
     bars_held: int
 
-    winning_campaign: bool
+    winning_trade: bool
 
 
 
@@ -133,7 +133,7 @@ def build_campaigns(
 
                     bars_held=bars,
 
-                    winning_campaign=(
+                    winning_trade=(
                         return_pct > 0
                     ),
 

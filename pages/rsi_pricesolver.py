@@ -84,7 +84,8 @@ def build_result():
     )
 
     performance = calculate_performance(
-        performance_result["equity_curve"]
+        performance_result["equity_curve"],
+        performance_result.get("closed_equity"),
     )
 
     result = {
@@ -111,6 +112,8 @@ def build_result():
         "indicator": indicator,
 
         "performance": performance,
+
+        "trade_metrics": performance_result["trade_metrics"],
 
     }
 

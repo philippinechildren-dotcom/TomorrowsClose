@@ -1,7 +1,7 @@
 from math import inf
 
 
-def build_trade_metrics(
+def build_campaign_metrics(
     records,
 ):
     """
@@ -109,7 +109,7 @@ def build_trade_metrics(
 
         sum(
 
-            r.days_held
+            r.bars_held
 
             for r in records
 
@@ -123,7 +123,7 @@ def build_trade_metrics(
 
     max_bars = max(
 
-        r.days_held
+        r.bars_held
 
         for r in records
 

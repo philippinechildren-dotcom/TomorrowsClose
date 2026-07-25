@@ -22,6 +22,10 @@ from analytics.trade.engine import (
     build_trades,
 )
 
+from analytics.campaign.metrics import (
+    build_trade_metrics,
+)
+
 
 def calculate_rsi(
     closes: pd.Series,
@@ -78,20 +82,6 @@ def build_rsi_pricesolver(
 ) -> dict:
     """
     Build RSI PriceSolver strategy results.
-
-    Rules:
-
-    Entry:
-        RSI < threshold
-
-    Exit:
-        RSI > threshold
-
-    Execution:
-        End-of-day close
-
-    Position:
-        100% of current equity
     """
 
     today = datetime.now(
@@ -158,9 +148,13 @@ def build_rsi_pricesolver(
 
             position = False
 
-    trades = build_trades(
+    trade_result = build_trades(
         signals,
         starting_equity=starting_equity,
+    )
+
+    trade_metrics = build_trade_metrics(
+        trade_result["trades"]
     )
 
     equity_result = build_strategy_equity_curve(
@@ -179,11 +173,15 @@ def build_rsi_pricesolver(
 
         "equity_curve": equity_result["equity_curve"],
 
+        "closed_equity": trade_result["closed_equity"],
+
+        "trade_metrics": trade_metrics,
+
         "start_date": history.index[0],
 
         "end_date": history.index[-1],
 
-        "trades": trades,
+        "trades": trade_result["trades"],
 
         "signals": signals,
 

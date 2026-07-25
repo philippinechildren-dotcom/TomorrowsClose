@@ -71,8 +71,11 @@ def build_result():
     )
 
     result["performance"] = calculate_performance(
-        performance_result["equity_curve"]
+        performance_result["equity_curve"],
+        performance_result.get("closed_equity"),
     )
+
+    result["trade_metrics"] = performance_result["trade_metrics"]
 
     result["period"] = period
 

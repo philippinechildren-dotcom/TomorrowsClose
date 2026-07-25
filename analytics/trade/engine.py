@@ -23,24 +23,32 @@ class Trade:
     winning_trade: bool
 
 
-
 def build_trades(
     signals,
     starting_equity: float = 100000.0,
-) -> list:
+):
     """
     Build individual trades from entry/exit signals.
 
     Uses TradingView-style compounding:
     100% of current equity invested on each entry.
+
+    Returns
+    -------
+    dict
+        {
+            "trades": [...],
+            "closed_equity": [...]
+        }
     """
 
     trades = []
 
+    closed_equity = []
+
     position = None
 
     current_equity = starting_equity
-
 
     for signal in signals:
 
@@ -51,7 +59,6 @@ def build_trades(
         )
 
         date = signal["date"]
-
 
         if action == "BUY" and position is None:
 
@@ -71,7 +78,6 @@ def build_trades(
 
             }
 
-
         elif action == "SELL" and position is not None:
 
             pnl = (
@@ -80,9 +86,11 @@ def build_trades(
                 position["shares"]
             )
 
-
             current_equity += pnl
 
+            closed_equity.append(
+                current_equity
+            )
 
             return_pct = (
 
@@ -92,13 +100,11 @@ def build_trades(
 
             )
 
-
             days_held = (
 
                 date - position["entry_date"]
 
             ).days
-
 
             trades.append(
 
@@ -126,8 +132,12 @@ def build_trades(
 
             )
 
-
             position = None
 
+    return {
 
-    return trades
+        "trades": trades,
+
+        "closed_equity": closed_equity,
+
+    }

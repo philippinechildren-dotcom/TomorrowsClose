@@ -12,62 +12,111 @@ from analytics.common.reporting_windows import (
     get_reporting_window,
 )
 
-from analytics.strategies.build_rsi_pricesolver import calculate_rsi
+from analytics.strategies.build_rsi_pricesolver import (
+    calculate_rsi,
+)
 
-from analytics.trade.engine import Trade
-from analytics.portfolio.engine import PortfolioEngine
-from analytics.campaign.engine import Campaign
+from analytics.trade.engine import (
+    Trade,
+)
+
+from analytics.portfolio.engine import (
+    PortfolioEngine,
+)
+
+from analytics.campaign.engine import (
+    Campaign,
+)
+
+from analytics.campaign.campaign_metrics import (
+    build_campaign_metrics,
+)
 
 
-DEFAULT_RSI_LENGTHS = [2,3,5,8,13]
-DEFAULT_THRESHOLDS = [28,28,28,28,32]
+DEFAULT_RSI_LENGTHS = [2, 3, 5, 8, 13]
+DEFAULT_THRESHOLDS = [28, 28, 28, 28, 32]
 
 
 def build_ulcershield_trades(
     signals,
     starting_equity=100000.0,
 ):
+
     trades = []
+
     positions = {}
 
     for signal in signals:
+
         sleeve = signal["sleeve"]
+
         price = float(signal["price"])
+
         date = signal["date"]
 
         if signal["signal"] == "BUY":
+
             allocation = starting_equity * 0.20
+
             shares = allocation / price
 
             positions[sleeve] = {
+
                 "entry_date": date,
+
                 "entry_price": price,
+
                 "shares": shares,
+
             }
 
         elif signal["signal"] == "SELL":
 
             if sleeve not in positions:
+
                 continue
 
             pos = positions.pop(sleeve)
 
             pnl = (
-                price - pos["entry_price"]
+
+                price
+
+                - pos["entry_price"]
+
             ) * pos["shares"]
 
             trades.append(
+
                 Trade(
+
                     entry_date=pos["entry_date"],
+
                     exit_date=date,
+
                     entry_price=pos["entry_price"],
+
                     exit_price=price,
+
                     shares=pos["shares"],
+
                     pnl=pnl,
-                    return_pct=price / pos["entry_price"] - 1,
-                    days_held=(date-pos["entry_date"]).days,
+
+                    return_pct=(
+                        price
+                        / pos["entry_price"]
+                        - 1
+                    ),
+
+                    days_held=(
+                        date
+                        - pos["entry_date"]
+                    ).days,
+
                     winning_trade=pnl > 0,
+
                 )
+
             )
 
     return trades
@@ -81,7 +130,9 @@ def build_ulcershield_campaigns(
     campaigns = []
 
     active = False
+
     start_date = None
+
     start_equity = starting_equity
 
     closed_equity = starting_equity
@@ -117,24 +168,41 @@ def build_ulcershield_campaigns(
             closed_equity = equity
 
             ret = (
-                closed_equity / start_equity
+
+                closed_equity
+
+                / start_equity
+
                 - 1
+
             )
 
             campaigns.append(
+
                 Campaign(
+
                     start_date=start_date,
+
                     end_date=date,
+
                     start_equity=start_equity,
+
                     end_equity=closed_equity,
+
                     return_pct=ret,
+
                     bars_held=bars,
-                    winning_campaign=ret > 0,
+
+                    winning_trade=ret > 0,
+
                 )
+
             )
 
             active = False
+
             start_date = None
+
             bars = 0
 
     return campaigns
@@ -146,6 +214,7 @@ def build_ulcershield(
     period: str = DEFAULT_REPORTING_PERIOD,
     starting_equity=100000.0,
 ):
+
     if rsi_lengths is None:
         rsi_lengths = DEFAULT_RSI_LENGTHS
 
@@ -208,7 +277,10 @@ def build_ulcershield(
 
             threshold = thresholds[sleeve]
 
-            if not positions[sleeve] and value < threshold:
+            if (
+                not positions[sleeve]
+                and value < threshold
+            ):
 
                 signals.append(
                     {
@@ -221,7 +293,10 @@ def build_ulcershield(
 
                 positions[sleeve] = True
 
-            elif positions[sleeve] and value > threshold:
+            elif (
+                positions[sleeve]
+                and value > threshold
+            ):
 
                 signals.append(
                     {
@@ -292,6 +367,10 @@ def build_ulcershield(
         starting_equity,
     )
 
+    campaign_metrics = build_campaign_metrics(
+        campaigns,
+    )
+
     return {
 
         "ticker": ticker,
@@ -302,6 +381,10 @@ def build_ulcershield(
 
         "equity_curve": result["equity_curve"],
 
+        "closed_equity": closed_equity,
+
+        "campaign_metrics": campaign_metrics,
+
         "start_date": history.index[0],
 
         "end_date": history.index[-1],
@@ -311,8 +394,6 @@ def build_ulcershield(
         "signals": signals,
 
         "campaigns": campaigns,
-
-        "closed_equity": closed_equity,
 
         "daily_states": result["daily_states"],
 

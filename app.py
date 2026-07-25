@@ -33,6 +33,10 @@ from pages.lowhigh import (
     build_result as build_lowhigh_result,
 )
 
+from pages.performance_rankings import (
+    build_result as build_performance_rankings,
+)
+
 from shared.order_rounding import (
     round_down_cent,
     round_up_cent,
@@ -108,6 +112,17 @@ def lowhigh():
         "lowhigh.html",
         result=build_lowhigh_result(),
         index=get_index()
+    )
+
+@app.route("/performance-rankings")
+def performance_rankings():
+
+    return render_template(
+
+        "performance_rankings.html",
+
+        **build_performance_rankings(),
+
     )
 
 if __name__ == "__main__":

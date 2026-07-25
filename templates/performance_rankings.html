@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tomorrow's Close - Performance Rankings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<h1>Tomorrow's Close</h1>
+
+<h2>Strategy Performance Rankings</h2>
+
+<p>Performance rankings for all EasyMode Trading™ strategies.</p>
+
+<br>
+
+<form method="get">
+    <label>
+        Period:
+        <select name="period" onchange="this.form.submit()">
+            <option value="ytd" {% if period=="ytd" %}selected{% endif %}>YTD</option>
+            <option value="1y" {% if period=="1y" %}selected{% endif %}>1 Year</option>
+            <option value="3y" {% if period=="3y" %}selected{% endif %}>3 Years</option>
+            <option value="5y" {% if period=="5y" %}selected{% endif %}>5 Years</option>
+            <option value="10y" {% if period=="10y" %}selected{% endif %}>10 Years</option>
+            <option value="all" {% if period=="all" %}selected{% endif %}>All</option>
+        </select>
+    </label>
+</form>
+
+<br>
+
+<table border="1" cellpadding="8" cellspacing="0" style="text-align:center;">
+
+<tr>
+<th>Rank</th>
+<th><a href="?period={{ period }}&sort=strategy&direction=asc">Strategy</a></th>
+<th><a href="?period={{ period }}&sort=ticker&direction=asc">Ticker</a></th>
+<th><a href="?period={{ period }}&sort=upi&direction=desc">UPI</a></th>
+<th><a href="?period={{ period }}&sort=cagr&direction=desc">CAGR</a></th>
+<th><a href="?period={{ period }}&sort=ulcer_index&direction=asc">Ulcer Index</a></th>
+<th><a href="?period={{ period }}&sort=max_eod_drawdown&direction=asc">Max EOD DD</a></th>
+<th><a href="?period={{ period }}&sort=max_closed_drawdown&direction=asc">Max Closed DD</a></th>
+<th><a href="?period={{ period }}&sort=win_rate&direction=desc">Win %</a></th>
+<th><a href="?period={{ period }}&sort=profit_factor&direction=desc">Profit Factor</a></th>
+<th><a href="?period={{ period }}&sort=expectancy&direction=desc">Expectancy</a></th>
+<th><a href="?period={{ period }}&sort=kelly&direction=desc">Kelly %</a></th>
+<th><a href="?period={{ period }}&sort=average_bars&direction=asc">Avg Bars</a></th>
+<th><a href="?period={{ period }}&sort=max_bars&direction=asc">Max Bars</a></th>
+<th><a href="?period={{ period }}&sort=max_consecutive_wins&direction=desc">Max Wins</a></th>
+<th><a href="?period={{ period }}&sort=max_consecutive_losses&direction=asc">Max Losses</a></th>
+</tr>
+
+{% for row in rankings %}
+<tr>
+
+    <td>{{ loop.index }}</td>
+
+    <td>
+        {% if row.strategy == "LowHigh" %}
+            <a href="/lowhigh">{{ row.strategy }}</a>
+        {% elif row.strategy == "RSI PriceSolver" %}
+            <a href="/">{{ row.strategy }}</a>
+        {% elif row.strategy == "UlcerShield" %}
+            <a href="/ulcershield">{{ row.strategy }}</a>
+        {% else %}
+            {{ row.strategy }}
+        {% endif %}
+    </td>
+
+    <td>{{ row.ticker }}</td>
+
+    <td>{{ "%.2f"|format(row.performance.upi) }}</td>
+    <td>{{ "%.2f"|format(row.performance.cagr * 100) }}%</td>
+    <td>{{ "%.2f"|format(row.performance.ulcer_index) }}</td>
+    <td>{{ "%.2f"|format(row.performance.max_eod_drawdown * 100) }}%</td>
+
+    <td>
+        {% if row.performance.max_closed_drawdown is not none %}
+            {{ "%.2f"|format(row.performance.max_closed_drawdown * 100) }}%
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+    <td>
+        {% if row.trade_metrics %}
+            {{ "%.2f"|format(row.trade_metrics.win_rate * 100) }}%
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+    <td>
+        {% if row.trade_metrics %}
+            {{ "%.2f"|format(row.trade_metrics.profit_factor) }}
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+    <td>
+        {% if row.trade_metrics %}
+            {{ "%.2f"|format(row.trade_metrics.expectancy * 100) }}%
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+    <td>
+        {% if row.trade_metrics %}
+            {{ "%.2f"|format(row.trade_metrics.kelly * 100) }}%
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+    <td>
+        {% if row.trade_metrics %}
+            {{ "%.1f"|format(row.trade_metrics.average_bars) }}
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+    <td>
+        {% if row.trade_metrics %}
+            {{ row.trade_metrics.max_bars }}
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+    <td>
+        {% if row.trade_metrics %}
+            {{ row.trade_metrics.max_consecutive_wins }}
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+    <td>
+        {% if row.trade_metrics %}
+            {{ row.trade_metrics.max_consecutive_losses }}
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
