@@ -1,9 +1,5 @@
 {
-    "last_updated": "2026-07-24T21:32:51.355647+00:00",
-    "last_checked": "2026-07-24T21:32:51.593585+00:00",
-    "market_date": "2026-07-24",
-    "latest_market_date": "2026-07-24",
-    "data_status": "current",
+    "last_updated": "2026-07-26T11:26:32.106379+00:00",
     "strategy_count": 4,
     "strategies": [
         {
@@ -13,8 +9,8 @@
         },
         {
             "name": "LowHigh",
-            "ticker": "QLD",
-            "file": "lowhigh_qld.json"
+            "ticker": "QQQ",
+            "file": "lowhigh_qqq.json"
         },
         {
             "name": "LowHigh",

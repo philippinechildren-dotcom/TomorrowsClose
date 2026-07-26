@@ -12,6 +12,7 @@ from analytics.data.build_manifest import build_manifest
 from analytics.data.cache_status import build_status
 from analytics.strategies.build_buy_and_hold import build_buy_and_hold
 from analytics.strategies.build_lowhigh import build_lowhigh
+from analytics.strategies.build_lowhigh_qqq import build_lowhigh_qqq
 from analytics.strategies.build_rsi_pricesolver import build_rsi_pricesolver
 from analytics.strategies.build_ulcershield import build_ulcershield
 
@@ -91,9 +92,11 @@ def update_cache():
     strategies.append(
         write_strategy_file(
             "LowHigh",
-            "QLD",
-            build_lowhigh(
-                ticker="QLD",
+            "QQQ",
+            build_lowhigh_qqq(
+                ticker="QQQ",
+                entry_lookback=3,
+                exit_lookback=1,
             ),
         )
     )
@@ -122,7 +125,7 @@ def update_cache():
 
     index = {
         "last_updated": datetime.now(UTC).isoformat(),
-        **build_status(latest_market_date()),
+#        **build_status(latest_market_date()),
         "strategy_count": len(strategies),
         "strategies": strategies,
     }

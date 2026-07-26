@@ -7,134 +7,81 @@ def build_annual_returns(
     equity_dates,
 ):
     """
-    Build yearly compounded returns and
-    calendar-year Max EOD drawdowns.
+    Build calendar-year compounded returns
+    and calendar-year Max EOD drawdowns.
     """
 
-    # -----------------------------
-    # YEARLY COMPOUNDED RETURNS
-    # -----------------------------
+    yearly_equity = defaultdict(list)
 
-    yearly_growth = defaultdict(
-        lambda: 1.0
-    )
-
-    for trade in trades:
-
-        year = trade.exit_date.year
-
-        yearly_growth[year] *= (
-            1 + trade.return_pct
-        )
+    for date, equity in zip(
+        equity_dates,
+        equity_curve,
+    ):
+        yearly_equity[date.year].append(equity)
 
     yearly_returns = {}
 
-    for year, growth in yearly_growth.items():
-
-        yearly_returns[year] = (
-            growth - 1
-        ) * 100
-
-    # -----------------------------
-    # YEARLY MAX EOD DRAWDOWN
-    # -----------------------------
+    for year, values in yearly_equity.items():
+        if len(values) >= 2:
+            yearly_returns[year] = (
+                values[-1] / values[0] - 1
+            ) * 100
+        else:
+            yearly_returns[year] = 0.0
 
     yearly_drawdowns = {}
 
     current_year = None
-
     peak = None
-
     max_dd = 0.0
 
     for date, equity in zip(
         equity_dates,
         equity_curve,
     ):
-
         year = date.year
 
-        if current_year is None:
+        if current_year != year:
+            if current_year is not None:
+                yearly_drawdowns[current_year] = max_dd * 100
 
             current_year = year
-
             peak = equity
-
-            max_dd = 0.0
-
-        elif year != current_year:
-
-            yearly_drawdowns[
-                current_year
-            ] = max_dd * 100
-
-            current_year = year
-
-            peak = equity
-
             max_dd = 0.0
 
         if equity > peak:
-
             peak = equity
 
-        drawdown = (
-            equity / peak
-            - 1
-        )
+        drawdown = equity / peak - 1
 
         if drawdown < max_dd:
-
             max_dd = drawdown
 
-    # Save final year's drawdown
-
     if current_year is not None:
+        yearly_drawdowns[current_year] = max_dd * 100
 
-        yearly_drawdowns[
-            current_year
-        ] = max_dd * 100
-
-    # -----------------------------
-    # BUILD FINAL TABLE
-    # -----------------------------
-
-    all_years = sorted(
-
-        set(yearly_returns.keys())
-
-        |
-
-        set(yearly_drawdowns.keys()),
-
+    years = sorted(
+        set(yearly_returns)
+        | set(yearly_drawdowns),
         reverse=True,
-
     )
 
     annual_results = []
 
-    for year in all_years:
-
-        return_pct = yearly_returns.get(
-            year,
-            0.0,
-        )
-
-        max_eod_dd = yearly_drawdowns.get(
+    for year in years:
+        ret = yearly_returns.get(
             year,
             0.0,
         )
 
         annual_results.append({
-
             "year": year,
-
-            "return_pct": return_pct,
-
-            "max_eod_dd": max_eod_dd,
-
-            "positive": return_pct >= 0,
-
+            "return_pct": ret,
+            "max_eod_dd": yearly_drawdowns.get(
+                year,
+                0.0,
+            ),
+            "positive": ret >= 0,
         })
 
     return annual_results

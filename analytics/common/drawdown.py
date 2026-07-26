@@ -45,7 +45,7 @@ def calculate_equity_drawdowns(equity_curve: list[float]) -> dict:
 
         "max_drawdown": max_drawdown,
 
-        "drawdowns": drawdowns,
+        "drawdowns": [-d for d in drawdowns],
 
     }
 
@@ -82,4 +82,4 @@ def calculate_closed_drawdown(closed_equity: list[float]) -> float:
         if dd > max_drawdown:
             max_drawdown = dd
 
-    return max_drawdown
+    return -max_drawdown

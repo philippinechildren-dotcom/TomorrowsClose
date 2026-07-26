@@ -6,11 +6,10 @@ from analytics.strategies.performance import (
     build_performance_report,
 )
 
-
 result = build_ulcershield(
     ticker="TQQQ",
+    period="all",
 )
-
 
 report = build_performance_report(
     starting_equity=result["starting_equity"],
@@ -21,6 +20,8 @@ report = build_performance_report(
     trades=result["trades"],
 )
 
+print(result["equity_dates"][0])
+print(result["equity_dates"][-1])
 
 print()
 print("UlcerShield Performance")
@@ -32,12 +33,22 @@ for key, value in report.items():
 
         print(f"{key}: {value}")
 
+print()
+print("Campaign Metrics")
+print("----------------")
+print(result["campaign_metrics"])
 
 print()
-print("Summary")
-print("-------")
-print(f"Signals: {len(result['signals'])}")
-print(f"Trades: {len(result['trades'])}")
+print("Parameters")
+print("----------")
+print(f"Ticker: {result['ticker']}")
+print(f"RSI Lengths: {result['rsi_lengths']}")
+print(f"Thresholds: {result['thresholds']}")
 
-if "campaigns" in result:
-    print(f"Campaigns: {len(result['campaigns'])}")
+print()
+print("Annual Table")
+print("------------")
+
+for row in result["annual_table"]:
+
+    print(row)

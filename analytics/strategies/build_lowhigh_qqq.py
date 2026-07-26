@@ -11,94 +11,53 @@ from analytics.campaign.metrics import build_trade_metrics
 from analytics.performance.build_annual_table import build_annual_table
 
 
-def calculate_rsi(
-    closes: pd.Series,
-    length: int = 3,
-) -> pd.Series:
-    """Calculate TradingView-style Wilder RSI."""
-
-    delta = closes.diff()
-    gain = delta.clip(lower=0)
-    loss = -delta.clip(upper=0)
-
-    avg_gain = gain.ewm(
-        alpha=1 / length,
-        adjust=False,
-    ).mean()
-
-    avg_loss = loss.ewm(
-        alpha=1 / length,
-        adjust=False,
-    ).mean()
-
-    rs = avg_gain / avg_loss
-    return 100 - (100 / (1 + rs))
-
-
-def build_rsi_pricesolver(
-    ticker: str = "TQQQ",
-    rsi_length: int = 3,
-    threshold: float = 28,
+def build_lowhigh_qqq(
+    ticker: str = "QQQ",
+    entry_lookback: int = 3,
+    exit_lookback: int = 1,
     period: str = DEFAULT_REPORTING_PERIOD,
     starting_equity: float = 100000.0,
 ) -> dict:
 
-    today = datetime.now(
-        ZoneInfo("America/New_York")
-    )
+    today = datetime.now(ZoneInfo("America/New_York"))
+    start_date, end_date = get_reporting_window(today, period)
 
-    start_date, end_date = get_reporting_window(
-        today,
-        period,
-    )
-
-    full_history = get_market_history(
-        ticker,
-    )
+    full_history = get_market_history(ticker, bars=5000)
 
     history = full_history
-
     if start_date is not None:
         history = history[
             (history.index >= start_date)
-            &
-            (history.index <= end_date)
+            & (history.index <= end_date)
         ]
-
-    rsi = calculate_rsi(
-        full_history["close"],
-        rsi_length,
-    )
 
     signals = []
     position = False
+    warmup = max(entry_lookback, exit_lookback)
 
-    for date, close in full_history["close"].items():
+    for i in range(warmup, len(full_history)):
+        date = full_history.index[i]
+        close = float(full_history["close"].iloc[i])
 
-        value = rsi.loc[date]
+        previous_low = full_history["low"].iloc[i-entry_lookback:i].min()
+        previous_high = full_history["high"].iloc[i-exit_lookback:i].max()
 
-        if pd.isna(value):
-            continue
-
-        if not position and value < threshold:
-            signals.append(
-                {
+        if not position:
+            if close < previous_low:
+                signals.append({
                     "date": date,
                     "signal": "BUY",
-                    "price": float(close),
-                }
-            )
-            position = True
-
-        elif position and value > threshold:
-            signals.append(
-                {
+                    "price": close,
+                })
+                position = True
+        else:
+            if close > previous_high:
+                signals.append({
                     "date": date,
                     "signal": "SELL",
-                    "price": float(close),
-                }
-            )
-            position = False
+                    "price": close,
+                })
+                position = False
 
     if start_date is not None:
         report_signals = [
@@ -153,7 +112,7 @@ def build_rsi_pricesolver(
         "end_date": history.index[-1],
         "trades": trade_result["trades"],
         "signals": report_signals,
-        "rsi_length": rsi_length,
-        "threshold": threshold,
+        "entry_lookback": entry_lookback,
+        "exit_lookback": exit_lookback,
         "period": period,
     }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Annual Performance</title>
+</head>
+<body>
+
+<h2>Annual Performance</h2>
+
+<table border="1" cellpadding="6" cellspacing="0">
+<tr>
+<th align="left" width="70">Year</th>
+<th width="20"></th>
+<th align="right" width="90">Return</th>
+<th align="right" width="90">Max EOD Drawdown</th>
+</tr>
+
+{% for row in result["annual_table"] %}
+<tr>
+<td>{{ row.year }}</td>
+<td align="center">{% if row.positive %}🟢{% else %}🔴{% endif %}</td>
+<td align="right">{{ "%+.2f"|format(row.return_pct) }}%</td>
+<td align="right">{{ "%.2f"|format(row.max_eod_dd) }}%</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<p><small>Updated after each market close.</small></p>
+
+</body>
+</html>

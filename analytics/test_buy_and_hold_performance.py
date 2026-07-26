@@ -6,8 +6,10 @@ from analytics.strategies.performance import (
     build_performance_report,
 )
 
-
-result = build_buy_and_hold("QQQ")
+result = build_buy_and_hold(
+    ticker="QQQ",
+    period="all",
+)
 
 report = build_performance_report(
     starting_equity=result["starting_equity"],
@@ -15,8 +17,11 @@ report = build_performance_report(
     equity_curve=result["equity_curve"],
     start_date=result["start_date"],
     end_date=result["end_date"],
+    trades=result["trades"],
 )
 
+print(result["equity_dates"][0])
+print(result["equity_dates"][-1])
 
 print()
 print("Buy & Hold Performance")
@@ -28,10 +33,15 @@ for key, value in report.items():
 
         print(f"{key}: {value}")
 
+print()
+print("Trade Metrics")
+print("-------------")
+print(result["trade_metrics"])
 
 print()
 print("Annual Table")
 print("------------")
 
 for row in result["annual_table"]:
+
     print(row)

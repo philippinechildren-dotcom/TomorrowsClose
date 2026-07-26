@@ -1,59 +1,19 @@
 <div class="performance-summary">
 
-    <h3>
-        {{ result.performance.period }} Performance
-    </h3>
-
-    <form method="get">
-
-        <label>
-
-            Period:
-
-            <select
-                name="period"
-                onchange="this.form.submit()"
-            >
-
-                <option value="ytd" {% if result.period=="ytd" %}selected{% endif %}>YTD</option>
-                <option value="1y" {% if result.period=="1y" %}selected{% endif %}>1 Year</option>
-                <option value="3y" {% if result.period=="3y" %}selected{% endif %}>3 Years</option>
-                <option value="5y" {% if result.period=="5y" %}selected{% endif %}>5 Years</option>
-                <option value="10y" {% if result.period=="10y" %}selected{% endif %}>10 Years</option>
-                <option value="all" {% if result.period=="all" %}selected{% endif %}>All</option>
-
-            </select>
-
-        </label>
-
-    </form>
-
-    <br>
-
     <table
         border="1"
         cellpadding="8"
         cellspacing="0"
-        style="text-align:center;"
+        style="width:auto; text-align:center;"
     >
 
         <tr>
 
             <th>CAGR</th>
 
-            <th>UPI</th>
-
-            <th>Ulcer Index</th>
-
             <th>Max EOD DD</th>
 
-            <th>Max Closed DD</th>
-
-            <th>Win %</th>
-
-            <th>Expectancy</th>
-
-            <th>Profit Factor</th>
+            <th>Ulcer Index</th>
 
         </tr>
 
@@ -64,47 +24,11 @@
             </td>
 
             <td>
-                {{ "%.2f"|format(result.performance.upi) }}
-            </td>
-
-            <td>
-                {{ "%.2f"|format(result.performance.ulcer_index) }}
-            </td>
-
-            <td>
                 {{ "%.2f"|format(result.performance.max_eod_drawdown * 100) }}%
             </td>
 
             <td>
-                {% if result.performance.max_closed_drawdown is not none %}
-                    {{ "%.2f"|format(result.performance.max_closed_drawdown * 100) }}%
-                {% else %}
-                    --
-                {% endif %}
-            </td>
-
-            <td>
-                {% if result.trade_metrics.win_rate != "--" %}
-                    {{ "%.2f"|format(result.trade_metrics.win_rate * 100) }}%
-                {% else %}
-                    --
-                {% endif %}
-            </td>
-
-            <td>
-                {% if result.trade_metrics.expectancy != "--" %}
-                    {{ "%.2f"|format(result.trade_metrics.expectancy * 100) }}%
-                {% else %}
-                    --
-                {% endif %}
-            </td>
-
-            <td>
-                {% if result.trade_metrics.profit_factor != "--" %}
-                    {{ "%.2f"|format(result.trade_metrics.profit_factor) }}
-                {% else %}
-                    --
-                {% endif %}
+                {{ "%.2f"|format(result.performance.ulcer_index) }}
             </td>
 
         </tr>

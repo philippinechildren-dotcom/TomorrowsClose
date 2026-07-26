@@ -1,10 +1,5 @@
-from analytics.strategies.build_lowhigh import (
-    build_lowhigh,
-)
-
-from analytics.strategies.performance import (
-    build_performance_report,
-)
+from analytics.strategies.build_lowhigh import build_lowhigh
+from analytics.strategies.performance import build_performance_report
 
 
 def run_test():
@@ -16,57 +11,39 @@ def run_test():
     )
 
     report = build_performance_report(
-
         starting_equity=result["starting_equity"],
-
         ending_equity=result["ending_equity"],
-
         equity_curve=result["equity_curve"],
-
         start_date=result["start_date"],
-
         end_date=result["end_date"],
-
         trades=result["trades"],
-
     )
 
-    print(len(result["equity_curve"]))
-    print(len(result["equity_dates"]))
     print(result["equity_dates"][0])
     print(result["equity_dates"][-1])
 
     print()
-
     print("LowHigh Performance")
-
     print("-------------------")
 
     for key, value in report.items():
-
         if key != "equity_curve":
-
             print(f"{key}: {value}")
 
     print()
-
     print("Parameters")
-
     print("----------")
+    print(f"Ticker: {result['ticker']}")
+    print(f"Entry Lookback: {result['entry_lookback']}")
+    print(f"Exit Lookback: {result['exit_lookback']}")
 
-    print(
-        f"Ticker: {result['ticker']}"
-    )
+    print()
+    print("Annual Table")
+    print("------------")
 
-    print(
-        f"Entry Lookback: {result['entry_lookback']}"
-    )
-
-    print(
-        f"Exit Lookback: {result['exit_lookback']}"
-    )
+    for row in result["annual_table"]:
+        print(row)
 
 
 if __name__ == "__main__":
-
     run_test()

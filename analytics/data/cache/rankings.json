@@ -4,10 +4,10 @@
             "strategy": "UlcerShield",
             "ticker": "QQQ",
             "category": "EasyMode",
-            "cagr": 0.1205377063608073,
-            "upi": 47.84676301536865,
+            "cagr": 0.1215979880141862,
+            "upi": 48.17138921254725,
             "max_eod_drawdown": 0.020467539342260085,
-            "max_closed_drawdown": 0.0066480182555152135,
+            "max_closed_drawdown": -0.0066480182555152135,
             "rank": 1
         },
         {
@@ -24,21 +24,31 @@
             "strategy": "Buy & Hold",
             "ticker": "QQQ",
             "category": "Benchmark",
-            "cagr": 0.21471387450054968,
-            "upi": 6.097735499056824,
-            "max_eod_drawdown": 0.1196444921542009,
-            "max_closed_drawdown": 0.0,
+            "cagr": 0.21284723419964147,
+            "upi": 6.032671801180657,
+            "max_eod_drawdown": 0.11964449215420084,
+            "max_closed_drawdown": -0.0,
             "rank": 3
+        },
+        {
+            "strategy": "LowHigh",
+            "ticker": "QQQ",
+            "category": "EasyMode",
+            "cagr": 0.08130845248016927,
+            "upi": 3.639838249454914,
+            "max_eod_drawdown": 0.07346857399192558,
+            "max_closed_drawdown": -0.029240262388013583,
+            "rank": 4
         },
         {
             "strategy": "LowHigh",
             "ticker": "QLD",
             "category": "EasyMode",
-            "cagr": 0.1347539171037182,
-            "upi": 2.8660200298405,
+            "cagr": 0.1359466557555984,
+            "upi": 2.8856223630145275,
             "max_eod_drawdown": 0.14478215301691885,
-            "max_closed_drawdown": 0.06552203910619298,
-            "rank": 4
+            "max_closed_drawdown": -0.06552203910619298,
+            "rank": 5
         }
     ]
 }

@@ -1,0 +1,188 @@
+.
+├── .github
+│   └── workflows
+│       ├── python.yml
+│       └── update_cache.yml
+├── .gitignore
+├── .pytest_cache
+│   ├── .gitignore
+│   ├── CACHEDIR.TAG
+│   ├── README.md
+│   └── v
+│       └── cache
+│           ├── lastfailed
+│           └── nodeids
+├── DEVELOPMENT_STANDARDS.md
+├── PROJECT_SPECIFICATION.md
+├── README.md
+├── analytics
+│   ├── __init__.py
+│   ├── campaign
+│   │   ├── __init__.py
+│   │   ├── campaign_metrics.py
+│   │   ├── engine.py
+│   │   ├── log.py
+│   │   └── metrics.py
+│   ├── common
+│   │   ├── __init__.py
+│   │   ├── benchmark.py
+│   │   ├── constants.py
+│   │   ├── drawdown.py
+│   │   ├── equity_curve.py
+│   │   ├── reporting_windows.py
+│   │   ├── rolling_window.py
+│   │   ├── statistics.py
+│   │   └── ulcer.py
+│   ├── data
+│   │   ├── __init__.py
+│   │   ├── build_campaigns.py
+│   │   ├── build_manifest.py
+│   │   ├── build_rankings.py
+│   │   ├── build_signals.py
+│   │   ├── build_trade_log.py
+│   │   ├── cache
+│   │   │   ├── buy_and_hold_qqq.json
+│   │   │   ├── campaigns.json
+│   │   │   ├── index.json
+│   │   │   ├── lowhigh_qld.json
+│   │   │   ├── manifest.json
+│   │   │   ├── rankings.json
+│   │   │   ├── rsi_pricesolver_qqq.json
+│   │   │   ├── signals.json
+│   │   │   ├── trade_log.json
+│   │   │   └── ulcershield_qqq.json
+│   │   ├── cache_status.py
+│   │   ├── loader.py
+│   │   ├── market_status.py
+│   │   ├── performance_cache.json
+│   │   └── update_cache.py
+│   ├── performance
+│   │   ├── __init__.py
+│   │   ├── build_annual_returns.py
+│   │   ├── build_annual_table.py
+│   │   ├── metrics.py
+│   │   └── trade_metrics.py
+│   ├── portfolio
+│   │   ├── __init__.py
+│   │   ├── engine.py
+│   │   ├── metrics.py
+│   │   └── state.py
+│   ├── strategies
+│   │   ├── _init_.py
+│   │   ├── build_buy_and_hold.py
+│   │   ├── build_lowhigh.py
+│   │   ├── build_rsi_pricesolver.py
+│   │   ├── build_ulcershield.py
+│   │   └── performance.py
+│   ├── test_buy_and_hold.py
+│   ├── test_buy_and_hold_performance.py
+│   ├── test_lowhigh.py
+│   ├── test_lowhigh_regression.py
+│   ├── test_prices.py
+│   ├── test_rsi_pricesolver.py
+│   ├── test_rsi_pricesolver_regression.py
+│   ├── test_ulcershield_pipeline.py
+│   ├── trade
+│   │   ├── __init__.py
+│   │   ├── engine.py
+│   │   ├── log.py
+│   │   └── metrics.py
+│   └── update_analytics.py
+├── app.py
+├── catalog
+│   ├── __init__.py
+│   ├── authors.py
+│   ├── categories.py
+│   ├── indicators.py
+│   ├── loader.py
+│   ├── markets.py
+│   ├── strategies.py
+│   └── tags.py
+├── config
+│   └── .gitkeep
+├── engine
+│   ├── .gitkeep
+│   ├── __init__.py
+│   ├── engine.py
+│   └── rsi_pricesolver_pipeline.py
+├── indicators
+│   ├── .gitkeep
+│   ├── __init__.py
+│   ├── donchian_pricesolver.py
+│   ├── rsi_calculator.py
+│   └── rsi_pricesolver.py
+├── market_data
+│   ├── .gitkeep
+│   ├── __init__.py
+│   └── provider.py
+├── metadata
+│   ├── __init__.py
+│   ├── authors
+│   │   ├── __init__.py
+│   │   └── william_michael_dejonge.py
+│   ├── categories
+│   │   ├── __init__.py
+│   │   └── mean_reversion.py
+│   ├── indicators
+│   │   ├── __init__.py
+│   │   └── rsi.py
+│   ├── markets
+│   │   ├── __init__.py
+│   │   └── etfs.py
+│   ├── strategies
+│   │   ├── __init__.py
+│   │   ├── donchian_breakout.py
+│   │   ├── lowhigh.py
+│   │   ├── rsi_pricesolver.py
+│   │   └── ulcershield.py
+│   └── tags
+│       ├── __init__.py
+│       └── pricesolver.py
+├── pages
+│   ├── .gitkeep
+│   ├── __init__.py
+│   ├── common.py
+│   ├── donchian_breakout.py
+│   ├── lowhigh.py
+│   ├── performance_rankings.py
+│   ├── rsi_pricesolver.py
+│   └── ulcershield.py
+├── presentation
+│   ├── .gitkeep
+│   └── __init__.py
+├── pytest.ini
+├── repository_tree.txt
+├── requirements.txt
+├── shared
+│   ├── .gitkeep
+│   ├── __init__.py
+│   ├── formatting.py
+│   └── order_rounding.py
+├── strategies
+│   ├── .gitkeep
+│   ├── __init__.py
+│   ├── donchian_breakout.py
+│   ├── lowhigh.py
+│   ├── rsi_pricesolver_mean_reversion.py
+│   └── ulcershield.py
+├── templates
+│   ├── _data_status.html
+│   ├── components
+│   │   └── performance_summary.html
+│   ├── lowhigh.html
+│   ├── performance_rankings.html
+│   ├── rsi_pricesolver.html
+│   └── ulcershield.html
+├── tests
+│   ├── .gitkeep
+│   ├── test_engine.py
+│   ├── test_market_history.py
+│   ├── test_rsi_calculator.py
+│   ├── test_rsi_pricesolver.py
+│   ├── test_rsi_pricesolver_mean_reversion.py
+│   └── test_rsi_pricesolver_pipeline.py
+└── validation
+    ├── .gitkeep
+    └── __init__.py
+
+35 directories, 151 files

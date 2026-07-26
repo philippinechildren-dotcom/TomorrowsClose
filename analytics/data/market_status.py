@@ -12,7 +12,7 @@ def latest_market_date():
     today = datetime.now(eastern).date()
 
     sessions = nyse.sessions_in_range(
-        "2006-07-24",
+        "2006-07-26",
         today,
     )
 

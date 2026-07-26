@@ -6,59 +6,45 @@ from flask import Flask, render_template, request
 from pathlib import Path
 
 from market_data.provider import get_market_history
-
 from indicators.rsi_pricesolver import solve_rsi_price
-
 from strategies.rsi_pricesolver_mean_reversion import (
     evaluate_rsi_pricesolver_mean_reversion,
 )
-
-from pages.rsi_pricesolver import (
-    build_result,
-)
-
-from strategies.ulcershield import (
-    calculate_ulcershield,
-)
-
+from pages.rsi_pricesolver import build_result
+from strategies.ulcershield import calculate_ulcershield
 from pages.ulcershield import (
     build_result as build_ulcershield_result,
 )
-
-from strategies.lowhigh import (
-    calculate_lowhigh,
-)
-
+from strategies.lowhigh import calculate_lowhigh
 from pages.lowhigh import (
     build_result as build_lowhigh_result,
 )
-
 from pages.performance_rankings import (
     build_result as build_performance_rankings,
 )
-
+from pages.annual_performance import (
+    build_annual_performance,
+)
+from pages.performance_summary_vertical import (
+    build_performance_summary_vertical,
+)
 from shared.order_rounding import (
     round_down_cent,
     round_up_cent,
 )
-
 from catalog.strategies import get_strategy
 from catalog.indicators import get_indicator
 
-
 app = Flask(__name__)
 
-from shared.formatting import (
-    format_price,
-)
+from shared.formatting import format_price
 
 app.jinja_env.filters["price"] = format_price
 
+
 def get_index():
 
-    with open(
-        "analytics/data/cache/index.json"
-    ) as f:
+    with open("analytics/data/cache/index.json") as f:
         index = json.load(f)
 
     utc_time = datetime.fromisoformat(
@@ -75,13 +61,14 @@ def get_index():
 
     return index
 
+
 @app.route("/")
 def home():
 
     return render_template(
         "rsi_pricesolver.html",
         result=build_result(),
-        index=get_index()
+        index=get_index(),
     )
 
 
@@ -91,7 +78,7 @@ def calculate():
     return render_template(
         "rsi_pricesolver.html",
         result=build_result(),
-        index=get_index()
+        index=get_index(),
     )
 
 
@@ -101,7 +88,7 @@ def ulcershield():
     return render_template(
         "ulcershield.html",
         result=build_ulcershield_result(),
-        index=get_index()
+        index=get_index(),
     )
 
 
@@ -111,18 +98,38 @@ def lowhigh():
     return render_template(
         "lowhigh.html",
         result=build_lowhigh_result(),
-        index=get_index()
+        index=get_index(),
+    )
+
+@app.route("/<strategy>/annual")
+def annual_performance(strategy):
+
+    return render_template(
+        "annual_performance.html",
+        result=build_annual_performance(strategy),
+        index=get_index(),
     )
 
 @app.route("/performance-rankings")
 def performance_rankings():
 
     return render_template(
-
         "performance_rankings.html",
-
         **build_performance_rankings(),
+    )
 
+@app.route("/<strategy>/performance-summary")
+def performance_summary(strategy):
+
+    period = request.args.get("period", "all")
+
+    return render_template(
+        "components/performance_summary_vertical.html",
+        result=build_performance_summary_vertical(
+            strategy,
+            period=period,
+        ),
+        index=get_index(),
     )
 
 if __name__ == "__main__":
@@ -130,5 +137,5 @@ if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
         port=5000,
-        debug=True
+        debug=True,
     )

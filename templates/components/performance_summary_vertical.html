@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Performance Summary</title>
+</head>
+<body>
+
+<h2>Performance Summary</h2>
+
+<p>
+Comparison against <strong>QQQ Buy &amp; Hold</strong>.
+Campaign metrics do not apply to Buy &amp; Hold and are shown as "--".
+</p>
+
+<table border="1" cellpadding="6" cellspacing="0">
+
+<tr>
+    <th align="left">Metric</th>
+    <th align="right">Strategy</th>
+    <th align="right">QQQ Buy &amp; Hold</th>
+</tr>
+
+<tr>
+<td>CAGR</td>
+<td align="right">
+{{ "%.2f"|format(result.performance.cagr * 100) }}%
+</td>
+<td align="right">
+{{ "%.2f"|format(result.benchmark.performance.cagr * 100) }}%
+</td>
+</tr>
+
+<tr>
+<td>UPI</td>
+<td align="right">
+{{ "%.2f"|format(result.performance.upi) }}
+</td>
+<td align="right">
+{{ "%.2f"|format(result.benchmark.performance.upi) }}
+</td>
+</tr>
+
+<tr>
+<td>Ulcer Index</td>
+<td align="right">
+{{ "%.2f"|format(result.performance.ulcer_index) }}
+</td>
+<td align="right">
+{{ "%.2f"|format(result.benchmark.performance.ulcer_index) }}
+</td>
+</tr>
+
+<tr>
+<td>Max EOD Drawdown</td>
+<td align="right">
+{{ "%.2f"|format(result.performance.max_eod_drawdown * 100) }}%
+</td>
+<td align="right">
+{{ "%.2f"|format(result.benchmark.performance.max_eod_drawdown * 100) }}%
+</td>
+</tr>
+
+<tr>
+<td>Max Closed Drawdown</td>
+<td align="right">
+{% if result.performance.max_closed_drawdown is not none %}
+{{ "%.2f"|format(result.performance.max_closed_drawdown * 100) }}%
+{% else %}
+--
+{% endif %}
+</td>
+<td align="right">--</td>
+</tr>
+
+<tr>
+<td>Campaign Win Rate</td>
+<td align="right">
+{% if result.trade_metrics.win_rate != "--" %}
+{{ "%.2f"|format(result.trade_metrics.win_rate * 100) }}%
+{% else %}
+--
+{% endif %}
+</td>
+<td align="right">--</td>
+</tr>
+
+<tr>
+<td>Expectancy</td>
+<td align="right">
+{% if result.trade_metrics.expectancy != "--" %}
+{{ "%.2f"|format(result.trade_metrics.expectancy * 100) }}%
+{% else %}
+--
+{% endif %}
+</td>
+<td align="right">--</td>
+</tr>
+
+<tr>
+<td>Profit Factor</td>
+<td align="right">
+{% if result.trade_metrics.profit_factor != "--" %}
+{{ "%.2f"|format(result.trade_metrics.profit_factor) }}
+{% else %}
+--
+{% endif %}
+</td>
+<td align="right">--</td>
+</tr>
+
+</table>
+
+</body>
+</html>
