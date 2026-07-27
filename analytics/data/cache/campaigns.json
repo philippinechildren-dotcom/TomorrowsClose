@@ -1,10 +1,22 @@
 {
     "campaigns": [
         {
+            "strategy": "RSI PriceSolver",
+            "ticker": "QQQ",
+            "campaign_count": 0,
+            "max_closed_drawdown": 0.014022006301654647
+        },
+        {
             "strategy": "Buy & Hold",
             "ticker": "QQQ",
             "campaign_count": 0,
             "max_closed_drawdown": -0.0
+        },
+        {
+            "strategy": "LowHigh",
+            "ticker": "QLD",
+            "campaign_count": 0,
+            "max_closed_drawdown": -0.06552203910619298
         },
         {
             "strategy": "LowHigh",
@@ -13,22 +25,10 @@
             "max_closed_drawdown": -0.029240262388013583
         },
         {
-            "strategy": "RSI PriceSolver",
-            "ticker": "QQQ",
-            "campaign_count": 0,
-            "max_closed_drawdown": 0.014022006301654647
-        },
-        {
             "strategy": "UlcerShield",
             "ticker": "QQQ",
             "campaign_count": 0,
             "max_closed_drawdown": -0.0066480182555152135
-        },
-        {
-            "strategy": "LowHigh",
-            "ticker": "QLD",
-            "campaign_count": 0,
-            "max_closed_drawdown": -0.06552203910619298
         }
     ]
 }

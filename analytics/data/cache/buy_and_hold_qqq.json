@@ -6,19 +6,19 @@
     },
     "performance": {
         "starting_equity": 100000.0,
-        "ending_equity": 121012.69852499028,
-        "total_return": 0.2101269852499028,
-        "cagr": 0.21284723419964147,
+        "ending_equity": 120639.52460118143,
+        "total_return": 0.20639524601181436,
+        "cagr": 0.20717284581204787,
         "max_eod_drawdown": -0.11964449215420084,
         "max_closed_drawdown": -0.0,
-        "ulcer_index": 3.5282421435267843,
-        "upi": 6.032670818530674,
+        "ulcer_index": 3.561675192466363,
+        "upi": 5.816724844821864,
         "trade_metrics": {
             "trade_count": 1,
             "win_rate": 1.0,
             "profit_factor": Infinity,
-            "expectancy": 21012.698524990286,
-            "average_win": 21012.698524990286,
+            "expectancy": 20639.524601181434,
+            "average_win": 20639.524601181434,
             "average_loss": 0,
             "max_consecutive_wins": 1,
             "max_consecutive_losses": 0
@@ -273,8 +273,9 @@
             125388.20699656894,
             124747.9749566694,
             122379.82384775921,
-            121012.69852499028
+            121012.69852499028,
+            120639.52460118143
         ],
-        "years": 0.9883641341546886
+        "years": 0.9965776865160849
     }
 }
