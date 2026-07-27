@@ -16,12 +16,14 @@ def evaluate_rsi_pricesolver_mean_reversion(
 
         return {
             "status": "LONG",
+            "zone_title": "SELL EXIT ZONE",
             "execution": "Sell Limit-on-Close",
             "trigger_price": round_up_cent(trigger_price),
         }
 
     return {
         "status": "FLAT",
+        "zone_title": "BUY ENTRY ZONE",
         "execution": "Buy Limit-on-Close",
         "trigger_price": round_down_cent(trigger_price),
     }

@@ -1,38 +1,23 @@
 <div class="performance-summary">
+<h3>1-Year Performance Snapshot</h3>
 
-    <table
-        border="1"
-        cellpadding="8"
-        cellspacing="0"
-        style="width:auto; text-align:center;"
-    >
+<table
+    border="1"
+    cellpadding="8"
+    cellspacing="0"
+    style="width:auto; text-align:center;"
+>
+<tr>
+    <th>CAGR</th>
+    <th>Max EOD DD</th>
+    <th>Ulcer Index</th>
+</tr>
 
-        <tr>
+<tr>
+    <td>{{ "%.2f"|format(result.performance.cagr * 100) }}%</td>
+    <td>{{ "%.2f"|format(result.performance.max_eod_drawdown * 100) }}%</td>
+    <td>{{ "%.2f"|format(result.performance.ulcer_index) }}</td>
+</tr>
 
-            <th>CAGR</th>
-
-            <th>Max EOD DD</th>
-
-            <th>Ulcer Index</th>
-
-        </tr>
-
-        <tr>
-
-            <td>
-                {{ "%.2f"|format(result.performance.cagr * 100) }}%
-            </td>
-
-            <td>
-                {{ "%.2f"|format(result.performance.max_eod_drawdown * 100) }}%
-            </td>
-
-            <td>
-                {{ "%.2f"|format(result.performance.ulcer_index) }}
-            </td>
-
-        </tr>
-
-    </table>
-
+</table>
 </div>

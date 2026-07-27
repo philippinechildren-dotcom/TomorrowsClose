@@ -1,36 +1,65 @@
-# TODO:
-# This page should display ALL-TIME performance metrics.
-# It currently calls the strategy page builders, which default to the
-# strategy page period (currently 1 Year). During the performance refactor,
-# modify the strategy page builders to accept a period parameter
-# (e.g. build_result(period="all")) so this page can request lifetime metrics
-# without affecting the strategy pages.
+from flask import request
 
-import json
-from pathlib import Path
+from catalog.strategies import get_strategy
 
-CACHE_DIR = Path("analytics/data/cache")
+from analytics.strategies.build_rsi_pricesolver import (
+    build_rsi_pricesolver,
+)
 
-from pages.lowhigh import build_result as build_lowhigh_result
-from pages.rsi_pricesolver import build_result as build_rsi_pricesolver_result
-from pages.ulcershield import build_result as build_ulcershield_result
+from analytics.strategies.build_buy_and_hold import (
+    build_buy_and_hold,
+)
+
+from analytics.performance.metrics import (
+    calculate_performance,
+)
 
 
-def build_performance_summary_vertical(strategy, period="all"):
+def build_performance_summary_vertical(
+    strategy: str,
+    period: str = "all",
+):
 
-    if strategy == "lowhigh":
-        result = build_lowhigh_result()
+    strategy_metadata = get_strategy(strategy)
 
-    elif strategy == "rsi-pricesolver":
-        result = build_rsi_pricesolver_result()
+    ticker = request.args.get(
+        "ticker",
+        "QQQ",
+    )
 
-    elif strategy == "ulcershield":
-        result = build_ulcershield_result()
+    defaults = strategy_metadata["default_parameters"][ticker]
 
-    else:
-        raise ValueError(f"Unknown strategy: {strategy}")
+    rsi_period = defaults["rsi_period"]
 
-    with open(CACHE_DIR / "buy_and_hold_qqq.json") as f:
-        result["benchmark"] = json.load(f)
+    threshold = defaults["threshold"]
 
-    return result
+    strategy_result = build_rsi_pricesolver(
+        ticker=ticker,
+        rsi_length=rsi_period,
+        threshold=threshold,
+        period=period,
+    )
+
+    strategy_result["performance"] = calculate_performance(
+        strategy_result["equity_curve"],
+        strategy_result.get("closed_equity"),
+    )
+
+    benchmark_result = build_buy_and_hold(
+        ticker="QQQ",
+        period=period,
+    )
+
+    benchmark_result["performance"] = calculate_performance(
+        benchmark_result["equity_curve"],
+    )
+
+    return {
+        "period": period,
+        "ticker": ticker,
+        "rsi_period": rsi_period,
+        "threshold": threshold,
+        "performance": strategy_result["performance"],
+        "trade_metrics": strategy_result["trade_metrics"],
+        "benchmark": benchmark_result,
+    }

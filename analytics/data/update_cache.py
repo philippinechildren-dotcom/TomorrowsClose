@@ -125,7 +125,7 @@ def update_cache():
 
     index = {
         "last_updated": datetime.now(UTC).isoformat(),
-#        **build_status(latest_market_date()),
+        **build_status(latest_market_date()),
         "strategy_count": len(strategies),
         "strategies": strategies,
     }

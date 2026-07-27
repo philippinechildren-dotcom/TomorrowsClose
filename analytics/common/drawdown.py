@@ -24,9 +24,7 @@ def calculate_equity_drawdowns(equity_curve: list[float]) -> dict:
         }
 
     peak = equity_curve[0]
-
     drawdowns = []
-
     max_drawdown = 0.0
 
     for equity in equity_curve:
@@ -42,11 +40,8 @@ def calculate_equity_drawdowns(equity_curve: list[float]) -> dict:
             max_drawdown = dd
 
     return {
-
-        "max_drawdown": max_drawdown,
-
+        "max_drawdown": -max_drawdown,
         "drawdowns": [-d for d in drawdowns],
-
     }
 
 
@@ -57,7 +52,6 @@ def calculate_closed_drawdown(closed_equity: list[float]) -> float:
     Parameters
     ----------
     closed_equity : list[float]
-
         Equity after each completed trade or campaign.
 
     Returns
@@ -69,7 +63,6 @@ def calculate_closed_drawdown(closed_equity: list[float]) -> float:
         return 0.0
 
     peak = closed_equity[0]
-
     max_drawdown = 0.0
 
     for equity in closed_equity:

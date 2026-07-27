@@ -1,11 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Performance Summary</title>
-</head>
-<body>
+<div>
 
-<h2>Performance Summary</h2>
+<h2>
+{% if result.period == "1y" %}
+1-Year
+{% elif result.period == "3y" %}
+3-Year
+{% elif result.period == "5y" %}
+5-Year
+{% elif result.period == "10y" %}
+10-Year
+{% else %}
+Since Inception
+{% endif %}
+Performance Summary
+</h2>
+
+<form method="get">
+
+<p>
+<label>
+Performance Period:
+<select name="period" onchange="this.form.submit()">
+<option value="1y" {% if result.period == "1y" %}selected{% endif %}>1 Year</option>
+<option value="3y" {% if result.period == "3y" %}selected{% endif %}>3 Years</option>
+<option value="5y" {% if result.period == "5y" %}selected{% endif %}>5 Years</option>
+<option value="10y" {% if result.period == "10y" %}selected{% endif %}>10 Years</option>
+<option value="all" {% if result.period == "all" %}selected{% endif %}>Since Inception</option>
+</select>
+</label>
+</p>
+
+<p>
+<label>
+ETF:
+<select name="ticker" onchange="this.form.submit()">
+<option value="QQQ" {% if result.ticker == "QQQ" %}selected{% endif %}>QQQ</option>
+<option value="QLD" {% if result.ticker == "QLD" %}selected{% endif %}>QLD</option>
+<option value="TQQQ" {% if result.ticker == "TQQQ" %}selected{% endif %}>TQQQ</option>
+</select>
+</label>
+</p>
+<input type="hidden" name="rsi_period" value="{{ result.rsi_period }}">
+<input type="hidden" name="threshold" value="{{ result.threshold }}">
+
+</form>
 
 <p>
 Comparison against <strong>QQQ Buy &amp; Hold</strong>.
@@ -15,49 +53,33 @@ Campaign metrics do not apply to Buy &amp; Hold and are shown as "--".
 <table border="1" cellpadding="6" cellspacing="0">
 
 <tr>
-    <th align="left">Metric</th>
-    <th align="right">Strategy</th>
-    <th align="right">QQQ Buy &amp; Hold</th>
+<th align="left">Metric</th>
+<th align="right">Strategy</th>
+<th align="right">QQQ Buy &amp; Hold</th>
 </tr>
 
 <tr>
 <td>CAGR</td>
-<td align="right">
-{{ "%.2f"|format(result.performance.cagr * 100) }}%
-</td>
-<td align="right">
-{{ "%.2f"|format(result.benchmark.performance.cagr * 100) }}%
-</td>
+<td align="right">{{ "%.2f"|format(result.performance.cagr * 100) }}%</td>
+<td align="right">{{ "%.2f"|format(result.benchmark.performance.cagr * 100) }}%</td>
 </tr>
 
 <tr>
 <td>UPI</td>
-<td align="right">
-{{ "%.2f"|format(result.performance.upi) }}
-</td>
-<td align="right">
-{{ "%.2f"|format(result.benchmark.performance.upi) }}
-</td>
+<td align="right">{{ "%.2f"|format(result.performance.upi) }}</td>
+<td align="right">{{ "%.2f"|format(result.benchmark.performance.upi) }}</td>
 </tr>
 
 <tr>
 <td>Ulcer Index</td>
-<td align="right">
-{{ "%.2f"|format(result.performance.ulcer_index) }}
-</td>
-<td align="right">
-{{ "%.2f"|format(result.benchmark.performance.ulcer_index) }}
-</td>
+<td align="right">{{ "%.2f"|format(result.performance.ulcer_index) }}</td>
+<td align="right">{{ "%.2f"|format(result.benchmark.performance.ulcer_index) }}</td>
 </tr>
 
 <tr>
 <td>Max EOD Drawdown</td>
-<td align="right">
-{{ "%.2f"|format(result.performance.max_eod_drawdown * 100) }}%
-</td>
-<td align="right">
-{{ "%.2f"|format(result.benchmark.performance.max_eod_drawdown * 100) }}%
-</td>
+<td align="right">{{ "%.2f"|format(result.performance.max_eod_drawdown * 100) }}%</td>
+<td align="right">{{ "%.2f"|format(result.benchmark.performance.max_eod_drawdown * 100) }}%</td>
 </tr>
 
 <tr>
@@ -110,5 +132,4 @@ Campaign metrics do not apply to Buy &amp; Hold and are shown as "--".
 
 </table>
 
-</body>
-</html>
+</div>

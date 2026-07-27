@@ -40,15 +40,10 @@ STRATEGY_METADATA = {
     ],
 
     "default_parameters": {
-
         "ticker": "QLD",
-
         "entry_lookback": 3,
-
         "exit_lookback": 1,
-
         "period": "1y",
-
     }
 
 }

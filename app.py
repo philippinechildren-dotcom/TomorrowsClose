@@ -10,7 +10,7 @@ from indicators.rsi_pricesolver import solve_rsi_price
 from strategies.rsi_pricesolver_mean_reversion import (
     evaluate_rsi_pricesolver_mean_reversion,
 )
-from pages.rsi_pricesolver import build_result
+from EasyMode.RSI_PriceSolver.website.webpage import build_result
 from strategies.ulcershield import calculate_ulcershield
 from pages.ulcershield import (
     build_result as build_ulcershield_result,
@@ -121,15 +121,17 @@ def performance_rankings():
 @app.route("/<strategy>/performance-summary")
 def performance_summary(strategy):
 
-    period = request.args.get("period", "all")
+    period = request.args.get(
+        "period",
+        "all",
+    )
 
     return render_template(
         "components/performance_summary_vertical.html",
         result=build_performance_summary_vertical(
-            strategy,
+            strategy=strategy,
             period=period,
         ),
-        index=get_index(),
     )
 
 if __name__ == "__main__":

@@ -2,27 +2,23 @@
 
 <h2>Annual Performance</h2>
 
-<table border="1" cellpadding="6" cellspacing="0" width="100%">
+<table border="1" cellpadding="6" cellspacing="0" style="width:auto;">
 
 <tr>
-<th align="left">Year</th>
+<th align="left" width="70">Year</th>
 <th width="20"></th>
-<th align="right">Return</th>
-<th align="right">Max Drawdown</th>
+<th align="right" width="90">Return</th>
+<th align="right" width="90">Max Drawdown</th>
 </tr>
 
-{% for row in annual_table %}
+{% for row in result.annual_table %}
 
 <tr>
 
 <td>{{ row.year }}</td>
 
 <td align="center">
-{% if row.positive %}
-🟢
-{% else %}
-🔴
-{% endif %}
+{% if row.positive %}🟢{% else %}🔴{% endif %}
 </td>
 
 <td align="right">

@@ -39,12 +39,30 @@ STRATEGY_METADATA = {
 
     "default_parameters": {
 
-        "ticker": "QQQ",
+        "QQQ": {
 
-        "rsi_period": 3,
+            "rsi_period": 3,
 
-        "threshold": 30
+            "threshold": 30,
 
-    }
+        },
+
+        "QLD": {
+
+            "rsi_period": 3,
+
+            "threshold": 30,
+
+        },
+
+        "TQQQ": {
+
+            "rsi_period": 3,
+
+            "threshold": 28,
+
+        },
+
+    },
 
 }

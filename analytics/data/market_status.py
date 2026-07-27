@@ -6,13 +6,11 @@ import pytz
 def latest_market_date():
 
     nyse = xcals.get_calendar("XNYS")
-
     eastern = pytz.timezone("America/New_York")
-
     today = datetime.now(eastern).date()
 
     sessions = nyse.sessions_in_range(
-        "2006-07-26",
+        "2006-07-27",
         today,
     )
 
