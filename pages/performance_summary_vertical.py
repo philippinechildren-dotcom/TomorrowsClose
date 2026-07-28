@@ -2,11 +2,11 @@ from flask import request
 
 from catalog.strategies import get_strategy
 
-from analytics.strategies.build_rsi_pricesolver import (
+from EasyMode.RSI_PriceSolver.performance.build_strategy import (
     build_rsi_pricesolver,
 )
 
-from analytics.strategies.build_buy_and_hold import (
+from Other_Strategies.Trend_Following.Buy_and_Hold.performance.build_strategy import (
     build_buy_and_hold,
 )
 

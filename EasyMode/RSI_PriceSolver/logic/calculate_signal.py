@@ -1,13 +1,10 @@
 from market_data.provider import get_market_history
-
 from indicators.rsi_pricesolver import (
     solve_rsi_price,
 )
-
-from strategies.rsi_pricesolver_mean_reversion import (
+from EasyMode.RSI_PriceSolver.logic.signal_logic import (
     evaluate_rsi_pricesolver_mean_reversion,
 )
-
 
 def calculate_signal(
     ticker,

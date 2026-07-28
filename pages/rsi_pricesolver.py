@@ -1,40 +1,29 @@
 from flask import request
-
 from market_data.provider import get_market_history
-
 from indicators.rsi_pricesolver import (
     solve_rsi_price,
 )
-
-from strategies.rsi_pricesolver_mean_reversion import (
+from EasyMode.RSI_PriceSolver.logic.signal_logic import (
     evaluate_rsi_pricesolver_mean_reversion,
 )
-
-from analytics.strategies.build_rsi_pricesolver import (
+from EasyMode.RSI_PriceSolver.performance.build_strategy import (
     build_rsi_pricesolver,
 )
-
-from analytics.strategies.build_buy_and_hold import (
+from Other_Strategies.Trend_Following.Buy_and_Hold.performance.build_strategy import (
     build_buy_and_hold,
 )
-
 from analytics.performance.metrics import (
     calculate_performance,
 )
-
 from catalog.strategies import get_strategy
 from catalog.indicators import get_indicator
-
 from pages.common import (
     add_common_page_data,
 )
 
-
 def build_result():
-
     strategy = get_strategy("rsi-pricesolver")
     indicator = get_indicator("rsi")
-
     ticker = request.args.get(
         "ticker",
         "QQQ",
@@ -75,12 +64,10 @@ def build_result():
         threshold=threshold,
         period=period,
     )
-
     performance = calculate_performance(
         performance_result["equity_curve"],
         performance_result.get("closed_equity"),
     )
-
     result = {
         "ticker": ticker,
         "period": period,

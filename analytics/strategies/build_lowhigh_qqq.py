@@ -3,10 +3,17 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 from market_data.provider import get_market_history
-from analytics.common.constants import DEFAULT_REPORTING_PERIOD
-from analytics.common.reporting_windows import get_reporting_window
+
+from Utilities.Reporting.constants import (
+    DEFAULT_REPORTING_PERIOD,
+)
+
+from Utilities.Reporting.reporting_windows import (
+    get_reporting_window,
+)
+
 from analytics.common.equity_curve import build_strategy_equity_curve
-from analytics.trade.engine import build_trades
+from Library.Trading.trade_engine import build_trades
 from analytics.campaign.metrics import build_trade_metrics
 from analytics.performance.build_annual_table import build_annual_table
 

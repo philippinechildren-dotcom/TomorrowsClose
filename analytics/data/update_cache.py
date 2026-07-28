@@ -11,8 +11,8 @@ from analytics.data.build_trade_log import build_trade_log
 from analytics.data.build_manifest import build_manifest
 from analytics.data.cache_status import build_status
 from analytics.strategies.build_buy_and_hold import build_buy_and_hold
-from analytics.strategies.build_lowhigh import build_lowhigh
-from analytics.strategies.build_lowhigh_qqq import build_lowhigh_qqq
+from EasyMode.LowHigh.performance.build_strategy import build_lowhigh
+from EasyMode.LowHigh.performance.build_strategy_qqq import build_lowhigh_qqq
 from analytics.strategies.build_rsi_pricesolver import build_rsi_pricesolver
 from analytics.strategies.build_ulcershield import build_ulcershield
 

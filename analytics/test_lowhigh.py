@@ -1,4 +1,4 @@
-from analytics.strategies.build_lowhigh import build_lowhigh
+from EasyMode.LowHigh.performance.build_strategy import build_lowhigh
 from analytics.strategies.performance import build_performance_report
 
 

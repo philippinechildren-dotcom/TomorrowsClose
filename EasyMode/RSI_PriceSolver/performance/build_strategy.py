@@ -3,37 +3,25 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 from market_data.provider import get_market_history
-from analytics.common.constants import DEFAULT_REPORTING_PERIOD
-from analytics.common.reporting_windows import get_reporting_window
-from analytics.common.equity_curve import build_strategy_equity_curve
-from analytics.trade.engine import build_trades
-from analytics.campaign.metrics import build_trade_metrics
-from analytics.performance.build_annual_table import build_annual_table
-
-
-def calculate_rsi(
-    closes: pd.Series,
-    length: int = 3,
-) -> pd.Series:
-    """Calculate TradingView-style Wilder RSI."""
-
-    delta = closes.diff()
-    gain = delta.clip(lower=0)
-    loss = -delta.clip(upper=0)
-
-    avg_gain = gain.ewm(
-        alpha=1 / length,
-        adjust=False,
-    ).mean()
-
-    avg_loss = loss.ewm(
-        alpha=1 / length,
-        adjust=False,
-    ).mean()
-
-    rs = avg_gain / avg_loss
-    return 100 - (100 / (1 + rs))
-
+from Utilities.Reporting.constants import (
+    DEFAULT_REPORTING_PERIOD,
+)
+from Utilities.Reporting.reporting_windows import (
+    get_reporting_window,
+)
+from EasyMode.RSI_PriceSolver.performance.equity_curve import (
+    calculate_strategy_equity_curve,
+)
+from EasyMode.RSI_PriceSolver.performance.trade_history import (
+    calculate_trade_history,
+)
+from EasyMode.RSI_PriceSolver.performance.trade_metrics import (
+    calculate_trade_metrics,
+)
+from EasyMode.RSI_PriceSolver.performance.annual_table import (
+    calculate_annual_table,
+)
+from indicators.rsi_calculator import calculate_rsi
 
 def build_rsi_pricesolver(
     ticker: str = "TQQQ",
@@ -115,23 +103,23 @@ def build_rsi_pricesolver(
         starting_equity=starting_equity,
     )
 
-    trade_metrics = build_trade_metrics(
+    trade_metrics = calculate_trade_metrics(
         trade_result["trades"]
     )
 
-    equity_result = build_strategy_equity_curve(
+    equity_result = calculate_strategy_equity_curve(
         closes=closes,
         signals=report_signals,
         starting_equity=starting_equity,
     )
 
-    full_equity_result = build_strategy_equity_curve(
+    full_equity_result = calculate_strategy_equity_curve(
         closes=full_history["close"],
         signals=signals,
         starting_equity=starting_equity,
     )
 
-    annual_table = build_annual_table(
+    annual_table = calculate_annual_table(
         trades=build_trades(
             signals,
             starting_equity=starting_equity,

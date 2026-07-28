@@ -13,10 +13,9 @@ from analytics.common.statistics import (
     calculate_cagr,
 )
 
-from analytics.trade.metrics import (
+from Library.Trading.trade_metrics import (
     calculate_trade_metrics,
 )
-
 
 def build_performance_report(
     starting_equity: float,

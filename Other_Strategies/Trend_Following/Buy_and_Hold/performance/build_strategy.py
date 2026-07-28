@@ -1,23 +1,21 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
-
 from market_data.provider import get_market_history
-
-from analytics.common.constants import DEFAULT_REPORTING_PERIOD
-from analytics.common.reporting_windows import get_reporting_window
-
-from analytics.performance.build_annual_returns import (
+from Utilities.Reporting.constants import (
+    DEFAULT_REPORTING_PERIOD,
+)
+from Utilities.Reporting.reporting_windows import (
+    get_reporting_window,
+)
+from EasyMode.RSI_PriceSolver.performance.annual_returns import (
     build_annual_returns,
 )
-from analytics.performance.build_annual_table import (
-    build_annual_table,
+from EasyMode.RSI_PriceSolver.performance.annual_table import (
+    calculate_annual_table,
 )
-
-from analytics.trade.engine import Trade
-from analytics.trade.metrics import calculate_trade_metrics
-
-from analytics.portfolio.engine import PortfolioEngine
-
+from Library.Trading.trade_engine import Trade
+from Library.Trading.trade_metrics import calculate_trade_metrics
+from Library.Trading.portfolio_simulator import PortfolioSimulator
 
 def build_buy_and_hold_trades(
     closes,
@@ -81,7 +79,7 @@ def build_buy_and_hold(
 
     closes = history["close"]
 
-    engine = PortfolioEngine(
+    simulator = PortfolioSimulator(
         sleeve_count=1,
         allocation_pct=1.00,
         starting_equity=starting_equity,
@@ -90,19 +88,19 @@ def build_buy_and_hold(
     first_date = closes.index[0]
     first_price = float(closes.iloc[0])
 
-    engine.buy(
+    simulator.buy(
         0,
         first_date,
         first_price,
     )
 
     for date, close in closes.items():
-        engine.update_day(
+        simulator.update_day(
             date,
             float(close),
         )
 
-    result = engine.results()
+    result = simulator.results()
 
     trades = build_buy_and_hold_trades(
         closes,
@@ -119,7 +117,7 @@ def build_buy_and_hold(
         equity_dates=result["equity_dates"],
     )
 
-    annual_table = build_annual_table(
+    annual_table = calculate_annual_table(
         trades=trades,
         equity_curve=result["equity_curve"],
         equity_dates=result["equity_dates"],

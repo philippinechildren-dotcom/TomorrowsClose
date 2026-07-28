@@ -6,7 +6,7 @@ from strategies.lowhigh import (
     calculate_lowhigh,
 )
 
-from analytics.strategies.build_lowhigh import (
+from EasyMode.LowHigh.performance.build_strategy import (
     build_lowhigh,
 )
 

@@ -1,41 +1,32 @@
 from flask import request
 
-from EasyMode.RSI_PriceSolver.logic.calculate_signal import (
-    calculate_signal,
+from EasyMode.RSI_PriceSolver.logic.calculate_signal import calculate_signal
+from EasyMode.RSI_PriceSolver.performance.calculate_performance import calculate_performance_data
+from EasyMode.RSI_PriceSolver.settings.defaults import get_defaults
+from EasyMode.RSI_PriceSolver.settings.metadata import (
+    get_strategy_metadata,
+    get_indicator_metadata,
 )
+from EasyMode.RSI_PriceSolver.website.page_data import add_page_data
 
-from EasyMode.RSI_PriceSolver.logic.calculate_performance import (
-    calculate_performance_data,
-)
+def prepare_page_data():
+    strategy = get_strategy_metadata()
+    indicator = get_indicator_metadata()
 
-from catalog.strategies import get_strategy
-from catalog.indicators import get_indicator
+    ticker = request.args.get("ticker", "QQQ")
+    defaults = get_defaults(ticker=ticker)
 
-from pages.common import (
-    add_common_page_data,
-)
+    rsi_period = int(request.args.get(
+        "rsi_period",
+        defaults["rsi_period"],
+    ))
 
+    threshold = float(request.args.get(
+        "threshold",
+        defaults["threshold"],
+    ))
 
-def prepare_webpage_data():
-
-    strategy = get_strategy("rsi-pricesolver")
-    indicator = get_indicator("rsi")
-
-    ticker = request.args.get(
-        "ticker",
-        "QQQ",
-    )
-
-    defaults = strategy["default_parameters"][ticker]
-
-    rsi_period = defaults["rsi_period"]
-
-    threshold = defaults["threshold"]
-
-    period = request.args.get(
-        "period",
-        "all",
-    )
+    period = request.args.get("period", "all")
 
     signal = calculate_signal(
         ticker=ticker,
@@ -67,7 +58,7 @@ def prepare_webpage_data():
         "benchmark": performance_data["benchmark"],
     }
 
-    return add_common_page_data(
+    return add_page_data(
         result=result,
         strategy=strategy,
         history=signal["history"],

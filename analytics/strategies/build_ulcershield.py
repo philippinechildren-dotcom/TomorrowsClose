@@ -3,24 +3,24 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 from market_data.provider import get_market_history
-
-from analytics.common.constants import DEFAULT_REPORTING_PERIOD
-from analytics.common.reporting_windows import get_reporting_window
-
-from analytics.strategies.build_rsi_pricesolver import calculate_rsi
-
-from analytics.performance.build_annual_returns import (
+from Utilities.Reporting.constants import (
+    DEFAULT_REPORTING_PERIOD,
+)
+from Utilities.Reporting.reporting_windows import (
+    get_reporting_window,
+)
+from indicators.rsi_calculator import calculate_rsi
+from EasyMode.RSI_PriceSolver.performance.annual_returns import (
     build_annual_returns,
 )
 from analytics.performance.build_annual_table import (
     build_annual_table,
 )
 
-from analytics.trade.engine import Trade
-from analytics.trade.metrics import calculate_trade_metrics
+from Library.Trading.trade_engine import Trade
+from Library.Trading.trade_metrics import calculate_trade_metrics
 
-from analytics.portfolio.engine import PortfolioEngine
-
+from Library.Trading.portfolio_simulator import PortfolioSimulator
 from analytics.campaign.engine import Campaign
 from analytics.campaign.campaign_metrics import (
     build_campaign_metrics,
@@ -231,7 +231,7 @@ def build_ulcershield(
                 })
                 positions[sleeve] = False
 
-    engine = PortfolioEngine(
+    simulator = PortfolioSimulator(
         sleeve_count=5,
         allocation_pct=0.20,
         starting_equity=starting_equity,
@@ -252,23 +252,23 @@ def build_ulcershield(
             for signal in signal_map[date]:
 
                 if signal["signal"] == "BUY":
-                    engine.buy(
+                    simulator.buy(
                         signal["sleeve"],
                         date,
                         signal["price"],
                     )
                 else:
-                    engine.sell(
+                    simulator.sell(
                         signal["sleeve"],
                         signal["price"],
                     )
 
-        engine.update_day(
+        simulator.update_day(
             date,
             float(close),
         )
 
-    result = engine.results()
+    result = simulator.results()
 
     trades = build_ulcershield_trades(
         signals,
