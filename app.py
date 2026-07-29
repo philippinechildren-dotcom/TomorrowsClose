@@ -3,8 +3,8 @@ from zoneinfo import ZoneInfo
 import json
 from flask import Flask, render_template, request
 from pathlib import Path
-from market_data.provider import get_market_history
-from indicators.rsi_pricesolver import solve_rsi_price
+from Utilities.MarketData.provider import get_market_history
+from EasyMode.RSI_PriceSolver.Indicator.rsi_pricesolver import solve_rsi_price
 from EasyMode.RSI_PriceSolver.logic.signal_logic import (
     evaluate_rsi_pricesolver_mean_reversion,
 )
@@ -12,27 +12,27 @@ from EasyMode.RSI_PriceSolver.website.webpage import (
     build_result as build_rsi_pricesolver_result,
 )
 from strategies.ulcershield import calculate_ulcershield
-from pages.ulcershield import (
+from EasyMode.UlcerShield.website.webpage import (
     build_result as build_ulcershield_result,
 )
 from EasyMode.LowHigh.website.webpage import (
     build_result as build_lowhigh_result,
 )
-from pages.performance_rankings import (
+from Library.Website.performance_rankings import (
     build_result as build_performance_rankings,
 )
-from pages.annual_performance import (
+from Library.Website.annual_performance import (
     build_annual_performance,
 )
-from pages.performance_summary_vertical import (
+from Library.Website.performance_summary_vertical import (
     build_performance_summary_vertical,
 )
 from Utilities.PriceSolver.order_rounding import (
     round_down_cent,
     round_up_cent,
 )
-from catalog.strategies import get_strategy
-from catalog.indicators import get_indicator
+from Library.Metadata.strategies import get_strategy
+from Library.Metadata.indicators import get_indicator
 app = Flask(__name__)
 from Utilities.Display.display_formatting import (
     format_price,

@@ -1,6 +1,6 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
-from market_data.provider import get_market_history
+from Utilities.MarketData.provider import get_market_history
 from Utilities.Reporting.constants import (
     DEFAULT_REPORTING_PERIOD,
 )

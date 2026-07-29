@@ -1,4 +1,4 @@
-from indicators.donchian_pricesolver import (
+from EasyMode.LowHigh.Indicator.donchian_pricesolver import (
     solve_donchian_price,
 )
 

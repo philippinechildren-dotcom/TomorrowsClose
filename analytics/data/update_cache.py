@@ -14,7 +14,7 @@ from analytics.strategies.build_buy_and_hold import build_buy_and_hold
 from EasyMode.LowHigh.performance.build_strategy import build_lowhigh
 from EasyMode.LowHigh.performance.build_strategy_qqq import build_lowhigh_qqq
 from analytics.strategies.build_rsi_pricesolver import build_rsi_pricesolver
-from analytics.strategies.build_ulcershield import build_ulcershield
+from EasyMode.UlcerShield.performance.build_strategy import build_ulcershield
 
 from analytics.strategies.performance import build_performance_report
 

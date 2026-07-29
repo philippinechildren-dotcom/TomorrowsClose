@@ -1,6 +1,6 @@
 from flask import request
 
-from market_data.provider import get_market_history
+from Utilities.MarketData.provider import get_market_history
 
 from strategies.lowhigh import (
     calculate_lowhigh,
@@ -10,13 +10,13 @@ from EasyMode.LowHigh.performance.build_strategy import (
     build_lowhigh,
 )
 
-from analytics.performance.metrics import (
+from Utilities.Performance.metrics import (
     calculate_performance,
 )
 
-from catalog.strategies import get_strategy
+from Library.Metadata.strategies import get_strategy
 
-from pages.common import (
+from Library.Website.common import (
     add_common_page_data,
 )
 

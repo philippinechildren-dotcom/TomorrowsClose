@@ -7,9 +7,11 @@ def load_metadata(folder):
     objects = {}
 
     metadata_folder = (
-        Path(__file__).parent.parent
-        / "metadata"
-        / folder
+        Path(__file__).parent / (
+            "StrategyDefinitions"
+            if folder == "strategies"
+            else "IndicatorDefinitions"
+        )
     )
 
     for file in metadata_folder.glob("*.py"):
@@ -18,7 +20,7 @@ def load_metadata(folder):
             continue
 
         module = import_module(
-            f"metadata.{folder}.{file.stem}"
+            f"Library.Metadata.{'StrategyDefinitions' if folder == 'strategies' else 'IndicatorDefinitions'}.{file.stem}"
         )
 
         metadata = None

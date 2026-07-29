@@ -1,0 +1,24 @@
+EasyMode/UlcerShield
+├── __init__.py
+├── __pycache__
+│   └── __init__.cpython-312.pyc
+├── logic
+│   └── __init__.py
+├── performance
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-312.pyc
+│   │   └── build_strategy.cpython-312.pyc
+│   └── build_strategy.py
+├── settings
+│   └── __init__.py
+├── tests
+│   └── __init__.py
+└── website
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── __init__.cpython-312.pyc
+    │   └── webpage.cpython-312.pyc
+    └── webpage.py
+
+9 directories, 13 files

@@ -10,7 +10,7 @@ and presentation layer.
 It performs no indicator calculations itself.
 """
 
-from market_data.provider import get_market_data
+from Utilities.MarketData.provider import get_market_data
 
 
 def process_request(ticker):

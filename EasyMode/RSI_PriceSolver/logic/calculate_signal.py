@@ -1,5 +1,5 @@
-from market_data.provider import get_market_history
-from indicators.rsi_pricesolver import (
+from Utilities.MarketData.provider import get_market_history
+from EasyMode.RSI_PriceSolver.Indicator.rsi_pricesolver import (
     solve_rsi_price,
 )
 from EasyMode.RSI_PriceSolver.logic.signal_logic import (

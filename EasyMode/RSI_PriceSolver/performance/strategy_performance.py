@@ -1,10 +1,10 @@
 from EasyMode.RSI_PriceSolver.performance.performance_pipeline import (
-    calculate_strategy_results,
+    build_rsi_pricesolver,
 )
 from Other_Strategies.Trend_Following.Buy_and_Hold.performance.build_strategy import (
     build_buy_and_hold,
 )
-from analytics.performance.metrics import calculate_performance
+from Utilities.Performance.metrics import calculate_performance
 
 def calculate_strategy_performance(
     ticker,
@@ -12,7 +12,7 @@ def calculate_strategy_performance(
     threshold,
     period,
 ):
-    performance_result = calculate_strategy_results(
+    performance_result = build_rsi_pricesolver(
         ticker=ticker,
         rsi_length=rsi_period,
         threshold=threshold,

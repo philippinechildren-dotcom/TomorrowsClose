@@ -1,23 +1,23 @@
 from flask import request
-from market_data.provider import get_market_history
-from indicators.rsi_pricesolver import (
+from Utilities.MarketData.provider import get_market_history
+from EasyMode.RSI_PriceSolver.Indicator.rsi_pricesolver import (
     solve_rsi_price,
 )
 from EasyMode.RSI_PriceSolver.logic.signal_logic import (
     evaluate_rsi_pricesolver_mean_reversion,
 )
-from EasyMode.RSI_PriceSolver.performance.build_strategy import (
+from EasyMode.RSI_PriceSolver.performance.performance_pipeline import (
     build_rsi_pricesolver,
 )
 from Other_Strategies.Trend_Following.Buy_and_Hold.performance.build_strategy import (
     build_buy_and_hold,
 )
-from analytics.performance.metrics import (
+from Utilities.Performance.metrics import (
     calculate_performance,
 )
-from catalog.strategies import get_strategy
-from catalog.indicators import get_indicator
-from pages.common import (
+from Library.Metadata.strategies import get_strategy
+from Library.Metadata.indicators import get_indicator
+from Library.Website.common import (
     add_common_page_data,
 )
 

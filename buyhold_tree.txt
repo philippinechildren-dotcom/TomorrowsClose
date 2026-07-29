@@ -1,0 +1,20 @@
+Other_Strategies/Trend_Following/Buy_and_Hold
+├── __init__.py
+├── __pycache__
+│   └── __init__.cpython-312.pyc
+├── logic
+│   └── __init__.py
+├── performance
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-312.pyc
+│   │   └── build_strategy.cpython-312.pyc
+│   └── build_strategy.py
+├── settings
+│   └── __init__.py
+├── tests
+│   └── __init__.py
+└── website
+    └── __init__.py
+
+8 directories, 10 files

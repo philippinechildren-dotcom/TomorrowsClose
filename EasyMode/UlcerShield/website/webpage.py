@@ -1,22 +1,22 @@
 from flask import request
 
-from market_data.provider import get_market_history
+from Utilities.MarketData.provider import get_market_history
 
 from strategies.ulcershield import (
     calculate_ulcershield,
 )
 
-from analytics.strategies.build_ulcershield import (
+from EasyMode.UlcerShield.performance.build_strategy import (
     build_ulcershield,
 )
 
-from analytics.performance.metrics import (
+from Utilities.Performance.metrics import (
     calculate_performance,
 )
 
-from catalog.strategies import get_strategy
+from Library.Metadata.strategies import get_strategy
 
-from pages.common import (
+from Library.Website.common import (
     add_common_page_data,
 )
 

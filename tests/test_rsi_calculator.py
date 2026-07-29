@@ -1,5 +1,5 @@
-from market_data.provider import get_market_history
-from indicators.rsi_calculator import calculate_rsi
+from Utilities.MarketData.provider import get_market_history
+from EasyMode.RSI_PriceSolver.Indicator.rsi_calculator import calculate_rsi
 
 
 def main():

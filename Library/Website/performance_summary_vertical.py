@@ -1,8 +1,8 @@
 from flask import request
 
-from catalog.strategies import get_strategy
+from Library.Metadata.strategies import get_strategy
 
-from EasyMode.RSI_PriceSolver.performance.build_strategy import (
+from EasyMode.RSI_PriceSolver.performance.performance_pipeline import (
     build_rsi_pricesolver,
 )
 
@@ -10,7 +10,7 @@ from Other_Strategies.Trend_Following.Buy_and_Hold.performance.build_strategy im
     build_buy_and_hold,
 )
 
-from analytics.performance.metrics import (
+from Utilities.Performance.metrics import (
     calculate_performance,
 )
 

@@ -2,10 +2,10 @@ from Other_Strategies.Trend_Following.Buy_and_Hold.performance.build_strategy im
     build_buy_and_hold,
 )
 from EasyMode.LowHigh.performance.build_strategy import build_lowhigh
-from EasyMode.RSI_PriceSolver.performance.build_strategy import (
+from EasyMode.RSI_PriceSolver.performance.performance_pipeline import (
     build_rsi_pricesolver,
 )
-from analytics.strategies.build_ulcershield import build_ulcershield
+from EasyMode.UlcerShield.performance.build_strategy import build_ulcershield
 
 
 BUILDERS = {

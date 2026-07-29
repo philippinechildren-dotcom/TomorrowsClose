@@ -1,5 +1,5 @@
-from catalog.strategies import get_strategy
-from catalog.indicators import get_indicator
+from Library.Metadata.strategies import get_strategy
+from Library.Metadata.indicators import get_indicator
 
 
 def get_strategy_metadata():

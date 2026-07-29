@@ -76,6 +76,9 @@ def calculate_strategy_equity_curve(
     closes,
     signals,
     starting_equity: float = 100000.0,
+    initial_position: bool = False,
+    initial_shares: float = 0.0,
+    initial_cash: float | None = None,
 ) -> dict:
     """
     Build daily mark-to-market strategy equity curve.
@@ -102,11 +105,14 @@ def calculate_strategy_equity_curve(
     dict
     """
 
-    position = None
+    position = initial_position
 
-    cash = starting_equity
+    shares = initial_shares
 
-    shares = 0.0
+    if initial_cash is None:
+        cash = starting_equity if not initial_position else 0.0
+    else:
+        cash = initial_cash
 
     signal_map = {
 

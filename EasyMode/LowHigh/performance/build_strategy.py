@@ -1,7 +1,7 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-from market_data.provider import get_market_history
+from Utilities.MarketData.provider import get_market_history
 
 from Utilities.Reporting.constants import (
     DEFAULT_REPORTING_PERIOD,
@@ -22,7 +22,7 @@ from analytics.campaign.metrics import (
     build_trade_metrics,
 )
 
-from analytics.performance.build_annual_table import (
+from Utilities.Performance.build_annual_table import (
     build_annual_table,
 )
 

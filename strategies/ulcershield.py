@@ -1,4 +1,4 @@
-from indicators.rsi_pricesolver import solve_rsi_price
+from EasyMode.RSI_PriceSolver.Indicator.rsi_pricesolver import solve_rsi_price
 
 from Utilities.PriceSolver.order_rounding import (
     round_down_cent,

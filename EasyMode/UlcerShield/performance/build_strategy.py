@@ -2,18 +2,18 @@ import pandas as pd
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-from market_data.provider import get_market_history
+from Utilities.MarketData.provider import get_market_history
 from Utilities.Reporting.constants import (
     DEFAULT_REPORTING_PERIOD,
 )
 from Utilities.Reporting.reporting_windows import (
     get_reporting_window,
 )
-from indicators.rsi_calculator import calculate_rsi
+from EasyMode.RSI_PriceSolver.Indicator.rsi_calculator import calculate_rsi
 from EasyMode.RSI_PriceSolver.performance.annual_returns import (
     build_annual_returns,
 )
-from analytics.performance.build_annual_table import (
+from Utilities.Performance.build_annual_table import (
     build_annual_table,
 )
 

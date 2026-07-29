@@ -1,4 +1,4 @@
-from market_data.provider import get_market_history
+from Utilities.MarketData.provider import get_market_history
 
 
 def main():

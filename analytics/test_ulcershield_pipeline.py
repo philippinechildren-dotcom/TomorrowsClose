@@ -1,4 +1,4 @@
-from analytics.strategies.build_ulcershield import (
+from EasyMode.UlcerShield.performance.build_strategy import (
     build_ulcershield,
 )
 

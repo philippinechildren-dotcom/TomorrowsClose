@@ -1,4 +1,4 @@
-from catalog.loader import load_metadata
+from Library.Metadata.loader import load_metadata
 
 MARKETS = load_metadata("markets")
 
