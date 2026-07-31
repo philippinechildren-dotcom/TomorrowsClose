@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 from Utilities.Publishing.publisher import (
     build_homepage,
@@ -7,7 +8,7 @@ from Utilities.Publishing.publisher import (
 )
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/json/homepage")
 def homepage_json():
