@@ -1,0 +1,12 @@
+{
+    "dataset": "homepage_free",
+    "ticker": "QQQ",
+    "market_date": "2026-07-30",
+    "data_source": "Yahoo Finance",
+    "market_state": "current",
+    "status": "FLAT",
+    "trigger_price": 659.51,
+    "execution": "Buy Limit-on-Close",
+    "rsi_period": 3,
+    "threshold": 30
+}

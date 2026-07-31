@@ -34,11 +34,14 @@ def evaluate_rsi_pricesolver_mean_reversion(
     }
 
 
-def build_result():
+def build_result(
+    ticker="QQQ",
+    rsi_period=3,
+    threshold=30,
+    dataset="homepage",
+):
 
-    ticker = request.args.get("ticker", "QQQ").upper()
-    rsi_period = int(request.args.get("rsi_period", 3))
-    threshold = float(request.args.get("threshold", 30))
+    ticker = ticker.upper()
 
     market_data = get_market_data(ticker)
 
@@ -61,6 +64,7 @@ def build_result():
     )
 
     result = {
+        "dataset": dataset,
         "ticker": market_data["ticker"],
         "market_date": market_data["date"],
         "data_source": market_data["source"],
@@ -74,9 +78,18 @@ def build_result():
 
     return result
 
+
 def render_page():
+
+    ticker = request.args.get("ticker", "QQQ")
+    rsi_period = int(request.args.get("rsi_period", 3))
+    threshold = float(request.args.get("threshold", 30))
 
     return render_template(
         "rsi_price_solver.html",
-        result=build_result(),
+        result=build_result(
+            ticker=ticker,
+            rsi_period=rsi_period,
+            threshold=threshold,
+        ),
     )
