@@ -1,0 +1,140 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
+import json
+from flask import Flask, render_template, request
+from pathlib import Path
+from Utilities.MarketData.provider import get_market_history
+from EasyMode.RSI_PriceSolver.Indicator.rsi_pricesolver import solve_rsi_price
+from EasyMode.RSI_PriceSolver.logic.signal_logic import (
+    evaluate_rsi_pricesolver_mean_reversion,
+)
+from EasyMode.RSI_PriceSolver.website.webpage import (
+    build_result as build_rsi_pricesolver_result,
+)
+from strategies.ulcershield import calculate_ulcershield
+from EasyMode.UlcerShield.website.webpage import (
+    build_result as build_ulcershield_result,
+)
+from EasyMode.LowHigh.website.webpage import (
+    build_result as build_lowhigh_result,
+)
+from Library.Website.performance_rankings import (
+    build_result as build_performance_rankings,
+)
+from Library.Website.annual_performance import (
+    build_annual_performance,
+)
+from Library.Website.performance_summary_vertical import (
+    build_performance_summary_vertical,
+)
+from Utilities.PriceSolver.order_rounding import (
+    round_down_cent,
+    round_up_cent,
+)
+from Library.Metadata.strategies import get_strategy
+from Library.Metadata.indicators import get_indicator
+app = Flask(__name__)
+from Utilities.Display.display_formatting import (
+    format_price,
+)
+app.jinja_env.filters["price"] = format_price
+
+def get_index():
+
+    with open("analytics/data/cache/index.json") as f:
+        index = json.load(f)
+
+    utc_time = datetime.fromisoformat(
+        index["last_updated"]
+    )
+
+    eastern = utc_time.astimezone(
+        ZoneInfo("America/New_York")
+    )
+
+    index["last_updated"] = eastern.strftime(
+        "%B %d, %Y %I:%M %p ET"
+    )
+
+    return index
+
+
+@app.route("/")
+def home():
+
+    return render_template(
+        "rsi_pricesolver.html",
+        result=build_rsi_pricesolver_result(),
+        index=get_index(),
+    )
+
+
+@app.route("/calculate")
+def calculate():
+
+    return render_template(
+        "rsi_pricesolver.html",
+        result=build_rsi_pricesolver_result(),
+        index=get_index(),
+    )
+
+
+@app.route("/ulcershield")
+def ulcershield():
+
+    return render_template(
+        "ulcershield.html",
+        result=build_ulcershield_result(),
+        index=get_index(),
+    )
+
+
+@app.route("/lowhigh")
+def lowhigh():
+
+    return render_template(
+        "lowhigh.html",
+        result=build_lowhigh_result(),
+        index=get_index(),
+    )
+
+@app.route("/<strategy>/annual")
+def annual_performance(strategy):
+
+    return render_template(
+        "annual_performance.html",
+        result=build_annual_performance(strategy),
+        index=get_index(),
+    )
+
+@app.route("/performance-rankings")
+def performance_rankings():
+
+    return render_template(
+        "performance_rankings.html",
+        **build_performance_rankings(),
+    )
+
+@app.route("/<strategy>/performance-summary")
+def performance_summary(strategy):
+
+    period = request.args.get(
+        "period",
+        "all",
+    )
+
+    return render_template(
+        "components/performance_summary_vertical.html",
+        result=build_performance_summary_vertical(
+            strategy=strategy,
+            period=period,
+        ),
+    )
+
+if __name__ == "__main__":
+
+    app.run(
+        host="0.0.0.0",
+        port=5000,
+        debug=True,
+    )

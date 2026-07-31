@@ -1,0 +1,35 @@
+<p><strong>Security:</strong> {{ result.ticker }}</p>
+
+<hr>
+
+{% if result.market_state == "settlement" %}
+
+<p style="font-size:1.3em;">
+⏳ New Signal Zones available around 4:30 PM ET.
+</p>
+
+{% else %}
+
+<h3>
+<strong>
+{% if result.status == "LONG" %}
+SELL EXIT ZONE
+{% else %}
+BUY ENTRY ZONE
+{% endif %}
+</strong>
+</h3>
+
+<div>
+
+<div style="font-size:2em; margin:10px 0;">
+<strong>{{ "%.2f"|format(result.trigger_price) }}</strong>
+</div>
+
+{{ result.execution }}
+
+</div>
+
+{% endif %}
+
+<hr>
