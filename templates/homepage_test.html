@@ -1,34 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tomorrow's Close JSON Test</title>
-</head>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Tomorrow's Close JSON Test</title>
+    </head>
 
-<body>
+    <body>
 
-<h1>Tomorrow's Close</h1>
+    <h1>Tomorrow's Close</h1>
 
-<p><strong>Dataset:</strong> <span id="dataset"></span></p>
-<p><strong>Security:</strong> <span id="ticker"></span></p>
-<p><strong>Status:</strong> <span id="status"></span></p>
-<p><strong>Trigger Price:</strong> <span id="trigger"></span></p>
-<p><strong>Execution:</strong> <span id="execution"></span></p>
+    <p><strong>Dataset:</strong> <span id="dataset"></span></p>
+    <p><strong>Security:</strong> <span id="ticker"></span></p>
+    <p><strong>Status:</strong> <span id="status"></span></p>
+    <p><strong>Trigger Price:</strong> <span id="trigger"></span></p>
+    <p><strong>Execution:</strong> <span id="execution"></span></p>
 
-<script>
+    <script>
 
-fetch("/json/homepage")
-.then(response => response.json())
-.then(data => {
+    fetch("/json/homepage")
+    .then(response => response.json())
+    .then(data => {
 
-    document.getElementById("dataset").textContent = data.dataset;
-    document.getElementById("ticker").textContent = data.ticker;
-    document.getElementById("status").textContent = data.status;
-    document.getElementById("trigger").textContent = data.trigger_price;
-    document.getElementById("execution").textContent = data.execution;
+        document.getElementById("dataset").textContent = data.dataset;
+        document.getElementById("ticker").textContent = data.ticker;
+        document.getElementById("status").textContent = data.status;
+        document.getElementById("trigger").textContent = data.trigger_price;
+        document.getElementById("execution").textContent = data.execution;
 
-});
+    });
 
-</script>
+    </script>
 
-</body>
-</html>
+    </body>
+    </html>
