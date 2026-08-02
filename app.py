@@ -34,5 +34,10 @@ def paid_json():
 
     return jsonify(build_paid())
 
+@app.route("/widget/rsi-pricesolver")
+def widget_rsi_pricesolver():
+    from EasyMode.RSI_PriceSolver.price_solver import render_page
+    return render_page()
+
 if __name__ == "__main__":
     app.run(debug=True)
