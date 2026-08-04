@@ -50,12 +50,16 @@ def build_result(
         number_of_bars=500,
     )
 
-    closing_prices = market_history["close"].tolist()
+    # Remove any missing closing prices (Yahoo occasionally returns a NaN row)
+closing_prices = (
+    market_history["close"]
+    .dropna()
+    .tolist()
+)
 
-    solver_result = solve_rsi_price(
-        closes=closing_prices,
-        period=rsi_period,
-        target=threshold,
+if len(closing_prices) < 20:
+    raise ValueError(
+        f"Not enough valid closing prices returned for {ticker}."
     )
 
     signal = evaluate_rsi_pricesolver_mean_reversion(
