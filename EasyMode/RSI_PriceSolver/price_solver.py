@@ -51,15 +51,21 @@ def build_result(
     )
 
     # Remove any missing closing prices (Yahoo occasionally returns a NaN row)
-closing_prices = (
-    market_history["close"]
-    .dropna()
-    .tolist()
-)
+    closing_prices = (
+        market_history["close"]
+        .dropna()
+        .tolist()
+    )
 
-if len(closing_prices) < 20:
-    raise ValueError(
-        f"Not enough valid closing prices returned for {ticker}."
+    if len(closing_prices) < 20:
+        raise ValueError(
+            f"Not enough valid closing prices returned for {ticker}."
+        )
+
+    solver_result = solve_rsi_price(
+        closes=closing_prices,
+        period=rsi_period,
+        target=threshold,
     )
 
     signal = evaluate_rsi_pricesolver_mean_reversion(
