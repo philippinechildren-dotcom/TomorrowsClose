@@ -1,28 +1,35 @@
-from flask import Flask, jsonify
+from flask import Flask
 from flask_cors import CORS
 
-from Utilities.Publishing.publisher import (
-    build_homepage,
-    build_free,
-    build_paid,
+from EasyMode.RSI_PriceSolver.price_solver import (
+    render_page as render_rsi_page,
+)
+
+from EasyMode.LowHigh.price_solver import (
+    render_page as render_lowhigh_page,
+)
+
+from EasyMode.UlcerShield.price_solver import (
+    render_page as render_ulcershield_page,
 )
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/json/homepage")
-def homepage_json():
-    return jsonify(build_homepage())
+
+@app.route("/widget/rsi-pricesolver")
+def widget_rsi_pricesolver():
+    return render_rsi_page()
 
 
-@app.route("/json/free")
-def free_json():
-    return jsonify(build_free())
+@app.route("/widget/lowhigh")
+def widget_lowhigh():
+    return render_lowhigh_page()
 
 
-@app.route("/json/paid")
-def paid_json():
-    return jsonify(build_paid())
+@app.route("/widget/ulcershield")
+def widget_ulcershield():
+    return render_ulcershield_page()
 
 
 if __name__ == "__main__":

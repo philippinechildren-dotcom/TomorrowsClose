@@ -22,7 +22,43 @@ height="500"
 style="border:0;overflow:hidden;"&gt;&lt;/iframe&gt;
 </code></pre>
 
+{% with result=rsi_result %}
 {% include "display_components/pricesolvers/rsi_pricesolver.html" %}
+{% endwith %}
+
+<hr>
+
+<h2>LowHigh Widget</h2>
+
+<p><strong>Ghost HTML Card</strong></p>
+
+<pre><code>&lt;iframe
+src="https://tomorrowsclose-1.onrender.com/widget/lowhigh"
+width="100%"
+height="500"
+style="border:0;overflow:hidden;"&gt;&lt;/iframe&gt;
+</code></pre>
+
+{% with result=lowhigh_result %}
+{% include "display_components/pricesolvers/lowhigh.html" %}
+{% endwith %}
+
+<hr>
+
+<h2>UlcerShield Widget</h2>
+
+<p><strong>Ghost HTML Card</strong></p>
+
+<pre><code>&lt;iframe
+src="https://tomorrowsclose-1.onrender.com/widget/ulcershield"
+width="100%"
+height="700"
+style="border:0;overflow:hidden;"&gt;&lt;/iframe&gt;
+</code></pre>
+
+{% with result=ulcershield_result %}
+{% include "display_components/pricesolvers/ulcershield.html" %}
+{% endwith %}
 
 <hr>
 
@@ -35,7 +71,9 @@ height="80"
 style="border:0;overflow:hidden;width:100%;"&gt;&lt;/iframe&gt;
 </code></pre>
 
+{% with result=rsi_result %}
 {% include "display_components/data/market_data_confidence.html" %}
+{% endwith %}
 
 <hr>
 
@@ -43,15 +81,16 @@ style="border:0;overflow:hidden;width:100%;"&gt;&lt;/iframe&gt;
 
 <p><strong>Ghost HTML Card</strong></p>
 
-<pre><code>
-&lt;iframe
+<pre><code>&lt;iframe
 src="https://tomorrowsclose-1.onrender.com/widget/homepage-rsi-pricesolver"
 width="100%"
 height="220"
 style="border:0;overflow:hidden;width:100%;"&gt;&lt;/iframe&gt;
 </code></pre>
 
+{% with result=rsi_result %}
 {% include "display_components/pricesolvers/homepage_rsi_pricesolver.html" %}
+{% endwith %}
 
 </body>
 </html>

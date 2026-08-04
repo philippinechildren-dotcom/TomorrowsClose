@@ -47,7 +47,7 @@ def build_result(
 
     market_history = get_market_history(
         ticker=ticker,
-        number_of_bars=200,
+        number_of_bars=500,
     )
 
     closing_prices = market_history["close"].tolist()
@@ -81,9 +81,9 @@ def build_result(
 
 def render_page():
 
-    ticker = request.args.get("ticker", "QQQ")
+    ticker = request.args.get("ticker", "TQQQ")
     rsi_period = int(request.args.get("rsi_period", 3))
-    threshold = float(request.args.get("threshold", 30))
+    threshold = int(request.args.get("threshold", 28))
 
     return render_template(
         "rsi_price_solver.html",

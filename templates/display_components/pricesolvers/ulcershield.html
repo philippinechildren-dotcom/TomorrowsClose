@@ -1,0 +1,120 @@
+<p><strong>Security:</strong> {{ result.ticker }}</p>
+
+<hr>
+
+{% if result.market_state == "settlement" %}
+
+<p style="font-size:1.3em;">
+⏳ New Signal Zones available around 4:30 PM ET.
+</p>
+
+{% else %}
+
+<p>
+<strong>Campaign Status:</strong>
+{{ result.campaign_status }}
+</p>
+
+<hr>
+
+<table border="1" cellpadding="10" cellspacing="0">
+
+<tr>
+    <th>System</th>
+    <th>Trigger</th>
+    <th>Execution</th>
+</tr>
+
+{% for component in result.components %}
+
+<tr>
+
+<td>
+<strong>{{ component.name }}</strong>
+</td>
+
+<td>
+<div style="font-size:2em; margin:10px 0;">
+<strong>{{ "%.2f"|format(component.trigger_price) }}</strong>
+</div>
+</td>
+
+<td>
+{{ component.execution }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endif %}
+
+<hr>
+
+<h3>Parameters</h3>
+
+<form method="get">
+
+<p>
+<label>
+ETF:
+<input
+    type="text"
+    name="ticker"
+    value="{{ result.ticker }}"
+    maxlength="8"
+    style="width:6ch;">
+</label>
+</p>
+
+<table border="1" cellpadding="8" cellspacing="0">
+
+<tr>
+    <th>System</th>
+    <th>Period</th>
+    <th>Threshold</th>
+</tr>
+
+{% for system in result.systems %}
+
+<tr>
+
+<td>
+<strong>{{ system.name }}</strong>
+</td>
+
+<td>
+<input
+    type="number"
+    name="period{{ loop.index }}"
+    value="{{ system.period }}"
+    step="1"
+    style="width:6ch;">
+</td>
+
+<td>
+<input
+    type="number"
+    name="threshold{{ loop.index }}"
+    value="{{ system.threshold }}"
+    step="1"
+    style="width:6ch;">
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<button type="submit">
+Calculate
+</button>
+
+</form>
+
+<hr>
