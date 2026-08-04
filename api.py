@@ -16,16 +16,13 @@ from EasyMode.UlcerShield.price_solver import (
 app = Flask(__name__)
 CORS(app)
 
-
 @app.route("/widget/rsi-pricesolver")
 def widget_rsi_pricesolver():
     return render_rsi_page()
 
-
 @app.route("/widget/lowhigh")
 def widget_lowhigh():
     return render_lowhigh_page()
-
 
 @app.route("/widget/ulcershield")
 def widget_ulcershield():
