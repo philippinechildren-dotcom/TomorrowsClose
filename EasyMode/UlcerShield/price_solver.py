@@ -61,7 +61,17 @@ def build_result(
         number_of_bars=500,
     )
 
-    closing_prices = market_history["close"].tolist()
+    # Remove any missing closing prices
+    closing_prices = (
+        market_history["close"]
+        .dropna()
+        .tolist()
+    )
+
+    if len(closing_prices) < 20:
+        raise ValueError(
+            f"Not enough valid closing prices returned for {ticker}."
+        )
 
     components = []
 
@@ -104,6 +114,7 @@ def build_result(
         "systems": systems,
         "components": components,
     }
+
 
 def render_page():
 
