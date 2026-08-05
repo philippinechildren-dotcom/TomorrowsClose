@@ -2,11 +2,18 @@
 StrategyLab/Benchmarks/buy_and_hold.py
 """
 
-from Utilities.market_data import get_market_history
+from Utilities.market_data import (
+    get_market_history,
+    filter_history,
+)
+
 from StrategyLab.Metrics.metrics import build_metrics
 
 
-def build_buy_and_hold(closes, starting_equity=100000.0):
+def build_buy_and_hold(
+    closes,
+    starting_equity=100000.0,
+):
     """
     Build Buy & Hold benchmark statistics.
     """
@@ -69,6 +76,7 @@ def build_buy_and_hold(closes, starting_equity=100000.0):
 
 def build_result(
     ticker="QQQ",
+    period=None,
     starting_equity=100000.0,
 ):
     """
@@ -79,11 +87,12 @@ def build_result(
         ticker=ticker,
     )
 
-    result = build_buy_and_hold(
+    history = filter_history(
+        history,
+        period,
+    )
+
+    return build_buy_and_hold(
         closes=history["close"],
         starting_equity=starting_equity,
     )
-
-    print(result)
-
-    return result

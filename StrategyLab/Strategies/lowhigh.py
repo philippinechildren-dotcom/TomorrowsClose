@@ -2,7 +2,11 @@
 StrategyLab/Strategies/lowhigh.py
 """
 
-from Utilities.market_data import get_market_history
+from Utilities.market_data import (
+    get_market_history,
+    filter_history,
+)
+
 from Library.Indicators.donchian import calculate_donchian
 from Library.Trading.trade_engine import build_trades
 from StrategyLab.Metrics.metrics import build_metrics
@@ -150,6 +154,7 @@ def build_lowhigh(
 
 def build_result(
     ticker="QLD",
+    period=None,
     entry_lookback=3,
     exit_lookback=1,
     starting_equity=100000.0,
@@ -160,6 +165,11 @@ def build_result(
 
     history = get_market_history(
         ticker=ticker,
+    )
+
+    history = filter_history(
+        history,
+        period,
     )
 
     return build_lowhigh(

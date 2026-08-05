@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, send_file
 from catalog import render_catalog
 
 from EasyMode.LowHigh.price_solver import (
@@ -37,17 +37,12 @@ def homepage_json():
     return jsonify(build_homepage())
 
 
-@app.route("/json/free")
-def free_json():
-    from Utilities.Publishing.publisher import build_free
-    return jsonify(build_free())
-
-
-@app.route("/json/paid")
-def paid_json():
-    from Utilities.Publishing.publisher import build_paid
-    return jsonify(build_paid())
-
+@app.route("/json/rankings")
+def rankings_json():
+    return send_file(
+        "Rankings/rankings.json",
+        mimetype="application/json",
+    )
 
 @app.route("/widget/rsi-pricesolver")
 def widget_rsi_pricesolver():

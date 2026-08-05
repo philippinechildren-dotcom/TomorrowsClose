@@ -174,3 +174,52 @@ def get_market_history(ticker, number_of_bars=None):
     ]
 
     return history.round(2)
+
+def filter_history(
+    history,
+    period=None,
+    warmup_days=500,
+):
+    """
+    Filter market history while preserving indicator warmup.
+
+    Parameters
+    ----------
+    history : DataFrame
+
+    period : float | None
+
+        None = all history
+
+        20      = 20 years
+        10      = 10 years
+        5       = 5 years
+        3       = 3 years
+        1       = 1 year
+        0.5     = 6 months
+        0.25    = 3 months
+        1 / 12  = 1 month
+
+    warmup_days : int
+
+        Additional trading days returned before the
+        requested performance window so indicators
+        have sufficient lookback history.
+    """
+
+    if period is None:
+        return history
+
+    performance_days = int(
+        252 * period
+    )
+
+    total_days = (
+        performance_days
+        + warmup_days
+    )
+
+    if len(history) <= total_days:
+        return history
+
+    return history.iloc[-total_days:]

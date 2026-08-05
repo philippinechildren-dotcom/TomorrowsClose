@@ -2,7 +2,11 @@
 StrategyLab/Strategies/rsi_threshold.py
 """
 
-from Utilities.market_data import get_market_history
+from Utilities.market_data import (
+    get_market_history,
+    filter_history,
+)
+
 from Library.Indicators.rsi import calculate_rsi
 from Library.Trading.trade_engine import build_trades
 from StrategyLab.Metrics.metrics import build_metrics
@@ -152,6 +156,7 @@ def build_rsi_threshold(
 
 def build_result(
     ticker="TQQQ",
+    period=None,
     rsi_length=3,
     rsi_threshold=28,
     starting_equity=100000.0,
@@ -162,6 +167,11 @@ def build_result(
 
     history = get_market_history(
         ticker=ticker,
+    )
+
+    history = filter_history(
+        history,
+        period,
     )
 
     return build_rsi_threshold(
