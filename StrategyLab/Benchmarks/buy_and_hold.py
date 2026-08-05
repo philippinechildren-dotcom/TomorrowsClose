@@ -56,6 +56,14 @@ def build_buy_and_hold(
     )
 
     # ==========================================================
+    # Buy & Hold does not have trades
+    # ==========================================================
+
+    metrics["max_closed_trade_drawdown"] = None
+    metrics["win_rate"] = None
+    metrics["expectancy_percent"] = None
+
+    # ==========================================================
     # Benchmark
     # ==========================================================
 

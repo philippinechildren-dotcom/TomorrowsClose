@@ -51,15 +51,15 @@
             "name": "Buy & Hold",
             "cagr": 0.10160878548774788,
             "max_eod_drawdown": -0.8296390658174098,
-            "max_closed_trade_drawdown": 0.0,
+            "max_closed_trade_drawdown": null,
             "ulcer_index": 44.09909117639714,
             "ulcer_performance_index": 0.23041015761823969,
             "calmar_ratio": 0.12247348235420527,
             "number_of_trades": 0,
             "trades_per_year": 0.0,
-            "win_rate": 0.0,
+            "win_rate": null,
             "profit_factor": null,
-            "expectancy_percent": 0.0
+            "expectancy_percent": null
         }
     ],
     "20_year": [
@@ -113,15 +113,15 @@
             "name": "Buy & Hold",
             "cagr": 0.14842681120115087,
             "max_eod_drawdown": -0.5355260766854443,
-            "max_closed_trade_drawdown": 0.0,
+            "max_closed_trade_drawdown": null,
             "ulcer_index": 12.657954431318208,
             "ulcer_performance_index": 1.1725971365003058,
             "calmar_ratio": 0.277160754000656,
             "number_of_trades": 0,
             "trades_per_year": 0.0,
-            "win_rate": 0.0,
+            "win_rate": null,
             "profit_factor": null,
-            "expectancy_percent": 0.0
+            "expectancy_percent": null
         }
     ],
     "10_year": [
@@ -175,15 +175,15 @@
             "name": "Buy & Hold",
             "cagr": 0.1841838282118582,
             "max_eod_drawdown": -0.35617218247976434,
-            "max_closed_trade_drawdown": 0.0,
+            "max_closed_trade_drawdown": null,
             "ulcer_index": 9.888514335611152,
             "ulcer_performance_index": 1.8626036425771622,
             "calmar_ratio": 0.5171201943102967,
             "number_of_trades": 0,
             "trades_per_year": 0.0,
-            "win_rate": 0.0,
+            "win_rate": null,
             "profit_factor": null,
-            "expectancy_percent": 0.0
+            "expectancy_percent": null
         }
     ],
     "5_year": [
@@ -237,15 +237,15 @@
             "name": "Buy & Hold",
             "cagr": 0.212781827737625,
             "max_eod_drawdown": -0.35617218247976434,
-            "max_closed_trade_drawdown": 0.0,
+            "max_closed_trade_drawdown": null,
             "ulcer_index": 12.188174265920349,
             "ulcer_performance_index": 1.7458055906912116,
             "calmar_ratio": 0.5974128194295859,
             "number_of_trades": 0,
             "trades_per_year": 0.0,
-            "win_rate": 0.0,
+            "win_rate": null,
             "profit_factor": null,
-            "expectancy_percent": 0.0
+            "expectancy_percent": null
         }
     ],
     "3_year": [
@@ -299,15 +299,15 @@
             "name": "Buy & Hold",
             "cagr": 0.14555842926029783,
             "max_eod_drawdown": -0.3561721824797643,
-            "max_closed_trade_drawdown": 0.0,
+            "max_closed_trade_drawdown": null,
             "ulcer_index": 13.863834486880677,
             "ulcer_performance_index": 1.0499146495007534,
             "calmar_ratio": 0.40867433342739407,
             "number_of_trades": 0,
             "trades_per_year": 0.0,
-            "win_rate": 0.0,
+            "win_rate": null,
             "profit_factor": null,
-            "expectancy_percent": 0.0
+            "expectancy_percent": null
         }
     ],
     "1_year": [
@@ -346,15 +346,15 @@
             "name": "Buy & Hold",
             "cagr": 0.24833458475708103,
             "max_eod_drawdown": -0.2288330367734282,
-            "max_closed_trade_drawdown": 0.0,
+            "max_closed_trade_drawdown": null,
             "ulcer_index": 4.882606396163982,
             "ulcer_performance_index": 5.086106980734409,
             "calmar_ratio": 1.0852217330968765,
             "number_of_trades": 0,
             "trades_per_year": 0.0,
-            "win_rate": 0.0,
+            "win_rate": null,
             "profit_factor": null,
-            "expectancy_percent": 0.0
+            "expectancy_percent": null
         },
         {
             "rank": 4,
@@ -408,15 +408,15 @@
             "name": "Buy & Hold",
             "cagr": 0.23427579960092704,
             "max_eod_drawdown": -0.22883303677342817,
-            "max_closed_trade_drawdown": 0.0,
+            "max_closed_trade_drawdown": null,
             "ulcer_index": 5.180546551318796,
             "ulcer_performance_index": 4.522221686074574,
             "calmar_ratio": 1.0237848647391234,
             "number_of_trades": 0,
             "trades_per_year": 0.0,
-            "win_rate": 0.0,
+            "win_rate": null,
             "profit_factor": null,
-            "expectancy_percent": 0.0
+            "expectancy_percent": null
         },
         {
             "rank": 4,
@@ -470,15 +470,15 @@
             "name": "Buy & Hold",
             "cagr": 0.2479281279997405,
             "max_eod_drawdown": -0.22883303677342828,
-            "max_closed_trade_drawdown": 0.0,
+            "max_closed_trade_drawdown": null,
             "ulcer_index": 5.396362644140421,
             "ulcer_performance_index": 4.594356316452351,
             "calmar_ratio": 1.083445517725741,
             "number_of_trades": 0,
             "trades_per_year": 0.0,
-            "win_rate": 0.0,
+            "win_rate": null,
             "profit_factor": null,
-            "expectancy_percent": 0.0
+            "expectancy_percent": null
         },
         {
             "rank": 4,
@@ -532,15 +532,15 @@
             "name": "Buy & Hold",
             "cagr": 0.19851821904043443,
             "max_eod_drawdown": -0.22883303677342817,
-            "max_closed_trade_drawdown": 0.0,
+            "max_closed_trade_drawdown": null,
             "ulcer_index": 5.605685720188531,
             "ulcer_performance_index": 3.5413726161187262,
             "calmar_ratio": 0.8675242956155452,
             "number_of_trades": 0,
             "trades_per_year": 0.0,
-            "win_rate": 0.0,
+            "win_rate": null,
             "profit_factor": null,
-            "expectancy_percent": 0.0
+            "expectancy_percent": null
         },
         {
             "rank": 4,
