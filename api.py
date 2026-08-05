@@ -13,6 +13,10 @@ from EasyMode.UlcerShield.price_solver import (
     render_page as render_ulcershield_page,
 )
 
+from Rankings.page import (
+    render_page as render_rankings_page,
+)
+
 app = Flask(__name__)
 CORS(app)
 
@@ -38,6 +42,10 @@ def rankings_json():
         "Rankings/rankings.json",
         mimetype="application/json",
     )
+
+@app.route("/widget/rankings")
+def widget_rankings():
+    return render_rankings_page()
 
 
 if __name__ == "__main__":

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    font-size:14px;
+    margin:0;
+    padding:0;
+}
+
+.controls{
+    margin-bottom:12px;
+}
+
+label{
+    font-weight:bold;
+}
+
+select{
+    padding:4px 8px;
+    font-size:14px;
+}
+
+table{
+    border-collapse:collapse;
+    width:100%;
+    font-size:14px;
+}
+
+th,
+td{
+    border:1px solid #cccccc;
+    padding:6px 10px;
+}
+
+th{
+    background:#eeeeee;
+}
+
+th:first-child,
+td:first-child{
+    text-align:left;
+}
+
+th:not(:first-child),
+td:not(:first-child){
+    text-align:right;
+}
+
+.footer{
+    margin-top:10px;
+    font-size:12px;
+    color:#666666;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="controls">
+
+<label for="period">
+Performance Period:
+</label>
+
+<select id="period">
+
+<option value="since_inception">Since Inception</option>
+
+<option value="20_year">20 Years</option>
+
+<option value="10_year">10 Years</option>
+
+<option value="5_year">5 Years</option>
+
+<option value="3_year">3 Years</option>
+
+<option value="1_year">1 Year</option>
+
+<option value="6_month">6 Months</option>
+
+<option value="3_month">3 Months</option>
+
+<option value="1_month">1 Month</option>
+
+</select>
+
+</div>
+
+<table id="rankings_table">
+
+<thead>
+
+<tr>
+
+<th>Strategy</th>
+<th>UPI</th>
+<th>CAGR</th>
+<th>Ulcer Index</th>
+<th>Calmar</th>
+<th>Max EOD DD</th>
+<th>Max Closed DD</th>
+<th>Win %</th>
+<th>Profit Factor</th>
+<th>Expectancy</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+<div class="footer" id="updated">
+
+</div>
+
+<script>
+
+let rankings_data = {};
+
+fetch("/json/rankings")
+
+.then(response => response.json())
+
+.then(data => {
+
+    rankings_data = data;
+
+    document.getElementById("updated").innerHTML =
+        "Updated: " + data.updated;
+
+    load_table("since_inception");
+
+});
+
+function format_percent(value){
+
+    if(value === "--" || value === null){
+        return "--";
+    }
+
+    return (value * 100).toFixed(1) + "%";
+
+}
+
+function format_number(value,digits=2){
+
+    if(value === "--" || value === null){
+        return "--";
+    }
+
+    return Number(value).toFixed(digits);
+
+}
+
+function load_table(period){
+
+    const tbody =
+        document.querySelector("#rankings_table tbody");
+
+    tbody.innerHTML = "";
+
+    rankings_data[period].forEach(row => {
+
+        tbody.innerHTML += `
+<tr>
+
+<td>${row.name}</td>
+
+<td>${format_number(row.ulcer_performance_index)}</td>
+
+<td>${format_percent(row.cagr)}</td>
+
+<td>${format_number(row.ulcer_index)}</td>
+
+<td>${format_number(row.calmar_ratio)}</td>
+
+<td>${format_percent(row.max_eod_drawdown)}</td>
+
+<td>${format_percent(row.max_closed_trade_drawdown)}</td>
+
+<td>${format_percent(row.win_rate)}</td>
+
+<td>${format_number(row.profit_factor)}</td>
+
+<td>${format_percent(row.expectancy_percent)}</td>
+
+</tr>
+`;
+
+    });
+
+}
+
+document.getElementById("period")
+
+.addEventListener(
+
+"change",
+
+function(){
+
+    load_table(this.value);
+
+}
+
+);
+
+</script>
+
+</body>
+
+</html>
