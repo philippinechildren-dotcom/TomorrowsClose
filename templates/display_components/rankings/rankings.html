@@ -1,0 +1,121 @@
+<h2>Strategy Rankings</h2>
+
+<style>
+table {
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+th,
+td {
+    border: 1px solid #cccccc;
+    padding: 6px 10px;
+}
+
+th {
+    background: #eeeeee;
+}
+
+th:first-child,
+td:first-child {
+    text-align: left;
+}
+
+th:not(:first-child),
+td:not(:first-child) {
+    text-align: right;
+}
+</style>
+
+<table>
+
+<colgroup>
+    <col style="width:180px">
+    <col style="width:60px">
+    <col style="width:70px">
+    <col style="width:85px">
+    <col style="width:75px">
+    <col style="width:95px">
+    <col style="width:110px">
+    <col style="width:70px">
+    <col style="width:90px">
+    <col style="width:90px">
+    <col style="width:70px">
+</colgroup>
+
+<tr>
+    <th>Strategy</th>
+    <th>UPI</th>
+    <th>CAGR</th>
+    <th>Ulcer Index</th>
+    <th>Calmar</th>
+    <th>Max EOD DD</th>
+    <th>Max Closed DD</th>
+    <th>Win %</th>
+    <th>Profit Factor</th>
+    <th>Expectancy</th>
+    <th>Kelly %</th>
+</tr>
+
+{% for row in rankings %}
+
+<tr>
+
+    <td>{{ row["name"] }}</td>
+
+    <td>{{ "%.2f"|format(row["metrics"]["ulcer_performance_index"]) }}</td>
+
+    <td>{{ "%.1f"|format(row["metrics"]["cagr"] * 100) }}%</td>
+
+    <td>{{ "%.2f"|format(row["metrics"]["ulcer_index"]) }}</td>
+
+    <td>{{ "%.2f"|format(row["metrics"]["calmar_ratio"]) }}</td>
+
+    <td>{{ "%.1f"|format(row["metrics"]["max_eod_drawdown"] * 100) }}%</td>
+
+    <td>
+        {% if row["metrics"]["max_closed_trade_drawdown"] is not none %}
+            {{ "%.1f"|format(row["metrics"]["max_closed_trade_drawdown"] * 100) }}%
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+    <td>
+        {% if row["metrics"]["win_rate"] > 0 %}
+            {{ "%.1f"|format(row["metrics"]["win_rate"] * 100) }}%
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+    <td>
+        {% if row["metrics"]["profit_factor"] is not none %}
+            {{ "%.2f"|format(row["metrics"]["profit_factor"]) }}
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+    <td>
+        {% if row["metrics"]["expectancy_percent"] != 0 %}
+            {{ "%.2f"|format(row["metrics"]["expectancy_percent"] * 100) }}%
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+    <td>
+        {% if row["metrics"]["kelly_criterion"] > 0 %}
+            {{ "%.1f"|format(row["metrics"]["kelly_criterion"] * 100) }}%
+        {% else %}
+            --
+        {% endif %}
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>

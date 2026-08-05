@@ -14,6 +14,10 @@ from EasyMode.UlcerShield.price_solver import (
     render_page as render_ulcershield_page,
 )
 
+from Rankings.page import (
+    render_page as render_rankings_page,
+)
+
 app = Flask(__name__)
 
 
@@ -56,6 +60,10 @@ def widget_lowhigh():
 @app.route("/widget/ulcershield")
 def widget_ulcershield():
     return render_ulcershield_page()
+
+@app.route("/widget/rankings")
+def widget_rankings():
+    return render_rankings_page()
 
 @app.route("/widget/market-data-confidence")
 def widget_market_data_confidence():

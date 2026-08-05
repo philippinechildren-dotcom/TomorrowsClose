@@ -12,6 +12,10 @@ from EasyMode.UlcerShield.price_solver import (
     build_result as build_ulcershield_result,
 )
 
+from Rankings.page import (
+    build_result as build_rankings_result,
+)
+
 
 def render_catalog():
 
@@ -60,4 +64,6 @@ def render_catalog():
                 },
             ],
         ),
+
+        rankings_result=build_rankings_result(),
     )
