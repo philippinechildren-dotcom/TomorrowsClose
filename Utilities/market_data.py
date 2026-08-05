@@ -101,6 +101,9 @@ def get_market_data(ticker):
     history = stock.history(
         period="5d",
         interval="1d",
+        auto_adjust=False,
+        repair=False,
+        prepost=False,
     )
 
     if history.empty:
@@ -141,6 +144,9 @@ def get_market_history(ticker, number_of_bars=None):
     history = stock.history(
         period="max",
         interval="1d",
+        auto_adjust=False,
+        repair=False,
+        prepost=False,
     )
 
     if history.empty:
