@@ -2,119 +2,140 @@
 
 <hr>
 
-{% if result.market_state == "settlement" %}
+<div style="display:flex; gap:30px; align-items:flex-start; width:700px;">
 
-<p style="font-size:1.3em;">
-⏳ New Signal Zones available around 4:30 PM ET.
-</p>
+    <!-- LEFT SIDE -->
 
-{% else %}
+    <div style="flex:0 0 auto;">
 
-<p>
-<strong>Campaign Status:</strong>
-{{ result.campaign_status }}
-</p>
+        {% if result.market_state == "settlement" %}
 
-<hr>
+        <p style="font-size:1.3em;">
+        ⏳ New Signal Zones available around 4:30 PM ET.
+        </p>
 
-<table border="1" cellpadding="10" cellspacing="0">
+        {% else %}
 
-<tr>
-    <th>System</th>
-    <th>Trigger</th>
-    <th>Execution</th>
-</tr>
+        <p>
+        <strong>Campaign Status:</strong>
+        {{ result.campaign_status }}
+        </p>
 
-{% for component in result.components %}
+        <table border="1" cellpadding="10" cellspacing="0">
 
-<tr>
+        <tr>
+            <th>System</th>
+            <th>Trigger</th>
+            <th>Execution</th>
+        </tr>
 
-<td>
-<strong>{{ component.name }}</strong>
-</td>
+        {% for component in result.components %}
 
-<td>
-<div style="font-size:2em; margin:10px 0;">
-<strong>{{ "%.2f"|format(component.trigger_price) }}</strong>
+        <tr>
+
+            <td>
+                <strong>{{ component.name }}</strong>
+            </td>
+
+            <td>
+
+                <div style="font-size:2em; margin:10px 0;">
+                    <strong>{{ "%.2f"|format(component.trigger_price) }}</strong>
+                </div>
+
+            </td>
+
+            <td>
+                {{ component.execution }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+        </table>
+
+        {% endif %}
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div style="width:170px; margin-top:55px;">
+
+        <form method="get">
+
+            <p>
+
+                <label><strong>ETF</strong></label><br>
+
+                <input
+                    type="text"
+                    name="ticker"
+                    value="{{ result.ticker }}"
+                    maxlength="8"
+                    style="width:6ch;">
+
+            </p>
+
+            <table border="1" cellpadding="6" cellspacing="0">
+
+            <tr>
+                <th>RSI</th>
+                <th>P</th>
+                <th>T</th>
+            </tr>
+
+            {% for system in result.systems %}
+
+            <tr>
+
+                <td>
+                    <strong>{{ system.name }}</strong>
+                </td>
+
+                <td>
+
+                    <input
+                        type="number"
+                        name="period{{ loop.index }}"
+                        value="{{ system.period }}"
+                        step="1"
+                        style="width:4ch;">
+
+                </td>
+
+                <td>
+
+                    <input
+                        type="number"
+                        name="threshold{{ loop.index }}"
+                        value="{{ system.threshold }}"
+                        step="1"
+                        style="width:4ch;">
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </table>
+
+            <br>
+
+            <button
+                type="submit"
+                style="width:110px;">
+
+                Calculate
+
+            </button>
+
+        </form>
+
+    </div>
+
 </div>
-</td>
-
-<td>
-{{ component.execution }}
-</td>
-
-</tr>
-
-{% endfor %}
-
-</table>
-
-{% endif %}
-
-<hr>
-
-<h3>Parameters</h3>
-
-<form method="get">
-
-<p>
-<label>
-ETF:
-<input
-    type="text"
-    name="ticker"
-    value="{{ result.ticker }}"
-    maxlength="8"
-    style="width:6ch;">
-</label>
-</p>
-
-<table border="1" cellpadding="8" cellspacing="0">
-
-<tr>
-    <th>System</th>
-    <th>Period</th>
-    <th>Threshold</th>
-</tr>
-
-{% for system in result.systems %}
-
-<tr>
-
-<td>
-<strong>{{ system.name }}</strong>
-</td>
-
-<td>
-<input
-    type="number"
-    name="period{{ loop.index }}"
-    value="{{ system.period }}"
-    step="1"
-    style="width:6ch;">
-</td>
-
-<td>
-<input
-    type="number"
-    name="threshold{{ loop.index }}"
-    value="{{ system.threshold }}"
-    step="1"
-    style="width:6ch;">
-</td>
-
-</tr>
-
-{% endfor %}
-
-</table>
-
-<br>
-
-<button type="submit">
-Calculate
-</button>
-
-</form>
 
 <hr>

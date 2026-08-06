@@ -26,17 +26,16 @@ from Rankings.rankings import build_rankings
 
 
 TIME_PERIODS = [
-    ("since_inception", None),
-    ("20_year", 20),
-    ("10_year", 10),
-    ("5_year", 5),
-    ("3_year", 3),
-    ("1_year", 1),
-    ("6_month", 0.5),
-    ("3_month", 0.25),
-    ("1_month", 1 / 12),
+    ("maximum", None),
+    ("10_year", "10_years"),
+    ("5_year", "5_years"),
+    ("3_year", "3_years"),
+    ("1_year", "1_year"),
+    ("ytd", "ytd"),
+    ("6_month", "6_months"),
+    ("3_month", "3_months"),
+    ("1_month", "1_month"),
 ]
-
 
 def build_rankings_json():
 

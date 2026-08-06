@@ -73,22 +73,14 @@ Performance Period:
 
 <select id="period">
 
-<option value="since_inception">Since Inception</option>
-
-<option value="20_year">20 Years</option>
-
+<option value="maximum">Maximum</option>
 <option value="10_year">10 Years</option>
-
 <option value="5_year">5 Years</option>
-
 <option value="3_year">3 Years</option>
-
 <option value="1_year">1 Year</option>
-
+<option value="ytd">YTD</option>
 <option value="6_month">6 Months</option>
-
 <option value="3_month">3 Months</option>
-
 <option value="1_month">1 Month</option>
 
 </select>
@@ -96,6 +88,19 @@ Performance Period:
 </div>
 
 <table id="rankings_table">
+
+<colgroup>
+    <col style="width:180px">
+    <col style="width:60px">
+    <col style="width:70px">
+    <col style="width:85px">
+    <col style="width:75px">
+    <col style="width:95px">
+    <col style="width:110px">
+    <col style="width:70px">
+    <col style="width:90px">
+    <col style="width:90px">
+</colgroup>
 
 <thead>
 
@@ -141,7 +146,7 @@ fetch("/json/rankings")
     document.getElementById("updated").innerHTML =
         "Updated: " + data.updated;
 
-    load_table("since_inception");
+    load_table("maximum");
 
 });
 

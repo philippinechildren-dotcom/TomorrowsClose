@@ -1,0 +1,172 @@
+<h3>Performance Period</h3>
+
+<select
+    id="period"
+    onchange="window.location='?period='+this.value;"
+>
+    <option value="1_month" {% if selected_period=="1_month" %}selected{% endif %}>1 Month</option>
+    <option value="3_months" {% if selected_period=="3_months" %}selected{% endif %}>3 Months</option>
+    <option value="6_months" {% if selected_period=="6_months" %}selected{% endif %}>6 Months</option>
+    <option value="ytd" {% if selected_period=="ytd" %}selected{% endif %}>YTD</option>
+    <option value="1_year" {% if selected_period=="1_year" %}selected{% endif %}>1 Year</option>
+    <option value="2_years" {% if selected_period=="2_years" %}selected{% endif %}>2 Years</option>
+    <option value="5_years" {% if selected_period=="5_years" %}selected{% endif %}>5 Years</option>
+    <option value="10_years" {% if selected_period=="10_years" %}selected{% endif %}>10 Years</option>
+    <option value="maximum" {% if selected_period=="maximum" %}selected{% endif %}>Maximum</option>
+</select>
+
+<hr>
+
+<table border="1" cellpadding="8" cellspacing="0">
+
+<tr>
+<th colspan="2">
+Full Performance Metrics
+</th>
+</tr>
+
+<tr><th colspan="2">Performance</th></tr>
+
+<tr>
+    <td>Starting Equity</td>
+    <td>${{ "{:,.0f}".format(metrics["starting_equity"]) }}</td>
+</tr>
+
+<tr>
+    <td>Ending Equity</td>
+    <td>${{ "{:,.0f}".format(metrics["ending_equity"]) }}</td>
+</tr>
+
+<tr>
+    <td>Total Return</td>
+    <td>{{ "%.2f"|format(metrics["total_return"]*100) }}%</td>
+</tr>
+
+<tr>
+    <td>CAGR</td>
+    <td>{{ "%.2f"|format(metrics["cagr"]*100) }}%</td>
+</tr>
+
+<tr>
+    <td>Max EOD Drawdown</td>
+    <td>{{ "%.2f"|format(metrics["max_eod_drawdown"]*100) }}%</td>
+</tr>
+
+<tr>
+    <td>Max Closed Drawdown</td>
+    <td>{{ "%.2f"|format(metrics["max_closed_trade_drawdown"]*100) }}%</td>
+</tr>
+
+<tr>
+    <td>Ulcer Index</td>
+    <td>{{ "%.2f"|format(metrics["ulcer_index"]) }}</td>
+</tr>
+
+<tr>
+    <td>Ulcer Performance Index</td>
+    <td>
+        {% if metrics["ulcer_performance_index"] is not none %}
+            {{ "%.2f"|format(metrics["ulcer_performance_index"]) }}
+        {% else %}
+            --
+        {% endif %}
+    </td>
+</tr>
+
+<tr>
+    <td>Calmar Ratio</td>
+    <td>
+        {% if metrics["calmar_ratio"] is not none %}
+            {{ "%.2f"|format(metrics["calmar_ratio"]) }}
+        {% else %}
+            --
+        {% endif %}
+    </td>
+</tr>
+
+<tr><th colspan="2">Trading</th></tr>
+
+<tr>
+    <td>Exposure</td>
+    <td>{{ "%.2f"|format(metrics["exposure"]*100) }}%</td>
+</tr>
+
+<tr>
+    <td>Number of Trades</td>
+    <td>{{ metrics["number_of_trades"] }}</td>
+</tr>
+
+<tr>
+    <td>Trades / Year</td>
+    <td>{{ "%.2f"|format(metrics["trades_per_year"]) }}</td>
+</tr>
+
+<tr>
+    <td>Win Rate</td>
+    <td>{{ "%.2f"|format(metrics["win_rate"]*100) }}%</td>
+</tr>
+
+<tr>
+    <td>Average Trade</td>
+    <td>{{ "%.2f"|format(metrics["average_trade_percent"]*100) }}%</td>
+</tr>
+
+<tr>
+    <td>Average Win</td>
+    <td>{{ "%.2f"|format(metrics["average_win_percent"]*100) }}%</td>
+</tr>
+
+<tr>
+    <td>Average Loss</td>
+    <td>{{ "%.2f"|format(metrics["average_loss_percent"]*100) }}%</td>
+</tr>
+
+<tr>
+    <td>Profit Factor</td>
+    <td>
+        {% if metrics["profit_factor"] is not none %}
+            {{ "%.2f"|format(metrics["profit_factor"]) }}
+        {% else %}
+            --
+        {% endif %}
+    </td>
+</tr>
+
+<tr>
+    <td>Expectancy</td>
+    <td>{{ "%.2f"|format(metrics["expectancy_percent"]*100) }}%</td>
+</tr>
+
+<tr>
+    <td>Kelly Criterion</td>
+    <td>{{ "%.2f"|format(metrics["kelly_criterion"]*100) }}%</td>
+</tr>
+
+<tr>
+    <td>Average Hold Days</td>
+    <td>{{ "%.2f"|format(metrics["average_hold_days"]) }}</td>
+</tr>
+
+<tr><th colspan="2">Streaks</th></tr>
+
+<tr>
+    <td>Maximum Consecutive Wins</td>
+    <td>{{ metrics["maximum_consecutive_wins"] }}</td>
+</tr>
+
+<tr>
+    <td>Maximum Consecutive Losses</td>
+    <td>{{ metrics["maximum_consecutive_losses"] }}</td>
+</tr>
+
+<tr>
+    <td>Average Consecutive Wins</td>
+    <td>{{ "%.2f"|format(metrics["average_consecutive_wins"]) }}</td>
+</tr>
+
+<tr>
+    <td>Average Consecutive Losses</td>
+    <td>{{ "%.2f"|format(metrics["average_consecutive_losses"]) }}</td>
+</tr>
+
+</table>

@@ -100,7 +100,11 @@ def build_result(
         period,
     )
 
-    return build_buy_and_hold(
+    result = build_buy_and_hold(
         closes=history["close"],
         starting_equity=starting_equity,
     )
+
+    result["history"] = history
+
+    return result

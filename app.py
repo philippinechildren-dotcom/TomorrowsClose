@@ -1,4 +1,11 @@
-from flask import Flask, render_template, jsonify, send_file
+from flask import (
+    Flask,
+    render_template,
+    jsonify,
+    send_file,
+    request,
+)
+
 from catalog import render_catalog
 
 from EasyMode.LowHigh.price_solver import (
@@ -7,7 +14,7 @@ from EasyMode.LowHigh.price_solver import (
 
 from EasyMode.RSI_PriceSolver.price_solver import (
     render_page,
-    build_result,
+    build_result as build_rsi_result,
 )
 
 from EasyMode.UlcerShield.price_solver import (
@@ -16,6 +23,18 @@ from EasyMode.UlcerShield.price_solver import (
 
 from Rankings.page import (
     render_page as render_rankings_page,
+)
+
+from StrategyLab.Strategies.rsi_threshold import (
+    build_result as build_rsi_strategy,
+)
+
+from StrategyLab.Metrics.Tables.full_metrics import (
+    render_page as render_full_metrics_page,
+)
+
+from StrategyLab.Charts.performance_chart import (
+    build_performance_chart,
 )
 
 app = Flask(__name__)
@@ -44,36 +63,88 @@ def rankings_json():
         mimetype="application/json",
     )
 
+
 @app.route("/widget/rsi-pricesolver")
 def widget_rsi_pricesolver():
     return render_page()
+
 
 @app.route("/widget/lowhigh")
 def widget_lowhigh():
     return render_lowhigh_page()
 
+
 @app.route("/widget/ulcershield")
 def widget_ulcershield():
     return render_ulcershield_page()
+
 
 @app.route("/widget/rankings")
 def widget_rankings():
     return render_rankings_page()
 
+
+@app.route("/widget/full-metrics")
+def widget_full_metrics():
+
+    period = request.args.get(
+        "period",
+        default="1_year",
+    )
+
+    strategy = build_rsi_strategy(
+        ticker="TQQQ",
+        period=period,
+        rsi_length=3,
+        rsi_threshold=28,
+    )
+
+    return render_full_metrics_page(
+        strategy=strategy,
+        selected_period=period,
+    )
+
 @app.route("/widget/market-data-confidence")
 def widget_market_data_confidence():
     return render_template(
         "display_components/data/widget_market_data_confidence.html",
-        result=build_result(dataset="homepage"),
+        result=build_rsi_result(dataset="homepage"),
     )
+
 
 @app.route("/widget/homepage-rsi-pricesolver")
 def widget_homepage_rsi_pricesolver():
     return render_template(
         "display_components/pricesolvers/homepage_rsi_pricesolver.html",
-        result=build_result(dataset="homepage"),
+        result=build_rsi_result(dataset="homepage"),
     )
 
+@app.route("/widget/performance-chart")
+def performance_chart_widget():
+
+    return render_template(
+        "display_components/performance/performance_chart.html"
+    )
+
+@app.route("/json/performance-chart")
+def performance_chart_json():
+
+    period = request.args.get(
+        "period",
+        default=None,
+    )
+    if period not in (None, "", "ytd"):
+        period = float(period)
+
+    return jsonify(
+
+        build_performance_chart(
+            strategy="ulcershield",
+            ticker="TQQQ",
+            period=period,
+        )
+
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -127,6 +127,23 @@ def build_rsi_threshold(
     )
 
     # ==========================================================
+    # Exposure
+    # ==========================================================
+
+    total_days = len(history)
+
+    days_in_market = sum(
+        trade.days_held
+        for trade in trades
+    )
+
+    exposure = (
+        days_in_market / total_days
+        if total_days > 0
+        else 0.0
+    )
+
+    # ==========================================================
     # Metrics
     # ==========================================================
 
@@ -136,7 +153,7 @@ def build_rsi_threshold(
         starting_equity=starting_equity,
         ending_equity=ending_equity,
         years=years,
-        exposure=1.0,
+        exposure=exposure,
     )
 
     # ==========================================================
@@ -148,6 +165,7 @@ def build_rsi_threshold(
         "type": "strategy",
         "starting_equity": starting_equity,
         "ending_equity": ending_equity,
+        "history": history,
         "equity_curve": equity_curve,
         "years": years,
         "metrics": metrics,

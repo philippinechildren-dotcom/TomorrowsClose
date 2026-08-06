@@ -187,6 +187,31 @@ def build_ulcershield(
     )
 
     # ==========================================================
+    # Exposure
+    # ==========================================================
+
+    total_days = len(history)
+
+    days_in_market = sum(
+        trade.days_held
+        for trade in all_trades
+        if trade.strategy_number == 1
+        # ==========================================================
+        # Exposure
+        # ==========================================================
+        #
+        # UlcerShield exposure is approximated using RSI System #1
+        # (RSI period 2). This system normally enters first and exits
+        # with the rest of the portfolio, making it a good proxy for
+        # overall portfolio exposure without implementing campaign-
+        # level exposure tracking.
+    )
+
+    exposure = (
+        days_in_market / total_days
+    ) if total_days > 0 else 0.0
+
+    # ==========================================================
     # Metrics
     # ==========================================================
 
@@ -196,7 +221,7 @@ def build_ulcershield(
         starting_equity=starting_equity,
         ending_equity=ending_equity,
         years=years,
-        exposure=1.0,
+        exposure=exposure,
     )
 
     # ==========================================================
@@ -208,6 +233,7 @@ def build_ulcershield(
         "type": "strategy",
         "starting_equity": starting_equity,
         "ending_equity": ending_equity,
+        "history": history,
         "equity_curve": equity_curve,
         "years": years,
         "metrics": metrics,

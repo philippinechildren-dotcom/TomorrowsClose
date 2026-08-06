@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    font-size:14px;
+    margin:0;
+    padding:0;
+}
+
+.controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+}
+
+label{
+    font-weight:bold;
+    margin-right:6px;
+}
+
+select{
+    padding:4px 8px;
+    font-size:14px;
+}
+
+.scale{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.chart_container{
+    height:300px;
+    border:1px solid red;
+}
+
+.summary{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    margin-top:0px;
+    font-size:15px;
+}
+
+.summary div{
+    text-align:center;
+}
+
+.summary_label{
+    font-weight:bold;
+    margin-bottom:4px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="controls">
+
+<div>
+
+<label>Period</label>
+
+<select id="period">
+
+<option value="" selected>Maximum</option>
+<option value="20">20 Years</option>
+<option value="10">10 Years</option>
+<option value="5">5 Years</option>
+<option value="3">3 Years</option>
+<option value="1">1 Year</option>
+<option value="ytd">YTD</option>
+<option value="0.5">6 Months</option>
+<option value="0.25">3 Months</option>
+<option value="0.0833">1 Month</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="chart_container">
+
+<canvas
+id="performance_chart"
+height="300">
+</canvas>
+
+</div>
+
+<canvas id="performance_chart"></canvas>
+
+<div class="summary">
+
+<div>
+<div class="summary_label">Strategy</div>
+<div id="strategy_return">--</div>
+</div>
+
+<div>
+<div class="summary_label">Buy & Hold</div>
+<div id="benchmark_return">--</div>
+</div>
+
+<div>
+<div class="summary_label">Difference</div>
+<div id="difference_return">--</div>
+</div>
+
+</div>
+
+<script>
+
+const chart = new Chart(document.getElementById("performance_chart"),{
+
+type:"line",
+
+data:{
+
+labels:[],
+
+datasets:[
+
+{label:"Strategy",borderWidth:2,pointRadius:0,data:[]},
+
+{label:"Buy & Hold",borderWidth:2,pointRadius:0,data:[]},
+
+],
+
+},
+
+options:{
+
+responsive:true,
+
+maintainAspectRatio:false,
+
+interaction:{mode:"index",intersect:false},
+
+plugins:{legend:{display:false}},
+
+scales:{
+x:{grid:{display:false}},
+y:{
+type:"linear",
+title:{display:true,text:"Return (%)"},
+},
+},
+
+},
+
+});
+
+function load_chart(){
+
+fetch("/json/performance-chart")
+
+.then(response=>response.json())
+
+.then(data=>{
+
+chart.data.labels=data.chart_data.map(row=>row.date);
+
+chart.data.datasets[0].label=data.strategy;
+chart.data.datasets[0].data=data.chart_data.map(row=>row.strategy);
+
+chart.data.datasets[1].label=data.benchmark;
+chart.data.datasets[1].data=data.chart_data.map(row=>row.benchmark);
+
+chart.update();
+
+const last=data.chart_data[data.chart_data.length-1];
+
+document.getElementById("strategy_return").innerHTML=
+last.strategy.toFixed(1)+"%";
+
+document.getElementById("benchmark_return").innerHTML=
+last.benchmark.toFixed(1)+"%";
+
+document.getElementById("difference_return").innerHTML=
+(last.strategy-last.benchmark).toFixed(1)+"%";
+
+});
+
+}
+
+load_chart();
+
+document.getElementById("period").addEventListener(
+"change",
+function(){
+load_chart(this.value);
+}
+);
+
+</script>
+
+</body>
+
+</html>
