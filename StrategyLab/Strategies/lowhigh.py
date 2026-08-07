@@ -163,6 +163,7 @@ def build_lowhigh(
         "ending_equity": ending_equity,
         "history": history,
         "equity_curve": equity_curve,
+        "trades": trades,
         "years": years,
         "metrics": metrics,
     }

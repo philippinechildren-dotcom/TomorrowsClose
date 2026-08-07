@@ -235,6 +235,7 @@ def build_ulcershield(
         "ending_equity": ending_equity,
         "history": history,
         "equity_curve": equity_curve,
+        "trades": all_trades,
         "years": years,
         "metrics": metrics,
     }

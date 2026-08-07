@@ -167,6 +167,7 @@ def build_rsi_threshold(
         "ending_equity": ending_equity,
         "history": history,
         "equity_curve": equity_curve,
+        "trades": trades,
         "years": years,
         "metrics": metrics,
     }

@@ -227,11 +227,13 @@ def filter_history(
 
         period = float(period)
 
-        performance_days = int(
-            252 * period
-        )
+    performance_days = int(
+        252 * period
+    )
 
     if len(history) <= performance_days:
         return history
 
-    return history.iloc[-performance_days:]
+    return history.iloc[
+        -performance_days:
+    ]

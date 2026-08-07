@@ -29,12 +29,32 @@ from StrategyLab.Strategies.rsi_threshold import (
     build_result as build_rsi_strategy,
 )
 
+from StrategyLab.Strategies.lowhigh import (
+    build_result as build_lowhigh_strategy,
+)
+
+from StrategyLab.Strategies.ulcershield import (
+    build_result as build_ulcershield_strategy,
+)
+
 from StrategyLab.Metrics.Tables.full_metrics import (
     render_page as render_full_metrics_page,
 )
 
 from StrategyLab.Charts.performance_chart import (
     build_performance_chart,
+)
+
+from StrategyLab.Metrics.Tables.annual_returns import (
+    build_annual_returns,
+)
+
+from StrategyLab.Metrics.Tables.small_metrics import (
+    render_page as render_small_metrics_page,
+)
+
+from StrategyLab.Strategies.Parameters.rsi_threshold_parameters import (
+    render_rsi_threshold_parameters,
 )
 
 app = Flask(__name__)
@@ -145,6 +165,82 @@ def performance_chart_json():
         )
 
     )
+
+@app.route("/json/annual-returns")
+def annual_returns_json():
+
+    strategy = request.args.get(
+        "strategy",
+        "ulcershield",
+    )
+
+    ticker = request.args.get(
+        "ticker",
+        "TQQQ",
+    )
+
+    strategy_builders = {
+        "ulcershield": build_ulcershield_strategy,
+        "rsi_threshold": build_rsi_strategy,
+        "lowhigh": build_lowhigh_strategy,
+}
+
+    strategy_result = strategy_builders[strategy](
+        ticker=ticker,
+    )
+
+    annual_returns = build_annual_returns(
+        strategy_result
+    )
+
+    return jsonify(
+        {
+            "strategy": strategy_result["name"],
+            "annual_returns": annual_returns,
+        }
+    )
+
+@app.route("/widget/annual-returns")
+def annual_returns_widget():
+
+    return render_template(
+        "display_components/performance/annual_returns.html"
+    )
+
+@app.route("/widget/small-metrics")
+def widget_small_metrics():
+
+    strategy = build_rsi_strategy(
+        ticker="TQQQ",
+        period=10,
+        rsi_length=3,
+        rsi_threshold=28,
+    )
+
+    return render_small_metrics_page(
+        strategy=strategy,
+        selected_period="10_years",
+    )
+
+@app.route("/json/small-metrics")
+def json_small_metrics():
+
+    strategy = build_rsi_strategy(
+        ticker="TQQQ",
+        period=10,
+        rsi_length=3,
+        rsi_threshold=28,
+    )
+
+    return jsonify(
+        {
+            "metrics": strategy["metrics"],
+        }
+    )
+
+@app.route("/widget/rsi-threshold-parameters")
+def widget_rsi_threshold_parameters():
+    return render_rsi_threshold_parameters()
 
 if __name__ == "__main__":
     app.run(debug=True)
