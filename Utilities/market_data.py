@@ -191,6 +191,7 @@ def filter_history(
         "ytd"
         "1_year"
         "2_years"
+        "3_years"
         "5_years"
         "10_years"
         "maximum"
@@ -217,6 +218,7 @@ def filter_history(
             "6_months": 0.5,
             "1_year": 1,
             "2_years": 2,
+            "3_years": 3,
             "5_years": 5,
             "10_years": 10,
         }

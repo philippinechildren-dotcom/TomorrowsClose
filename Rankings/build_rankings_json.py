@@ -26,28 +26,38 @@ from Rankings.rankings import build_rankings
 
 
 TIME_PERIODS = [
-    ("maximum", None),
-    ("10_year", "10_years"),
-    ("5_year", "5_years"),
-    ("3_year", "3_years"),
-    ("1_year", "1_year"),
-    ("ytd", "ytd"),
-    ("6_month", "6_months"),
-    ("3_month", "3_months"),
     ("1_month", "1_month"),
+    ("3_month", "3_months"),
+    ("6_month", "6_months"),
+    ("ytd", "ytd"),
+    ("1_year", "1_year"),
+    ("3_year", "3_years"),
+    ("5_year", "5_years"),
+    ("10_year", "10_years"),
+    ("maximum", None),
 ]
 
-def build_rankings_json():
 
+def build_rankings_json():
     rankings_json = {
         "updated": datetime.today().strftime("%Y-%m-%d"),
     }
 
     for period_name, period in TIME_PERIODS:
 
-        buy_and_hold = build_buy_and_hold_result(
+        buy_and_hold_qqq = build_buy_and_hold_result(
+            ticker="QQQ",
             period=period,
         )
+
+        buy_and_hold_qqq["name"] = "QQQ Buy & Hold"
+
+        buy_and_hold_spy = build_buy_and_hold_result(
+            ticker="SPY",
+            period=period,
+        )
+
+        buy_and_hold_spy["name"] = "SPY Buy & Hold"
 
         lowhigh = build_lowhigh_result(
             period=period,
@@ -63,10 +73,11 @@ def build_rankings_json():
 
         rankings = build_rankings(
             [
-                buy_and_hold,
+                ulcershield,
                 lowhigh,
                 rsi_threshold,
-                ulcershield,
+                buy_and_hold_qqq,
+                buy_and_hold_spy,
             ],
             rank_by="ulcer_performance_index",
         )
@@ -77,21 +88,32 @@ def build_rankings_json():
 
             metrics = result["metrics"]
 
+            expectancy_percent = metrics["expectancy_percent"]
+
+            if (
+                result["name"] == "UlcerShield"
+                and expectancy_percent is not None
+            ):
+                expectancy_percent /= 5
+
             rankings_json[period_name].append(
                 {
                     "rank": result["rank"],
                     "name": result["name"],
                     "cagr": metrics["cagr"],
                     "max_eod_drawdown": metrics["max_eod_drawdown"],
-                    "max_closed_trade_drawdown": metrics["max_closed_trade_drawdown"],
+                    "max_closed_trade_drawdown": metrics[
+                        "max_closed_trade_drawdown"
+                    ],
                     "ulcer_index": metrics["ulcer_index"],
-                    "ulcer_performance_index": metrics["ulcer_performance_index"],
-                    "calmar_ratio": metrics["calmar_ratio"],
+                    "ulcer_performance_index": metrics[
+                        "ulcer_performance_index"
+                    ],
                     "number_of_trades": metrics["number_of_trades"],
                     "trades_per_year": metrics["trades_per_year"],
                     "win_rate": metrics["win_rate"],
                     "profit_factor": metrics["profit_factor"],
-                    "expectancy_percent": metrics["expectancy_percent"],
+                    "expectancy_percent": expectancy_percent,
                 }
             )
 
@@ -113,5 +135,4 @@ def build_rankings_json():
 
 
 if __name__ == "__main__":
-
     build_rankings_json()

@@ -49,16 +49,15 @@ margin-bottom:4px;
 
 <select id="period">
 
-<option value="" selected>Maximum</option>
-<option value="20">20 Years</option>
-<option value="10">10 Years</option>
-<option value="5">5 Years</option>
-<option value="3">3 Years</option>
-<option value="1">1 Year</option>
-<option value="ytd">Year to Date</option>
-<option value="0.5">6 Months</option>
-<option value="0.25">3 Months</option>
 <option value="0.0833">1 Month</option>
+<option value="0.25">3 Months</option>
+<option value="0.5">6 Months</option>
+<option value="ytd">Year to Date</option>
+<option value="1">1 Year</option>
+<option value="3">3 Years</option>
+<option value="5" selected>5 Years</option>
+<option value="10">10 Years</option>
+<option value="">Maximum</option>
 
 </select>
 
@@ -146,7 +145,7 @@ text:"Return (%)"
 
 });
 
-function load_chart(period="1"){
+function load_chart(period="5"){
 
 fetch("/json/performance-chart?period="+period)
 

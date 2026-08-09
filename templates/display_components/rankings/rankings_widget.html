@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -41,6 +42,12 @@ td{
 
 th{
     background:#eeeeee;
+    cursor:pointer;
+    user-select:none;
+}
+
+th:hover{
+    background:#dddddd;
 }
 
 th:first-child,
@@ -51,6 +58,20 @@ td:first-child{
 th:not(:first-child),
 td:not(:first-child){
     text-align:right;
+}
+
+.strategy-link{
+    color:#333333;
+    text-decoration:underline;
+}
+
+.strategy-link:hover{
+    color:#000000;
+}
+
+.sort-indicator{
+    margin-left:4px;
+    font-size:11px;
 }
 
 .footer{
@@ -73,15 +94,15 @@ Performance Period:
 
 <select id="period">
 
-<option value="maximum">Maximum</option>
-<option value="10_year">10 Years</option>
-<option value="5_year">5 Years</option>
-<option value="3_year">3 Years</option>
-<option value="1_year">1 Year</option>
-<option value="ytd">YTD</option>
-<option value="6_month">6 Months</option>
-<option value="3_month">3 Months</option>
 <option value="1_month">1 Month</option>
+<option value="3_month">3 Months</option>
+<option value="6_month">6 Months</option>
+<option value="ytd">YTD</option>
+<option value="1_year">1 Year</option>
+<option value="3_year">3 Years</option>
+<option value="5_year">5 Years</option>
+<option value="10_year">10 Years</option>
+<option value="maximum" selected>Maximum</option>
 
 </select>
 
@@ -90,79 +111,116 @@ Performance Period:
 <table id="rankings_table">
 
 <colgroup>
-    <col style="width:180px">
-    <col style="width:60px">
-    <col style="width:70px">
-    <col style="width:85px">
-    <col style="width:75px">
-    <col style="width:95px">
-    <col style="width:110px">
-    <col style="width:70px">
-    <col style="width:90px">
-    <col style="width:90px">
+
+<col style="width:180px">
+<col style="width:65px">
+<col style="width:65px">
+<col style="width:65px">
+<col style="width:65px">
+<col style="width:65px">
+<col style="width:65px">
+<col style="width:65px">
+<col style="width:65px">
+<col style="width:65px">
+
 </colgroup>
 
 <thead>
 
 <tr>
 
-<th>Strategy</th>
-<th>UPI</th>
-<th>CAGR</th>
-<th>Ulcer Index</th>
-<th>Calmar</th>
-<th>Max EOD DD</th>
-<th>Max Closed DD</th>
-<th>Win %</th>
-<th>Profit Factor</th>
-<th>Expectancy</th>
+<th data-column="name">
+Strategy
+<span class="sort-indicator"></span>
+</th>
+
+<th data-column="ulcer_performance_index">
+UPI
+<span class="sort-indicator"></span>
+</th>
+
+<th data-column="cagr">
+CAGR
+<span class="sort-indicator"></span>
+</th>
+
+<th data-column="ulcer_index">
+Ulcer Index
+<span class="sort-indicator"></span>
+</th>
+
+<th data-column="max_eod_drawdown">
+Max EOD DD
+<span class="sort-indicator"></span>
+</th>
+
+<th data-column="max_closed_trade_drawdown">
+Max Closed DD
+<span class="sort-indicator"></span>
+</th>
+
+<th data-column="win_rate">
+Win %
+<span class="sort-indicator"></span>
+</th>
+
+<th data-column="profit_factor">
+Profit Factor
+<span class="sort-indicator"></span>
+</th>
+
+<th data-column="expectancy_percent">Expectancy<span class="sort-indicator"></span></th>
+<th data-column="number_of_trades">Trades<span class="sort-indicator"></span></th>
 
 </tr>
 
 </thead>
 
-<tbody>
-
-</tbody>
+<tbody></tbody>
 
 </table>
 
-<div class="footer" id="updated">
-
-</div>
+<div class="footer" id="updated"></div>
 
 <script>
 
-let rankings_data = {};
+let rankings_data={};
 
-fetch("/json/rankings")
+let current_period="maximum";
 
-.then(response => response.json())
+let current_sort_column="ulcer_performance_index";
 
-.then(data => {
+let current_sort_direction="desc";
 
-    rankings_data = data;
 
-    document.getElementById("updated").innerHTML =
-        "Updated: " + data.updated;
+const strategy_links={
 
-    load_table("maximum");
+    "RSI Threshold":
+        "https://www.tomorrowsclose.com/p/rsi-threshold-mean-reversion-strategy.html",
 
-});
+    "LowHigh":
+        "https://www.tomorrowsclose.com/p/donchian-lowhigh-mean-reversion-system.html",
+
+    "UlcerShield":
+        "https://www.tomorrowsclose.com/p/rsi-ulcershield-mean-reversion-system.html"
+
+};
+
 
 function format_percent(value){
 
-    if(value === "--" || value === null){
+    if(value==="--"||value===null){
         return "--";
     }
 
-    return (value * 100).toFixed(1) + "%";
+    return (value*100).toFixed(1)+"%";
 
 }
 
+
 function format_number(value,digits=2){
 
-    if(value === "--" || value === null){
+    if(value==="--"||value===null){
         return "--";
     }
 
@@ -170,58 +228,260 @@ function format_number(value,digits=2){
 
 }
 
-function load_table(period){
+function format_trade_count(value){
 
-    const tbody =
-        document.querySelector("#rankings_table tbody");
+    if(value === 0 || value === null){
+        return "--";
+    }
 
-    tbody.innerHTML = "";
+    return Number(value).toFixed(0);
 
-    rankings_data[period].forEach(row => {
+}
 
-        tbody.innerHTML += `
-<tr>
+function get_sort_value(row,column){
 
-<td>${row.name}</td>
+    if(column==="name"){
+        return row.name||"";
+    }
 
-<td>${format_number(row.ulcer_performance_index)}</td>
+    const value=row[column];
 
-<td>${format_percent(row.cagr)}</td>
+    if(value===null||value===undefined){
+        return -Infinity;
+    }
 
-<td>${format_number(row.ulcer_index)}</td>
+    return Number(value);
 
-<td>${format_number(row.calmar_ratio)}</td>
+}
 
-<td>${format_percent(row.max_eod_drawdown)}</td>
 
-<td>${format_percent(row.max_closed_trade_drawdown)}</td>
+function sort_rows(rows,column,direction){
 
-<td>${format_percent(row.win_rate)}</td>
+    return [...rows].sort(function(a,b){
 
-<td>${format_number(row.profit_factor)}</td>
+        const value_a=get_sort_value(a,column);
 
-<td>${format_percent(row.expectancy_percent)}</td>
+        const value_b=get_sort_value(b,column);
 
-</tr>
-`;
+
+        if(typeof value_a==="string"){
+
+            return direction==="asc"
+                ? value_a.localeCompare(value_b)
+                : value_b.localeCompare(value_a);
+
+        }
+
+
+        return direction==="asc"
+            ? value_a-value_b
+            : value_b-value_a;
 
     });
 
 }
 
-document.getElementById("period")
 
-.addEventListener(
+function strategy_cell(name){
 
-"change",
+    if(strategy_links[name]){
 
-function(){
+        return `
+<a
+    class="strategy-link"
+    href="${strategy_links[name]}"
+>${name}</a>
+`;
 
-    load_table(this.value);
+    }
+
+    return name;
 
 }
 
-);
+
+function update_sort_indicators(){
+
+    document
+        .querySelectorAll("#rankings_table th")
+        .forEach(function(header){
+
+            const indicator=
+                header.querySelector(".sort-indicator");
+
+
+            if(!indicator){
+                return;
+            }
+
+
+            const column=
+                header.dataset.column;
+
+
+            if(column===current_sort_column){
+
+                indicator.textContent=
+                    current_sort_direction==="asc"
+                    ?"▲"
+                    :"▼";
+
+            }else{
+
+                indicator.textContent="";
+
+            }
+
+        });
+
+}
+
+
+function load_table(period){
+
+    current_period=period;
+
+
+    const tbody=
+        document.querySelector(
+            "#rankings_table tbody"
+        );
+
+    tbody.innerHTML="";
+
+
+    let rows=
+        rankings_data[period]||[];
+
+
+    rows=sort_rows(
+        rows,
+        current_sort_column,
+        current_sort_direction
+    );
+
+
+    rows.forEach(function(row){
+
+        tbody.innerHTML+=`
+
+<tr>
+
+<td>
+${strategy_cell(row.name)}
+</td>
+
+<td>
+${format_number(row.ulcer_performance_index)}
+</td>
+
+<td>
+${format_percent(row.cagr)}
+</td>
+
+<td>
+${format_number(row.ulcer_index)}
+</td>
+
+<td>
+${format_percent(row.max_eod_drawdown)}
+</td>
+
+<td>
+${format_percent(row.max_closed_trade_drawdown)}
+</td>
+
+<td>
+${format_percent(row.win_rate)}
+</td>
+
+<td>
+${format_number(row.profit_factor)}
+</td>
+
+<td>
+${format_percent(row.expectancy_percent)}
+</td>
+
+<td>${format_trade_count(row.number_of_trades)}</td>
+
+</tr>
+
+`;
+
+    });
+
+
+    update_sort_indicators();
+
+}
+
+
+fetch("/json/rankings")
+
+.then(response=>response.json())
+
+.then(data=>{
+
+    rankings_data=data;
+
+    document.getElementById("updated").innerHTML=
+        "Updated: "+data.updated;
+
+    load_table(current_period);
+
+});
+
+
+document
+    .getElementById("period")
+    .addEventListener(
+        "change",
+        function(){
+
+            load_table(this.value);
+
+        }
+    );
+
+
+document
+    .querySelectorAll("#rankings_table th")
+    .forEach(function(header){
+
+        header.addEventListener(
+            "click",
+            function(){
+
+                const column=
+                    this.dataset.column;
+
+
+                if(column===current_sort_column){
+
+                    current_sort_direction=
+                        current_sort_direction==="asc"
+                        ?"desc"
+                        :"asc";
+
+                }else{
+
+                    current_sort_column=column;
+
+                    current_sort_direction=
+                        column==="name"
+                        ?"asc"
+                        :"desc";
+
+                }
+
+
+                load_table(current_period);
+
+            }
+        );
+
+    });
 
 </script>
 
