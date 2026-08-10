@@ -107,16 +107,35 @@ def widget_rankings():
 @app.route("/widget/full-metrics")
 def widget_full_metrics():
 
+    etf = request.args.get(
+        "etf",
+        "TQQQ",
+    )
+
+    rsi_period = int(
+        request.args.get(
+            "rsi_period",
+            3,
+        )
+    )
+
+    rsi_threshold = int(
+        request.args.get(
+            "rsi_threshold",
+            28,
+        )
+    )
+
     period = request.args.get(
         "period",
-        default="1_year",
+        "maximum",
     )
 
     strategy = build_rsi_strategy(
-        ticker="TQQQ",
+        ticker=etf,
         period=period,
-        rsi_length=3,
-        rsi_threshold=28,
+        rsi_length=rsi_period,
+        rsi_threshold=rsi_threshold,
     )
 
     return render_full_metrics_page(
@@ -149,21 +168,53 @@ def performance_chart_widget():
 @app.route("/json/performance-chart")
 def performance_chart_json():
 
+    etf = request.args.get(
+        "etf",
+        "TQQQ",
+    )
+
+    rsi_period = int(
+        request.args.get(
+            "rsi_period",
+            3,
+        )
+    )
+
+    rsi_threshold = int(
+        request.args.get(
+            "rsi_threshold",
+            28,
+        )
+    )
+
     period = request.args.get(
         "period",
         default=None,
     )
-    if period not in (None, "", "ytd"):
-        period = float(period)
+
+    period = request.args.get(
+    "period",
+    default="maximum",
+)
 
     return jsonify(
-
         build_performance_chart(
-            strategy="ulcershield",
-            ticker="TQQQ",
+            strategy="rsi_threshold",
+            ticker=etf,
             period=period,
+            rsi_length=rsi_period,
+            rsi_threshold=rsi_threshold,
         )
+    )
 
+    return jsonify(
+        build_performance_chart(
+            strategy="rsi_threshold",
+            ticker=etf,
+            period=period,
+            rsi_length=rsi_period,
+            rsi_threshold=rsi_threshold,
+        )
     )
 
 @app.route("/json/annual-returns")
@@ -171,23 +222,47 @@ def annual_returns_json():
 
     strategy = request.args.get(
         "strategy",
-        "ulcershield",
+        "rsi_threshold",
     )
 
-    ticker = request.args.get(
-        "ticker",
+    etf = request.args.get(
+        "etf",
         "TQQQ",
+    )
+
+    rsi_period = int(
+        request.args.get(
+            "rsi_period",
+            3,
+        )
+    )
+
+    rsi_threshold = int(
+        request.args.get(
+            "rsi_threshold",
+            28,
+        )
     )
 
     strategy_builders = {
         "ulcershield": build_ulcershield_strategy,
         "rsi_threshold": build_rsi_strategy,
         "lowhigh": build_lowhigh_strategy,
-}
+    }
 
-    strategy_result = strategy_builders[strategy](
-        ticker=ticker,
-    )
+    if strategy == "rsi_threshold":
+
+        strategy_result = build_rsi_strategy(
+            ticker=etf,
+            rsi_length=rsi_period,
+            rsi_threshold=rsi_threshold,
+        )
+
+    else:
+
+        strategy_result = strategy_builders[strategy](
+            ticker=etf,
+        )
 
     annual_returns = build_annual_returns(
         strategy_result
@@ -210,26 +285,74 @@ def annual_returns_widget():
 @app.route("/widget/small-metrics")
 def widget_small_metrics():
 
+    etf = request.args.get(
+        "etf",
+        "TQQQ",
+    )
+
+    rsi_period = int(
+        request.args.get(
+            "rsi_period",
+            3,
+        )
+    )
+
+    threshold = int(
+        request.args.get(
+            "threshold",
+            28,
+        )
+    )
+
+    period = request.args.get(
+        "period",
+        "1_year",
+    )
+
     strategy = build_rsi_strategy(
-        ticker="TQQQ",
-        period=10,
-        rsi_length=3,
-        rsi_threshold=28,
+        ticker=etf,
+        period=period,
+        rsi_length=rsi_period,
+        rsi_threshold=threshold,
     )
 
     return render_small_metrics_page(
         strategy=strategy,
-        selected_period="10_years",
+        selected_period=period,
     )
 
 @app.route("/json/small-metrics")
 def json_small_metrics():
 
+    etf = request.args.get(
+        "etf",
+        "TQQQ",
+    )
+
+    rsi_period = int(
+        request.args.get(
+            "rsi_period",
+            3,
+        )
+    )
+
+    threshold = int(
+        request.args.get(
+            "rsi_threshold",
+            28,
+        )
+    )
+
+    period = request.args.get(
+        "period",
+        "maximum",
+    )
+
     strategy = build_rsi_strategy(
-        ticker="TQQQ",
-        period=10,
-        rsi_length=3,
-        rsi_threshold=28,
+        ticker=etf,
+        period=period,
+        rsi_length=rsi_period,
+        rsi_threshold=threshold,
     )
 
     return jsonify(

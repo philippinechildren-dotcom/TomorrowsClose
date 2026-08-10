@@ -79,6 +79,8 @@ def build_performance_chart(
     strategy="ulcershield",
     ticker="TQQQ",
     period=None,
+    rsi_length=3,
+    rsi_threshold=28,
 ):
     """
     Return chart-ready performance data.
@@ -90,10 +92,21 @@ def build_performance_chart(
         "ulcershield": build_ulcershield_result,
     }
 
-    strategy_result = strategy_builders[strategy](
-        ticker=ticker,
-        period=period,
-    )
+    if strategy == "rsi_threshold":
+
+        strategy_result = build_rsi_threshold_result(
+            ticker=ticker,
+            period=period,
+            rsi_length=rsi_length,
+            rsi_threshold=rsi_threshold,
+        )
+
+    else:
+
+        strategy_result = strategy_builders[strategy](
+            ticker=ticker,
+            period=period,
+        )
 
     history = strategy_result["history"]
 

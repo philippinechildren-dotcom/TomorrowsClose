@@ -83,7 +83,13 @@ background:#f7f7f7;
 
 function load_table(){
 
-fetch("/json/annual-returns")
+const params =
+    new URLSearchParams(window.location.search);
+
+fetch(
+    "/json/annual-returns?" +
+    params.toString()
+)
 
 .then(response=>response.json())
 

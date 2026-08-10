@@ -118,23 +118,23 @@ body{
             <label>RSI Period</label>
             <input class="small_input" type="number" value="{{ parameters.rsi_period }}">
 
-            <label>Threshold</label>
-            <input class="small_input" type="number" value="{{ parameters.threshold }}">
+            <label>RSI Threshold</label>
+            <input class="small_input" type="number" value="{{ parameters.rsi_threshold }}">
 
             <label>Time Period</label>
 
             <select class="time_period">
-                <option selected>1 Year</option>
-                <option>3 Years</option>
-                <option>5 Years</option>
-                <option>10 Years</option>
-                <option>Maximum</option>
+                <option value="1_year">1 Year</option>
+                <option value="3_years">3 Years</option>
+                <option value="5_years">5 Years</option>
+                <option value="10_years">10 Years</option>
+                <option value="maximum" selected>Maximum</option>
             </select>
 
         </div>
 
         <div class="defaults">
-            <button>Calculate</button>
+            <button id="calculate_button">Calculate</button>
             <button>Save My Defaults</button>
             <button>Restore Original Defaults</button>
         </div>
@@ -149,6 +149,87 @@ body{
     </div>
 
 </div>
+
+<script>
+
+document.getElementById("calculate_button").addEventListener(
+    "click",
+    function(){
+
+        const etf =
+            document.querySelector(".etf_input").value;
+
+        const inputs =
+            document.querySelectorAll(".small_input");
+
+        const rsi_period =
+            inputs[0].value;
+
+        const rsi_threshold =
+            inputs[1].value;
+
+        const period =
+            document.querySelector(".time_period").value;
+
+        const small_metrics =
+            window.parent.document.querySelector(
+                'iframe[src*="widget/small-metrics"]'
+            );
+
+        if (small_metrics) {
+            small_metrics.src =
+                "/widget/small-metrics"
+                + "?etf=" + encodeURIComponent(etf)
+                + "&rsi_period=" + encodeURIComponent(rsi_period)
+                + "&rsi_threshold=" + encodeURIComponent(rsi_threshold)
+                + "&period=" + encodeURIComponent(period);
+        }
+
+const performance_chart =
+    window.parent.document.querySelector(
+        'iframe[src*="widget/performance-chart"]'
+    );
+
+if (performance_chart) {
+    performance_chart.src =
+        "/widget/performance-chart"
+        + "?etf=" + encodeURIComponent(etf)
+        + "&rsi_period=" + encodeURIComponent(rsi_period)
+        + "&rsi_threshold=" + encodeURIComponent(rsi_threshold)
+        + "&period=" + encodeURIComponent(period);
+}
+
+const full_metrics =
+    window.parent.document.querySelector(
+        'iframe[src*="widget/full-metrics"]'
+    );
+
+if (full_metrics) {
+    full_metrics.src =
+        "/widget/full-metrics"
+        + "?etf=" + encodeURIComponent(etf)
+        + "&rsi_period=" + encodeURIComponent(rsi_period)
+        + "&rsi_threshold=" + encodeURIComponent(rsi_threshold)
+        + "&period=" + encodeURIComponent(period);
+}
+
+const annual_returns =
+    window.parent.document.querySelector(
+        'iframe[src*="widget/annual-returns"]'
+    );
+
+if (annual_returns) {
+    annual_returns.src =
+        "/widget/annual-returns"
+        + "?ticker=" + encodeURIComponent(etf)
+        + "&rsi_period=" + encodeURIComponent(rsi_period)
+        + "&threshold=" + encodeURIComponent(rsi_threshold);
+}
+
+    }
+);
+
+</script>
 
 </body>
 </html>

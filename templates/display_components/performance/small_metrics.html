@@ -79,7 +79,12 @@ border-bottom:none;
 
 function load_metrics(){
 
-fetch("/json/small-metrics")
+const params = new URLSearchParams(window.location.search);
+
+fetch(
+    "/json/small-metrics?" +
+    params.toString()
+)
 
 .then(response=>response.json())
 

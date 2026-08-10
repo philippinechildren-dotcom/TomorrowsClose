@@ -43,26 +43,6 @@ margin-bottom:4px;
 
 <div class="controls">
 
-<div>
-
-<label for="period">Period</label>
-
-<select id="period">
-
-<option value="0.0833">1 Month</option>
-<option value="0.25">3 Months</option>
-<option value="0.5">6 Months</option>
-<option value="ytd">Year to Date</option>
-<option value="1">1 Year</option>
-<option value="3">3 Years</option>
-<option value="5" selected>5 Years</option>
-<option value="10">10 Years</option>
-<option value="">Maximum</option>
-
-</select>
-
-</div>
-
 </div>
 
 <div class="chart_container">
@@ -145,57 +125,54 @@ text:"Return (%)"
 
 });
 
-function load_chart(period="5"){
+function load_chart(){
 
-fetch("/json/performance-chart?period="+period)
+    const params =
+        new URLSearchParams(window.location.search);
 
-.then(response=>response.json())
+    fetch(
+        "/json/performance-chart?" +
+        params.toString()
+    )
 
-.then(data=>{
+    .then(response=>response.json())
 
-chart.data.labels=
-data.chart_data.map(row=>row.date);
+    .then(data=>{
 
-chart.data.datasets[0].label=
-data.strategy;
+        chart.data.labels =
+            data.chart_data.map(row=>row.date);
 
-chart.data.datasets[0].data=
-data.chart_data.map(row=>row.strategy);
+        chart.data.datasets[0].label =
+            data.strategy;
 
-chart.data.datasets[1].label=
-data.benchmark;
+        chart.data.datasets[0].data =
+            data.chart_data.map(row=>row.strategy);
 
-chart.data.datasets[1].data=
-data.chart_data.map(row=>row.benchmark);
+        chart.data.datasets[1].label =
+            data.benchmark;
 
-chart.update();
+        chart.data.datasets[1].data =
+            data.chart_data.map(row=>row.benchmark);
 
-const last=
-data.chart_data[data.chart_data.length-1];
+        chart.update();
 
-document.getElementById("strategy_return").innerHTML=
-last.strategy.toFixed(1)+"%";
+        const last =
+            data.chart_data[data.chart_data.length-1];
 
-document.getElementById("benchmark_return").innerHTML=
-last.benchmark.toFixed(1)+"%";
+        document.getElementById("strategy_return").innerHTML =
+            last.strategy.toFixed(1)+"%";
 
-document.getElementById("difference_return").innerHTML=
-(last.strategy-last.benchmark).toFixed(1)+"%";
+        document.getElementById("benchmark_return").innerHTML =
+            last.benchmark.toFixed(1)+"%";
 
-});
+        document.getElementById("difference_return").innerHTML =
+            (last.strategy-last.benchmark).toFixed(1)+"%";
+
+    });
 
 }
 
 load_chart();
-
-document.getElementById("period").addEventListener(
-"change",
-function(){
-
-load_chart(this.value);
-
-}
-);
 
 </script>
 
