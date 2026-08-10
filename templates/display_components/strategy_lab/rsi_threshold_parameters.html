@@ -151,7 +151,6 @@ body{
 </div>
 
 <script>
-
 document.getElementById("calculate_button").addEventListener(
     "click",
     function(){
@@ -171,64 +170,18 @@ document.getElementById("calculate_button").addEventListener(
         const period =
             document.querySelector(".time_period").value;
 
-        const small_metrics =
-            window.parent.document.querySelector(
-                'iframe[src*="widget/small-metrics"]'
-            );
-
-        if (small_metrics) {
-            small_metrics.src =
-                "/widget/small-metrics"
-                + "?etf=" + encodeURIComponent(etf)
-                + "&rsi_period=" + encodeURIComponent(rsi_period)
-                + "&rsi_threshold=" + encodeURIComponent(rsi_threshold)
-                + "&period=" + encodeURIComponent(period);
-        }
-
-const performance_chart =
-    window.parent.document.querySelector(
-        'iframe[src*="widget/performance-chart"]'
-    );
-
-if (performance_chart) {
-    performance_chart.src =
-        "/widget/performance-chart"
-        + "?etf=" + encodeURIComponent(etf)
-        + "&rsi_period=" + encodeURIComponent(rsi_period)
-        + "&rsi_threshold=" + encodeURIComponent(rsi_threshold)
-        + "&period=" + encodeURIComponent(period);
-}
-
-const full_metrics =
-    window.parent.document.querySelector(
-        'iframe[src*="widget/full-metrics"]'
-    );
-
-if (full_metrics) {
-    full_metrics.src =
-        "/widget/full-metrics"
-        + "?etf=" + encodeURIComponent(etf)
-        + "&rsi_period=" + encodeURIComponent(rsi_period)
-        + "&rsi_threshold=" + encodeURIComponent(rsi_threshold)
-        + "&period=" + encodeURIComponent(period);
-}
-
-const annual_returns =
-    window.parent.document.querySelector(
-        'iframe[src*="widget/annual-returns"]'
-    );
-
-if (annual_returns) {
-    annual_returns.src =
-        "/widget/annual-returns"
-        + "?ticker=" + encodeURIComponent(etf)
-        + "&rsi_period=" + encodeURIComponent(rsi_period)
-        + "&threshold=" + encodeURIComponent(rsi_threshold);
-}
-
+        window.parent.postMessage(
+            {
+                type: "strategy_parameters_changed",
+                etf: etf,
+                rsi_period: rsi_period,
+                rsi_threshold: rsi_threshold,
+                period: period
+            },
+            "*"
+        );
     }
 );
-
 </script>
 
 </body>
