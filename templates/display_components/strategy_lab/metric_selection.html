@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.metric_nav {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+.metric_button {
+    width: 120px;
+    padding: 9px 16px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    background: #3367D6;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.metric_button:hover {
+    background: #2954B8;
+}
+
+.metric_button.active {
+    background: #34A853;
+}
+
+#metric_display {
+    margin-top: 10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="metric_nav">
+
+    <button class="metric_button active" data-metric="small">
+        Overview
+    </button>
+
+    <button class="metric_button" data-metric="full">
+        Details
+    </button>
+
+    <button class="metric_button" data-metric="annual">
+        Annual
+    </button>
+
+    <button class="metric_button" data-metric="performance">
+        Performance
+    </button>
+
+</div>
+
+<div id="metric_display"></div>
+
+<script>
+
+const metric_buttons =
+    document.querySelectorAll(".metric_button");
+
+const metric_display =
+    document.getElementById("metric_display");
+
+const params =
+    new URLSearchParams(window.location.search);
+
+function load_metric(metric) {
+
+    let widget_url = "";
+    let widget_height = "100";
+
+    const etf =
+        params.get("etf") || "";
+
+    const rsi_period =
+        params.get("rsi_period") || "";
+
+    const rsi_threshold =
+        params.get("rsi_threshold") || "";
+
+    const period =
+        params.get("period") || "";
+
+    const metric_params =
+        "?etf=" + encodeURIComponent(etf)
+        + "&rsi_period=" + encodeURIComponent(rsi_period)
+        + "&rsi_threshold=" + encodeURIComponent(rsi_threshold)
+        + "&period=" + encodeURIComponent(period);
+
+    if (metric === "small") {
+        widget_url =
+            "/widget/small-metrics"
+            + metric_params;
+
+        widget_height = "100";
+    }
+
+    if (metric === "full") {
+        widget_url =
+            "/widget/full-metrics"
+            + metric_params;
+
+        widget_height = "600";
+    }
+
+    if (metric === "annual") {
+        widget_url =
+            "/widget/annual-returns"
+            + metric_params;
+
+        widget_height = "600";
+    }
+
+    if (metric === "performance") {
+        widget_url =
+            "/widget/performance-chart"
+            + metric_params;
+
+        widget_height = "500";
+    }
+
+    if (widget_url !== "") {
+        metric_display.innerHTML =
+            '<iframe'
+            + ' src="' + widget_url + '"'
+            + ' width="100%"'
+            + ' height="' + widget_height + '"'
+            + ' frameborder="0"'
+            + ' scrolling="no"'
+            + '></iframe>';
+    }
+}
+
+metric_buttons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        metric_buttons.forEach(function(other_button) {
+            other_button.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        load_metric(
+            button.dataset.metric
+        );
+
+    });
+
+});
+
+load_metric("small");
+
+</script>
+
+</body>
+</html>

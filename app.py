@@ -365,5 +365,11 @@ def json_small_metrics():
 def widget_rsi_threshold_parameters():
     return render_rsi_threshold_parameters()
 
+@app.route("/widget/metric-selection")
+def metric_selection_widget():
+    return render_template(
+        "display_components/strategy_lab/metric_selection.html"
+    )
+
 if __name__ == "__main__":
     app.run(debug=True)
