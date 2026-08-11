@@ -110,6 +110,31 @@ metrics.ulcer_index.toFixed(2);
 
 load_metrics();
 
+function report_metric_height(){
+
+const height =
+document.documentElement.scrollHeight;
+
+window.parent.postMessage(
+    {
+        type: "metric_widget_height",
+        height: height
+    },
+    "https://tomorrowsclose-1.onrender.com"
+);
+
+}
+
+window.addEventListener(
+    "load",
+    report_metric_height
+);
+
+setTimeout(
+    report_metric_height,
+    300
+);
+
 </script>
 
 </body>
