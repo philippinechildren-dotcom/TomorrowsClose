@@ -185,6 +185,15 @@ window.addEventListener("message", function(event) {
 
         frame.style.height =
             event.data.height + "px";
+
+        window.parent.postMessage(
+            {
+                type: "metric_selection_height",
+                height:
+                    document.documentElement.scrollHeight
+            },
+            "*"
+        );
     }
 });
 
