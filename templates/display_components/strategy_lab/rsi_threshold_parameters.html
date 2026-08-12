@@ -138,13 +138,9 @@ body{
             <select class="time_period">
 
                 <option value="1_year">1 Year</option>
-
                 <option value="3_years">3 Years</option>
-
                 <option value="5_years">5 Years</option>
-
                 <option value="10_years">10 Years</option>
-
                 <option value="maximum" selected>Maximum</option>
 
             </select>
@@ -157,12 +153,12 @@ body{
                 Calculate
             </button>
 
-            <button id="save_defaults_button">
+            <button>
                 Save My Defaults
             </button>
 
-            <button id="restore_recommended_button">
-                Restore Recommended
+            <button>
+                Restore Original Defaults
             </button>
 
         </div>
@@ -173,29 +169,25 @@ body{
 
         <button
             id="pricesolver_button"
-            class="pricesolver_button"
-        >
+            class="pricesolver_button">
             PriceSolver
         </button>
 
         <button
             id="full_metrics_button"
-            class="action_button"
-        >
+            class="action_button">
             Full Metrics
         </button>
 
         <button
             id="annual_returns_button"
-            class="action_button"
-        >
+            class="action_button">
             Annual Returns
         </button>
 
         <button
             id="performance_chart_button"
-            class="action_button"
-        >
+            class="action_button">
             Performance Chart
         </button>
 
@@ -207,21 +199,20 @@ body{
 
 function get_parameters(){
 
-    const etf=document.querySelector(
-        ".etf_input"
-    ).value;
+    const etf =
+        document.querySelector(".etf_input").value;
 
-    const inputs=document.querySelectorAll(
-        ".small_input"
-    );
+    const inputs =
+        document.querySelectorAll(".small_input");
 
-    const rsi_period=inputs[0].value;
+    const rsi_period =
+        inputs[0].value;
 
-    const rsi_threshold=inputs[1].value;
+    const rsi_threshold =
+        inputs[1].value;
 
-    const period=document.querySelector(
-        ".time_period"
-    ).value;
+    const period =
+        document.querySelector(".time_period").value;
 
     return {
         strategy:"rsi_threshold",
@@ -235,139 +226,106 @@ function get_parameters(){
 
 function build_url(base_url){
 
-    const parameters=get_parameters();
+    const parameters =
+        get_parameters();
 
-    const query=new URLSearchParams(
-        parameters
-    ).toString();
+    const query =
+        new URLSearchParams(parameters).toString();
 
-    return base_url+"?"+query;
+    return base_url + "?" + query;
 }
 
 
-/*
-    Calculate
-
-    Send the selected parameters to the
-    Blogger parent page.
-*/
-
-document.getElementById(
-    "calculate_button"
-).addEventListener(
+document.getElementById("calculate_button").addEventListener(
     "click",
     function(){
 
-        const parameters=get_parameters();
-
-        window.parent.postMessage(
-            {
-                type:"rsi_threshold_parameters",
-                etf:parameters.etf,
-                rsi_period:parameters.rsi_period,
-                rsi_threshold:parameters.rsi_threshold,
-                period:parameters.period
-            },
-            "https://tomorrowsclose.blogspot.com"
-        );
-
-    }
-);
+        const parameters =
+            get_parameters();
 
 
-/*
-    Save My Defaults
-*/
+        const small_metrics =
+            window.parent.document.querySelector(
+                'iframe[src*="widget/small-metrics"]'
+            );
 
-document.getElementById(
-    "save_defaults_button"
-).addEventListener(
-    "click",
-    function(){
+        if(small_metrics){
 
-        const parameters=get_parameters();
-
-        localStorage.setItem(
-            "rsi_threshold_defaults",
-            JSON.stringify({
-                etf:parameters.etf,
-                rsi_period:parameters.rsi_period,
-                rsi_threshold:parameters.rsi_threshold,
-                period:parameters.period
-            })
-        );
-
-    }
-);
-
-
-/*
-    Restore Recommended
-
-    QQQ = RSI 3 / 30
-    QLD = RSI 3 / 30
-    TQQQ = RSI 3 / 28
-*/
-
-document.getElementById(
-    "restore_recommended_button"
-).addEventListener(
-    "click",
-    function(){
-
-        const etf=document.querySelector(
-            ".etf_input"
-        );
-
-        const inputs=document.querySelectorAll(
-            ".small_input"
-        );
-
-        const time_period=document.querySelector(
-            ".time_period"
-        );
-
-        const recommended_thresholds={
-            QQQ:30,
-            QLD:30,
-            TQQQ:28
-        };
-
-        const ticker=etf.value
-            .trim()
-            .toUpperCase();
-
-        etf.value=ticker;
-
-        inputs[0].value=3;
-
-        if(
-            recommended_thresholds[ticker]
-            !== undefined
-        ){
-
-            inputs[1].value=
-                recommended_thresholds[ticker];
-
-        }else{
-
-            inputs[1].value=30;
-
+            small_metrics.src =
+                "/widget/small-metrics"
+                + "?etf="
+                + encodeURIComponent(parameters.etf)
+                + "&rsi_period="
+                + encodeURIComponent(parameters.rsi_period)
+                + "&rsi_threshold="
+                + encodeURIComponent(parameters.rsi_threshold)
+                + "&period="
+                + encodeURIComponent(parameters.period);
         }
 
-        time_period.value="maximum";
+
+        const performance_chart =
+            window.parent.document.querySelector(
+                'iframe[src*="widget/performance-chart"]'
+            );
+
+        if(performance_chart){
+
+            performance_chart.src =
+                "/widget/performance-chart"
+                + "?etf="
+                + encodeURIComponent(parameters.etf)
+                + "&rsi_period="
+                + encodeURIComponent(parameters.rsi_period)
+                + "&rsi_threshold="
+                + encodeURIComponent(parameters.rsi_threshold)
+                + "&period="
+                + encodeURIComponent(parameters.period);
+        }
+
+
+        const full_metrics =
+            window.parent.document.querySelector(
+                'iframe[src*="widget/full-metrics"]'
+            );
+
+        if(full_metrics){
+
+            full_metrics.src =
+                "/widget/full-metrics"
+                + "?etf="
+                + encodeURIComponent(parameters.etf)
+                + "&rsi_period="
+                + encodeURIComponent(parameters.rsi_period)
+                + "&rsi_threshold="
+                + encodeURIComponent(parameters.rsi_threshold)
+                + "&period="
+                + encodeURIComponent(parameters.period);
+        }
+
+
+        const annual_returns =
+            window.parent.document.querySelector(
+                'iframe[src*="widget/annual-returns"]'
+            );
+
+        if(annual_returns){
+
+            annual_returns.src =
+                "/widget/annual-returns"
+                + "?ticker="
+                + encodeURIComponent(parameters.etf)
+                + "&rsi_period="
+                + encodeURIComponent(parameters.rsi_period)
+                + "&threshold="
+                + encodeURIComponent(parameters.rsi_threshold);
+        }
 
     }
 );
 
 
-/*
-    PriceSolver
-*/
-
-document.getElementById(
-    "pricesolver_button"
-).addEventListener(
+document.getElementById("pricesolver_button").addEventListener(
     "click",
     function(){
 
@@ -382,13 +340,7 @@ document.getElementById(
 );
 
 
-/*
-    Full Metrics
-*/
-
-document.getElementById(
-    "full_metrics_button"
-).addEventListener(
+document.getElementById("full_metrics_button").addEventListener(
     "click",
     function(){
 
@@ -403,13 +355,7 @@ document.getElementById(
 );
 
 
-/*
-    Annual Returns
-*/
-
-document.getElementById(
-    "annual_returns_button"
-).addEventListener(
+document.getElementById("annual_returns_button").addEventListener(
     "click",
     function(){
 
@@ -424,13 +370,7 @@ document.getElementById(
 );
 
 
-/*
-    Performance Chart
-*/
-
-document.getElementById(
-    "performance_chart_button"
-).addEventListener(
+document.getElementById("performance_chart_button").addEventListener(
     "click",
     function(){
 
@@ -443,50 +383,6 @@ document.getElementById(
 
     }
 );
-
-
-/*
-    Load saved defaults
-
-    These are applied when the widget opens.
-*/
-
-const saved_defaults=localStorage.getItem(
-    "rsi_threshold_defaults"
-);
-
-if(saved_defaults){
-
-    try{
-
-        const parameters=
-            JSON.parse(saved_defaults);
-
-        document.querySelector(
-            ".etf_input"
-        ).value=parameters.etf;
-
-        document.querySelectorAll(
-            ".small_input"
-        )[0].value=parameters.rsi_period;
-
-        document.querySelectorAll(
-            ".small_input"
-        )[1].value=parameters.rsi_threshold;
-
-        document.querySelector(
-            ".time_period"
-        ).value=parameters.period;
-
-    }catch(error){
-
-        localStorage.removeItem(
-            "rsi_threshold_defaults"
-        );
-
-    }
-
-}
 
 </script>
 
