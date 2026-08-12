@@ -137,55 +137,25 @@ function build_url(base_url){
     const query=new URLSearchParams(parameters).toString();
     return base_url+"?"+query;
 }
+
 document.getElementById("calculate_button").addEventListener(
     "click",
     function(){
         const parameters=get_parameters();
-        const etf=parameters.etf;
-        const rsi_period=parameters.rsi_period;
-        const rsi_threshold=parameters.rsi_threshold;
-        const period=parameters.period;
-        const small_metrics=window.parent.document.querySelector(
-            'iframe[src*="widget/small-metrics"]'
+
+        window.parent.postMessage(
+            {
+                type:"rsi_threshold_parameters",
+                etf:parameters.etf,
+                rsi_period:parameters.rsi_period,
+                rsi_threshold:parameters.rsi_threshold,
+                period:parameters.period
+            },
+            "https://tomorrowsclose.blogspot.com"
         );
-        if(small_metrics){
-            small_metrics.src="/widget/small-metrics"
-                +"?etf="+encodeURIComponent(etf)
-                +"&rsi_period="+encodeURIComponent(rsi_period)
-                +"&rsi_threshold="+encodeURIComponent(rsi_threshold)
-                +"&period="+encodeURIComponent(period);
-        }
-        const performance_chart=window.parent.document.querySelector(
-            'iframe[src*="widget/performance-chart"]'
-        );
-        if(performance_chart){
-            performance_chart.src="/widget/performance-chart"
-                +"?etf="+encodeURIComponent(etf)
-                +"&rsi_period="+encodeURIComponent(rsi_period)
-                +"&rsi_threshold="+encodeURIComponent(rsi_threshold)
-                +"&period="+encodeURIComponent(period);
-        }
-        const full_metrics=window.parent.document.querySelector(
-            'iframe[src*="widget/full-metrics"]'
-        );
-        if(full_metrics){
-            full_metrics.src="/widget/full-metrics"
-                +"?etf="+encodeURIComponent(etf)
-                +"&rsi_period="+encodeURIComponent(rsi_period)
-                +"&rsi_threshold="+encodeURIComponent(rsi_threshold)
-                +"&period="+encodeURIComponent(period);
-        }
-        const annual_returns=window.parent.document.querySelector(
-            'iframe[src*="widget/annual-returns"]'
-        );
-        if(annual_returns){
-            annual_returns.src="/widget/annual-returns"
-                +"?ticker="+encodeURIComponent(etf)
-                +"&rsi_period="+encodeURIComponent(rsi_period)
-                +"&threshold="+encodeURIComponent(rsi_threshold);
-        }
     }
 );
+
 document.getElementById("pricesolver_button").addEventListener(
     "click",
     function(){
