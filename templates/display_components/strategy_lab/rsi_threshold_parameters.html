@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+
 <style>
 body{
     font-family:Arial,sans-serif;
@@ -9,52 +10,63 @@ body{
     margin:0;
     padding:15px;
 }
+
 .parameters_container{
     display:flex;
     justify-content:flex-start;
     align-items:flex-start;
     gap:40px;
 }
+
 .parameters_left{
     display:grid;
     grid-template-columns:auto auto;
     gap:10px 12px;
     align-items:center;
 }
+
 .parameters_left label{
     font-weight:bold;
 }
+
 .parameters_left input,
 .parameters_left select{
     font-size:14px;
     padding:4px;
 }
+
 .etf_input{
     width:8ch;
 }
+
 .small_input{
     width:5ch;
 }
+
 .time_period{
     width:15ch;
 }
+
 .defaults{
     margin-top:15px;
     display:flex;
     gap:10px;
 }
+
 .defaults button{
     padding:8px 14px;
     font-size:14px;
     font-weight:bold;
     cursor:pointer;
 }
+
 .parameters_right{
     display:flex;
     flex-direction:column;
     gap:10px;
     min-width:210px;
 }
+
 .action_button{
     width:200px;
     padding:10px 16px;
@@ -66,9 +78,11 @@ body{
     border-radius:6px;
     cursor:pointer;
 }
+
 .action_button:hover{
     background:#2954B8;
 }
+
 .pricesolver_button{
     width:200px;
     padding:10px 16px;
@@ -80,50 +94,135 @@ body{
     border-radius:6px;
     cursor:pointer;
 }
+
 .pricesolver_button:hover{
     background:#2D9147;
 }
 </style>
 </head>
+
 <body>
+
 <div class="parameters_container">
+
     <div>
+
         <div class="parameters_left">
+
             <label>ETF</label>
-            <input class="etf_input" type="text" value="{{ parameters.etf }}">
+
+            <input
+                class="etf_input"
+                type="text"
+                value="{{ parameters.etf }}"
+            >
+
             <label>RSI Period</label>
-            <input class="small_input" type="number" value="{{ parameters.rsi_period }}">
+
+            <input
+                class="small_input"
+                type="number"
+                value="{{ parameters.rsi_period }}"
+            >
+
             <label>RSI Threshold</label>
-            <input class="small_input" type="number" value="{{ parameters.rsi_threshold }}">
+
+            <input
+                class="small_input"
+                type="number"
+                value="{{ parameters.rsi_threshold }}"
+            >
+
             <label>Time Period</label>
+
             <select class="time_period">
+
                 <option value="1_year">1 Year</option>
+
                 <option value="3_years">3 Years</option>
+
                 <option value="5_years">5 Years</option>
+
                 <option value="10_years">10 Years</option>
+
                 <option value="maximum" selected>Maximum</option>
+
             </select>
+
         </div>
+
         <div class="defaults">
-            <button id="calculate_button">Calculate</button>
-            <button>Save My Defaults</button>
-            <button>Restore Original Defaults</button>
+
+            <button id="calculate_button">
+                Calculate
+            </button>
+
+            <button id="save_defaults_button">
+                Save My Defaults
+            </button>
+
+            <button id="restore_recommended_button">
+                Restore Recommended
+            </button>
+
         </div>
+
     </div>
+
     <div class="parameters_right">
-        <button id="pricesolver_button" class="pricesolver_button">PriceSolver</button>
-        <button id="full_metrics_button" class="action_button">Full Metrics</button>
-        <button id="annual_returns_button" class="action_button">Annual Returns</button>
-        <button id="performance_chart_button" class="action_button">Performance Chart</button>
+
+        <button
+            id="pricesolver_button"
+            class="pricesolver_button"
+        >
+            PriceSolver
+        </button>
+
+        <button
+            id="full_metrics_button"
+            class="action_button"
+        >
+            Full Metrics
+        </button>
+
+        <button
+            id="annual_returns_button"
+            class="action_button"
+        >
+            Annual Returns
+        </button>
+
+        <button
+            id="performance_chart_button"
+            class="action_button"
+        >
+            Performance Chart
+        </button>
+
     </div>
+
 </div>
+
 <script>
+
 function get_parameters(){
-    const etf=document.querySelector(".etf_input").value;
-    const inputs=document.querySelectorAll(".small_input");
+
+    const etf=document.querySelector(
+        ".etf_input"
+    ).value;
+
+    const inputs=document.querySelectorAll(
+        ".small_input"
+    );
+
     const rsi_period=inputs[0].value;
+
     const rsi_threshold=inputs[1].value;
-    const period=document.querySelector(".time_period").value;
+
+    const period=document.querySelector(
+        ".time_period"
+    ).value;
+
     return {
         strategy:"rsi_threshold",
         etf:etf,
@@ -132,15 +231,33 @@ function get_parameters(){
         period:period
     };
 }
+
+
 function build_url(base_url){
+
     const parameters=get_parameters();
-    const query=new URLSearchParams(parameters).toString();
+
+    const query=new URLSearchParams(
+        parameters
+    ).toString();
+
     return base_url+"?"+query;
 }
 
-document.getElementById("calculate_button").addEventListener(
+
+/*
+    Calculate
+
+    Send the selected parameters to the
+    Blogger parent page.
+*/
+
+document.getElementById(
+    "calculate_button"
+).addEventListener(
     "click",
     function(){
+
         const parameters=get_parameters();
 
         window.parent.postMessage(
@@ -153,45 +270,225 @@ document.getElementById("calculate_button").addEventListener(
             },
             "https://tomorrowsclose.blogspot.com"
         );
+
     }
 );
 
-document.getElementById("pricesolver_button").addEventListener(
+
+/*
+    Save My Defaults
+*/
+
+document.getElementById(
+    "save_defaults_button"
+).addEventListener(
     "click",
     function(){
-        window.open(
-            build_url("https://tomorrowsclose.blogspot.com/p/rsi-pricesolver.html"),
-            "_blank"
+
+        const parameters=get_parameters();
+
+        localStorage.setItem(
+            "rsi_threshold_defaults",
+            JSON.stringify({
+                etf:parameters.etf,
+                rsi_period:parameters.rsi_period,
+                rsi_threshold:parameters.rsi_threshold,
+                period:parameters.period
+            })
         );
+
     }
 );
-document.getElementById("full_metrics_button").addEventListener(
+
+
+/*
+    Restore Recommended
+
+    QQQ = RSI 3 / 30
+    QLD = RSI 3 / 30
+    TQQQ = RSI 3 / 28
+*/
+
+document.getElementById(
+    "restore_recommended_button"
+).addEventListener(
     "click",
     function(){
-        window.open(
-            build_url("https://tomorrowsclose.blogspot.com/p/strategy-performance-metrics-and.html"),
-            "_blank"
+
+        const etf=document.querySelector(
+            ".etf_input"
         );
+
+        const inputs=document.querySelectorAll(
+            ".small_input"
+        );
+
+        const time_period=document.querySelector(
+            ".time_period"
+        );
+
+        const recommended_thresholds={
+            QQQ:30,
+            QLD:30,
+            TQQQ:28
+        };
+
+        const ticker=etf.value
+            .trim()
+            .toUpperCase();
+
+        etf.value=ticker;
+
+        inputs[0].value=3;
+
+        if(
+            recommended_thresholds[ticker]
+            !== undefined
+        ){
+
+            inputs[1].value=
+                recommended_thresholds[ticker];
+
+        }else{
+
+            inputs[1].value=30;
+
+        }
+
+        time_period.value="maximum";
+
     }
 );
-document.getElementById("annual_returns_button").addEventListener(
+
+
+/*
+    PriceSolver
+*/
+
+document.getElementById(
+    "pricesolver_button"
+).addEventListener(
     "click",
     function(){
+
         window.open(
-            build_url("https://tomorrowsclose.blogspot.com/p/annual-strategy-returns-and-historical.html"),
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/rsi-pricesolver.html"
+            ),
             "_blank"
         );
+
     }
 );
-document.getElementById("performance_chart_button").addEventListener(
+
+
+/*
+    Full Metrics
+*/
+
+document.getElementById(
+    "full_metrics_button"
+).addEventListener(
     "click",
     function(){
+
         window.open(
-            build_url("https://tomorrowsclose.blogspot.com/p/strategy-performance-chart-and.html"),
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/strategy-performance-metrics-and.html"
+            ),
             "_blank"
         );
+
     }
 );
+
+
+/*
+    Annual Returns
+*/
+
+document.getElementById(
+    "annual_returns_button"
+).addEventListener(
+    "click",
+    function(){
+
+        window.open(
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/annual-strategy-returns-and-historical.html"
+            ),
+            "_blank"
+        );
+
+    }
+);
+
+
+/*
+    Performance Chart
+*/
+
+document.getElementById(
+    "performance_chart_button"
+).addEventListener(
+    "click",
+    function(){
+
+        window.open(
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/strategy-performance-chart-and.html"
+            ),
+            "_blank"
+        );
+
+    }
+);
+
+
+/*
+    Load saved defaults
+
+    These are applied when the widget opens.
+*/
+
+const saved_defaults=localStorage.getItem(
+    "rsi_threshold_defaults"
+);
+
+if(saved_defaults){
+
+    try{
+
+        const parameters=
+            JSON.parse(saved_defaults);
+
+        document.querySelector(
+            ".etf_input"
+        ).value=parameters.etf;
+
+        document.querySelectorAll(
+            ".small_input"
+        )[0].value=parameters.rsi_period;
+
+        document.querySelectorAll(
+            ".small_input"
+        )[1].value=parameters.rsi_threshold;
+
+        document.querySelector(
+            ".time_period"
+        ).value=parameters.period;
+
+    }catch(error){
+
+        localStorage.removeItem(
+            "rsi_threshold_defaults"
+        );
+
+    }
+
+}
+
 </script>
+
 </body>
 </html>
