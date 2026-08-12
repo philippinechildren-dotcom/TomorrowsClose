@@ -91,9 +91,9 @@ def build_result(
 
 def render_page():
 
-    ticker = request.args.get("ticker", "TQQQ")
+    ticker = request.args.get("etf", "TQQQ")
     rsi_period = int(request.args.get("rsi_period", 3))
-    threshold = int(request.args.get("threshold", 28))
+    threshold = int(request.args.get("rsi_threshold", 28))
 
     return render_template(
         "rsi_price_solver.html",

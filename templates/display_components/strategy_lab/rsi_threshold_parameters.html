@@ -2,72 +2,59 @@
 <html>
 <head>
 <meta charset="utf-8">
-
 <style>
-
 body{
     font-family:Arial,sans-serif;
     font-size:14px;
     margin:0;
     padding:15px;
 }
-
 .parameters_container{
     display:flex;
     justify-content:flex-start;
     align-items:flex-start;
     gap:40px;
 }
-
 .parameters_left{
     display:grid;
     grid-template-columns:auto auto;
     gap:10px 12px;
     align-items:center;
 }
-
 .parameters_left label{
     font-weight:bold;
 }
-
 .parameters_left input,
 .parameters_left select{
     font-size:14px;
     padding:4px;
 }
-
 .etf_input{
     width:8ch;
 }
-
 .small_input{
     width:5ch;
 }
-
 .time_period{
     width:15ch;
 }
-
 .defaults{
     margin-top:15px;
     display:flex;
     gap:10px;
 }
-
 .defaults button{
     padding:8px 14px;
     font-size:14px;
     font-weight:bold;
     cursor:pointer;
 }
-
 .parameters_right{
     display:flex;
     flex-direction:column;
     gap:10px;
     min-width:210px;
 }
-
 .action_button{
     width:200px;
     padding:10px 16px;
@@ -79,11 +66,9 @@ body{
     border-radius:6px;
     cursor:pointer;
 }
-
 .action_button:hover{
     background:#2954B8;
 }
-
 .pricesolver_button{
     width:200px;
     padding:10px 16px;
@@ -95,34 +80,22 @@ body{
     border-radius:6px;
     cursor:pointer;
 }
-
 .pricesolver_button:hover{
     background:#2D9147;
 }
-
 </style>
-
 </head>
-
 <body>
-
 <div class="parameters_container">
-
     <div>
-
         <div class="parameters_left">
-
             <label>ETF</label>
             <input class="etf_input" type="text" value="{{ parameters.etf }}">
-
             <label>RSI Period</label>
             <input class="small_input" type="number" value="{{ parameters.rsi_period }}">
-
             <label>RSI Threshold</label>
             <input class="small_input" type="number" value="{{ parameters.rsi_threshold }}">
-
             <label>Time Period</label>
-
             <select class="time_period">
                 <option value="1_year">1 Year</option>
                 <option value="3_years">3 Years</option>
@@ -130,106 +103,125 @@ body{
                 <option value="10_years">10 Years</option>
                 <option value="maximum" selected>Maximum</option>
             </select>
-
         </div>
-
         <div class="defaults">
             <button id="calculate_button">Calculate</button>
             <button>Save My Defaults</button>
             <button>Restore Original Defaults</button>
         </div>
-
     </div>
-
     <div class="parameters_right">
-        <button class="pricesolver_button">PriceSolver</button>
-        <button class="action_button">Full Metrics</button>
-        <button class="action_button">Annual Returns</button>
-        <button class="action_button">Performance Chart</button>
+        <button id="pricesolver_button" class="pricesolver_button">PriceSolver</button>
+        <button id="full_metrics_button" class="action_button">Full Metrics</button>
+        <button id="annual_returns_button" class="action_button">Annual Returns</button>
+        <button id="performance_chart_button" class="action_button">Performance Chart</button>
     </div>
-
 </div>
-
 <script>
-
+function get_parameters(){
+    const etf=document.querySelector(".etf_input").value;
+    const inputs=document.querySelectorAll(".small_input");
+    const rsi_period=inputs[0].value;
+    const rsi_threshold=inputs[1].value;
+    const period=document.querySelector(".time_period").value;
+    return {
+        strategy:"rsi_threshold",
+        etf:etf,
+        rsi_period:rsi_period,
+        rsi_threshold:rsi_threshold,
+        period:period
+    };
+}
+function build_url(base_url){
+    const parameters=get_parameters();
+    const query=new URLSearchParams(parameters).toString();
+    return base_url+"?"+query;
+}
 document.getElementById("calculate_button").addEventListener(
     "click",
     function(){
-
-        const etf =
-            document.querySelector(".etf_input").value;
-
-        const inputs =
-            document.querySelectorAll(".small_input");
-
-        const rsi_period =
-            inputs[0].value;
-
-        const rsi_threshold =
-            inputs[1].value;
-
-        const period =
-            document.querySelector(".time_period").value;
-
-        const small_metrics =
-            window.parent.document.querySelector(
-                'iframe[src*="widget/small-metrics"]'
-            );
-
-        if (small_metrics) {
-            small_metrics.src =
-                "/widget/small-metrics"
-                + "?etf=" + encodeURIComponent(etf)
-                + "&rsi_period=" + encodeURIComponent(rsi_period)
-                + "&rsi_threshold=" + encodeURIComponent(rsi_threshold)
-                + "&period=" + encodeURIComponent(period);
+        const parameters=get_parameters();
+        const etf=parameters.etf;
+        const rsi_period=parameters.rsi_period;
+        const rsi_threshold=parameters.rsi_threshold;
+        const period=parameters.period;
+        const small_metrics=window.parent.document.querySelector(
+            'iframe[src*="widget/small-metrics"]'
+        );
+        if(small_metrics){
+            small_metrics.src="/widget/small-metrics"
+                +"?etf="+encodeURIComponent(etf)
+                +"&rsi_period="+encodeURIComponent(rsi_period)
+                +"&rsi_threshold="+encodeURIComponent(rsi_threshold)
+                +"&period="+encodeURIComponent(period);
         }
-
-const performance_chart =
-    window.parent.document.querySelector(
-        'iframe[src*="widget/performance-chart"]'
-    );
-
-if (performance_chart) {
-    performance_chart.src =
-        "/widget/performance-chart"
-        + "?etf=" + encodeURIComponent(etf)
-        + "&rsi_period=" + encodeURIComponent(rsi_period)
-        + "&rsi_threshold=" + encodeURIComponent(rsi_threshold)
-        + "&period=" + encodeURIComponent(period);
-}
-
-const full_metrics =
-    window.parent.document.querySelector(
-        'iframe[src*="widget/full-metrics"]'
-    );
-
-if (full_metrics) {
-    full_metrics.src =
-        "/widget/full-metrics"
-        + "?etf=" + encodeURIComponent(etf)
-        + "&rsi_period=" + encodeURIComponent(rsi_period)
-        + "&rsi_threshold=" + encodeURIComponent(rsi_threshold)
-        + "&period=" + encodeURIComponent(period);
-}
-
-const annual_returns =
-    window.parent.document.querySelector(
-        'iframe[src*="widget/annual-returns"]'
-    );
-
-if (annual_returns) {
-    annual_returns.src =
-        "/widget/annual-returns"
-        + "?ticker=" + encodeURIComponent(etf)
-        + "&rsi_period=" + encodeURIComponent(rsi_period)
-        + "&threshold=" + encodeURIComponent(rsi_threshold);
-}
-
+        const performance_chart=window.parent.document.querySelector(
+            'iframe[src*="widget/performance-chart"]'
+        );
+        if(performance_chart){
+            performance_chart.src="/widget/performance-chart"
+                +"?etf="+encodeURIComponent(etf)
+                +"&rsi_period="+encodeURIComponent(rsi_period)
+                +"&rsi_threshold="+encodeURIComponent(rsi_threshold)
+                +"&period="+encodeURIComponent(period);
+        }
+        const full_metrics=window.parent.document.querySelector(
+            'iframe[src*="widget/full-metrics"]'
+        );
+        if(full_metrics){
+            full_metrics.src="/widget/full-metrics"
+                +"?etf="+encodeURIComponent(etf)
+                +"&rsi_period="+encodeURIComponent(rsi_period)
+                +"&rsi_threshold="+encodeURIComponent(rsi_threshold)
+                +"&period="+encodeURIComponent(period);
+        }
+        const annual_returns=window.parent.document.querySelector(
+            'iframe[src*="widget/annual-returns"]'
+        );
+        if(annual_returns){
+            annual_returns.src="/widget/annual-returns"
+                +"?ticker="+encodeURIComponent(etf)
+                +"&rsi_period="+encodeURIComponent(rsi_period)
+                +"&threshold="+encodeURIComponent(rsi_threshold);
+        }
     }
 );
-
+document.getElementById("pricesolver_button").addEventListener(
+    "click",
+    function(){
+        window.open(
+            build_url("https://tomorrowsclose.blogspot.com/p/rsi-pricesolver.html"),
+            "_blank"
+        );
+    }
+);
+document.getElementById("full_metrics_button").addEventListener(
+    "click",
+    function(){
+        window.open(
+            build_url("https://tomorrowsclose.blogspot.com/p/strategy-performance-metrics-and.html"),
+            "_blank"
+        );
+    }
+);
+document.getElementById("annual_returns_button").addEventListener(
+    "click",
+    function(){
+        window.open(
+            build_url("https://tomorrowsclose.blogspot.com/p/annual-strategy-returns-and-historical.html"),
+            "_blank"
+        );
+    }
+);
+document.getElementById("performance_chart_button").addEventListener(
+    "click",
+    function(){
+        window.open(
+            build_url("https://tomorrowsclose.blogspot.com/p/strategy-performance-chart-and.html"),
+            "_blank"
+        );
+    }
+);
 </script>
-
 </body>
 </html>
