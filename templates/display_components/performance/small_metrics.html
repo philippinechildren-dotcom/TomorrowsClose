@@ -92,6 +92,10 @@ fetch(
 
 const metrics=data.metrics;
 
+if(!metrics){
+    return;
+}
+
 document.getElementById("upi").textContent =
 metrics.ulcer_performance_index.toFixed(2);
 

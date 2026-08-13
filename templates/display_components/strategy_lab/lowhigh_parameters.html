@@ -167,7 +167,7 @@ body{
         <button
             id="pricesolver_button"
             class="pricesolver_button">
-            LowHigh
+            SIGNALS
         </button>
 
         <button
@@ -319,7 +319,9 @@ document.getElementById("calculate_button").addEventListener(
                 + "&entry_lookback="
                 + encodeURIComponent(parameters.entry_lookback)
                 + "&exit_lookback="
-                + encodeURIComponent(parameters.exit_lookback);
+                + encodeURIComponent(parameters.exit_lookback)
+                + "&period="
+                + encodeURIComponent(parameters.period);
         }
 
     }
@@ -332,7 +334,7 @@ document.getElementById("pricesolver_button").addEventListener(
 
         window.open(
             build_url(
-                "https://tomorrowsclose.blogspot.com/p/lowhigh.html"
+                "https://tomorrowsclose.blogspot.com/p/donchian-lowhigh-pricesolver.html"
             ),
             "_blank"
         );

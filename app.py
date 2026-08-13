@@ -324,78 +324,10 @@ def annual_returns_widget():
         "display_components/performance/annual_returns.html"
     )
 
-@app.route("/widget/small-metrics")
-def widget_small_metrics():
-
-    strategy_name = request.args.get(
-        "strategy",
-        "rsi_threshold",
-    )
-
-    etf = request.args.get(
-        "etf",
-        "TQQQ",
-    )
-
-    period = request.args.get(
-        "period",
-        "1_year",
-    )
-
-    if strategy_name == "lowhigh":
-
-        strategy = build_lowhigh_strategy(
-            ticker=etf,
-            period=period,
-            entry_lookback=int(
-                request.args.get(
-                    "entry_lookback",
-                    3,
-                )
-            ),
-            exit_lookback=int(
-                request.args.get(
-                    "exit_lookback",
-                    1,
-                )
-            ),
-        )
-
-    else:
-
-        rsi_period = int(
-            request.args.get(
-                "rsi_period",
-                3,
-            )
-        )
-
-        threshold = int(
-            request.args.get(
-                "rsi_threshold",
-                28,
-            )
-        )
-
-        strategy = build_rsi_strategy(
-            ticker=etf,
-            period=period,
-            rsi_length=rsi_period,
-            rsi_threshold=threshold,
-        )
-
-    return render_small_metrics_page(
-        strategy=strategy,
-        selected_period=period,
-    )
-
 @app.route("/json/small-metrics")
 def json_small_metrics():
 
-    strategy_name = request.args.get(
-        "strategy",
-        "rsi_threshold",
-    )
+    strategy_name = request.args.get("strategy")
 
     etf = request.args.get(
         "etf",
@@ -426,7 +358,7 @@ def json_small_metrics():
             ),
         )
 
-    else:
+    elif strategy_name == "rsi_threshold":
 
         rsi_period = int(
             request.args.get(
@@ -447,6 +379,15 @@ def json_small_metrics():
             period=period,
             rsi_length=rsi_period,
             rsi_threshold=threshold,
+        )
+
+    else:
+
+        return jsonify(
+            {
+                "strategy": None,
+                "metrics": None,
+            }
         )
 
     return jsonify(
