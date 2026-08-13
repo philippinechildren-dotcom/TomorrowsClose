@@ -23,7 +23,7 @@ style="border:0;overflow:hidden;"&gt;&lt;/iframe&gt;
 </code></pre>
 
 <iframe
-src="/widget/small-metrics"
+src="/widget/small-metrics?strategy={{ request.args.get('strategy', 'lowhigh') }}&etf={{ request.args.get('etf', 'QLD') }}&entry_lookback={{ request.args.get('entry_lookback', 3) }}&exit_lookback={{ request.args.get('exit_lookback', 1) }}&period={{ request.args.get('period', 'maximum') }}"
 width="100%"
 height="90"
 style="border:0;overflow:hidden;">
@@ -34,7 +34,7 @@ style="border:0;overflow:hidden;">
 <h2>Strategy Parameters Widget</h2>
 
 <iframe
-    src="/widget/lowhigh-parameters"
+    src="/widget/lowhigh-parameters?etf={{ request.args.get('etf', 'QLD') }}&entry_lookback={{ request.args.get('entry_lookback', 3) }}&exit_lookback={{ request.args.get('exit_lookback', 1) }}&period={{ request.args.get('period', 'maximum') }}"
     width="100%"
     height="330"
     style="border:none;">
