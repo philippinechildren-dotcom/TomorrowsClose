@@ -324,6 +324,75 @@ def annual_returns_widget():
         "display_components/performance/annual_returns.html"
     )
 
+@app.route("/widget/small-metrics")
+def small_metrics_widget():
+
+    strategy_name = request.args.get("strategy")
+
+    etf = request.args.get(
+        "etf",
+        "TQQQ",
+    )
+
+    period = request.args.get(
+        "period",
+        "maximum",
+    )
+
+    if strategy_name == "lowhigh":
+
+        strategy = build_lowhigh_strategy(
+            ticker=etf,
+            period=period,
+            entry_lookback=int(
+                request.args.get(
+                    "entry_lookback",
+                    3,
+                )
+            ),
+            exit_lookback=int(
+                request.args.get(
+                    "exit_lookback",
+                    1,
+                )
+            ),
+        )
+
+    elif strategy_name == "rsi_threshold":
+
+        rsi_period = int(
+            request.args.get(
+                "rsi_period",
+                3,
+            )
+        )
+
+        threshold = int(
+            request.args.get(
+                "rsi_threshold",
+                28,
+            )
+        )
+
+        strategy = build_rsi_strategy(
+            ticker=etf,
+            period=period,
+            rsi_length=rsi_period,
+            rsi_threshold=threshold,
+        )
+
+    else:
+
+        strategy = {
+            "name": "",
+            "metrics": None,
+        }
+
+    return render_small_metrics_page(
+        strategy=strategy,
+        selected_period=period,
+    )
+
 @app.route("/json/small-metrics")
 def json_small_metrics():
 

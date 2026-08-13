@@ -90,23 +90,29 @@ fetch(
 
 .then(data=>{
 
-const metrics=data.metrics;
+const metrics = data.metrics;
 
-if(!metrics){
+if (!metrics) {
+
+    document.getElementById("upi").textContent = "-";
+    document.getElementById("cagr").textContent = "-";
+    document.getElementById("max_eod_drawdown").textContent = "-";
+    document.getElementById("ulcer_index").textContent = "-";
+
     return;
 }
 
 document.getElementById("upi").textContent =
-metrics.ulcer_performance_index.toFixed(2);
+    metrics.ulcer_performance_index.toFixed(2);
 
 document.getElementById("cagr").textContent =
-(metrics.cagr*100).toFixed(2) + "%";
+    (metrics.cagr * 100).toFixed(2) + "%";
 
 document.getElementById("max_eod_drawdown").textContent =
-(metrics.max_eod_drawdown*100).toFixed(2) + "%";
+    (metrics.max_eod_drawdown * 100).toFixed(2) + "%";
 
 document.getElementById("ulcer_index").textContent =
-metrics.ulcer_index.toFixed(2);
+    metrics.ulcer_index.toFixed(2);
 
 });
 
