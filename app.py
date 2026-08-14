@@ -478,7 +478,20 @@ def metric_selection_widget():
 
 @app.route("/widget/lowhigh-parameters")
 def widget_lowhigh_parameters():
-    return render_lowhigh_parameters()
+
+    return render_lowhigh_parameters(
+        etf=request.args.get("etf", "QLD"),
+        entry_lookback=int(
+            request.args.get("entry_lookback", 3)
+        ),
+        exit_lookback=int(
+            request.args.get("exit_lookback", 1)
+        ),
+        time_period=request.args.get(
+            "period",
+            "maximum",
+        ),
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
