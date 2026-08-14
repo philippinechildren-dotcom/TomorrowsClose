@@ -78,7 +78,8 @@ def build_result(
     }
 
 def render_page():
-    ticker = request.args.get("ticker", "QLD")
+
+    ticker = request.args.get("etf", "QLD")
     entry_lookback = int(request.args.get("entry_lookback", 3))
     exit_lookback = int(request.args.get("exit_lookback", 1))
 

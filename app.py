@@ -493,5 +493,25 @@ def widget_lowhigh_parameters():
         ),
     )
 
+@app.route("/widget/lowhigh-dashboard")
+def widget_lowhigh_dashboard():
+
+    return render_template(
+        "display_components/strategy_lab/lowhigh_dashboard.html",
+        parameters={
+            "etf": request.args.get("etf", "QLD"),
+            "entry_lookback": int(
+                request.args.get("entry_lookback", 3)
+            ),
+            "exit_lookback": int(
+                request.args.get("exit_lookback", 1)
+            ),
+            "period": request.args.get(
+                "period",
+                "maximum",
+            ),
+        },
+    )
+
 if __name__ == "__main__":
     app.run(debug=True)
