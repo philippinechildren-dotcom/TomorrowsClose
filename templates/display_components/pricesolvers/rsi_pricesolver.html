@@ -1,10 +1,6 @@
-<p><strong>Security:</strong> {{ result.ticker }}</p>
+<div style="font-family:Arial,sans-serif; font-size:14px; margin:0; padding:0;">
 
-<hr>
-
-<div style="display:flex; gap:30px; align-items:flex-start; width:470px;">
-
-    <!-- LEFT SIDE -->
+<div style="display:flex; align-items:flex-start; gap:40px;">
 
     <div style="flex:0 0 auto;">
 
@@ -16,18 +12,16 @@
 
         {% else %}
 
-        <h3>
-        <strong>
-        {% if result.status == "LONG" %}
-        SELL EXIT ZONE
-        {% else %}
-        BUY ENTRY ZONE
-        {% endif %}
-        </strong>
-        </h3>
+        <div style="font-size:15px; font-weight:bold; color:#555555;">
+            {% if result.status == "LONG" %}
+            SELL EXIT ZONE
+            {% else %}
+            BUY ENTRY ZONE
+            {% endif %}
+        </div>
 
-        <div style="font-size:2em; margin:10px 0;">
-            <strong>{{ "%.2f"|format(result.trigger_price) }}</strong>
+        <div style="font-size:28px; font-weight:bold; color:#222222; margin:12px 0;">
+            {{ "%.2f"|format(result.trigger_price) }}
         </div>
 
         <div>
@@ -38,62 +32,50 @@
 
     </div>
 
-    <!-- RIGHT SIDE -->
+    <div style="
+        width:160px;
+        padding:12px 14px;
+        background:#f5f5f5;
+        border-radius:6px;
+        font-size:14px;
+    ">
 
-    <div style="width:140px;">
+        <div style="
+            font-weight:bold;
+            color:#555555;
+            margin-bottom:10px;
+        ">
+            PARAMETERS
+        </div>
 
-        <form method="get">
+        <div style="margin-bottom:7px;">
+            <strong>ETF:</strong>
+            {{ result.ticker }}
+        </div>
 
-            <p>
+        <div style="margin-bottom:7px;">
+            <strong>RSI Period:</strong>
+            {{ result.rsi_period }}
+        </div>
 
-                <label><strong>ETF</strong></label><br>
+        <div>
+            <strong>RSI Threshold:</strong>
+            {{ result.threshold }}
+        </div>
 
-                <input
-                    type="text"
-                    name="etf"
-                    value="{{ result.ticker }}"
-                    size="6"
-                    maxlength="8"
-                    style="width:6ch;">
-
-            </p>
-
-            <p>
-
-                <label><strong>RSI Period</strong></label><br>
-
-                <input
-                    type="number"
-                    name="rsi_period"
-                    value="{{ result.rsi_period }}"
-                    style="width:4ch;">
-
-            </p>
-
-            <p>
-
-                <label><strong>Threshold</strong></label><br>
-
-                <input
-                    type="number"
-                    name="rsi_threshold"
-                    value="{{ result.threshold }}"
-                    style="width:4ch;">
-
-            </p>
-
-            <button
-                type="submit"
-                style="width:110px;">
-
-                Calculate
-
-            </button>
-
-        </form>
+        <div style="
+            margin-top:12px;
+            padding-top:10px;
+            border-top:1px solid #dddddd;
+            color:#777777;
+            font-size:12px;
+            line-height:1.4;
+        ">
+            Return to the dashboard to adjust parameter settings.
+        </div>
 
     </div>
 
 </div>
 
-<hr>
+</div>

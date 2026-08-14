@@ -173,7 +173,6 @@ body{
 
 </div>
 
-
 <!-- PARAMETERS -->
 
 <div class="parameters_container">
@@ -190,20 +189,20 @@ body{
                 value="{{ parameters.etf }}"
             >
 
-            <label>Entry Lookback</label>
+            <label>RSI Period</label>
 
             <input
-                class="small_input entry_input"
+                class="small_input rsi_period_input"
                 type="number"
-                value="{{ parameters.entry_lookback }}"
+                value="{{ parameters.rsi_period }}"
             >
 
-            <label>Exit Lookback</label>
+            <label>RSI Threshold</label>
 
             <input
-                class="small_input exit_input"
+                class="small_input rsi_threshold_input"
                 type="number"
-                value="{{ parameters.exit_lookback }}"
+                value="{{ parameters.rsi_threshold }}"
             >
 
             <label>Time Period</label>
@@ -260,22 +259,21 @@ body{
 
 </div>
 
-
 <script>
 
 function get_parameters(){
 
     return {
-        strategy:"lowhigh",
+        strategy:"rsi_threshold",
 
         etf:
             document.querySelector(".etf_input").value,
 
-        entry_lookback:
-            document.querySelector(".entry_input").value,
+        rsi_period:
+            document.querySelector(".rsi_period_input").value,
 
-        exit_lookback:
-            document.querySelector(".exit_input").value,
+        rsi_threshold:
+            document.querySelector(".rsi_threshold_input").value,
 
         period:
             document.querySelector(".time_period").value
@@ -383,7 +381,7 @@ document.getElementById("pricesolver_button").addEventListener(
 
         window.open(
             build_url(
-                "https://tomorrowsclose.blogspot.com/p/donchian-lowhigh-pricesolver.html"
+                "https://tomorrowsclose.blogspot.com/p/rsi-pricesolver.html"
             ),
             "_blank"
         );

@@ -513,5 +513,25 @@ def widget_lowhigh_dashboard():
         },
     )
 
+@app.route("/widget/rsi-threshold-dashboard")
+def widget_rsi_threshold_dashboard():
+
+    return render_template(
+        "display_components/strategy_lab/rsi_threshold_dashboard.html",
+        parameters={
+            "etf": request.args.get("etf", "TQQQ"),
+            "rsi_period": int(
+                request.args.get("rsi_period", 3)
+            ),
+            "rsi_threshold": int(
+                request.args.get("rsi_threshold", 28)
+            ),
+            "period": request.args.get(
+                "period",
+                "maximum",
+            ),
+        },
+    )
+
 if __name__ == "__main__":
     app.run(debug=True)
