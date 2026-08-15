@@ -13,41 +13,67 @@ body{
     font-size:14px;
     margin:0;
     padding:0;
+    color:#222222;
 }
 
 .controls{
-    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:16px;
 }
 
 label{
     font-weight:bold;
+    color:#444444;
 }
 
 select{
-    padding:4px 8px;
+    padding:6px 10px;
     font-size:14px;
+    border:1px solid #cccccc;
+    border-radius:5px;
+    background:#ffffff;
 }
 
 table{
-    border-collapse:collapse;
+    border-collapse:separate;
+    border-spacing:0;
     width:100%;
     font-size:14px;
+    border:1px solid #d5d9df;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,0.06);
 }
 
 th,
 td{
-    border:1px solid #cccccc;
-    padding:6px 10px;
+    padding:12px 14px;
+    border-bottom:1px solid #e5e7eb;
 }
 
 th{
-    background:#eeeeee;
+    background:#f1f4f7;
+    color:#555555;
+    font-size:12px;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:.35px;
     cursor:pointer;
     user-select:none;
 }
 
 th:hover{
-    background:#dddddd;
+    background:#e7ebef;
+}
+
+tbody tr:last-child td{
+    border-bottom:none;
+}
+
+tbody tr:hover{
+    background:#f7faff;
 }
 
 th:first-child,
@@ -61,23 +87,102 @@ td:not(:first-child){
 }
 
 .strategy-link{
-    color:#333333;
-    text-decoration:underline;
+    color:#222222;
+    font-weight:bold;
+    text-decoration:none;
 }
 
 .strategy-link:hover{
-    color:#000000;
+    color:#3367D6;
+    text-decoration:underline;
 }
 
 .sort-indicator{
     margin-left:4px;
-    font-size:11px;
+    font-size:10px;
+    color:#777777;
+}
+
+.metric-primary{
+    font-weight:bold;
+    font-size:15px;
+}
+
+.etf-pill{
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:12px;
+    background:#eef1f4;
+    color:#555555;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.actions{
+    text-align:right !important;
+    white-space:nowrap;
+}
+
+.action-button{
+    display:inline-block;
+    padding:8px 12px;
+    margin-left:6px;
+    border-radius:5px;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:bold;
+    white-space:nowrap;
+    transition:background-color .15s ease;
+}
+
+.lab-button{
+    background:#3367D6;
+    color:#ffffff;
+}
+
+.lab-button:hover{
+    background:#2859bd;
+}
+
+.signal-button{
+    background:#336706;
+    color:#ffffff;
+}
+
+.signal-button:hover{
+    background:#285105;
+}
+
+.benchmark-row{
+    color:#666666;
+}
+
+.benchmark-row td{
+    background:#fafafa;
+}
+
+.benchmark-label{
+    font-weight:normal;
 }
 
 .footer{
     margin-top:10px;
     font-size:12px;
-    color:#666666;
+    color:#777777;
+}
+
+@media(max-width:700px){
+
+    th,
+    td{
+        padding:9px 7px;
+    }
+
+    .action-button{
+        padding:7px 9px;
+        margin-left:3px;
+    }
+
 }
 
 </style>
@@ -112,16 +217,11 @@ Performance Period:
 
 <colgroup>
 
-<col style="width:180px">
-<col style="width:65px">
-<col style="width:65px">
-<col style="width:65px">
-<col style="width:65px">
-<col style="width:65px">
-<col style="width:65px">
-<col style="width:65px">
-<col style="width:65px">
-<col style="width:65px">
+<col style="width:28%">
+<col style="width:10%">
+<col style="width:10%">
+<col style="width:9%">
+<col style="width:43%">
 
 </colgroup>
 
@@ -144,33 +244,13 @@ CAGR
 <span class="sort-indicator"></span>
 </th>
 
-<th data-column="ulcer_index">
-Ulcer Index
-<span class="sort-indicator"></span>
+<th>
+ETF
 </th>
 
-<th data-column="max_eod_drawdown">
-Max EOD DD
-<span class="sort-indicator"></span>
+<th>
+Actions
 </th>
-
-<th data-column="max_closed_trade_drawdown">
-Max Closed DD
-<span class="sort-indicator"></span>
-</th>
-
-<th data-column="win_rate">
-Win %
-<span class="sort-indicator"></span>
-</th>
-
-<th data-column="profit_factor">
-Profit Factor
-<span class="sort-indicator"></span>
-</th>
-
-<th data-column="expectancy_percent">Expectancy<span class="sort-indicator"></span></th>
-<th data-column="number_of_trades">Trades<span class="sort-indicator"></span></th>
 
 </tr>
 
@@ -195,21 +275,57 @@ let current_sort_direction="desc";
 
 const strategy_links={
 
-    "RSI Threshold":
-        "https://www.tomorrowsclose.blogspot.com/p/rsi-threshold-mean-reversion-strategy.html",
-
     "LowHigh":
-        "https://www.tomorrowsclose.blogspot.com/p/donchian-lowhigh-mean-reversion-system.html",
+        "https://tomorrowsclose.blogspot.com/p/donchian-lowhigh-mean-reversion-system.html",
+
+    "RSI Threshold":
+        "https://tomorrowsclose.blogspot.com/p/rsi-threshold-mean-reversion-strategy.html",
 
     "UlcerShield":
-        "https://www.tomorrowsclose.blogspot.com/p/rsi-ulcershield-mean-reversion-system.html"
+        "https://tomorrowsclose.blogspot.com/p/rsi-ulcershield-mean-reversion-system.html"
 
 };
 
 
+const pricesolver_links={
+
+    "LowHigh":
+        "https://tomorrowsclose.blogspot.com/p/donchian-lowhigh-pricesolver.html",
+
+    "RSI Threshold":
+        "https://tomorrowsclose.blogspot.com/p/rsi-pricesolver.html",
+
+    "UlcerShield":
+        "https://tomorrowsclose.blogspot.com/p/rsi-ulcershield-pricesolver.html"
+
+};
+
+const default_etfs={
+
+    "LowHigh":"QLD",
+    "RSI Threshold":"TQQQ",
+    "UlcerShield":"TQQQ",
+    "QQQ Buy & Hold":"QQQ",
+    "SPY Buy & Hold":"SPY"
+};
+
+const display_names={
+
+    "UlcerShield":"RSI UlcerShield"
+
+};
+
+
+function display_strategy_name(name){
+
+    return display_names[name] || name;
+
+}
+
+
 function format_percent(value){
 
-    if(value==="--"||value===null){
+    if(value==="--" || value===null || value===undefined){
         return "--";
     }
 
@@ -220,7 +336,7 @@ function format_percent(value){
 
 function format_number(value,digits=2){
 
-    if(value==="--"||value===null){
+    if(value==="--" || value===null || value===undefined){
         return "--";
     }
 
@@ -228,25 +344,16 @@ function format_number(value,digits=2){
 
 }
 
-function format_trade_count(value){
-
-    if(value === 0 || value === null){
-        return "--";
-    }
-
-    return Number(value).toFixed(0);
-
-}
 
 function get_sort_value(row,column){
 
     if(column==="name"){
-        return row.name||"";
+        return row.name || "";
     }
 
     const value=row[column];
 
-    if(value===null||value===undefined){
+    if(value===null || value===undefined){
         return -Infinity;
     }
 
@@ -284,18 +391,51 @@ function sort_rows(rows,column,direction){
 
 function strategy_cell(name){
 
+    const display_name=
+        display_strategy_name(name);
+
+
     if(strategy_links[name]){
 
         return `
 <a
     class="strategy-link"
     href="${strategy_links[name]}"
->${name}</a>
+>${display_name}</a>
 `;
 
     }
 
-    return name;
+
+    return `
+<span class="benchmark-label">
+${display_name}
+</span>
+`;
+
+}
+
+
+function action_cell(name){
+
+    if(!strategy_links[name]){
+        return "";
+    }
+
+
+    return `
+<a
+    class="action-button lab-button"
+    href="${strategy_links[name]}">
+    Strategy Lab
+</a>
+
+<a
+    class="action-button signal-button"
+    href="${pricesolver_links[name]}">
+    Signals
+</a>
+`;
 
 }
 
@@ -303,7 +443,7 @@ function strategy_cell(name){
 function update_sort_indicators(){
 
     document
-        .querySelectorAll("#rankings_table th")
+        .querySelectorAll("#rankings_table th[data-column]")
         .forEach(function(header){
 
             const indicator=
@@ -351,7 +491,7 @@ function load_table(period){
 
 
     let rows=
-        rankings_data[period]||[];
+        rankings_data[period] || [];
 
 
     rows=sort_rows(
@@ -363,15 +503,25 @@ function load_table(period){
 
     rows.forEach(function(row){
 
+        const etf=
+            default_etfs[row.name] || "--";
+
+
+        const row_class=
+            strategy_links[row.name]
+            ? ""
+            : "benchmark-row";
+
+
         tbody.innerHTML+=`
 
-<tr>
+<tr class="${row_class}">
 
 <td>
 ${strategy_cell(row.name)}
 </td>
 
-<td>
+<td class="metric-primary">
 ${format_number(row.ulcer_performance_index)}
 </td>
 
@@ -380,30 +530,12 @@ ${format_percent(row.cagr)}
 </td>
 
 <td>
-${format_number(row.ulcer_index)}
+<span class="etf-pill">${etf}</span>
 </td>
 
-<td>
-${format_percent(row.max_eod_drawdown)}
+<td class="actions">
+${action_cell(row.name)}
 </td>
-
-<td>
-${format_percent(row.max_closed_trade_drawdown)}
-</td>
-
-<td>
-${format_percent(row.win_rate)}
-</td>
-
-<td>
-${format_number(row.profit_factor)}
-</td>
-
-<td>
-${format_percent(row.expectancy_percent)}
-</td>
-
-<td>${format_trade_count(row.number_of_trades)}</td>
 
 </tr>
 
@@ -446,7 +578,7 @@ document
 
 
 document
-    .querySelectorAll("#rankings_table th")
+    .querySelectorAll("#rankings_table th[data-column]")
     .forEach(function(header){
 
         header.addEventListener(

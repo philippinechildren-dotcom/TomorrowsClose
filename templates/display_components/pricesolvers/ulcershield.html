@@ -81,6 +81,7 @@
                 {{ result.systems[loop.index0].threshold }}
             </div>
 
+            {% if loop.last %}
             <div style="
                 margin-top:12px;
                 padding-top:10px;
@@ -91,6 +92,7 @@
             ">
                 Return to the dashboard to adjust parameter settings.
             </div>
+            {% endif %}
 
         </div>
 
