@@ -107,7 +107,6 @@ def widget_ulcershield():
 def widget_rankings():
     return render_rankings_page()
 
-
 @app.route("/widget/full-metrics")
 def widget_full_metrics():
 
@@ -141,6 +140,73 @@ def widget_full_metrics():
                 request.args.get(
                     "exit_lookback",
                     1,
+                )
+            ),
+        )
+
+    elif strategy_name == "ulcershield":
+
+        strategy = build_ulcershield_strategy(
+            ticker=etf,
+            period=period,
+            rsi_1_period=int(
+                request.args.get(
+                    "rsi_1_period",
+                    2,
+                )
+            ),
+            rsi_1_threshold=int(
+                request.args.get(
+                    "rsi_1_threshold",
+                    28,
+                )
+            ),
+            rsi_2_period=int(
+                request.args.get(
+                    "rsi_2_period",
+                    3,
+                )
+            ),
+            rsi_2_threshold=int(
+                request.args.get(
+                    "rsi_2_threshold",
+                    28,
+                )
+            ),
+            rsi_3_period=int(
+                request.args.get(
+                    "rsi_3_period",
+                    5,
+                )
+            ),
+            rsi_3_threshold=int(
+                request.args.get(
+                    "rsi_3_threshold",
+                    28,
+                )
+            ),
+            rsi_4_period=int(
+                request.args.get(
+                    "rsi_4_period",
+                    8,
+                )
+            ),
+            rsi_4_threshold=int(
+                request.args.get(
+                    "rsi_4_threshold",
+                    28,
+                )
+            ),
+            rsi_5_period=int(
+                request.args.get(
+                    "rsi_5_period",
+                    13,
+                )
+            ),
+            rsi_5_threshold=int(
+                request.args.get(
+                    "rsi_5_threshold",
+                    32,
                 )
             ),
         )
@@ -220,6 +286,88 @@ def performance_chart_json():
                 strategy="lowhigh",
                 ticker=etf,
                 period=period,
+                entry_lookback=int(
+                    request.args.get(
+                        "entry_lookback",
+                        3,
+                    )
+                ),
+                exit_lookback=int(
+                    request.args.get(
+                        "exit_lookback",
+                        1,
+                    )
+                ),
+            )
+        )
+
+    if strategy == "ulcershield":
+
+        return jsonify(
+            build_performance_chart(
+                strategy="ulcershield",
+                ticker=etf,
+                period=period,
+                rsi_1_period=int(
+                    request.args.get(
+                        "rsi_1_period",
+                        2,
+                    )
+                ),
+                rsi_1_threshold=int(
+                    request.args.get(
+                        "rsi_1_threshold",
+                        28,
+                    )
+                ),
+                rsi_2_period=int(
+                    request.args.get(
+                        "rsi_2_period",
+                        3,
+                    )
+                ),
+                rsi_2_threshold=int(
+                    request.args.get(
+                        "rsi_2_threshold",
+                        28,
+                    )
+                ),
+                rsi_3_period=int(
+                    request.args.get(
+                        "rsi_3_period",
+                        5,
+                    )
+                ),
+                rsi_3_threshold=int(
+                    request.args.get(
+                        "rsi_3_threshold",
+                        28,
+                    )
+                ),
+                rsi_4_period=int(
+                    request.args.get(
+                        "rsi_4_period",
+                        8,
+                    )
+                ),
+                rsi_4_threshold=int(
+                    request.args.get(
+                        "rsi_4_threshold",
+                        28,
+                    )
+                ),
+                rsi_5_period=int(
+                    request.args.get(
+                        "rsi_5_period",
+                        13,
+                    )
+                ),
+                rsi_5_threshold=int(
+                    request.args.get(
+                        "rsi_5_threshold",
+                        32,
+                    )
+                ),
             )
         )
 
@@ -260,10 +408,16 @@ def annual_returns_json():
         "TQQQ",
     )
 
+    period = request.args.get(
+        "period",
+        "maximum",
+    )
+
     if strategy == "lowhigh":
 
         strategy_result = build_lowhigh_strategy(
             ticker=etf,
+            period=period,
             entry_lookback=int(
                 request.args.get(
                     "entry_lookback",
@@ -282,6 +436,67 @@ def annual_returns_json():
 
         strategy_result = build_ulcershield_strategy(
             ticker=etf,
+            period=period,
+            rsi_1_period=int(
+                request.args.get(
+                    "rsi_1_period",
+                    2,
+                )
+            ),
+            rsi_1_threshold=int(
+                request.args.get(
+                    "rsi_1_threshold",
+                    28,
+                )
+            ),
+            rsi_2_period=int(
+                request.args.get(
+                    "rsi_2_period",
+                    3,
+                )
+            ),
+            rsi_2_threshold=int(
+                request.args.get(
+                    "rsi_2_threshold",
+                    28,
+                )
+            ),
+            rsi_3_period=int(
+                request.args.get(
+                    "rsi_3_period",
+                    5,
+                )
+            ),
+            rsi_3_threshold=int(
+                request.args.get(
+                    "rsi_3_threshold",
+                    28,
+                )
+            ),
+            rsi_4_period=int(
+                request.args.get(
+                    "rsi_4_period",
+                    8,
+                )
+            ),
+            rsi_4_threshold=int(
+                request.args.get(
+                    "rsi_4_threshold",
+                    28,
+                )
+            ),
+            rsi_5_period=int(
+                request.args.get(
+                    "rsi_5_period",
+                    13,
+                )
+            ),
+            rsi_5_threshold=int(
+                request.args.get(
+                    "rsi_5_threshold",
+                    32,
+                )
+            ),
         )
 
     else:
@@ -302,6 +517,7 @@ def annual_returns_json():
 
         strategy_result = build_rsi_strategy(
             ticker=etf,
+            period=period,
             rsi_length=rsi_period,
             rsi_threshold=rsi_threshold,
         )
@@ -450,6 +666,73 @@ def json_small_metrics():
             rsi_threshold=threshold,
         )
 
+    elif strategy_name == "ulcershield":
+
+        strategy = build_ulcershield_strategy(
+            ticker=etf,
+            period=period,
+            rsi_1_period=int(
+                request.args.get(
+                    "rsi_1_period",
+                    2,
+                )
+            ),
+            rsi_1_threshold=int(
+                request.args.get(
+                    "rsi_1_threshold",
+                    28,
+                )
+            ),
+            rsi_2_period=int(
+                request.args.get(
+                    "rsi_2_period",
+                    3,
+                )
+            ),
+            rsi_2_threshold=int(
+                request.args.get(
+                    "rsi_2_threshold",
+                    28,
+                )
+            ),
+            rsi_3_period=int(
+                request.args.get(
+                    "rsi_3_period",
+                    5,
+                )
+            ),
+            rsi_3_threshold=int(
+                request.args.get(
+                    "rsi_3_threshold",
+                    28,
+                )
+            ),
+            rsi_4_period=int(
+                request.args.get(
+                    "rsi_4_period",
+                    8,
+                )
+            ),
+            rsi_4_threshold=int(
+                request.args.get(
+                    "rsi_4_threshold",
+                    28,
+                )
+            ),
+            rsi_5_period=int(
+                request.args.get(
+                    "rsi_5_period",
+                    13,
+                )
+            ),
+            rsi_5_threshold=int(
+                request.args.get(
+                    "rsi_5_threshold",
+                    32,
+                )
+            ),
+        )
+
     else:
 
         return jsonify(
@@ -526,6 +809,56 @@ def widget_rsi_threshold_dashboard():
             "rsi_threshold": int(
                 request.args.get("rsi_threshold", 28)
             ),
+            "period": request.args.get(
+                "period",
+                "maximum",
+            ),
+        },
+    )
+
+@app.route("/widget/ulcershield-dashboard")
+def widget_ulcershield_dashboard():
+
+    return render_template(
+        "display_components/strategy_lab/ulcershield_dashboard.html",
+        parameters={
+            "etf": request.args.get("etf", "TQQQ"),
+
+            "rsi_1_period": int(
+                request.args.get("rsi_1_period", 2)
+            ),
+            "rsi_1_threshold": int(
+                request.args.get("rsi_1_threshold", 28)
+            ),
+
+            "rsi_2_period": int(
+                request.args.get("rsi_2_period", 3)
+            ),
+            "rsi_2_threshold": int(
+                request.args.get("rsi_2_threshold", 28)
+            ),
+
+            "rsi_3_period": int(
+                request.args.get("rsi_3_period", 5)
+            ),
+            "rsi_3_threshold": int(
+                request.args.get("rsi_3_threshold", 28)
+            ),
+
+            "rsi_4_period": int(
+                request.args.get("rsi_4_period", 8)
+            ),
+            "rsi_4_threshold": int(
+                request.args.get("rsi_4_threshold", 28)
+            ),
+
+            "rsi_5_period": int(
+                request.args.get("rsi_5_period", 13)
+            ),
+            "rsi_5_threshold": int(
+                request.args.get("rsi_5_threshold", 32)
+            ),
+
             "period": request.args.get(
                 "period",
                 "maximum",

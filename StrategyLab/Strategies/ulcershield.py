@@ -14,6 +14,16 @@ from StrategyLab.Metrics.metrics import build_metrics
 
 def build_ulcershield(
     history,
+    rsi_1_period=2,
+    rsi_1_threshold=28,
+    rsi_2_period=3,
+    rsi_2_threshold=28,
+    rsi_3_period=5,
+    rsi_3_threshold=28,
+    rsi_4_period=8,
+    rsi_4_threshold=28,
+    rsi_5_period=13,
+    rsi_5_threshold=32,
     starting_equity=100000.0,
 ):
     """
@@ -28,11 +38,11 @@ def build_ulcershield(
     # ==========================================================
 
     rsi_systems = [
-        (1, 2, 28),
-        (2, 3, 28),
-        (3, 5, 28),
-        (4, 8, 28),
-        (5, 13, 32),
+        (1, rsi_1_period, rsi_1_threshold),
+        (2, rsi_2_period, rsi_2_threshold),
+        (3, rsi_3_period, rsi_3_threshold),
+        (4, rsi_4_period, rsi_4_threshold),
+        (5, rsi_5_period, rsi_5_threshold),
     ]
 
     allocation = starting_equity / len(rsi_systems)
@@ -244,6 +254,16 @@ def build_ulcershield(
 def build_result(
     ticker="TQQQ",
     period=None,
+    rsi_1_period=2,
+    rsi_1_threshold=28,
+    rsi_2_period=3,
+    rsi_2_threshold=28,
+    rsi_3_period=5,
+    rsi_3_threshold=28,
+    rsi_4_period=8,
+    rsi_4_threshold=28,
+    rsi_5_period=13,
+    rsi_5_threshold=32,
     starting_equity=100000.0,
 ):
     """
@@ -261,5 +281,15 @@ def build_result(
 
     return build_ulcershield(
         history=history,
+        rsi_1_period=rsi_1_period,
+        rsi_1_threshold=rsi_1_threshold,
+        rsi_2_period=rsi_2_period,
+        rsi_2_threshold=rsi_2_threshold,
+        rsi_3_period=rsi_3_period,
+        rsi_3_threshold=rsi_3_threshold,
+        rsi_4_period=rsi_4_period,
+        rsi_4_threshold=rsi_4_threshold,
+        rsi_5_period=rsi_5_period,
+        rsi_5_threshold=rsi_5_threshold,
         starting_equity=starting_equity,
     )
