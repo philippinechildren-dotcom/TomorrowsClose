@@ -1,141 +1,103 @@
-<p><strong>Security:</strong> {{ result.ticker }}</p>
+<div style="font-family:Arial,sans-serif; font-size:14px; margin:0; padding:0;">
 
-<hr>
+{% if result.market_state == "settlement" %}
 
-<div style="display:flex; gap:30px; align-items:flex-start; width:700px;">
-
-    <!-- LEFT SIDE -->
-
-    <div style="flex:0 0 auto;">
-
-        {% if result.market_state == "settlement" %}
-
-        <p style="font-size:1.3em;">
+    <p style="font-size:1.3em;">
         ⏳ New Signal Zones available around 4:30 PM ET.
-        </p>
+    </p>
 
-        {% else %}
+{% else %}
 
-        <p>
-        <strong>Campaign Status:</strong>
-        {{ result.campaign_status }}
-        </p>
+    {% for component in result.components %}
 
-        <table border="1" cellpadding="10" cellspacing="0">
+    <div style="display:flex; align-items:flex-start; gap:40px; margin-bottom:20px;">
 
-        <tr>
-            <th>System</th>
-            <th>Trigger</th>
-            <th>Execution</th>
-        </tr>
+        <div style="flex:0 0 auto;">
 
-        {% for component in result.components %}
+            <div style="
+                font-size:15px;
+                font-weight:bold;
+                color:#555555;
+            ">
+                {{ component.name }}
+            </div>
 
-        <tr>
+            <div style="
+                font-size:15px;
+                font-weight:bold;
+                color:#555555;
+                margin-top:8px;
+            ">
+                {% if result.status == "LONG" %}
+                SELL EXIT ZONE
+                {% else %}
+                BUY ENTRY ZONE
+                {% endif %}
+            </div>
 
-            <td>
-                <strong>{{ component.name }}</strong>
-            </td>
+            <div style="
+                font-size:28px;
+                font-weight:bold;
+                color:#222222;
+                margin:12px 0;
+            ">
+                {{ "%.2f"|format(component.trigger_price) }}
+            </div>
 
-            <td>
-
-                <div style="font-size:2em; margin:10px 0;">
-                    <strong>{{ "%.2f"|format(component.trigger_price) }}</strong>
-                </div>
-
-            </td>
-
-            <td>
+            <div>
                 {{ component.execution }}
-            </td>
+            </div>
 
-        </tr>
+        </div>
 
-        {% endfor %}
+        <div style="
+            width:160px;
+            padding:12px 14px;
+            background:#f5f5f5;
+            border-radius:6px;
+            font-size:14px;
+        ">
 
-        </table>
+            <div style="
+                font-weight:bold;
+                color:#555555;
+                margin-bottom:10px;
+            ">
+                PARAMETERS
+            </div>
 
-        {% endif %}
+            <div style="margin-bottom:7px;">
+                <strong>ETF:</strong>
+                {{ result.ticker }}
+            </div>
 
-    </div>
+            <div style="margin-bottom:7px;">
+                <strong>RSI Period:</strong>
+                {{ result.systems[loop.index0].period }}
+            </div>
 
-    <!-- RIGHT SIDE -->
+            <div>
+                <strong>RSI Threshold:</strong>
+                {{ result.systems[loop.index0].threshold }}
+            </div>
 
-    <div style="width:170px; margin-top:55px;">
+            <div style="
+                margin-top:12px;
+                padding-top:10px;
+                border-top:1px solid #dddddd;
+                color:#777777;
+                font-size:12px;
+                line-height:1.4;
+            ">
+                Return to the dashboard to adjust parameter settings.
+            </div>
 
-        <form method="get">
-
-            <p>
-
-                <label><strong>ETF</strong></label><br>
-
-                <input
-                    type="text"
-                    name="ticker"
-                    value="{{ result.ticker }}"
-                    maxlength="8"
-                    style="width:6ch;">
-
-            </p>
-
-            <table border="1" cellpadding="6" cellspacing="0">
-
-            <tr>
-                <th>RSI</th>
-                <th>P</th>
-                <th>T</th>
-            </tr>
-
-            {% for system in result.systems %}
-
-            <tr>
-
-                <td>
-                    <strong>{{ system.name }}</strong>
-                </td>
-
-                <td>
-
-                    <input
-                        type="number"
-                        name="period{{ loop.index }}"
-                        value="{{ system.period }}"
-                        step="1"
-                        style="width:4ch;">
-
-                </td>
-
-                <td>
-
-                    <input
-                        type="number"
-                        name="threshold{{ loop.index }}"
-                        value="{{ system.threshold }}"
-                        step="1"
-                        style="width:4ch;">
-
-                </td>
-
-            </tr>
-
-            {% endfor %}
-
-            </table>
-
-            <br>
-
-            <button
-                type="submit"
-                style="width:110px;">
-
-                Calculate
-
-            </button>
-
-        </form>
+        </div>
 
     </div>
+
+    {% endfor %}
+
+{% endif %}
 
 </div>
-
-<hr>
