@@ -119,35 +119,85 @@ def build_result(
 def render_page():
 
     ticker = request.args.get(
-        "ticker",
+        "etf",
         "TQQQ",
     ).upper()
 
     systems = [
         {
             "name": "RSI1",
-            "period": int(request.args.get("period1", 2)),
-            "threshold": int(request.args.get("threshold1", 28)),
+            "period": int(
+                request.args.get(
+                    "rsi_1_period",
+                    2,
+                )
+            ),
+            "threshold": int(
+                request.args.get(
+                    "rsi_1_threshold",
+                    28,
+                )
+            ),
         },
         {
             "name": "RSI2",
-            "period": int(request.args.get("period2", 3)),
-            "threshold": int(request.args.get("threshold2", 28)),
+            "period": int(
+                request.args.get(
+                    "rsi_2_period",
+                    3,
+                )
+            ),
+            "threshold": int(
+                request.args.get(
+                    "rsi_2_threshold",
+                    28,
+                )
+            ),
         },
         {
             "name": "RSI3",
-            "period": int(request.args.get("period3", 5)),
-            "threshold": int(request.args.get("threshold3", 28)),
+            "period": int(
+                request.args.get(
+                    "rsi_3_period",
+                    5,
+                )
+            ),
+            "threshold": int(
+                request.args.get(
+                    "rsi_3_threshold",
+                    28,
+                )
+            ),
         },
         {
             "name": "RSI4",
-            "period": int(request.args.get("period4", 8)),
-            "threshold": int(request.args.get("threshold4", 28)),
+            "period": int(
+                request.args.get(
+                    "rsi_4_period",
+                    8,
+                )
+            ),
+            "threshold": int(
+                request.args.get(
+                    "rsi_4_threshold",
+                    28,
+                )
+            ),
         },
         {
             "name": "RSI5",
-            "period": int(request.args.get("period5", 13)),
-            "threshold": int(request.args.get("threshold5", 32)),
+            "period": int(
+                request.args.get(
+                    "rsi_5_period",
+                    13,
+                )
+            ),
+            "threshold": int(
+                request.args.get(
+                    "rsi_5_threshold",
+                    32,
+                )
+            ),
         },
     ]
 
