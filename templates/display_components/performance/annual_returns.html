@@ -51,6 +51,20 @@ tbody tr:hover{
 background:#f7f7f7;
 }
 
+.return-positive{
+color:#2e7d32;
+font-weight:bold;
+}
+
+.return-negative{
+color:#c62828;
+font-weight:bold;
+}
+
+.return-neutral{
+color:#222222;
+}
+
 </style>
 
 </head>
@@ -103,13 +117,27 @@ table.innerHTML="";
 
 data.annual_returns.forEach(row=>{
 
+const return_percent =
+    row.return * 100;
+
+let return_class =
+    "return-neutral";
+
+if(return_percent > 1){
+    return_class = "return-positive";
+}else if(return_percent < -1){
+    return_class = "return-negative";
+}
+
 const tr=document.createElement("tr");
 
 tr.innerHTML=`
 
 <td>${row.year}</td>
 
-<td>${(row.return*100).toFixed(1)}%</td>
+<td class="${return_class}">
+${return_percent.toFixed(1)}%
+</td>
 
 <td>${(row.max_eod_drawdown*100).toFixed(1)}%</td>
 

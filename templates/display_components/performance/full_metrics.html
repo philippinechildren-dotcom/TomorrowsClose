@@ -1,3 +1,20 @@
+<style>
+.metric-cagr{
+    color:#2e7d32;
+    font-weight:bold;
+}
+
+.metric-drawdown{
+    color:#c62828;
+    font-weight:bold;
+}
+
+.metric-upi{
+    color:#3367D6;
+    font-weight:bold;
+}
+</style>
+
 <table border="1" cellpadding="8" cellspacing="0">
 
 <tr>
@@ -25,12 +42,12 @@ Full Performance Metrics
 
 <tr>
     <td>CAGR</td>
-    <td>{{ "%.2f"|format(metrics["cagr"]*100) }}%</td>
+    <td class="metric-cagr">{{ "%.2f"|format(metrics["cagr"]*100) }}%</td>
 </tr>
 
 <tr>
     <td>Max EOD Drawdown</td>
-    <td>{{ "%.2f"|format(metrics["max_eod_drawdown"]*100) }}%</td>
+    <td class="metric-drawdown">{{ "%.2f"|format(metrics["max_eod_drawdown"]*100) }}%</td>
 </tr>
 
 <tr>
@@ -45,7 +62,7 @@ Full Performance Metrics
 
 <tr>
     <td>Ulcer Performance Index</td>
-    <td>
+    <td class="metric-upi">
         {% if metrics["ulcer_performance_index"] is not none %}
             {{ "%.2f"|format(metrics["ulcer_performance_index"]) }}
         {% else %}
