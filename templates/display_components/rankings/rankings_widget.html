@@ -401,6 +401,7 @@ function strategy_cell(name){
 <a
     class="strategy-link"
     href="${strategy_links[name]}"
+    target="_top"
 >${display_name}</a>
 `;
 
@@ -427,12 +428,14 @@ function action_cell(name){
 <a
     class="action-button lab-button"
     href="${strategy_links[name]}">
+    target="_top"
     Strategy Lab
 </a>
 
 <a
     class="action-button signal-button"
     href="${pricesolver_links[name]}">
+    target="_top"
     Signals
 </a>
 `;
