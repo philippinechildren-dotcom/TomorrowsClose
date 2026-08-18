@@ -882,7 +882,7 @@ def widget_turnaround_tuesday_parameters():
     return render_template(
         "display_components/strategy_lab/turnaround_tuesday_parameters.html",
         parameters={
-            "etf": request.args.get("etf", "QLD"),
+            "etf": request.args.get("etf", "QQQ"),
             "entry_lookback": int(
                 request.args.get("entry_lookback", 1)
             ),
@@ -900,7 +900,7 @@ def widget_turnaround_tuesday_dashboard():
     return render_template(
         "display_components/strategy_lab/turnaround_tuesday_dashboard.html",
         parameters={
-            "etf": request.args.get("etf", "QLD"),
+            "etf": request.args.get("etf", "QQQ"),
             "entry_lookback": int(
                 request.args.get("entry_lookback", 1)
             ),
