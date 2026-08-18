@@ -214,7 +214,7 @@ def render_page():
     )
 
     return render_template(
-        "turnaround_tuesday.html",
+        "display_components/pricesolvers/turnaround_tuesday.html",
         result=build_result(
             ticker=ticker,
             entry_lookback=entry_lookback,
