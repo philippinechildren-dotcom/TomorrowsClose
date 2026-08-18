@@ -198,7 +198,7 @@ def build_turnaround_tuesday(
 
 
 def build_result(
-    ticker="QLD",
+    ticker="QQQ",
     period=None,
     entry_lookback=1,
     starting_equity=100000.0,

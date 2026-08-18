@@ -61,7 +61,7 @@ def solve_donchian_price(
 
 
 def build_result(
-    ticker="QLD",
+    ticker="QQQ",
     entry_lookback=1,
     dataset="homepage",
 ):
@@ -203,7 +203,7 @@ def render_page():
 
     ticker = request.args.get(
         "etf",
-        "QLD",
+        "QQQ",
     )
 
     entry_lookback = int(
