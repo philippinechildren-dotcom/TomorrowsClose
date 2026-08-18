@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    font-size:14px;
+    margin:0;
+    padding:15px;
+}
+
+/* PARAMETERS */
+
+.parameters_container{
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+    gap:40px;
+}
+
+.parameters_left{
+    display:grid;
+    grid-template-columns:auto auto;
+    gap:10px 12px;
+    align-items:center;
+}
+
+.parameters_left label{
+    font-weight:bold;
+}
+
+.parameters_left input,
+.parameters_left select{
+    font-size:14px;
+    padding:4px;
+}
+
+.etf_input{
+    width:8ch;
+}
+
+.small_input{
+    width:5ch;
+}
+
+.time_period{
+    width:15ch;
+}
+
+.defaults{
+    margin-top:15px;
+    display:flex;
+    gap:10px;
+}
+
+.defaults button{
+    padding:8px 14px;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.parameters_right{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-width:210px;
+}
+
+.action_button{
+    width:200px;
+    padding:10px 16px;
+    font-size:15px;
+    font-weight:600;
+    color:#ffffff;
+    background:#3367D6;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.action_button:hover{
+    background:#2954B8;
+}
+
+.pricesolver_button{
+    width:200px;
+    padding:10px 16px;
+    font-size:17px;
+    font-weight:700;
+    color:#ffffff;
+    background:#34A853;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.pricesolver_button:hover{
+    background:#2D9147;
+}
+
+/* SMALL METRICS */
+
+.metrics_container{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.metrics_table{
+    border-collapse:collapse;
+    width:auto;
+    margin:0;
+}
+
+.metrics_table th{
+    font-size:15px;
+    font-weight:bold;
+    color:#555555;
+    padding:6px 26px;
+    text-align:center;
+    border-bottom:2px solid #cccccc;
+    white-space:nowrap;
+}
+
+.metrics_table td{
+    font-size:28px;
+    font-weight:bold;
+    color:#222222;
+    padding:12px 26px;
+    text-align:center;
+    border-bottom:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SMALL METRICS -->
+
+<div class="metrics_container">
+
+<table class="metrics_table">
+
+<thead>
+
+<tr>
+
+<th>UPI</th>
+<th>CAGR</th>
+<th>Max EOD DD</th>
+<th>Ulcer Index</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td id="upi">-</td>
+<td id="cagr">-</td>
+<td id="max_eod_drawdown">-</td>
+<td id="ulcer_index">-</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- PARAMETERS -->
+
+<div class="parameters_container">
+
+    <div>
+
+        <div class="parameters_left">
+
+            <label>ETF</label>
+
+            <input
+                class="etf_input"
+                type="text"
+                value="{{ parameters.etf }}"
+            >
+
+            <label>Entry Lookback</label>
+
+            <input
+                class="small_input entry_input"
+                type="number"
+                value="{{ parameters.entry_lookback }}"
+            >
+
+            <label>Time Period</label>
+
+            <select class="time_period">
+
+                <option value="1_year">1 Year</option>
+                <option value="3_years">3 Years</option>
+                <option value="5_years">5 Years</option>
+                <option value="10_years">10 Years</option>
+                <option value="maximum" selected>Maximum</option>
+
+            </select>
+
+        </div>
+
+        <div class="defaults">
+
+            <button id="calculate_button">
+                Calculate
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="parameters_right">
+
+        <button
+            id="pricesolver_button"
+            class="pricesolver_button">
+            SIGNALS
+        </button>
+
+        <button
+            id="full_metrics_button"
+            class="action_button">
+            Full Metrics
+        </button>
+
+        <button
+            id="annual_returns_button"
+            class="action_button">
+            Annual Returns
+        </button>
+
+        <button
+            id="performance_chart_button"
+            class="action_button">
+            Performance Chart
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function get_parameters(){
+
+    return {
+        strategy:"turnaround_tuesday",
+
+        etf:
+            document.querySelector(".etf_input").value,
+
+        entry_lookback:
+            document.querySelector(".entry_input").value,
+
+        period:
+            document.querySelector(".time_period").value
+    };
+}
+
+
+function build_url(base_url){
+
+    const parameters =
+        get_parameters();
+
+    const query =
+        new URLSearchParams(parameters).toString();
+
+    return base_url + "?" + query;
+}
+
+
+function load_metrics(){
+
+    const parameters =
+        get_parameters();
+
+    const query =
+        new URLSearchParams(parameters).toString();
+
+    fetch(
+        "/json/small-metrics?" + query
+    )
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        const metrics = data.metrics;
+
+        if (!metrics) {
+
+            document.getElementById("upi").textContent = "-";
+            document.getElementById("cagr").textContent = "-";
+            document.getElementById("max_eod_drawdown").textContent = "-";
+            document.getElementById("ulcer_index").textContent = "-";
+
+            return;
+        }
+
+        document.getElementById("upi").textContent =
+            metrics.ulcer_performance_index.toFixed(2);
+
+        document.getElementById("cagr").textContent =
+            (metrics.cagr * 100).toFixed(2) + "%";
+
+        document.getElementById("max_eod_drawdown").textContent =
+            (metrics.max_eod_drawdown * 100).toFixed(2) + "%";
+
+        document.getElementById("ulcer_index").textContent =
+            metrics.ulcer_index.toFixed(2);
+
+    })
+
+    .catch(() => {
+
+        document.getElementById("upi").textContent = "-";
+        document.getElementById("cagr").textContent = "-";
+        document.getElementById("max_eod_drawdown").textContent = "-";
+        document.getElementById("ulcer_index").textContent = "-";
+
+    });
+}
+
+
+/*
+    Initial dashboard load.
+    Uses the defaults supplied by the Flask route.
+*/
+
+load_metrics();
+
+
+/*
+    CALCULATE
+
+    Stay inside the dashboard.
+    Recalculate Small Metrics using the current inputs.
+*/
+
+document.getElementById("calculate_button").addEventListener(
+    "click",
+    function(){
+
+        load_metrics();
+
+    }
+);
+
+
+/*
+    SIGNALS
+*/
+
+document.getElementById("pricesolver_button").addEventListener(
+    "click",
+    function(){
+
+        window.open(
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/turnaround-tuesday-pricesolver.html"
+            ),
+            "_blank"
+        );
+
+    }
+);
+
+
+/*
+    FULL METRICS
+*/
+
+document.getElementById("full_metrics_button").addEventListener(
+    "click",
+    function(){
+
+        window.open(
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/strategy-performance-metrics-and.html"
+            ),
+            "_blank"
+        );
+
+    }
+);
+
+
+/*
+    ANNUAL RETURNS
+*/
+
+document.getElementById("annual_returns_button").addEventListener(
+    "click",
+    function(){
+
+        window.open(
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/annual-strategy-returns-and-historical.html"
+            ),
+            "_blank"
+        );
+
+    }
+);
+
+
+/*
+    PERFORMANCE CHART
+*/
+
+document.getElementById("performance_chart_button").addEventListener(
+    "click",
+    function(){
+
+        window.open(
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/strategy-performance-chart-and.html"
+            ),
+            "_blank"
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>

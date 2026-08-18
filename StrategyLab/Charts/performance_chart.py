@@ -11,6 +11,9 @@ from StrategyLab.Benchmarks.buy_and_hold import (
 from StrategyLab.Strategies.lowhigh import (
     build_result as build_lowhigh_result,
 )
+from StrategyLab.Strategies.turnaround_tuesday import (
+    build_result as build_turnaround_tuesday_result,
+)
 from StrategyLab.Strategies.rsi_threshold import (
     build_result as build_rsi_threshold_result,
 )
@@ -81,6 +84,7 @@ def build_performance_chart(
     period=None,
     rsi_length=3,
     rsi_threshold=28,
+    entry_lookback=1,
 ):
     """
     Return chart-ready performance data.
@@ -89,6 +93,7 @@ def build_performance_chart(
     strategy_builders = {
         "rsi_threshold": build_rsi_threshold_result,
         "lowhigh": build_lowhigh_result,
+        "turnaround_tuesday": build_turnaround_tuesday_result,
         "ulcershield": build_ulcershield_result,
     }
 
@@ -99,6 +104,14 @@ def build_performance_chart(
             period=period,
             rsi_length=rsi_length,
             rsi_threshold=rsi_threshold,
+        )
+
+    elif strategy == "turnaround_tuesday":
+
+        strategy_result = build_turnaround_tuesday_result(
+            ticker=ticker,
+            period=period,
+            entry_lookback=entry_lookback,
         )
 
     else:

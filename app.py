@@ -33,6 +33,10 @@ from StrategyLab.Strategies.lowhigh import (
     build_result as build_lowhigh_strategy,
 )
 
+from StrategyLab.Strategies.turnaround_tuesday import (
+    build_result as build_turnaround_tuesday_strategy,
+)
+
 from StrategyLab.Strategies.ulcershield import (
     build_result as build_ulcershield_strategy,
 )
@@ -139,6 +143,19 @@ def widget_full_metrics():
             exit_lookback=int(
                 request.args.get(
                     "exit_lookback",
+                    1,
+                )
+            ),
+        )
+
+    elif strategy_name == "turnaround_tuesday":
+
+        strategy = build_turnaround_tuesday_strategy(
+            ticker=etf,
+            period=period,
+            entry_lookback=int(
+                request.args.get(
+                    "entry_lookback",
                     1,
                 )
             ),
@@ -301,6 +318,22 @@ def performance_chart_json():
             )
         )
 
+    if strategy == "turnaround_tuesday":
+
+        return jsonify(
+            build_performance_chart(
+                strategy="turnaround_tuesday",
+                ticker=etf,
+                period=period,
+                entry_lookback=int(
+                    request.args.get(
+                        "entry_lookback",
+                        1,
+                    )
+                ),
+            )
+        )
+
     if strategy == "ulcershield":
 
         return jsonify(
@@ -427,6 +460,19 @@ def annual_returns_json():
             exit_lookback=int(
                 request.args.get(
                     "exit_lookback",
+                    1,
+                )
+            ),
+        )
+
+    elif strategy == "turnaround_tuesday":
+
+        strategy_result = build_turnaround_tuesday_strategy(
+            ticker=etf,
+            period=period,
+            entry_lookback=int(
+                request.args.get(
+                    "entry_lookback",
                     1,
                 )
             ),
@@ -597,6 +643,19 @@ def small_metrics_widget():
             rsi_threshold=threshold,
         )
 
+    elif strategy_name == "turnaround_tuesday":
+
+        strategy = build_turnaround_tuesday_strategy(
+            ticker=etf,
+            period=period,
+            entry_lookback=int(
+                request.args.get(
+                    "entry_lookback",
+                    1,
+                )
+            ),
+        )
+
     else:
 
         strategy = {
@@ -664,6 +723,19 @@ def json_small_metrics():
             period=period,
             rsi_length=rsi_period,
             rsi_threshold=threshold,
+        )
+
+    elif strategy_name == "turnaround_tuesday":
+
+        strategy = build_turnaround_tuesday_strategy(
+            ticker=etf,
+            period=period,
+            entry_lookback=int(
+                request.args.get(
+                    "entry_lookback",
+                    1,
+                )
+            ),
         )
 
     elif strategy_name == "ulcershield":
@@ -788,6 +860,41 @@ def widget_lowhigh_dashboard():
             ),
             "exit_lookback": int(
                 request.args.get("exit_lookback", 1)
+            ),
+            "period": request.args.get(
+                "period",
+                "maximum",
+            ),
+        },
+    )
+
+@app.route("/widget/turnaround-tuesday-parameters")
+def widget_turnaround_tuesday_parameters():
+
+    return render_template(
+        "display_components/strategy_lab/turnaround_tuesday_parameters.html",
+        parameters={
+            "etf": request.args.get("etf", "QLD"),
+            "entry_lookback": int(
+                request.args.get("entry_lookback", 1)
+            ),
+            "period": request.args.get(
+                "period",
+                "maximum",
+            ),
+        },
+    )
+
+
+@app.route("/widget/turnaround-tuesday-dashboard")
+def widget_turnaround_tuesday_dashboard():
+
+    return render_template(
+        "display_components/strategy_lab/turnaround_tuesday_dashboard.html",
+        parameters={
+            "etf": request.args.get("etf", "QLD"),
+            "entry_lookback": int(
+                request.args.get("entry_lookback", 1)
             ),
             "period": request.args.get(
                 "period",
