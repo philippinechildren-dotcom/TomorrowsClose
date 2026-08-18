@@ -146,16 +146,12 @@ def build_metrics(
 
     expectancy_percent = average_trade_percent
 
-    if profit_factor is not None:
-        kelly_criterion = (
-            win_rate
-            - (
-                (1 - win_rate)
-                / profit_factor
-            )
-        )
-    else:
+    if profit_factor is not None and profit_factor > 0:
+        kelly_criterion = win_rate - ((1 - win_rate) / profit_factor)
+    elif win_rate == 1.0:
         kelly_criterion = 1.0
+    else:
+        kelly_criterion = 0.0
 
     average_hold_days = (
         sum(trade.days_held for trade in trades)
