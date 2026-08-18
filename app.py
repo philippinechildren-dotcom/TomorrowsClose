@@ -12,6 +12,10 @@ from EasyMode.LowHigh.price_solver import (
     render_page as render_lowhigh_page,
 )
 
+from EasyMode.TurnaroundTuesday.price_solver import (
+    render_page as render_turnaround_tuesday_page,
+)
+
 from EasyMode.RSI_PriceSolver.price_solver import (
     render_page,
     build_result as build_rsi_result,
@@ -100,6 +104,10 @@ def widget_rsi_pricesolver():
 @app.route("/widget/lowhigh")
 def widget_lowhigh():
     return render_lowhigh_page()
+
+@app.route("/widget/turnaround-tuesday")
+def widget_turnaround_tuesday():
+    return render_turnaround_tuesday_page()
 
 
 @app.route("/widget/ulcershield")
