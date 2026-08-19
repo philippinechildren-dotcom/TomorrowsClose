@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    font-size:14px;
+    margin:0;
+    padding:15px;
+}
+
+.parameters_container{
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+    gap:40px;
+}
+
+.parameters_left{
+    display:grid;
+    grid-template-columns:auto auto;
+    gap:10px 12px;
+    align-items:center;
+}
+
+.parameters_left label{
+    font-weight:bold;
+}
+
+.parameters_left input,
+.parameters_left select{
+    font-size:14px;
+    padding:4px;
+}
+
+.etf_input{
+    width:8ch;
+}
+
+.small_input{
+    width:5ch;
+}
+
+.time_period{
+    width:15ch;
+}
+
+.defaults{
+    margin-top:15px;
+    display:flex;
+    gap:10px;
+}
+
+.defaults button{
+    padding:8px 14px;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.parameters_right{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-width:210px;
+}
+
+.action_button{
+    width:200px;
+    padding:10px 16px;
+    font-size:15px;
+    font-weight:600;
+    color:#ffffff;
+    background:#3367D6;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.action_button:hover{
+    background:#2954B8;
+}
+
+.pricesolver_button{
+    width:200px;
+    padding:10px 16px;
+    font-size:17px;
+    font-weight:700;
+    color:#ffffff;
+    background:#34A853;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.pricesolver_button:hover{
+    background:#2D9147;
+}
+</style>
+</head>
+
+<body>
+
+<div class="parameters_container">
+
+    <div>
+
+        <div class="parameters_left">
+
+            <label>ETF</label>
+
+            <input
+                class="etf_input"
+                type="text"
+                value="{{ parameters.etf }}"
+            >
+
+            <label>Entry Lookback</label>
+
+            <input
+                class="small_input"
+                type="number"
+                value="{{ parameters.entry_lookback }}"
+            >
+
+            <label>Exit Lookback</label>
+
+            <input
+                class="small_input"
+                type="number"
+                value="{{ parameters.exit_lookback }}"
+            >
+
+            <label>Time Period</label>
+
+            <select class="time_period">
+
+                <option value="1_year">1 Year</option>
+                <option value="3_years">3 Years</option>
+                <option value="5_years">5 Years</option>
+                <option value="10_years">10 Years</option>
+                <option value="maximum" selected>Maximum</option>
+
+            </select>
+
+        </div>
+
+        <div class="defaults">
+
+            <button id="calculate_button">
+                Calculate
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="parameters_right">
+
+        <button
+            id="pricesolver_button"
+            class="pricesolver_button">
+            SIGNALS
+        </button>
+
+        <button
+            id="full_metrics_button"
+            class="action_button">
+            Full Metrics
+        </button>
+
+        <button
+            id="annual_returns_button"
+            class="action_button">
+            Annual Returns
+        </button>
+
+        <button
+            id="performance_chart_button"
+            class="action_button">
+            Performance Chart
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+function get_parameters(){
+
+    const etf =
+        document.querySelector(".etf_input").value;
+
+    const inputs =
+        document.querySelectorAll(".small_input");
+
+    const entry_lookback =
+        inputs[0].value;
+
+    const exit_lookback =
+        inputs[1].value;
+
+    const period =
+        document.querySelector(".time_period").value;
+
+    return {
+        strategy:"lowhigh",
+        etf:etf,
+        entry_lookback:entry_lookback,
+        exit_lookback:exit_lookback,
+        period:period
+    };
+}
+
+
+function build_url(base_url){
+
+    const parameters =
+        get_parameters();
+
+    const query =
+        new URLSearchParams(parameters).toString();
+
+    return base_url + "?" + query;
+}
+
+document.getElementById("calculate_button").addEventListener(
+    "click",
+    function(){
+
+        window.parent.location.href =
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/donchian-lowhigh-ulcershield-mean-reversion-system.html"
+            );
+
+    }
+);
+
+document.getElementById("pricesolver_button").addEventListener(
+    "click",
+    function(){
+
+        window.open(
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/donchian-lowhigh-ulcershield-pricesolver.html"
+            ),
+            "_blank"
+        );
+
+    }
+);
+
+
+document.getElementById("full_metrics_button").addEventListener(
+    "click",
+    function(){
+
+        window.open(
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/strategy-performance-metrics-and.html"
+            ),
+            "_blank"
+        );
+
+    }
+);
+
+
+document.getElementById("annual_returns_button").addEventListener(
+    "click",
+    function(){
+
+        window.open(
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/annual-strategy-returns-and-historical.html"
+            ),
+            "_blank"
+        );
+
+    }
+);
+
+
+document.getElementById("performance_chart_button").addEventListener(
+    "click",
+    function(){
+
+        window.open(
+            build_url(
+                "https://tomorrowsclose.blogspot.com/p/strategy-performance-chart-and.html"
+            ),
+            "_blank"
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
