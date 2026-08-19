@@ -558,22 +558,24 @@ ${action_cell(row.name)}
 
 }
 
-
-fetch("/json/rankings")
-
-.then(response=>response.json())
-
-.then(data=>{
-
-    rankings_data=data;
-
-    document.getElementById("updated").innerHTML=
-        "Updated: "+data.updated;
-
+if (typeof initial_data !== 'undefined' && initial_data) {
+    rankings_data = typeof initial_data === 'string' ? JSON.parse(initial_data) : initial_data;
+    if (rankings_data.updated && document.getElementById("updated")) {
+        document.getElementById("updated").innerHTML = "Updated: " + rankings_data.updated;
+    }
     load_table(current_period);
-
-});
-
+} else {
+    fetch(window.location.origin + "/json/rankings")
+    .then(response => response.json())
+    .then(data => {
+        rankings_data = data;
+        if (data.updated && document.getElementById("updated")) {
+            document.getElementById("updated").innerHTML = "Updated: " + data.updated;
+        }
+        load_table(current_period);
+    })
+    .catch(err => console.error("Could not load rankings data:", err));
+}
 
 document
     .getElementById("period")
