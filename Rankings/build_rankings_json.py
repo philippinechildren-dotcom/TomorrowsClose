@@ -26,6 +26,10 @@ from StrategyLab.Strategies.turnaround_tuesday import (
     build_result as build_turnaround_tuesday_result,
 )
 
+from StrategyLab.Strategies.lowhigh_ulcershield import (
+    build_result as build_lowhigh_ulcershield_result,
+)
+
 from Rankings.rankings import build_rankings
 
 
@@ -79,12 +83,17 @@ def build_rankings_json():
             period=period,
         )
 
+        lowhigh_ulcershield = build_lowhigh_ulcershield_result(
+            period=period,
+        )
+
         rankings = build_rankings(
             [
                 ulcershield,
                 lowhigh,
                 rsi_threshold,
                 turnaround_tuesday,
+                lowhigh_ulcershield,
                 buy_and_hold_qqq,
                 buy_and_hold_spy,
             ],

@@ -20,6 +20,9 @@ from StrategyLab.Strategies.rsi_threshold import (
 from StrategyLab.Strategies.ulcershield import (
     build_result as build_ulcershield_result,
 )
+from StrategyLab.Strategies.lowhigh_ulcershield import (
+    build_result as build_lowhigh_ulcershield_result,
+)
 
 # ==========================================================
 # Normalize Equity Curve
@@ -95,6 +98,7 @@ def build_performance_chart(
         "lowhigh": build_lowhigh_result,
         "turnaround_tuesday": build_turnaround_tuesday_result,
         "ulcershield": build_ulcershield_result,
+        "lowhigh_ulcershield": build_lowhigh_ulcershield_result,
     }
 
     if strategy == "rsi_threshold":

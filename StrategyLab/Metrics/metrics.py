@@ -40,22 +40,28 @@ def build_metrics(
     # Risk
     # ==========================================================
 
-    max_equity = starting_equity
+    if equity_curve:
+        # Initialize high-water mark safely based on the first data point or starting capital
+        max_equity = max(starting_equity, equity_curve[0])
+    else:
+        max_equity = starting_equity
+
     max_eod_drawdown = 0.0
     ulcer_sum = 0.0
 
     for equity in equity_curve:
-
+        # Update high-water mark continuously
         if equity > max_equity:
             max_equity = equity
 
-        drawdown = (
-            equity - max_equity
-        ) / max_equity
+        # Calculate drawdown relative to highest peak seen so far (guarded against division by zero)
+        drawdown = (equity - max_equity) / max_equity if max_equity > 0 else 0.0
 
+        # Track the maximum drawdown (most negative value)
         if drawdown < max_eod_drawdown:
             max_eod_drawdown = drawdown
 
+        # Accumulate squared drawdowns for Ulcer Index calculation
         ulcer_sum += drawdown ** 2
 
     ulcer_index = (
@@ -96,47 +102,44 @@ def build_metrics(
             max_closed_trade_drawdown = drawdown
 
     # ==========================================================
-    # Trade Statistics
+    # Trade Statistics (Tranche-Aware)
     # ==========================================================
 
-    winners = [
-        trade
-        for trade in trades
-        if trade.winning_trade
-    ]
-
-    losers = [
-        trade
-        for trade in trades
-        if not trade.winning_trade
-    ]
+    winners = [trade for trade in trades if trade.winning_trade]
+    losers = [trade for trade in trades if not trade.winning_trade]
 
     win_rate = (
         len(winners) / number_of_trades
     ) if number_of_trades > 0 else 0.0
 
+    # Helper function: Check if trade object specifies position size / tranche weight.
+    # If trade has `position_pct` or `weight` (e.g. 0.20), scale return_pct.
+    def get_portfolio_trade_return(trade):
+        weight = getattr(trade, "weight", getattr(trade, "position_pct", 1.0))
+        return trade.return_pct * weight
+
     average_trade_percent = (
-        sum(trade.return_pct for trade in trades)
+        sum(get_portfolio_trade_return(trade) for trade in trades)
         / number_of_trades
     ) if number_of_trades > 0 else 0.0
 
     average_win_percent = (
-        sum(trade.return_pct for trade in winners)
+        sum(get_portfolio_trade_return(trade) for trade in winners)
         / len(winners)
     ) if winners else 0.0
 
     average_loss_percent = (
-        sum(trade.return_pct for trade in losers)
+        sum(get_portfolio_trade_return(trade) for trade in losers)
         / len(losers)
     ) if losers else 0.0
 
     total_wins = sum(
-        trade.return_pct
+        get_portfolio_trade_return(trade)
         for trade in winners
     )
 
     total_losses = sum(
-        abs(trade.return_pct)
+        abs(get_portfolio_trade_return(trade))
         for trade in losers
     )
 

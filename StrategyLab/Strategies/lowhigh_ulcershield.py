@@ -1,14 +1,8 @@
-"""
-StrategyLab/Strategies/lowhigh_ulcershield.py
-"""
-
+from types import SimpleNamespace
 from Utilities.market_data import (
     get_market_history,
     filter_history,
 )
-
-from Library.Indicators.donchian import calculate_donchian
-from Library.Trading.trade_engine import build_trades
 from StrategyLab.Metrics.metrics import build_metrics
 
 
@@ -19,129 +13,176 @@ def build_lowhigh_ulcershield(
     starting_equity=100000.0,
 ):
     """
-    Build LowHigh UlcerShield strategy statistics.
-    """
+    LowHigh UlcerShield strategy backtest (5 tranches of 20% allocation).
 
+    PineScript Logic:
+        lowestLow   = ta.lowest(low[1], xDays)
+        highestHigh = ta.highest(high[1], yDays)
+
+        buyCondition  = close < lowestLow
+        exitCondition = close > highestHigh
+    """
     if history.empty:
         return None
 
-    # ==========================================================
-    # Donchian Levels
-    # ==========================================================
-
-    upper_band, lower_band = calculate_donchian(
-        history["high"],
-        history["low"],
-        upper_lookback=exit_lookback,
-        lower_lookback=entry_lookback,
-    )
+    max_pyramids = 5
+    entry_percent = 0.20
 
     # ==========================================================
-    # Signals
+    # LOOKBACK CALCULATIONS (Excludes current bar)
     # ==========================================================
-
-    signals = []
-    in_position = False
-
-    for date, row in history.iterrows():
-
-        close = float(row["close"])
-
-        if (
-            not in_position
-            and close < lower_band.loc[date]
-        ):
-
-            signals.append({
-                "date": date,
-                "signal": "BUY",
-                "price": close,
-            })
-
-            in_position = True
-
-        elif (
-            in_position
-            and close > upper_band.loc[date]
-        ):
-
-            signals.append({
-                "date": date,
-                "signal": "SELL",
-                "price": close,
-            })
-
-            in_position = False
-
-    # ==========================================================
-    # Trades
-    # ==========================================================
-
-    trade_results = build_trades(
-        signals=signals,
-        starting_equity=starting_equity,
-    )
-
-    trades = trade_results["trades"]
-
-    # ==========================================================
-    # Daily Equity Curve
-    # ==========================================================
-
-    equity_curve = []
-    equity = starting_equity
-    trade_number = 0
-    shares = 0.0
-    in_position = False
-
-    for date, row in history.iterrows():
-
-        close = float(row["close"])
-
-        if (
-            trade_number < len(trades)
-            and date == trades[trade_number].entry_date
-        ):
-            shares = equity / trades[trade_number].entry_price
-            in_position = True
-
-        equity_curve.append(
-            shares * close if in_position else equity
+    lowest_low = (
+        history["low"]
+        .shift(1)
+        .rolling(
+            window=entry_lookback,
+            min_periods=entry_lookback,
         )
+        .min()
+    )
 
+    highest_high = (
+        history["high"]
+        .shift(1)
+        .rolling(
+            window=exit_lookback,
+            min_periods=exit_lookback,
+        )
+        .max()
+    )
+
+    # ==========================================================
+    # ACCOUNT STATE
+    # ==========================================================
+    cash = float(starting_equity)
+    positions = []
+    trades = []
+    trade_number = 0
+    equity_curve = []
+
+    # ==========================================================
+    # DAILY BAR LOOP
+    # ==========================================================
+    for date, row in history.iterrows():
+        close = float(row["close"])
+
+        current_lowest_low = lowest_low.loc[date]
+        current_highest_high = highest_high.loc[date]
+
+        # Skip bars until lookbacks are populated
         if (
-            trade_number < len(trades)
-            and date == trades[trade_number].exit_date
+            current_lowest_low != current_lowest_low
+            or current_highest_high != current_highest_high
         ):
-            equity = shares * trades[trade_number].exit_price
-            in_position = False
+            position_value = sum(
+                position["shares"] * close
+                for position in positions
+            )
+            equity_curve.append(cash + position_value)
+            continue
+
+        buy_condition = close < current_lowest_low
+        exit_condition = close > current_highest_high
+
+        # ======================================================
+        # EXITS
+        # ======================================================
+        if exit_condition and positions:
+            for position in positions:
+                exit_value = position["shares"] * close
+                cash += exit_value
+
+                trade = position["trade"]
+                trade.exit_date = date
+                trade.exit_price = close
+                trade.days_held = (date - trade.entry_date).days
+                trade.return_pct = (close / trade.entry_price) - 1.0
+
+                trade.pnl = exit_value - (position["shares"] * trade.entry_price)
+                trade.dollar_return = trade.pnl
+
+                # Fixed: Set winning_trade and losing_trade flags
+                trade.winning_trade = trade.return_pct > 0
+                trade.losing_trade = trade.return_pct < 0
+
+                trades.append(trade)
+
+            positions = []
+
+        # ======================================================
+        # ENTRIES (Pyramiding up to 5 tranches)
+        # ======================================================
+        if buy_condition and len(positions) < max_pyramids:
+            existing_position_value = sum(
+                position["shares"] * close
+                for position in positions
+            )
+            current_equity = cash + existing_position_value
+
+            # 20% of current equity per tranche
+            entry_value = current_equity * entry_percent
+            shares = entry_value / close
+            cash -= entry_value
+
+            trade = SimpleNamespace(
+                trade_number=trade_number,
+                strategy_number=1,
+                entry_date=date,
+                entry_price=close,
+                exit_date=None,
+                exit_price=None,
+                days_held=0,
+                return_pct=0.0,
+                pnl=0.0,
+                dollar_return=0.0,
+                winning_trade=False,
+                losing_trade=False,
+            )
+
             trade_number += 1
 
-    ending_equity = equity_curve[-1]
+            positions.append({
+                "shares": shares,
+                "trade": trade,
+            })
 
-    years = (
-        (history.index[-1] - history.index[0]).days
-        / 365.25
-    )
+        # Track daily mark-to-market equity
+        current_position_value = sum(
+            position["shares"] * close
+            for position in positions
+        )
+        equity_curve.append(cash + current_position_value)
 
     # ==========================================================
-    # Exposure
+    # FINAL MARK-TO-MARKET FOR OPEN POSITIONS
     # ==========================================================
+    if positions and not history.empty:
+        final_date = history.index[-1]
+        final_close = float(history.iloc[-1]["close"])
 
-    days_in_market = sum(
-        trade.days_held
-        for trade in trades
-    )
+        for position in positions:
+            trade = position["trade"]
+            trade.exit_date = final_date
+            trade.exit_price = final_close
+            trade.days_held = (final_date - trade.entry_date).days
+            trade.return_pct = (final_close / trade.entry_price) - 1.0
 
+            trade.pnl = (position["shares"] * final_close) - (position["shares"] * trade.entry_price)
+            trade.dollar_return = trade.pnl
+
+            # Fixed: Set winning_trade and losing_trade flags
+            trade.winning_trade = trade.return_pct > 0
+            trade.losing_trade = trade.return_pct < 0
+
+            trades.append(trade)
+
+    ending_equity = equity_curve[-1] if equity_curve else starting_equity
+    years = len(history) / 252.0 if len(history) > 0 else 1.0
+
+    # Total days in market across all open position days
     total_days = len(history)
-
-    exposure = (
-        days_in_market / total_days
-    ) if total_days > 0 else 0.0
-
-    # ==========================================================
-    # Metrics
-    # ==========================================================
+    exposure_days = sum(1 for e in equity_curve if e != starting_equity)
+    exposure = exposure_days / total_days if total_days > 0 else 0.0
 
     metrics = build_metrics(
         equity_curve=equity_curve,
@@ -151,10 +192,6 @@ def build_lowhigh_ulcershield(
         years=years,
         exposure=exposure,
     )
-
-    # ==========================================================
-    # Strategy
-    # ==========================================================
 
     return {
         "name": "LowHigh UlcerShield",
@@ -177,17 +214,10 @@ def build_result(
     starting_equity=100000.0,
 ):
     """
-    Build a complete LowHigh UlcerShield strategy using current market data.
+    Build LowHigh UlcerShield using current market data.
     """
-
-    history = get_market_history(
-        ticker=ticker,
-    )
-
-    history = filter_history(
-        history,
-        period,
-    )
+    history = get_market_history(ticker=ticker)
+    history = filter_history(history, period)
 
     return build_lowhigh_ulcershield(
         history=history,

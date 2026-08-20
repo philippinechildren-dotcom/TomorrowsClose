@@ -25,6 +25,10 @@ from EasyMode.UlcerShield.price_solver import (
     render_page as render_ulcershield_page,
 )
 
+from EasyMode.LowHigh_UlcerShield.price_solver import (
+    render_page as render_lowhigh_ulcershield_page,
+)
+
 from Rankings.page import (
     render_page as render_rankings_page,
 )
@@ -39,6 +43,10 @@ from StrategyLab.Strategies.lowhigh import (
 
 from StrategyLab.Strategies.turnaround_tuesday import (
     build_result as build_turnaround_tuesday_strategy,
+)
+
+from StrategyLab.Strategies.lowhigh_ulcershield import (
+    build_result as build_lowhigh_ulcershield_strategy,
 )
 
 from StrategyLab.Strategies.ulcershield import (
@@ -67,6 +75,10 @@ from StrategyLab.Strategies.Parameters.rsi_threshold_parameters import (
 
 from StrategyLab.Strategies.Parameters.lowhigh_parameters import (
     render_lowhigh_parameters,
+)
+
+from StrategyLab.Strategies.Parameters.lowhigh_ulcershield_parameters import (
+    render_lowhigh_ulcershield_parameters,
 )
 
 app = Flask(__name__)
@@ -109,11 +121,13 @@ def widget_lowhigh():
 def widget_turnaround_tuesday():
     return render_turnaround_tuesday_page()
 
-
 @app.route("/widget/ulcershield")
 def widget_ulcershield():
     return render_ulcershield_page()
 
+@app.route("/widget/lowhigh-ulcershield")
+def widget_lowhigh_ulcershield():
+    return render_lowhigh_ulcershield_page()
 
 @app.route("/widget/rankings")
 def widget_rankings():
@@ -232,6 +246,25 @@ def widget_full_metrics():
                 request.args.get(
                     "rsi_5_threshold",
                     32,
+                )
+            ),
+        )
+
+    elif strategy_name == "lowhigh_ulcershield":
+        
+        strategy = build_lowhigh_ulcershield_strategy(
+            ticker=etf,
+            period=period,
+            entry_lookback=int(
+                request.args.get(
+                    "entry_lookback",
+                    1,
+                )
+            ),
+            exit_lookback=int(
+                request.args.get(
+                    "exit_lookback",
+                    1,
                 )
             ),
         )
@@ -412,6 +445,28 @@ def performance_chart_json():
             )
         )
 
+    if strategy == "lowhigh_ulcershield":
+    
+        return jsonify(
+            build_performance_chart(
+                strategy="lowhigh_ulcershield",
+                ticker=etf,
+                period=period,
+                entry_lookback=int(
+                    request.args.get(
+                        "entry_lookback",
+                        1,
+                    )
+                ),
+                exit_lookback=int(
+                    request.args.get(
+                        "exit_lookback",
+                        1,
+                    )
+                ),
+            )
+        )
+
     rsi_period = int(
         request.args.get(
             "rsi_period",
@@ -549,6 +604,25 @@ def annual_returns_json():
                 request.args.get(
                     "rsi_5_threshold",
                     32,
+                )
+            ),
+        )
+
+    elif strategy == "lowhigh_ulcershield":
+    
+        strategy_result = build_lowhigh_ulcershield_strategy(
+            ticker=etf,
+            period=period,
+            entry_lookback=int(
+                request.args.get(
+                    "entry_lookback",
+                    1,
+                )
+            ),
+            exit_lookback=int(
+                request.args.get(
+                    "exit_lookback",
+                    1,
                 )
             ),
         )
@@ -813,6 +887,25 @@ def json_small_metrics():
             ),
         )
 
+    elif strategy_name == "lowhigh_ulcershield":
+    
+        strategy = build_lowhigh_ulcershield_strategy(
+            ticker=etf,
+            period=period,
+            entry_lookback=int(
+                request.args.get(
+                    "entry_lookback",
+                    1,
+                )
+            ),
+            exit_lookback=int(
+                request.args.get(
+                    "exit_lookback",
+                    1,
+                )
+            ),
+        )
+
     else:
 
         return jsonify(
@@ -974,6 +1067,43 @@ def widget_ulcershield_dashboard():
                 request.args.get("rsi_5_threshold", 32)
             ),
 
+            "period": request.args.get(
+                "period",
+                "maximum",
+            ),
+        },
+    )
+
+@app.route("/widget/lowhigh-ulcershield-parameters")
+def widget_lowhigh_ulcershield_parameters():
+
+    return render_lowhigh_ulcershield_parameters(
+        etf=request.args.get("etf", "QQQ"),
+        entry_lookback=int(
+            request.args.get("entry_lookback", 1)
+        ),
+        exit_lookback=int(
+            request.args.get("exit_lookback", 1)
+        ),
+        time_period=request.args.get(
+            "period",
+            "maximum",
+        ),
+    )
+
+@app.route("/widget/lowhigh-ulcershield-dashboard")
+def widget_lowhigh_ulcershield_dashboard():
+
+    return render_template(
+        "display_components/strategy_lab/lowhigh_ulcershield_dashboard.html",
+        parameters={
+            "etf": request.args.get("etf", "QQQ"),
+            "entry_lookback": int(
+                request.args.get("entry_lookback", 1)
+            ),
+            "exit_lookback": int(
+                request.args.get("exit_lookback", 1)
+            ),
             "period": request.args.get(
                 "period",
                 "maximum",
