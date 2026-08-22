@@ -332,6 +332,11 @@ def performance_chart_json():
         "TQQQ",
     )
 
+    benchmark_ticker = request.args.get(
+        "benchmark_ticker",
+        "QQQ",
+    )
+
     period = request.args.get(
         "period",
         "maximum",
@@ -344,6 +349,7 @@ def performance_chart_json():
                 strategy="lowhigh",
                 ticker=etf,
                 period=period,
+                benchmark_ticker=benchmark_ticker,
                 entry_lookback=int(
                     request.args.get(
                         "entry_lookback",
@@ -366,6 +372,7 @@ def performance_chart_json():
                 strategy="turnaround_tuesday",
                 ticker=etf,
                 period=period,
+                benchmark_ticker=benchmark_ticker,
                 entry_lookback=int(
                     request.args.get(
                         "entry_lookback",
@@ -382,6 +389,7 @@ def performance_chart_json():
                 strategy="ulcershield",
                 ticker=etf,
                 period=period,
+                benchmark_ticker=benchmark_ticker,
                 rsi_1_period=int(
                     request.args.get(
                         "rsi_1_period",
@@ -446,12 +454,13 @@ def performance_chart_json():
         )
 
     if strategy == "lowhigh_ulcershield":
-    
+
         return jsonify(
             build_performance_chart(
                 strategy="lowhigh_ulcershield",
                 ticker=etf,
                 period=period,
+                benchmark_ticker=benchmark_ticker,
                 entry_lookback=int(
                     request.args.get(
                         "entry_lookback",
@@ -486,6 +495,7 @@ def performance_chart_json():
             strategy="rsi_threshold",
             ticker=etf,
             period=period,
+            benchmark_ticker=benchmark_ticker,
             rsi_length=rsi_period,
             rsi_threshold=rsi_threshold,
         )

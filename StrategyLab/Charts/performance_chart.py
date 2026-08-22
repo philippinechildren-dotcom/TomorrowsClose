@@ -98,6 +98,7 @@ def build_performance_chart(
     strategy="rsi_threshold",
     ticker="TQQQ",
     period=None,
+    benchmark_ticker="QQQ",
 
     # RSI Threshold
     rsi_length=3,
@@ -233,7 +234,7 @@ def build_performance_chart(
     # ==========================================================
 
     benchmark_history = get_market_history(
-        ticker="QQQ",
+        ticker=benchmark_ticker,
     )
 
     benchmark_history = benchmark_history.loc[

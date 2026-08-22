@@ -35,6 +35,14 @@ font-weight:bold;
 margin-bottom:4px;
 }
 
+#calculating_message{
+display:none;
+text-align:center;
+padding-top:180px;
+font-size:16px;
+font-weight:bold;
+}
+
 </style>
 
 </head>
@@ -43,12 +51,25 @@ margin-bottom:4px;
 
 <div class="controls">
 
+<label for="benchmark_ticker">Benchmark:</label>
+
+<select id="benchmark_ticker">
+    <option value="QQQ">QQQ</option>
+    <option value="SPY">SPY</option>
+    <option value="TLT">TLT</option>
+    <option value="VOO">VOO</option>
+    <option value="VTI">VTI</option>
+    <option value="VT">VT</option>
+    
+</select>
+
 </div>
 
 <div class="chart_container">
-
+<div id="calculating_message">
+Calculating...
+</div>
 <canvas id="performance_chart"></canvas>
-
 </div>
 
 <div class="summary">
@@ -59,7 +80,7 @@ margin-bottom:4px;
 </div>
 
 <div>
-<div class="summary_label">QQQ Buy & Hold</div>
+<div class="summary_label" id="benchmark_label">QQQ Buy & Hold</div>
 <div id="benchmark_return">--</div>
 </div>
 
@@ -127,8 +148,16 @@ text:"Return (%)"
 
 function load_chart(){
 
+    document.getElementById("calculating_message").style.display = "block";
+    document.getElementById("performance_chart").style.display = "none";
+
     const params =
         new URLSearchParams(window.location.search);
+
+    params.set(
+        "benchmark_ticker",
+        document.getElementById("benchmark_ticker").value
+    );
 
     fetch(
         "/json/performance-chart?" +
@@ -154,6 +183,12 @@ function load_chart(){
         chart.data.datasets[1].data =
             data.chart_data.map(row=>row.benchmark);
 
+        document.getElementById("calculating_message").style.display =
+            "none";
+
+        document.getElementById("performance_chart").style.display =
+            "block";
+
         chart.update();
 
         const last =
@@ -168,9 +203,17 @@ function load_chart(){
         document.getElementById("difference_return").innerHTML =
             (last.strategy-last.benchmark).toFixed(1)+"%";
 
+        document.getElementById("benchmark_label").innerHTML =
+            data.benchmark;
+
     });
 
 }
+
+document.getElementById("benchmark_ticker").addEventListener(
+    "change",
+    load_chart
+);
 
 load_chart();
 

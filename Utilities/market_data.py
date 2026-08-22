@@ -134,46 +134,61 @@ def get_market_data(ticker):
         "market_state": _market_state(),
     }
 
+# Cache historical market data for the lifetime of the process.
+_market_history_cache = {}
+
+
 def get_market_history(ticker, number_of_bars=None):
     """
     Returns completed historical daily market data.
+
+    Historical data is downloaded once per ticker and cached for
+    the lifetime of the Python process.
     """
 
-    stock = yf.Ticker(ticker)
+    ticker = ticker.upper()
 
-    history = stock.history(
-        period="max",
-        interval="1d",
-        auto_adjust=False,
-        repair=False,
-        prepost=False,
-    )
+    if ticker not in _market_history_cache:
 
-    if history.empty:
-        raise ValueError(
-            f"No historical data found for ticker '{ticker}'."
+        stock = yf.Ticker(ticker)
+
+        history = stock.history(
+            period="max",
+            interval="1d",
+            auto_adjust=False,
+            repair=False,
+            prepost=False,
         )
 
-    history = _remove_incomplete_daily_bar(history)
+        if history.empty:
+            raise ValueError(
+                f"No historical data found for ticker '{ticker}'."
+            )
+
+        history = _remove_incomplete_daily_bar(history)
+
+        history = history.rename(
+            columns={
+                "Open": "open",
+                "High": "high",
+                "Low": "low",
+                "Close": "close",
+                "Volume": "volume",
+            }
+        )
+
+        history = history[
+            ["open", "high", "low", "close", "volume"]
+        ]
+
+        _market_history_cache[ticker] = history.round(2)
+
+    history = _market_history_cache[ticker].copy()
 
     if number_of_bars is not None:
         history = history.tail(number_of_bars)
 
-    history = history.rename(
-        columns={
-            "Open": "open",
-            "High": "high",
-            "Low": "low",
-            "Close": "close",
-            "Volume": "volume",
-        }
-    )
-
-    history = history[
-        ["open", "high", "low", "close", "volume"]
-    ]
-
-    return history.round(2)
+    return history
 
 def filter_history(
     history,
