@@ -18,6 +18,7 @@ table{
 border-collapse:collapse;
 width:auto;
 margin:0;
+display:none;
 }
 
 th{
@@ -39,13 +40,24 @@ text-align:center;
 border-bottom:none;
 }
 
+#calculating_message{
+text-align:center;
+padding:20px;
+font-size:16px;
+font-weight:bold;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<table>
+<div id="calculating_message">
+Calculating...
+</div>
+
+<table id="metrics_table">
 
 <thead>
 
@@ -79,6 +91,12 @@ border-bottom:none;
 
 function load_metrics(){
 
+document.getElementById("calculating_message").style.display =
+    "block";
+
+document.getElementById("metrics_table").style.display =
+    "none";
+
 const params = new URLSearchParams(window.location.search);
 
 fetch(
@@ -89,6 +107,12 @@ fetch(
 .then(response=>response.json())
 
 .then(data=>{
+
+document.getElementById("calculating_message").style.display =
+    "none";
+
+document.getElementById("metrics_table").style.display =
+    "table";
 
 const metrics = data.metrics;
 
