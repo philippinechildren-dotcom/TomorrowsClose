@@ -87,7 +87,7 @@ def build_portfolio_result(legs, rebalance_schedule="no_rebalance", period="maxi
         target_weights.append(leg["target_allocation"])
 
     # Combine into unified DataFrame & align to the most restrictive common start date
-    returns_df = pd.DataFrame(series_dict).fillna(0.0)
+    returns_df = pd.DataFrame(series_dict).dropna()
     target_weights = np.array(target_weights)
     
     if returns_df.empty:
@@ -138,14 +138,19 @@ def build_portfolio_result(legs, rebalance_schedule="no_rebalance", period="maxi
     combined_curve = pd.Series(portfolio_equity, index=returns_df.index)
 
     # Risk and Return Metrics
+    # Risk and Return Metrics
     cum_max = combined_curve.cummax()
     drawdown = (combined_curve - cum_max) / cum_max
     max_eod_dd = float(drawdown.min())
     
     dates_index = returns_df.index
-    years = (dates_index[-1] - dates_index[0]).days / 365.25 if len(dates_index) > 1 else 0.0
     
-    cagr = float((combined_curve.iloc[-1] / starting_equity) ** (1 / years) - 1) if years > 0 and combined_curve.iloc[-1] > 0 else 0.0
+    # Calculate years based on exact common start and end dates
+    start_date = pd.to_datetime(dates_index[0])
+    end_date = pd.to_datetime(dates_index[-1])
+    years = (end_date - start_date).days / 365.25 if len(dates_index) > 1 else 0.0
+    
+    cagr = float((combined_curve.iloc[-1] / starting_equity) ** (1.0 / years) - 1.0) if years > 0 and combined_curve.iloc[-1] > 0 else 0.0
     ulcer_index = float(np.sqrt(np.mean(drawdown ** 2)) * 100)
     upi = float((cagr * 100) / ulcer_index) if ulcer_index > 0 else 0.0
 

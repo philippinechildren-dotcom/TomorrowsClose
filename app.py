@@ -324,50 +324,60 @@ def performance_chart_widget():
 @app.route("/json/performance-chart")
 def performance_chart_json():
     legs_raw = request.args.get("legs")
+    period = request.args.get("period", "maximum")
+    benchmark_ticker = request.args.get("benchmark_ticker", "QQQ")
+    rebalance = request.args.get("rebalance", "no_rebalance")
+
+    # ====================================================
+    # 1. MULTI-LEG PORTFOLIO ROUTE
+    # ====================================================
     if legs_raw:
         try:
-            legs = json.loads(legs_raw)
-            rebalance = request.args.get("rebalance", "no_rebalance")
-            period = request.args.get("period", "maximum")
-            benchmark_ticker = request.args.get("benchmark_ticker", "QQQ")
+            legs = json.loads(legs_raw) if isinstance(legs_raw, str) else legs_raw
             
-            # 1. Compute portfolio result
-            res = build_portfolio_result(
-                legs=legs, 
-                rebalance_schedule=rebalance, 
-                period=period
-            )
-
-            # 2. Compute benchmark result
+            # Fetch Portfolio and Benchmark Results
+            portfolio_res = build_portfolio_result(legs, rebalance_schedule=rebalance, period=period)
             bench_res = build_buy_and_hold(ticker=benchmark_ticker, period=period)
 
-            eq_curve = res.get("equity_curve", [])
-            dates = res.get("dates", [])
-            bench_curve = bench_res.get("equity_curve", [])
+            port_dates = portfolio_res.get("dates", [])
+            port_equity = portfolio_res.get("equity_curve", [])
             bench_dates = bench_res.get("dates", [])
+            bench_equity = bench_res.get("equity_curve", [])
 
-            # 3. Align benchmark starting date to portfolio starting date
-            if dates and bench_dates:
-                start_date = dates[0]
-                if start_date in bench_dates:
-                    start_idx = bench_dates.index(start_date)
-                    bench_curve = bench_curve[start_idx:]
-                    bench_dates = bench_dates[start_idx:]
+            if not port_dates or not bench_dates:
+                return jsonify({"chart_data": []})
 
-            # 4. Normalize both series to start at 0.0%
-            start_eq = eq_curve[0] if eq_curve else 100000.0
-            start_bench = bench_curve[0] if bench_curve else 100000.0
+            # Clean and normalize date strings (YYYY-MM-DD)
+            clean_port_dates = [str(d).split(" ")[0].split("T")[0] for d in port_dates]
+            clean_bench_dates = [str(d).split(" ")[0].split("T")[0] for d in bench_dates]
+
+            port_map = dict(zip(clean_port_dates, port_equity))
+            bench_map = dict(zip(clean_bench_dates, bench_equity))
+
+            # Intersect start date (latest date between Portfolio and Benchmark)
+            common_start_date = max(clean_port_dates[0], clean_bench_dates[0])
+            common_dates = [d for d in clean_port_dates if d >= common_start_date and d in bench_map]
+
+            if not common_dates:
+                return jsonify({"chart_data": []})
+
+            # Re-base BOTH dollar-value equity curves starting strictly at 0.0%
+            base_date = common_dates[0]
+            base_port = port_map[base_date]
+            base_bench = bench_map[base_date]
 
             chart_data = []
-            min_len = min(len(eq_curve), len(bench_curve), len(dates))
+            for d in common_dates:
+                p_val = port_map[d]
+                b_val = bench_map[d]
 
-            for i in range(min_len):
-                strat_pct = ((eq_curve[i] - start_eq) / start_eq) * 100.0
-                bench_pct = ((bench_curve[i] - start_bench) / start_bench) * 100.0
+                p_pct = round(((p_val - base_port) / base_port) * 100.0, 2) if base_port > 0 else 0.0
+                b_pct = round(((b_val - base_bench) / base_bench) * 100.0, 2) if base_bench > 0 else 0.0
+
                 chart_data.append({
-                    "date": dates[i],
-                    "strategy": strat_pct,
-                    "benchmark": bench_pct
+                    "date": d,
+                    "strategy": p_pct,
+                    "benchmark": b_pct
                 })
 
             return jsonify({
@@ -376,20 +386,15 @@ def performance_chart_json():
                 "chart_data": chart_data
             })
         except Exception as e:
-            print(f"Error parsing portfolio performance chart: {e}")
+            print(f"Error parsing portfolio chart JSON: {e}")
+            return jsonify({"error": str(e)}), 500
 
-    # ----------------------------------------------------
-    # SINGLE STRATEGY FALLTHROUGH ROUTE
-    # ----------------------------------------------------
+    # ====================================================
+    # 2. SINGLE STRATEGY ROUTE
+    # ====================================================
     strategy = request.args.get("strategy", "rsi_threshold")
-    
-    # Check both 'etf' AND 'ticker' query parameters so SPY works properly
     etf = request.args.get("etf") or request.args.get("ticker") or "TQQQ"
-    
-    benchmark_ticker = request.args.get("benchmark_ticker", "QQQ")
-    period = request.args.get("period", "maximum")
 
-    # Fetch raw data from build_performance_chart
     if strategy == "lowhigh":
         raw_data = build_performance_chart(
             strategy="lowhigh",
@@ -443,18 +448,18 @@ def performance_chart_json():
             rsi_threshold=int(request.args.get("rsi_threshold", 28)),
         )
 
-    # Re-base single-strategy response starting strictly at 0.0%
+    # Safe re-basing for single-strategy curves (subtract initial offset, NO division)
     if isinstance(raw_data, dict) and "chart_data" in raw_data:
         c_data = raw_data["chart_data"]
         valid_points = [p for p in c_data if p.get("strategy") is not None and p.get("benchmark") is not None]
         if valid_points:
             start_strat = valid_points[0]["strategy"]
             start_bench = valid_points[0]["benchmark"]
-            
+
             for p in valid_points:
                 p["strategy"] = round(p["strategy"] - start_strat, 2)
                 p["benchmark"] = round(p["benchmark"] - start_bench, 2)
-                
+
             raw_data["chart_data"] = valid_points
 
     return jsonify(raw_data)
@@ -477,37 +482,44 @@ def annual_returns_json():
             if "annual_returns" in res and res["annual_returns"]:
                 portfolio_annuals = res["annual_returns"]
             else:
-                # Fallback: compute annual returns directly from dates and equity curve
+                # Fallback: compute annual returns directly using continuous global peak
                 dates = res.get("dates", [])
                 equity_curve = res.get("equity_curve", [])
+                
+                if not dates or not equity_curve:
+                    return jsonify({"strategy": "Portfolio Strategy", "annual_returns": []})
+
                 yearly_data = {}
+                global_max_equity = equity_curve[0]  # Continuous peak across ALL years
 
                 for d, eq in zip(dates, equity_curve):
-                    yr = int(d[:4])
+                    yr = int(str(d)[:4])
                     if yr not in yearly_data:
-                        yearly_data[yr] = []
-                    yearly_data[yr].append(eq)
+                        yearly_data[yr] = {"start_val": eq, "end_val": eq, "max_dd": 0.0}
+
+                    # Maintain continuous high-water mark across year boundaries
+                    if eq > global_max_equity:
+                        global_max_equity = eq
+
+                    # Drawdown relative to global peak
+                    dd = (eq - global_max_equity) / global_max_equity if global_max_equity > 0 else 0.0
+
+                    if dd < yearly_data[yr]["max_dd"]:
+                        yearly_data[yr]["max_dd"] = dd
+
+                    yearly_data[yr]["end_val"] = eq
 
                 portfolio_annuals = []
-                for yr, values in yearly_data.items():
-                    start_val = values[0]
-                    end_val = values[-1]
-                    year_ret = (end_val - start_val) / start_val
-
-                    peak = values[0]
-                    max_dd = 0.0
-                    for val in values:
-                        if val > peak:
-                            peak = val
-                        dd = (val - peak) / peak
-                        if dd < max_dd:
-                            max_dd = dd
+                for yr, data in yearly_data.items():
+                    start_val = data["start_val"]
+                    end_val = data["end_val"]
+                    year_ret = (end_val - start_val) / start_val if start_val > 0 else 0.0
 
                     portfolio_annuals.append(
                         {
                             "year": yr,
                             "return": year_ret,
-                            "max_eod_drawdown": abs(max_dd),
+                            "max_eod_drawdown": abs(data["max_dd"]),
                         }
                     )
 
