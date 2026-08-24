@@ -87,11 +87,20 @@ def build_portfolio_result(legs, rebalance_schedule="no_rebalance", period="maxi
         target_weights.append(leg["target_allocation"])
 
     # Combine into unified DataFrame & align to the most restrictive common start date
-    returns_df = pd.DataFrame(series_dict).dropna()
+    returns_df = pd.DataFrame(series_dict).fillna(0.0)
     target_weights = np.array(target_weights)
     
     if returns_df.empty:
-        return {}
+        return {
+            "metrics": {
+                "cagr": 0.0,
+                "max_eod_drawdown": 0.0,
+                "ulcer_index": 0.0,
+                "ulcer_performance_index": 0.0,
+            },
+            "equity_curve": [],
+            "dates": [],
+        }
 
     # Normalize weights if total doesn't equal 100%
     if target_weights.sum() > 0:
@@ -139,6 +148,8 @@ def build_portfolio_result(legs, rebalance_schedule="no_rebalance", period="maxi
     cagr = float((combined_curve.iloc[-1] / starting_equity) ** (1 / years) - 1) if years > 0 and combined_curve.iloc[-1] > 0 else 0.0
     ulcer_index = float(np.sqrt(np.mean(drawdown ** 2)) * 100)
     upi = float((cagr * 100) / ulcer_index) if ulcer_index > 0 else 0.0
+
+    print(">>> DEBUG START DATE:", returns_df.index[0])
 
     return {
         "metrics": {

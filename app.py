@@ -83,7 +83,7 @@ from StrategyLab.Strategies.Parameters.lowhigh_ulcershield_parameters import (
     render_lowhigh_ulcershield_parameters,
 )
 
-from PortfolioLab.portfolio_lab import build_portfolio_result
+from PortfolioLab.portfolio_lab import build_portfolio_result, build_buy_and_hold
 
 app = Flask(__name__)
 
@@ -323,7 +323,6 @@ def performance_chart_widget():
 
 @app.route("/json/performance-chart")
 def performance_chart_json():
-
     legs_raw = request.args.get("legs")
     if legs_raw:
         try:
@@ -331,37 +330,42 @@ def performance_chart_json():
             rebalance = request.args.get("rebalance", "no_rebalance")
             period = request.args.get("period", "maximum")
             benchmark_ticker = request.args.get("benchmark_ticker", "QQQ")
-
-            # 1. Run portfolio engine
+            
+            # 1. Compute portfolio result
             res = build_portfolio_result(
                 legs=legs, 
                 rebalance_schedule=rebalance, 
                 period=period
             )
 
-            # 2. Get benchmark using app.py's existing build_performance_chart function
-            bench_data = build_performance_chart(
-                strategy="rsi_threshold",  # Any strategy works; we only extract the benchmark curve
-                ticker=benchmark_ticker,
-                period=period,
-                benchmark_ticker=benchmark_ticker
-            )
+            # 2. Compute benchmark result
+            bench_res = build_buy_and_hold(ticker=benchmark_ticker, period=period)
 
             eq_curve = res.get("equity_curve", [])
-            bench_chart = bench_data.get("chart_data", [])
+            dates = res.get("dates", [])
+            bench_curve = bench_res.get("equity_curve", [])
+            bench_dates = bench_res.get("dates", [])
 
+            # 3. Align benchmark starting date to portfolio starting date
+            if dates and bench_dates:
+                start_date = dates[0]
+                if start_date in bench_dates:
+                    start_idx = bench_dates.index(start_date)
+                    bench_curve = bench_curve[start_idx:]
+                    bench_dates = bench_dates[start_idx:]
+
+            # 4. Normalize both series to start at 0.0%
             start_eq = eq_curve[0] if eq_curve else 100000.0
-            start_bench_val = bench_chart[0]["benchmark"] if bench_chart else 0.0
+            start_bench = bench_curve[0] if bench_curve else 100000.0
 
             chart_data = []
-            min_len = min(len(eq_curve), len(bench_chart))
+            min_len = min(len(eq_curve), len(bench_curve), len(dates))
 
             for i in range(min_len):
                 strat_pct = ((eq_curve[i] - start_eq) / start_eq) * 100.0
-                bench_pct = bench_chart[i]["benchmark"] - start_bench_val
-                
+                bench_pct = ((bench_curve[i] - start_bench) / start_bench) * 100.0
                 chart_data.append({
-                    "date": bench_chart[i]["date"],
+                    "date": dates[i],
                     "strategy": strat_pct,
                     "benchmark": bench_pct
                 })
@@ -372,7 +376,7 @@ def performance_chart_json():
                 "chart_data": chart_data
             })
         except Exception as e:
-            print(f"Error parsing portfolio legs: {e}")
+            print(f"Error parsing portfolio performance chart: {e}")
 
     strategy = request.args.get(
         "strategy",

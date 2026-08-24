@@ -83,9 +83,6 @@
     padding: 6px 12px;
     font-size: 14px;
     font-weight: bold;
-    color: #fff;
-    background: #3367D6;
-    border: none;
     border-radius: 6px;
     cursor: pointer;
     text-align: center;
@@ -94,7 +91,22 @@
     justify-content: center;
     box-sizing: border-box;
   }
-  .action_button:hover {
+  /* Silver/Gray Calculate Button */
+  .calc_btn {
+    color: #222;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+  }
+  .calc_btn:hover {
+    background-color: #e8e8e8;
+  }
+  /* Blue Link Buttons */
+  .link_btn {
+    color: #fff;
+    background: #3367D6;
+    border: none;
+  }
+  .link_btn:hover {
     background: #2954B8;
   }
 </style>
@@ -200,9 +212,9 @@
     </div>
 
     <div class="action_buttons_row">
-        <button id="calculate_button" class="action_button" type="button">Calculate</button>
-        <button id="annual_returns_button" class="action_button" type="button">Annual Returns</button>
-        <button id="performance_chart_button" class="action_button" type="button">Performance Chart</button>
+        <button id="calculate_button" class="action_button calc_btn" type="button">Calculate</button>
+        <button id="annual_returns_button" class="action_button link_btn" type="button">Annual Returns</button>
+        <button id="performance_chart_button" class="action_button link_btn" type="button">Performance Chart</button>
     </div>
 </div>
 
