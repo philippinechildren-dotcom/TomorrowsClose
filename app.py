@@ -378,184 +378,86 @@ def performance_chart_json():
         except Exception as e:
             print(f"Error parsing portfolio performance chart: {e}")
 
-    strategy = request.args.get(
-        "strategy",
-        "rsi_threshold",
-    )
+    # ----------------------------------------------------
+    # SINGLE STRATEGY FALLTHROUGH ROUTE
+    # ----------------------------------------------------
+    strategy = request.args.get("strategy", "rsi_threshold")
+    
+    # Check both 'etf' AND 'ticker' query parameters so SPY works properly
+    etf = request.args.get("etf") or request.args.get("ticker") or "TQQQ"
+    
+    benchmark_ticker = request.args.get("benchmark_ticker", "QQQ")
+    period = request.args.get("period", "maximum")
 
-    etf = request.args.get(
-        "etf",
-        "TQQQ",
-    )
-
-    benchmark_ticker = request.args.get(
-        "benchmark_ticker",
-        "QQQ",
-    )
-
-    period = request.args.get(
-        "period",
-        "maximum",
-    )
-
+    # Fetch raw data from build_performance_chart
     if strategy == "lowhigh":
-
-        return jsonify(
-            build_performance_chart(
-                strategy="lowhigh",
-                ticker=etf,
-                period=period,
-                benchmark_ticker=benchmark_ticker,
-                entry_lookback=int(
-                    request.args.get(
-                        "entry_lookback",
-                        3,
-                    )
-                ),
-                exit_lookback=int(
-                    request.args.get(
-                        "exit_lookback",
-                        1,
-                    )
-                ),
-            )
+        raw_data = build_performance_chart(
+            strategy="lowhigh",
+            ticker=etf,
+            period=period,
+            benchmark_ticker=benchmark_ticker,
+            entry_lookback=int(request.args.get("entry_lookback", 3)),
+            exit_lookback=int(request.args.get("exit_lookback", 1)),
         )
-
-    if strategy == "turnaround_tuesday":
-
-        return jsonify(
-            build_performance_chart(
-                strategy="turnaround_tuesday",
-                ticker=etf,
-                period=period,
-                benchmark_ticker=benchmark_ticker,
-                entry_lookback=int(
-                    request.args.get(
-                        "entry_lookback",
-                        1,
-                    )
-                ),
-            )
+    elif strategy == "turnaround_tuesday":
+        raw_data = build_performance_chart(
+            strategy="turnaround_tuesday",
+            ticker=etf,
+            period=period,
+            benchmark_ticker=benchmark_ticker,
+            entry_lookback=int(request.args.get("entry_lookback", 1)),
         )
-
-    if strategy == "ulcershield":
-
-        return jsonify(
-            build_performance_chart(
-                strategy="ulcershield",
-                ticker=etf,
-                period=period,
-                benchmark_ticker=benchmark_ticker,
-                rsi_1_period=int(
-                    request.args.get(
-                        "rsi_1_period",
-                        2,
-                    )
-                ),
-                rsi_1_threshold=int(
-                    request.args.get(
-                        "rsi_1_threshold",
-                        28,
-                    )
-                ),
-                rsi_2_period=int(
-                    request.args.get(
-                        "rsi_2_period",
-                        3,
-                    )
-                ),
-                rsi_2_threshold=int(
-                    request.args.get(
-                        "rsi_2_threshold",
-                        28,
-                    )
-                ),
-                rsi_3_period=int(
-                    request.args.get(
-                        "rsi_3_period",
-                        5,
-                    )
-                ),
-                rsi_3_threshold=int(
-                    request.args.get(
-                        "rsi_3_threshold",
-                        28,
-                    )
-                ),
-                rsi_4_period=int(
-                    request.args.get(
-                        "rsi_4_period",
-                        8,
-                    )
-                ),
-                rsi_4_threshold=int(
-                    request.args.get(
-                        "rsi_4_threshold",
-                        28,
-                    )
-                ),
-                rsi_5_period=int(
-                    request.args.get(
-                        "rsi_5_period",
-                        13,
-                    )
-                ),
-                rsi_5_threshold=int(
-                    request.args.get(
-                        "rsi_5_threshold",
-                        32,
-                    )
-                ),
-            )
+    elif strategy == "ulcershield":
+        raw_data = build_performance_chart(
+            strategy="ulcershield",
+            ticker=etf,
+            period=period,
+            benchmark_ticker=benchmark_ticker,
+            rsi_1_period=int(request.args.get("rsi_1_period", 2)),
+            rsi_1_threshold=int(request.args.get("rsi_1_threshold", 28)),
+            rsi_2_period=int(request.args.get("rsi_2_period", 3)),
+            rsi_2_threshold=int(request.args.get("rsi_2_threshold", 28)),
+            rsi_3_period=int(request.args.get("rsi_3_period", 5)),
+            rsi_3_threshold=int(request.args.get("rsi_3_threshold", 28)),
+            rsi_4_period=int(request.args.get("rsi_4_period", 8)),
+            rsi_4_threshold=int(request.args.get("rsi_4_threshold", 28)),
+            rsi_5_period=int(request.args.get("rsi_5_period", 13)),
+            rsi_5_threshold=int(request.args.get("rsi_5_threshold", 32)),
         )
-
-    if strategy == "lowhigh_ulcershield":
-
-        return jsonify(
-            build_performance_chart(
-                strategy="lowhigh_ulcershield",
-                ticker=etf,
-                period=period,
-                benchmark_ticker=benchmark_ticker,
-                entry_lookback=int(
-                    request.args.get(
-                        "entry_lookback",
-                        1,
-                    )
-                ),
-                exit_lookback=int(
-                    request.args.get(
-                        "exit_lookback",
-                        1,
-                    )
-                ),
-            )
+    elif strategy == "lowhigh_ulcershield":
+        raw_data = build_performance_chart(
+            strategy="lowhigh_ulcershield",
+            ticker=etf,
+            period=period,
+            benchmark_ticker=benchmark_ticker,
+            entry_lookback=int(request.args.get("entry_lookback", 1)),
+            exit_lookback=int(request.args.get("exit_lookback", 1)),
         )
-
-    rsi_period = int(
-        request.args.get(
-            "rsi_period",
-            3,
-        )
-    )
-
-    rsi_threshold = int(
-        request.args.get(
-            "rsi_threshold",
-            28,
-        )
-    )
-
-    return jsonify(
-        build_performance_chart(
+    else:
+        raw_data = build_performance_chart(
             strategy="rsi_threshold",
             ticker=etf,
             period=period,
             benchmark_ticker=benchmark_ticker,
-            rsi_length=rsi_period,
-            rsi_threshold=rsi_threshold,
+            rsi_length=int(request.args.get("rsi_period", 3)),
+            rsi_threshold=int(request.args.get("rsi_threshold", 28)),
         )
-    )
+
+    # Re-base single-strategy response starting strictly at 0.0%
+    if isinstance(raw_data, dict) and "chart_data" in raw_data:
+        c_data = raw_data["chart_data"]
+        valid_points = [p for p in c_data if p.get("strategy") is not None and p.get("benchmark") is not None]
+        if valid_points:
+            start_strat = valid_points[0]["strategy"]
+            start_bench = valid_points[0]["benchmark"]
+            
+            for p in valid_points:
+                p["strategy"] = round(p["strategy"] - start_strat, 2)
+                p["benchmark"] = round(p["benchmark"] - start_bench, 2)
+                
+            raw_data["chart_data"] = valid_points
+
+    return jsonify(raw_data)
 
 @app.route("/json/annual-returns")
 def annual_returns_json():

@@ -230,28 +230,43 @@ def build_performance_chart(
         }
 
     # ==========================================================
-    # Benchmark
+    # Benchmark & Shared Inception Alignment
     # ==========================================================
 
-    benchmark_history = get_market_history(
+    raw_benchmark_history = get_market_history(
         ticker=benchmark_ticker,
     )
 
-    benchmark_history = benchmark_history.loc[
-        history.index[0]:
-        history.index[-1]
-    ]
+    if raw_benchmark_history is None or raw_benchmark_history.empty:
+        return {
+            "strategy": strategy_result["name"],
+            "benchmark": benchmark_ticker,
+            "period": period,
+            "chart_data": [],
+        }
 
+    # 1. Find the LATEST start date between Strategy and Benchmark
+    common_start_date = max(history.index[0], raw_benchmark_history.index[0])
+    common_end_date = min(history.index[-1], raw_benchmark_history.index[-1])
+
+    # 2. Slice both histories to the exact same shared date range
+    history = history.loc[common_start_date:common_end_date]
+    benchmark_history = raw_benchmark_history.loc[common_start_date:common_end_date]
+
+    # 3. Trim strategy equity curve to match cropped history length
+    raw_strat_curve = strategy_result["equity_curve"][-len(history):]
+
+    # 4. Compute benchmark buy-and-hold on the cropped series
     benchmark_result = build_buy_and_hold(
         closes=benchmark_history["close"],
     )
 
     # ==========================================================
-    # Normalize Curves
+    # Normalize Curves (Both start strictly at 0.0% on common_start_date)
     # ==========================================================
 
     strategy_curve = normalize_equity_curve(
-        strategy_result["equity_curve"]
+        raw_strat_curve
     )
 
     benchmark_curve = normalize_equity_curve(
