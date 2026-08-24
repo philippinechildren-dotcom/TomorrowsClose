@@ -1,3 +1,5 @@
+import json
+
 from flask import (
     Flask,
     render_template,
@@ -81,24 +83,26 @@ from StrategyLab.Strategies.Parameters.lowhigh_ulcershield_parameters import (
     render_lowhigh_ulcershield_parameters,
 )
 
-app = Flask(__name__)
+from PortfolioLab.portfolio_lab import build_portfolio_result
 
+app = Flask(__name__)
 
 @app.route("/")
 def catalog():
     return render_catalog()
 
-
 @app.route("/prototype")
 def prototype():
     return render_template("homepage_test.html")
-
 
 @app.route("/json/homepage")
 def homepage_json():
     from Utilities.Publishing.publisher import build_homepage
     return jsonify(build_homepage())
 
+@app.route("/widget/portfolio-lab")
+def portfolio_lab_widget():
+    return render_template("display_components/portfolio_lab/portfolio_lab_dashboard.html")
 
 @app.route("/json/rankings")
 def rankings_json():
@@ -107,11 +111,9 @@ def rankings_json():
         mimetype="application/json",
     )
 
-
 @app.route("/widget/rsi-pricesolver")
 def widget_rsi_pricesolver():
     return render_page()
-
 
 @app.route("/widget/lowhigh")
 def widget_lowhigh():
@@ -314,13 +316,63 @@ def widget_homepage_rsi_pricesolver():
 
 @app.route("/widget/performance-chart")
 def performance_chart_widget():
-
     return render_template(
         "display_components/performance/performance_chart.html"
     )
 
+
 @app.route("/json/performance-chart")
 def performance_chart_json():
+
+    legs_raw = request.args.get("legs")
+    if legs_raw:
+        try:
+            legs = json.loads(legs_raw)
+            rebalance = request.args.get("rebalance", "no_rebalance")
+            period = request.args.get("period", "maximum")
+            benchmark_ticker = request.args.get("benchmark_ticker", "QQQ")
+
+            # 1. Run portfolio engine
+            res = build_portfolio_result(
+                legs=legs, 
+                rebalance_schedule=rebalance, 
+                period=period
+            )
+
+            # 2. Get benchmark using app.py's existing build_performance_chart function
+            bench_data = build_performance_chart(
+                strategy="rsi_threshold",  # Any strategy works; we only extract the benchmark curve
+                ticker=benchmark_ticker,
+                period=period,
+                benchmark_ticker=benchmark_ticker
+            )
+
+            eq_curve = res.get("equity_curve", [])
+            bench_chart = bench_data.get("chart_data", [])
+
+            start_eq = eq_curve[0] if eq_curve else 100000.0
+            start_bench_val = bench_chart[0]["benchmark"] if bench_chart else 0.0
+
+            chart_data = []
+            min_len = min(len(eq_curve), len(bench_chart))
+
+            for i in range(min_len):
+                strat_pct = ((eq_curve[i] - start_eq) / start_eq) * 100.0
+                bench_pct = bench_chart[i]["benchmark"] - start_bench_val
+                
+                chart_data.append({
+                    "date": bench_chart[i]["date"],
+                    "strategy": strat_pct,
+                    "benchmark": bench_pct
+                })
+
+            return jsonify({
+                "strategy": "Portfolio Strategy",
+                "benchmark": f"{benchmark_ticker} Buy & Hold",
+                "chart_data": chart_data
+            })
+        except Exception as e:
+            print(f"Error parsing portfolio legs: {e}")
 
     strategy = request.args.get(
         "strategy",
@@ -504,6 +556,65 @@ def performance_chart_json():
 @app.route("/json/annual-returns")
 def annual_returns_json():
 
+    legs_raw = request.args.get("legs")
+    if legs_raw:
+        try:
+            legs = json.loads(legs_raw)
+            rebalance = request.args.get("rebalance", "no_rebalance")
+            period = request.args.get("period", "maximum")
+
+            res = build_portfolio_result(
+                legs=legs, rebalance_schedule=rebalance, period=period
+            )
+
+            # Check if portfolio lab returned pre-computed annual returns
+            if "annual_returns" in res and res["annual_returns"]:
+                portfolio_annuals = res["annual_returns"]
+            else:
+                # Fallback: compute annual returns directly from dates and equity curve
+                dates = res.get("dates", [])
+                equity_curve = res.get("equity_curve", [])
+                yearly_data = {}
+
+                for d, eq in zip(dates, equity_curve):
+                    yr = int(d[:4])
+                    if yr not in yearly_data:
+                        yearly_data[yr] = []
+                    yearly_data[yr].append(eq)
+
+                portfolio_annuals = []
+                for yr, values in yearly_data.items():
+                    start_val = values[0]
+                    end_val = values[-1]
+                    year_ret = (end_val - start_val) / start_val
+
+                    peak = values[0]
+                    max_dd = 0.0
+                    for val in values:
+                        if val > peak:
+                            peak = val
+                        dd = (val - peak) / peak
+                        if dd < max_dd:
+                            max_dd = dd
+
+                    portfolio_annuals.append(
+                        {
+                            "year": yr,
+                            "return": year_ret,
+                            "max_eod_drawdown": abs(max_dd),
+                        }
+                    )
+
+            return jsonify(
+                {
+                    "strategy": "Portfolio Strategy",
+                    "annual_returns": portfolio_annuals[::-1],
+                }
+            )
+
+        except Exception as e:
+            print(f"ERROR IN PORTFOLIO ANNUAL RETURNS: {e}")
+
     strategy = request.args.get(
         "strategy",
         "rsi_threshold",
@@ -680,6 +791,35 @@ def annual_returns_widget():
 
 @app.route("/widget/small-metrics")
 def small_metrics_widget():
+
+    legs_raw = request.args.get("legs")
+    period = request.args.get("period", "maximum")
+    rebalance = request.args.get("rebalance", "no_rebalance")
+
+    if legs_raw:
+        try:
+            legs = json.loads(legs_raw)
+            portfolio_res = build_portfolio_result(
+                legs=legs,
+                rebalance_schedule=rebalance,
+                period=period
+            )
+            # portfolio_res already contains "metrics" and top-level metric keys
+            return render_small_metrics_page(
+                strategy=portfolio_res,
+                selected_period=period,
+            )
+        except Exception as e:
+            print(f"Error evaluating portfolio legs in small metrics: {e}")
+
+    # Fallback to default Buy & Hold QQQ if no legs are passed
+    from PortfolioLab.portfolio_lab import build_buy_and_hold
+    default_strat = build_buy_and_hold(ticker="QQQ", period=period)
+    
+    return render_small_metrics_page(
+        strategy=default_strat,
+        selected_period=period,
+    )
 
     strategy_name = request.args.get("strategy")
 
@@ -1120,6 +1260,34 @@ def widget_lowhigh_ulcershield_dashboard():
             ),
         },
     )
+
+@app.route("/widget/portfolio-lab-dashboard")
+def widget_portfolio_lab_dashboard():
+    default_legs = [
+        {"strategy": "buy_and_hold", "etf": "QQQ", "allocation": 25},
+        {"strategy": "lowhigh", "etf": "QQQ", "allocation": 25},
+        {"strategy": "ulcershield", "etf": "QQQ", "allocation": 25},
+        {"strategy": "buy_and_hold", "etf": "TQQQ", "allocation": 25},
+    ]
+    return render_template(
+        "display_components/portfolio_lab/portfolio_lab_dashboard.html",
+        legs=default_legs,
+        rebalance="no_rebalance",
+        period="maximum",
+    )
+
+
+@app.route("/json/portfolio-lab-metrics", methods=["POST"])
+def portfolio_lab_metrics():
+    payload = request.get_json() or {}
+    legs = payload.get("legs", [])
+    period = payload.get("period", "maximum")
+    rebalance = payload.get("rebalance", "no_rebalance")
+
+    result = build_portfolio_result(
+        legs=legs, rebalance_schedule=rebalance, period=period
+    )
+    return jsonify(result)
 
 if __name__ == "__main__":
     app.run(debug=True)

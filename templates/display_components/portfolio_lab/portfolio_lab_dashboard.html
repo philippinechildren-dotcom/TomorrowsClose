@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 15px;
+    background-color: #ffffff;
+    color: #222;
+  }
+  .metrics_container {
+    margin-bottom: 25px;
+  }
+  .metrics_table {
+    border-collapse: collapse;
+  }
+  .metrics_table th {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    padding: 6px 20px;
+    border-bottom: 2px solid #ccc;
+    text-align: center;
+  }
+  .metrics_table td {
+    font-size: 26px;
+    font-weight: bold;
+    color: #222;
+    padding: 10px 20px;
+    text-align: center;
+  }
+
+  .parameters_container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: fit-content;
+  }
+  .legs_grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 12px 15px;
+    align-items: center;
+  }
+  .legs_grid label {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .legs_grid select, .legs_grid input {
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .etf_input { width: 80px; }
+  .alloc_input { width: 50px; }
+
+  .controls_row {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+  }
+  .controls_row select {
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .action_buttons_row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 5px;
+    width: 100%;
+  }
+  .action_button {
+    flex: 1;
+    min-height: 42px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background: #3367D6;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .action_button:hover {
+    background: #2954B8;
+  }
+</style>
+</head>
+<body>
+
+<div class="metrics_container">
+    <table class="metrics_table">
+        <thead>
+            <tr>
+                <th>UPI</th>
+                <th>CAGR</th>
+                <th>Max EOD DD</th>
+                <th>Ulcer Index</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="upi">-</td>
+                <td id="cagr">-</td>
+                <td id="max_eod_drawdown">-</td>
+                <td id="ulcer_index">-</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="parameters_container">
+    <div class="legs_grid">
+        <label>Leg 1</label>
+        <select id="strat_1">
+            <option value="none">None</option>
+            <option value="buy_and_hold" selected>Buy & Hold</option>
+            <option value="rsi_threshold">RSI Threshold</option>
+            <option value="lowhigh">LowHigh</option>
+            <option value="turnaround_tuesday">Turnaround Tuesday</option>
+            <option value="ulcershield">RSI UlcerShield</option>
+            <option value="lowhigh_ulcershield">LowHigh UlcerShield</option>
+        </select>
+        <input class="etf_input" id="etf_1" type="text" value="QQQ">
+        <div><input class="alloc_input" id="alloc_1" type="number" value="100"> %</div>
+
+        <label>Leg 2</label>
+        <select id="strat_2">
+            <option value="none" selected>None</option>
+            <option value="buy_and_hold">Buy & Hold</option>
+            <option value="rsi_threshold">RSI Threshold</option>
+            <option value="lowhigh">LowHigh</option>
+            <option value="turnaround_tuesday">Turnaround Tuesday</option>
+            <option value="ulcershield">RSI UlcerShield</option>
+            <option value="lowhigh_ulcershield">LowHigh UlcerShield</option>
+        </select>
+        <input class="etf_input" id="etf_2" type="text" value="">
+        <div><input class="alloc_input" id="alloc_2" type="number" value="0"> %</div>
+
+        <label>Leg 3</label>
+        <select id="strat_3">
+            <option value="none" selected>None</option>
+            <option value="buy_and_hold">Buy & Hold</option>
+            <option value="rsi_threshold">RSI Threshold</option>
+            <option value="lowhigh">LowHigh</option>
+            <option value="turnaround_tuesday">Turnaround Tuesday</option>
+            <option value="ulcershield">RSI UlcerShield</option>
+            <option value="lowhigh_ulcershield">LowHigh UlcerShield</option>
+        </select>
+        <input class="etf_input" id="etf_3" type="text" value="">
+        <div><input class="alloc_input" id="alloc_3" type="number" value="0"> %</div>
+
+        <label>Leg 4</label>
+        <select id="strat_4">
+            <option value="none" selected>None</option>
+            <option value="buy_and_hold">Buy & Hold</option>
+            <option value="rsi_threshold">RSI Threshold</option>
+            <option value="lowhigh">LowHigh</option>
+            <option value="turnaround_tuesday">Turnaround Tuesday</option>
+            <option value="ulcershield">RSI UlcerShield</option>
+            <option value="lowhigh_ulcershield">LowHigh UlcerShield</option>
+        </select>
+        <input class="etf_input" id="etf_4" type="text" value="">
+        <div><input class="alloc_input" id="alloc_4" type="number" value="0"> %</div>
+    </div>
+
+    <div class="controls_row">
+        <div>
+            <label><b>Rebalancing Plan:</b></label>
+            <select id="rebalance_plan">
+                <option value="no_rebalance" selected>No Rebalancing</option>
+                <option value="3_months">3-Month</option>
+                <option value="6_months">6-Month</option>
+                <option value="1_year">1-Year</option>
+            </select>
+        </div>
+        <div>
+            <label><b>Time Period:</b></label>
+            <select id="time_period">
+                <option value="1_year">1 Year</option>
+                <option value="3_years">3 Years</option>
+                <option value="5_years">5 Years</option>
+                <option value="10_years">10 Years</option>
+                <option value="maximum" selected>Maximum</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="action_buttons_row">
+        <button id="calculate_button" class="action_button" type="button">Calculate</button>
+        <button id="annual_returns_button" class="action_button" type="button">Annual Returns</button>
+        <button id="performance_chart_button" class="action_button" type="button">Performance Chart</button>
+    </div>
+</div>
+
+<script>
+function get_payload() {
+    const legs = [];
+    for (let i = 1; i <= 4; i++) {
+        const stratEl = document.getElementById(`strat_${i}`);
+        const etfEl = document.getElementById(`etf_${i}`);
+        const allocEl = document.getElementById(`alloc_${i}`);
+
+        if (stratEl && etfEl && allocEl) {
+            const stratValue = stratEl.value;
+            const etfValue = etfEl.value.trim().toUpperCase();
+            const allocValue = parseFloat(allocEl.value) || 0;
+
+            if (stratValue !== "none" && allocValue > 0) {
+                legs.push({
+                    strategy: stratValue,
+                    etf: etfValue || "QQQ",
+                    allocation: allocValue
+                });
+            }
+        }
+    }
+
+    const rebalanceEl = document.getElementById("rebalance_plan");
+    const periodEl = document.getElementById("time_period");
+
+    return {
+        rebalance: rebalanceEl ? rebalanceEl.value : "no_rebalance",
+        period: periodEl ? periodEl.value : "maximum",
+        legs: legs
+    };
+}
+
+function build_url(base_url) {
+    const payload = get_payload();
+    const query = new URLSearchParams({
+        rebalance: payload.rebalance,
+        period: payload.period,
+        legs: JSON.stringify(payload.legs)
+    }).toString();
+    return base_url + "?" + query;
+}
+
+function load_metrics() {
+    fetch("/json/portfolio-lab-metrics", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(get_payload())
+    })
+    .then(res => res.json())
+    .then(data => {
+        const metrics = data.metrics;
+        if (!metrics) return;
+
+        const upiEl = document.getElementById("upi");
+        const cagrEl = document.getElementById("cagr");
+        const ddEl = document.getElementById("max_eod_drawdown");
+        const ulcerEl = document.getElementById("ulcer_index");
+
+        if (upiEl) upiEl.textContent = metrics.ulcer_performance_index.toFixed(2);
+        if (cagrEl) cagrEl.textContent = (metrics.cagr * 100).toFixed(2) + "%";
+        if (ddEl) ddEl.textContent = (metrics.max_eod_drawdown * 100).toFixed(2) + "%";
+        if (ulcerEl) ulcerEl.textContent = metrics.ulcer_index.toFixed(2);
+    })
+    .catch(err => {
+        console.error("Fetch error:", err);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    load_metrics();
+
+    const calcBtn = document.getElementById("calculate_button");
+    if (calcBtn) calcBtn.addEventListener("click", load_metrics);
+
+    const annualBtn = document.getElementById("annual_returns_button");
+    if (annualBtn) {
+        annualBtn.addEventListener("click", function() {
+            window.open(build_url("https://tomorrowsclose.blogspot.com/p/annual-strategy-returns-and-historical.html"), "_blank");
+        });
+    }
+
+    const perfBtn = document.getElementById("performance_chart_button");
+    if (perfBtn) {
+        perfBtn.addEventListener("click", function() {
+            window.open(build_url("https://tomorrowsclose.blogspot.com/p/strategy-performance-chart-and.html"), "_blank");
+        });
+    }
+});
+</script>
+</body>
+</html>
