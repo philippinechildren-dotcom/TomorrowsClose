@@ -1,0 +1,5918 @@
+{
+    "updated": "2026-08-26 00:34:19",
+    "total_records": 739,
+    "journal": [
+        {
+            "date": "2026-08-25",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$70.27",
+            "pnl": "+0.37%"
+        },
+        {
+            "date": "2026-08-25",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$70.27",
+            "pnl": "+0.37%"
+        },
+        {
+            "date": "2026-08-25",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$70.27",
+            "pnl": "+0.37%"
+        },
+        {
+            "date": "2026-08-25",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$88.80",
+            "pnl": "-0.41%"
+        },
+        {
+            "date": "2026-08-25",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$88.80",
+            "pnl": "-0.03%"
+        },
+        {
+            "date": "2026-08-25",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$88.80",
+            "pnl": "+0.25%"
+        },
+        {
+            "date": "2026-08-25",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$88.80",
+            "pnl": "-2.04%"
+        },
+        {
+            "date": "2026-08-25",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$710.72",
+            "pnl": "+0.62%"
+        },
+        {
+            "date": "2026-08-25",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$70.27",
+            "pnl": "+1.83%"
+        },
+        {
+            "date": "2026-08-24",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$69.01",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-24",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$69.01",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-24",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$69.01",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$87.72",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-24",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$706.32",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-24",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$69.01",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$71.17",
+            "pnl": "-0.38%"
+        },
+        {
+            "date": "2026-08-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$71.17",
+            "pnl": "-0.38%"
+        },
+        {
+            "date": "2026-08-21",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$71.17",
+            "pnl": "-1.88%"
+        },
+        {
+            "date": "2026-08-20",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$88.95",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$72.53",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$72.53",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-18",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$90.65",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-18",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$90.65",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-18",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$72.53",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-12",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$92.32",
+            "pnl": "+0.29%"
+        },
+        {
+            "date": "2026-08-11",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$90.98",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-08-07",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$92.21",
+            "pnl": "+0.46%"
+        },
+        {
+            "date": "2026-08-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$90.13",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$63.30",
+            "pnl": "-0.90%"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$63.30",
+            "pnl": "-0.90%"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$63.30",
+            "pnl": "-0.22%"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$63.30",
+            "pnl": "+0.57%"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$63.30",
+            "pnl": "+1.92%"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$82.68",
+            "pnl": "-0.55%"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$82.68",
+            "pnl": "-0.08%"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$82.68",
+            "pnl": "+0.05%"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$82.68",
+            "pnl": "+0.45%"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$82.68",
+            "pnl": "+1.31%"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$82.68",
+            "pnl": "-2.73%"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$683.55",
+            "pnl": "+0.21%"
+        },
+        {
+            "date": "2026-07-30",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$63.30",
+            "pnl": "-4.52%"
+        },
+        {
+            "date": "2026-07-29",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$57.75",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-29",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$77.58",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-28",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$61.56",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-28",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$80.87",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-27",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$82.48",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-27",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$682.12",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-24",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$64.00",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$83.00",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$66.30",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$66.30",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-23",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$85.00",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-23",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$85.00",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-23",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$66.30",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$71.37",
+            "pnl": "+0.18%"
+        },
+        {
+            "date": "2026-07-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$71.37",
+            "pnl": "+0.18%"
+        },
+        {
+            "date": "2026-07-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$71.37",
+            "pnl": "+1.14%"
+        },
+        {
+            "date": "2026-07-21",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$89.23",
+            "pnl": "+0.15%"
+        },
+        {
+            "date": "2026-07-21",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$89.23",
+            "pnl": "+0.77%"
+        },
+        {
+            "date": "2026-07-21",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$89.23",
+            "pnl": "+0.75%"
+        },
+        {
+            "date": "2026-07-21",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$71.37",
+            "pnl": "+0.89%"
+        },
+        {
+            "date": "2026-07-17",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$67.53",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-17",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$85.91",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-16",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$70.74",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-16",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$70.74",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-16",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$88.57",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-16",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$88.57",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-16",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$70.74",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-14",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$75.02",
+            "pnl": "+0.66%"
+        },
+        {
+            "date": "2026-07-14",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$92.13",
+            "pnl": "+0.44%"
+        },
+        {
+            "date": "2026-07-14",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$719.69",
+            "pnl": "+1.12%"
+        },
+        {
+            "date": "2026-07-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$72.64",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-13",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$90.13",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-13",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$711.74",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-09",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$93.14",
+            "pnl": "+0.56%"
+        },
+        {
+            "date": "2026-07-09",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$93.14",
+            "pnl": "+0.77%"
+        },
+        {
+            "date": "2026-07-08",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$72.72",
+            "pnl": "+0.14%"
+        },
+        {
+            "date": "2026-07-07",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$72.23",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-07",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$89.69",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$76.42",
+            "pnl": "+0.84%"
+        },
+        {
+            "date": "2026-07-02",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$73.35",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-07-02",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$90.61",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-29",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$77.19",
+            "pnl": "+1.49%"
+        },
+        {
+            "date": "2026-06-29",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$77.19",
+            "pnl": "+1.49%"
+        },
+        {
+            "date": "2026-06-29",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$93.68",
+            "pnl": "+0.54%"
+        },
+        {
+            "date": "2026-06-29",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$93.68",
+            "pnl": "+0.73%"
+        },
+        {
+            "date": "2026-06-29",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$93.68",
+            "pnl": "+2.70%"
+        },
+        {
+            "date": "2026-06-29",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$77.19",
+            "pnl": "+7.46%"
+        },
+        {
+            "date": "2026-06-26",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$71.83",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-26",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$71.83",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-26",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$71.83",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-25",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$74.95",
+            "pnl": "+0.14%"
+        },
+        {
+            "date": "2026-06-25",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$74.95",
+            "pnl": "+0.14%"
+        },
+        {
+            "date": "2026-06-25",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$74.95",
+            "pnl": "+0.69%"
+        },
+        {
+            "date": "2026-06-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$90.37",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$74.44",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$74.44",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-23",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$91.22",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-23",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$91.22",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-23",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$74.44",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-18",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$97.91",
+            "pnl": "+0.51%"
+        },
+        {
+            "date": "2026-06-18",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$97.91",
+            "pnl": "+0.93%"
+        },
+        {
+            "date": "2026-06-17",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$93.56",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-16",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$95.46",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-11",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$76.01",
+            "pnl": "+0.62%"
+        },
+        {
+            "date": "2026-06-11",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$76.01",
+            "pnl": "+0.62%"
+        },
+        {
+            "date": "2026-06-11",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$76.01",
+            "pnl": "+1.95%"
+        },
+        {
+            "date": "2026-06-11",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$92.18",
+            "pnl": "-1.38%"
+        },
+        {
+            "date": "2026-06-11",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$92.18",
+            "pnl": "+0.59%"
+        },
+        {
+            "date": "2026-06-11",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$92.18",
+            "pnl": "+0.46%"
+        },
+        {
+            "date": "2026-06-11",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$92.18",
+            "pnl": "+2.95%"
+        },
+        {
+            "date": "2026-06-11",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$76.01",
+            "pnl": "+3.11%"
+        },
+        {
+            "date": "2026-06-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$69.27",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$73.72",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$73.72",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-09",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$90.12",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-09",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$73.72",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-08",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$76.27",
+            "pnl": "-2.10%"
+        },
+        {
+            "date": "2026-06-08",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$76.27",
+            "pnl": "+0.88%"
+        },
+        {
+            "date": "2026-06-08",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$76.27",
+            "pnl": "+0.88%"
+        },
+        {
+            "date": "2026-06-08",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$76.27",
+            "pnl": "+4.41%"
+        },
+        {
+            "date": "2026-06-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$73.05",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$73.05",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-05",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$89.54",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-05",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$89.54",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-05",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$73.05",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$85.22",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-06-04",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$99.02",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-05-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$76.51",
+            "pnl": "+0.59%"
+        },
+        {
+            "date": "2026-05-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$76.51",
+            "pnl": "+0.98%"
+        },
+        {
+            "date": "2026-05-20",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$92.05",
+            "pnl": "+0.22%"
+        },
+        {
+            "date": "2026-05-20",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$76.51",
+            "pnl": "+4.91%"
+        },
+        {
+            "date": "2026-05-19",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$72.93",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-05-19",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$72.93",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-05-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$74.32",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-05-15",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$91.03",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-05-13",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$92.55",
+            "pnl": "+0.41%"
+        },
+        {
+            "date": "2026-05-12",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$90.69",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-04-29",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$79.64",
+            "pnl": "+0.25%"
+        },
+        {
+            "date": "2026-04-28",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$78.67",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.68",
+            "pnl": "+0.22%"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.68",
+            "pnl": "+0.22%"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.68",
+            "pnl": "+0.22%"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.68",
+            "pnl": "+1.50%"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.68",
+            "pnl": "+1.50%"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$61.00",
+            "pnl": "-1.40%"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$61.00",
+            "pnl": "-1.16%"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$61.00",
+            "pnl": "-1.22%"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$61.00",
+            "pnl": "-1.09%"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$61.00",
+            "pnl": "-0.36%"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$61.00",
+            "pnl": "-5.81%"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$577.18",
+            "pnl": "+3.39%"
+        },
+        {
+            "date": "2026-03-31",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.68",
+            "pnl": "+1.09%"
+        },
+        {
+            "date": "2026-03-30",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$558.28",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-27",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$38.78",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-27",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$38.78",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-26",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.23",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-26",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.23",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-26",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.23",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-26",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.23",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$44.57",
+            "pnl": "-0.66%"
+        },
+        {
+            "date": "2026-03-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$44.57",
+            "pnl": "-0.49%"
+        },
+        {
+            "date": "2026-03-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$44.57",
+            "pnl": "+0.69%"
+        },
+        {
+            "date": "2026-03-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$44.57",
+            "pnl": "+0.69%"
+        },
+        {
+            "date": "2026-03-23",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$44.57",
+            "pnl": "-2.45%"
+        },
+        {
+            "date": "2026-03-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$43.08",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$43.08",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-20",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$62.13",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-19",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$45.69",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-19",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$64.53",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-19",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$45.69",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$46.10",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-18",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$64.95",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-16",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$47.46",
+            "pnl": "+0.27%"
+        },
+        {
+            "date": "2026-03-16",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$47.46",
+            "pnl": "+0.27%"
+        },
+        {
+            "date": "2026-03-16",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$47.46",
+            "pnl": "+0.67%"
+        },
+        {
+            "date": "2026-03-16",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$47.46",
+            "pnl": "+1.35%"
+        },
+        {
+            "date": "2026-03-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$45.93",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-13",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$64.76",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-13",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$64.76",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-12",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$46.83",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-12",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$46.83",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-12",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$65.58",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-12",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$46.83",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$49.39",
+            "pnl": "+0.78%"
+        },
+        {
+            "date": "2026-03-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$49.39",
+            "pnl": "+0.78%"
+        },
+        {
+            "date": "2026-03-09",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$67.94",
+            "pnl": "+0.53%"
+        },
+        {
+            "date": "2026-03-09",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$49.39",
+            "pnl": "+3.89%"
+        },
+        {
+            "date": "2026-03-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$47.54",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$47.54",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$66.19",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-06",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$47.54",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.26",
+            "pnl": "+0.90%"
+        },
+        {
+            "date": "2026-03-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.26",
+            "pnl": "+0.90%"
+        },
+        {
+            "date": "2026-03-04",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$68.65",
+            "pnl": "+0.06%"
+        },
+        {
+            "date": "2026-03-04",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.26",
+            "pnl": "+4.49%"
+        },
+        {
+            "date": "2026-03-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$48.10",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$48.10",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-03-03",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$48.10",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-26",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$68.44",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-24",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$49.78",
+            "pnl": "+0.64%"
+        },
+        {
+            "date": "2026-02-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$48.24",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$49.39",
+            "pnl": "+0.47%"
+        },
+        {
+            "date": "2026-02-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$49.39",
+            "pnl": "+0.47%"
+        },
+        {
+            "date": "2026-02-18",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$67.75",
+            "pnl": "+0.32%"
+        },
+        {
+            "date": "2026-02-18",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$67.75",
+            "pnl": "+1.59%"
+        },
+        {
+            "date": "2026-02-18",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$49.39",
+            "pnl": "+2.34%"
+        },
+        {
+            "date": "2026-02-12",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$48.26",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-12",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$48.26",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-12",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$66.69",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-12",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$66.69",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-12",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$48.26",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.59",
+            "pnl": "-0.73%"
+        },
+        {
+            "date": "2026-02-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.59",
+            "pnl": "-0.73%"
+        },
+        {
+            "date": "2026-02-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.59",
+            "pnl": "+0.33%"
+        },
+        {
+            "date": "2026-02-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.59",
+            "pnl": "+1.24%"
+        },
+        {
+            "date": "2026-02-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$68.79",
+            "pnl": "-1.29%"
+        },
+        {
+            "date": "2026-02-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$68.79",
+            "pnl": "-0.47%"
+        },
+        {
+            "date": "2026-02-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$68.79",
+            "pnl": "+0.24%"
+        },
+        {
+            "date": "2026-02-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$68.79",
+            "pnl": "+0.83%"
+        },
+        {
+            "date": "2026-02-06",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$68.79",
+            "pnl": "-2.37%"
+        },
+        {
+            "date": "2026-02-06",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.59",
+            "pnl": "-3.67%"
+        },
+        {
+            "date": "2026-02-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$47.64",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-05",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$66.04",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$49.76",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-04",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$67.98",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$52.52",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$52.52",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-03",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$70.46",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-03",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$70.46",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-03",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$52.52",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-02-02",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$55.10",
+            "pnl": "+0.41%"
+        },
+        {
+            "date": "2026-02-02",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$55.10",
+            "pnl": "+0.41%"
+        },
+        {
+            "date": "2026-02-02",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$55.10",
+            "pnl": "+2.04%"
+        },
+        {
+            "date": "2026-01-30",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$54.00",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-30",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$54.00",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-30",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$54.00",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-29",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$73.52",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$52.73",
+            "pnl": "+0.79%"
+        },
+        {
+            "date": "2026-01-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$52.73",
+            "pnl": "+0.79%"
+        },
+        {
+            "date": "2026-01-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$52.73",
+            "pnl": "+0.79%"
+        },
+        {
+            "date": "2026-01-21",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$70.54",
+            "pnl": "-0.27%"
+        },
+        {
+            "date": "2026-01-21",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$70.54",
+            "pnl": "+0.53%"
+        },
+        {
+            "date": "2026-01-21",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$70.54",
+            "pnl": "+2.63%"
+        },
+        {
+            "date": "2026-01-21",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$52.73",
+            "pnl": "+3.94%"
+        },
+        {
+            "date": "2026-01-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$50.73",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$50.73",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$50.73",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-20",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$68.73",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-20",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$68.73",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-20",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$50.73",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-15",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$54.38",
+            "pnl": "+0.20%"
+        },
+        {
+            "date": "2026-01-15",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$54.38",
+            "pnl": "+0.20%"
+        },
+        {
+            "date": "2026-01-15",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$54.38",
+            "pnl": "+1.02%"
+        },
+        {
+            "date": "2026-01-14",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$53.83",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-14",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$53.83",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-14",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$71.49",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-14",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$53.83",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-09",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$73.14",
+            "pnl": "+0.39%"
+        },
+        {
+            "date": "2026-01-08",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$71.75",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2026-01-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$72.46",
+            "pnl": "+0.14%"
+        },
+        {
+            "date": "2026-01-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$72.46",
+            "pnl": "+0.58%"
+        },
+        {
+            "date": "2026-01-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$72.46",
+            "pnl": "+0.67%"
+        },
+        {
+            "date": "2026-01-06",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$72.46",
+            "pnl": "+2.91%"
+        },
+        {
+            "date": "2026-01-06",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$623.42",
+            "pnl": "+0.41%"
+        },
+        {
+            "date": "2026-01-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$53.60",
+            "pnl": "-0.33%"
+        },
+        {
+            "date": "2026-01-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$53.60",
+            "pnl": "+0.33%"
+        },
+        {
+            "date": "2026-01-05",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$53.60",
+            "pnl": "+1.67%"
+        },
+        {
+            "date": "2026-01-02",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$70.10",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-31",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$52.72",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-31",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$70.41",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-31",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$70.41",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-31",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$52.72",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-29",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$54.49",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-29",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$71.96",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-29",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$620.87",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-19",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$71.05",
+            "pnl": "+0.20%"
+        },
+        {
+            "date": "2025-12-19",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$71.05",
+            "pnl": "+0.41%"
+        },
+        {
+            "date": "2025-12-19",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$71.05",
+            "pnl": "+1.12%"
+        },
+        {
+            "date": "2025-12-19",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$71.05",
+            "pnl": "+1.01%"
+        },
+        {
+            "date": "2025-12-19",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$617.05",
+            "pnl": "+1.07%"
+        },
+        {
+            "date": "2025-12-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$51.51",
+            "pnl": "-0.50%"
+        },
+        {
+            "date": "2025-12-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$51.51",
+            "pnl": "-0.50%"
+        },
+        {
+            "date": "2025-12-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$51.51",
+            "pnl": "+0.85%"
+        },
+        {
+            "date": "2025-12-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$51.51",
+            "pnl": "+0.85%"
+        },
+        {
+            "date": "2025-12-18",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$51.51",
+            "pnl": "-2.48%"
+        },
+        {
+            "date": "2025-12-17",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$49.40",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-17",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$49.40",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-17",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$67.28",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-16",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$52.33",
+            "pnl": "-0.19%"
+        },
+        {
+            "date": "2025-12-15",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$69.63",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-15",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$610.54",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-12",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$52.82",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-12",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$52.82",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-12",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$52.82",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-12",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$70.34",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-12",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$70.34",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-12-12",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$52.82",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-24",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$51.08",
+            "pnl": "+1.99%"
+        },
+        {
+            "date": "2025-11-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$68.73",
+            "pnl": "-0.26%"
+        },
+        {
+            "date": "2025-11-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$68.73",
+            "pnl": "+0.57%"
+        },
+        {
+            "date": "2025-11-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$68.73",
+            "pnl": "+1.34%"
+        },
+        {
+            "date": "2025-11-24",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$68.73",
+            "pnl": "-1.28%"
+        },
+        {
+            "date": "2025-11-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$47.48",
+            "pnl": "+0.44%"
+        },
+        {
+            "date": "2025-11-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$47.48",
+            "pnl": "+0.44%"
+        },
+        {
+            "date": "2025-11-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$47.48",
+            "pnl": "+0.44%"
+        },
+        {
+            "date": "2025-11-21",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$47.48",
+            "pnl": "+2.22%"
+        },
+        {
+            "date": "2025-11-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$46.45",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$46.45",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$46.45",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$46.45",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-20",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$64.41",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-20",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$46.45",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-19",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.03",
+            "pnl": "-0.88%"
+        },
+        {
+            "date": "2025-11-19",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.03",
+            "pnl": "-0.88%"
+        },
+        {
+            "date": "2025-11-19",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.03",
+            "pnl": "-0.39%"
+        },
+        {
+            "date": "2025-11-19",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.03",
+            "pnl": "-4.40%"
+        },
+        {
+            "date": "2025-11-18",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$66.83",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-17",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$51.03",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$52.33",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$52.33",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-13",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$69.62",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-13",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$69.62",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-13",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$52.33",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$56.35",
+            "pnl": "+1.09%"
+        },
+        {
+            "date": "2025-11-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$56.35",
+            "pnl": "+1.09%"
+        },
+        {
+            "date": "2025-11-10",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$73.12",
+            "pnl": "-0.25%"
+        },
+        {
+            "date": "2025-11-10",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$73.12",
+            "pnl": "+0.22%"
+        },
+        {
+            "date": "2025-11-10",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$73.12",
+            "pnl": "+0.73%"
+        },
+        {
+            "date": "2025-11-10",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$73.12",
+            "pnl": "+0.87%"
+        },
+        {
+            "date": "2025-11-10",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$73.12",
+            "pnl": "+1.11%"
+        },
+        {
+            "date": "2025-11-10",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$56.35",
+            "pnl": "+5.45%"
+        },
+        {
+            "date": "2025-11-07",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$70.06",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$53.44",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$53.44",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$70.53",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-06",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$53.44",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$56.62",
+            "pnl": "+0.39%"
+        },
+        {
+            "date": "2025-11-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$56.62",
+            "pnl": "+0.39%"
+        },
+        {
+            "date": "2025-11-05",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$56.62",
+            "pnl": "+1.94%"
+        },
+        {
+            "date": "2025-11-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$55.54",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$55.54",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-04",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$72.32",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-04",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$72.32",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-11-04",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$55.54",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-10-30",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$74.03",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-10-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$71.99",
+            "pnl": "+0.76%"
+        },
+        {
+            "date": "2025-10-22",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$69.36",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-10-20",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$70.81",
+            "pnl": "+1.49%"
+        },
+        {
+            "date": "2025-10-20",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$70.81",
+            "pnl": "+7.45%"
+        },
+        {
+            "date": "2025-10-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$51.62",
+            "pnl": "+1.27%"
+        },
+        {
+            "date": "2025-10-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$51.62",
+            "pnl": "+1.27%"
+        },
+        {
+            "date": "2025-10-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$51.62",
+            "pnl": "+1.27%"
+        },
+        {
+            "date": "2025-10-13",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$51.62",
+            "pnl": "+6.37%"
+        },
+        {
+            "date": "2025-10-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$48.53",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-10-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$48.53",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-10-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$48.53",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-10-10",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$65.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-10-10",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$65.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-10-10",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$48.53",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-10-08",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$71.06",
+            "pnl": "+0.45%"
+        },
+        {
+            "date": "2025-10-07",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$69.48",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-09-26",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$50.62",
+            "pnl": "-0.04%"
+        },
+        {
+            "date": "2025-09-26",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$67.65",
+            "pnl": "-0.02%"
+        },
+        {
+            "date": "2025-09-24",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$50.71",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-09-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$67.72",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-09-18",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$67.48",
+            "pnl": "+0.37%"
+        },
+        {
+            "date": "2025-09-17",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$66.25",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-09-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$44.56",
+            "pnl": "-0.05%"
+        },
+        {
+            "date": "2025-09-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$44.56",
+            "pnl": "+0.47%"
+        },
+        {
+            "date": "2025-09-03",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$62.01",
+            "pnl": "-0.03%"
+        },
+        {
+            "date": "2025-09-03",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$62.01",
+            "pnl": "+0.30%"
+        },
+        {
+            "date": "2025-09-03",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$62.01",
+            "pnl": "+1.52%"
+        },
+        {
+            "date": "2025-09-03",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$44.56",
+            "pnl": "+2.34%"
+        },
+        {
+            "date": "2025-09-02",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$43.54",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-09-02",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$61.08",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-09-02",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$61.08",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-09-02",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$43.54",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-29",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$44.68",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-29",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$62.11",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-22",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$45.19",
+            "pnl": "-0.62%"
+        },
+        {
+            "date": "2025-08-22",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$45.19",
+            "pnl": "+0.23%"
+        },
+        {
+            "date": "2025-08-22",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$45.19",
+            "pnl": "+0.61%"
+        },
+        {
+            "date": "2025-08-22",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$62.57",
+            "pnl": "-0.39%"
+        },
+        {
+            "date": "2025-08-22",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$62.57",
+            "pnl": "+0.17%"
+        },
+        {
+            "date": "2025-08-22",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$62.57",
+            "pnl": "+0.42%"
+        },
+        {
+            "date": "2025-08-22",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$62.57",
+            "pnl": "+0.85%"
+        },
+        {
+            "date": "2025-08-22",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$45.19",
+            "pnl": "+1.16%"
+        },
+        {
+            "date": "2025-08-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$43.85",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-20",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$61.28",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-19",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$44.67",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-19",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$62.04",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-19",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$62.04",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-19",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$44.67",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-15",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$46.63",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-15",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$63.83",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$43.73",
+            "pnl": "-0.17%"
+        },
+        {
+            "date": "2025-08-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$43.73",
+            "pnl": "+1.10%"
+        },
+        {
+            "date": "2025-08-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$43.73",
+            "pnl": "+1.10%"
+        },
+        {
+            "date": "2025-08-04",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$61.10",
+            "pnl": "-0.09%"
+        },
+        {
+            "date": "2025-08-04",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$61.10",
+            "pnl": "+0.73%"
+        },
+        {
+            "date": "2025-08-04",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$61.10",
+            "pnl": "-0.46%"
+        },
+        {
+            "date": "2025-08-04",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$43.73",
+            "pnl": "+5.48%"
+        },
+        {
+            "date": "2025-08-01",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.46",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-01",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.46",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-01",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$58.94",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-08-01",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.46",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-07-31",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$44.10",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-07-31",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$61.38",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-07-31",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$61.38",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-07-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$61.48",
+            "pnl": "+0.27%"
+        },
+        {
+            "date": "2025-07-22",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$60.67",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-07-09",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$59.72",
+            "pnl": "+0.30%"
+        },
+        {
+            "date": "2025-07-09",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$556.25",
+            "pnl": "+0.76%"
+        },
+        {
+            "date": "2025-07-07",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$58.85",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-07-07",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$552.03",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-07-02",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$58.65",
+            "pnl": "+0.28%"
+        },
+        {
+            "date": "2025-07-01",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$57.83",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-06-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$56.46",
+            "pnl": "+0.84%"
+        },
+        {
+            "date": "2025-06-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$56.46",
+            "pnl": "+1.04%"
+        },
+        {
+            "date": "2025-06-24",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$56.46",
+            "pnl": "+5.20%"
+        },
+        {
+            "date": "2025-06-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.35",
+            "pnl": "+0.62%"
+        },
+        {
+            "date": "2025-06-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$36.22",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-06-20",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$53.67",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-06-20",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$53.67",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-06-17",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$54.19",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-06-16",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.90",
+            "pnl": "+0.81%"
+        },
+        {
+            "date": "2025-06-16",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.90",
+            "pnl": "+0.81%"
+        },
+        {
+            "date": "2025-06-16",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.28",
+            "pnl": "+0.55%"
+        },
+        {
+            "date": "2025-06-16",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.28",
+            "pnl": "+2.73%"
+        },
+        {
+            "date": "2025-06-16",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.90",
+            "pnl": "+4.06%"
+        },
+        {
+            "date": "2025-06-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$36.42",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-06-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$36.42",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-06-13",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$53.81",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-06-13",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$53.81",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-06-13",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$36.42",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-06-10",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.35",
+            "pnl": "+0.71%"
+        },
+        {
+            "date": "2025-06-05",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$53.44",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-05-27",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$35.47",
+            "pnl": "+0.88%"
+        },
+        {
+            "date": "2025-05-27",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$35.47",
+            "pnl": "+1.39%"
+        },
+        {
+            "date": "2025-05-27",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$52.81",
+            "pnl": "+0.60%"
+        },
+        {
+            "date": "2025-05-27",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$52.81",
+            "pnl": "+0.93%"
+        },
+        {
+            "date": "2025-05-27",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$52.81",
+            "pnl": "+3.02%"
+        },
+        {
+            "date": "2025-05-27",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$35.47",
+            "pnl": "+6.97%"
+        },
+        {
+            "date": "2025-05-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.16",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-05-23",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$50.47",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-05-23",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.16",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-05-22",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$34.15",
+            "pnl": "+0.11%"
+        },
+        {
+            "date": "2025-05-22",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$34.15",
+            "pnl": "+0.53%"
+        },
+        {
+            "date": "2025-05-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.97",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-05-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.97",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-05-21",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$51.26",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-05-21",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$51.26",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-05-21",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.97",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-05-08",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$46.62",
+            "pnl": "+0.55%"
+        },
+        {
+            "date": "2025-05-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$45.37",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-22",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$22.53",
+            "pnl": "-0.11%"
+        },
+        {
+            "date": "2025-04-22",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$22.53",
+            "pnl": "+1.53%"
+        },
+        {
+            "date": "2025-04-22",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$38.81",
+            "pnl": "-0.04%"
+        },
+        {
+            "date": "2025-04-22",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$38.81",
+            "pnl": "+1.02%"
+        },
+        {
+            "date": "2025-04-22",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$38.81",
+            "pnl": "+5.12%"
+        },
+        {
+            "date": "2025-04-22",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$444.48",
+            "pnl": "+2.63%"
+        },
+        {
+            "date": "2025-04-22",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$22.53",
+            "pnl": "+7.64%"
+        },
+        {
+            "date": "2025-04-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$20.93",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-21",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$36.92",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-21",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$36.92",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-21",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$433.11",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-21",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$20.93",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-16",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$22.65",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-16",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$38.88",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$26.31",
+            "pnl": "+0.92%"
+        },
+        {
+            "date": "2025-04-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$26.31",
+            "pnl": "+0.92%"
+        },
+        {
+            "date": "2025-04-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$26.31",
+            "pnl": "+0.92%"
+        },
+        {
+            "date": "2025-04-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$26.31",
+            "pnl": "+0.92%"
+        },
+        {
+            "date": "2025-04-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$26.31",
+            "pnl": "+0.92%"
+        },
+        {
+            "date": "2025-04-09",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$42.81",
+            "pnl": "+0.93%"
+        },
+        {
+            "date": "2025-04-09",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$42.81",
+            "pnl": "+3.85%"
+        },
+        {
+            "date": "2025-04-09",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$42.81",
+            "pnl": "+4.67%"
+        },
+        {
+            "date": "2025-04-09",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$26.31",
+            "pnl": "+4.61%"
+        },
+        {
+            "date": "2025-04-04",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$35.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$25.15",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$25.15",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$25.15",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$25.15",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$25.15",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-03",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$40.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-03",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$40.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-03",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$25.15",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-04-01",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$29.31",
+            "pnl": "-1.18%"
+        },
+        {
+            "date": "2025-04-01",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$29.31",
+            "pnl": "+0.45%"
+        },
+        {
+            "date": "2025-04-01",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$29.31",
+            "pnl": "+0.45%"
+        },
+        {
+            "date": "2025-04-01",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$45.13",
+            "pnl": "-1.00%"
+        },
+        {
+            "date": "2025-04-01",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$45.13",
+            "pnl": "-0.77%"
+        },
+        {
+            "date": "2025-04-01",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$45.13",
+            "pnl": "+0.30%"
+        },
+        {
+            "date": "2025-04-01",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$45.13",
+            "pnl": "-3.86%"
+        },
+        {
+            "date": "2025-04-01",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$29.31",
+            "pnl": "+2.23%"
+        },
+        {
+            "date": "2025-03-28",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$28.67",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-28",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$28.67",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-28",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$44.47",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-28",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$28.67",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-27",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$31.15",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-27",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$46.94",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-27",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$46.94",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-26",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$47.51",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-19",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$46.76",
+            "pnl": "+0.51%"
+        },
+        {
+            "date": "2025-03-18",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$45.60",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$30.94",
+            "pnl": "+0.69%"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$30.94",
+            "pnl": "+1.41%"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$30.94",
+            "pnl": "+1.41%"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$30.94",
+            "pnl": "+1.41%"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$30.94",
+            "pnl": "+1.41%"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$46.60",
+            "pnl": "-3.52%"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$46.60",
+            "pnl": "-3.12%"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$46.60",
+            "pnl": "-2.68%"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$46.60",
+            "pnl": "-1.75%"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$46.60",
+            "pnl": "-0.79%"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$46.60",
+            "pnl": "-17.62%"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$479.66",
+            "pnl": "-7.73%"
+        },
+        {
+            "date": "2025-03-14",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$30.94",
+            "pnl": "+7.06%"
+        },
+        {
+            "date": "2025-03-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$28.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$28.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$28.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$28.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-13",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$28.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-12",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$30.57",
+            "pnl": "+0.44%"
+        },
+        {
+            "date": "2025-03-12",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$30.57",
+            "pnl": "+0.44%"
+        },
+        {
+            "date": "2025-03-12",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$30.57",
+            "pnl": "+0.44%"
+        },
+        {
+            "date": "2025-03-12",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$30.57",
+            "pnl": "+0.44%"
+        },
+        {
+            "date": "2025-03-12",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$30.57",
+            "pnl": "+2.21%"
+        },
+        {
+            "date": "2025-03-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$29.91",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$29.91",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$29.91",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$29.91",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$29.91",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-10",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$29.91",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-07",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$33.71",
+            "pnl": "+0.42%"
+        },
+        {
+            "date": "2025-03-07",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$33.71",
+            "pnl": "+0.42%"
+        },
+        {
+            "date": "2025-03-07",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$33.71",
+            "pnl": "+0.42%"
+        },
+        {
+            "date": "2025-03-07",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$33.71",
+            "pnl": "+0.42%"
+        },
+        {
+            "date": "2025-03-07",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$33.71",
+            "pnl": "+0.42%"
+        },
+        {
+            "date": "2025-03-07",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$33.71",
+            "pnl": "+2.09%"
+        },
+        {
+            "date": "2025-03-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.02",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.02",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.02",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.02",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.02",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$48.51",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-06",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.02",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$36.01",
+            "pnl": "+0.55%"
+        },
+        {
+            "date": "2025-03-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$36.01",
+            "pnl": "+0.55%"
+        },
+        {
+            "date": "2025-03-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$36.01",
+            "pnl": "+0.55%"
+        },
+        {
+            "date": "2025-03-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$36.01",
+            "pnl": "+0.55%"
+        },
+        {
+            "date": "2025-03-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$36.01",
+            "pnl": "+0.78%"
+        },
+        {
+            "date": "2025-03-05",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$36.01",
+            "pnl": "+2.77%"
+        },
+        {
+            "date": "2025-03-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$34.65",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$35.04",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$35.04",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$35.04",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$35.04",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-03-03",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$35.04",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-28",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.46",
+            "pnl": "-2.10%"
+        },
+        {
+            "date": "2025-02-28",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.46",
+            "pnl": "-2.10%"
+        },
+        {
+            "date": "2025-02-28",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.46",
+            "pnl": "-1.43%"
+        },
+        {
+            "date": "2025-02-28",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.46",
+            "pnl": "+0.92%"
+        },
+        {
+            "date": "2025-02-28",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.46",
+            "pnl": "+0.92%"
+        },
+        {
+            "date": "2025-02-28",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.46",
+            "pnl": "-10.49%"
+        },
+        {
+            "date": "2025-02-27",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$35.82",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-27",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$35.82",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-27",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$51.07",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-26",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$39.06",
+            "pnl": "+0.13%"
+        },
+        {
+            "date": "2025-02-25",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$38.81",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-25",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$53.81",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-24",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$40.35",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$55.21",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-24",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$519.87",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.85",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-21",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.85",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-21",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$56.57",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-21",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$56.57",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-21",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.85",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-13",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$58.82",
+            "pnl": "+0.98%"
+        },
+        {
+            "date": "2025-02-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$42.82",
+            "pnl": "+0.70%"
+        },
+        {
+            "date": "2025-02-07",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.37",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-07",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$56.08",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.83",
+            "pnl": "+0.73%"
+        },
+        {
+            "date": "2025-02-04",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$56.46",
+            "pnl": "+0.49%"
+        },
+        {
+            "date": "2025-02-04",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$524.47",
+            "pnl": "+1.23%"
+        },
+        {
+            "date": "2025-02-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$40.36",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-03",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$55.12",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-02-03",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$518.11",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-28",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.33",
+            "pnl": "+0.89%"
+        },
+        {
+            "date": "2025-01-28",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.33",
+            "pnl": "+0.89%"
+        },
+        {
+            "date": "2025-01-28",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.97",
+            "pnl": "+0.60%"
+        },
+        {
+            "date": "2025-01-28",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.97",
+            "pnl": "+3.02%"
+        },
+        {
+            "date": "2025-01-28",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$521.81",
+            "pnl": "+1.48%"
+        },
+        {
+            "date": "2025-01-28",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.33",
+            "pnl": "+4.45%"
+        },
+        {
+            "date": "2025-01-27",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$39.57",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-27",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$39.57",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-27",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$54.33",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-27",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$54.33",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-27",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$514.21",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-27",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$39.57",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-15",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$40.44",
+            "pnl": "+1.05%"
+        },
+        {
+            "date": "2025-01-15",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$40.44",
+            "pnl": "+1.05%"
+        },
+        {
+            "date": "2025-01-15",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$40.44",
+            "pnl": "+1.28%"
+        },
+        {
+            "date": "2025-01-15",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.04",
+            "pnl": "+0.07%"
+        },
+        {
+            "date": "2025-01-15",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.04",
+            "pnl": "+0.72%"
+        },
+        {
+            "date": "2025-01-15",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.04",
+            "pnl": "+3.61%"
+        },
+        {
+            "date": "2025-01-15",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$40.44",
+            "pnl": "+5.26%"
+        },
+        {
+            "date": "2025-01-13",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$38.01",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$38.42",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-10",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$38.42",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-10",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$53.12",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-10",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$53.12",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-10",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$38.42",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-07",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$54.85",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2025-01-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.20",
+            "pnl": "-0.53%"
+        },
+        {
+            "date": "2025-01-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.20",
+            "pnl": "+0.28%"
+        },
+        {
+            "date": "2025-01-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.20",
+            "pnl": "+0.83%"
+        },
+        {
+            "date": "2025-01-03",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.64",
+            "pnl": "-0.33%"
+        },
+        {
+            "date": "2025-01-03",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.64",
+            "pnl": "+0.21%"
+        },
+        {
+            "date": "2025-01-03",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.64",
+            "pnl": "+0.56%"
+        },
+        {
+            "date": "2025-01-03",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.64",
+            "pnl": "+0.65%"
+        },
+        {
+            "date": "2025-01-03",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$55.64",
+            "pnl": "+1.05%"
+        },
+        {
+            "date": "2025-01-03",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$518.58",
+            "pnl": "+0.58%"
+        },
+        {
+            "date": "2025-01-03",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.20",
+            "pnl": "+1.40%"
+        },
+        {
+            "date": "2025-01-02",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$53.88",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-31",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$39.56",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-31",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$54.12",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-30",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$40.63",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-30",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$55.06",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-30",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$55.06",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-30",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$515.61",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-30",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$40.63",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-27",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$42.33",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-27",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$56.58",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$58.27",
+            "pnl": "+1.08%"
+        },
+        {
+            "date": "2024-12-24",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$58.27",
+            "pnl": "+1.28%"
+        },
+        {
+            "date": "2024-12-24",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$58.27",
+            "pnl": "+5.39%"
+        },
+        {
+            "date": "2024-12-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.51",
+            "pnl": "+0.23%"
+        },
+        {
+            "date": "2024-12-20",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.51",
+            "pnl": "+0.23%"
+        },
+        {
+            "date": "2024-12-20",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$41.51",
+            "pnl": "+1.15%"
+        },
+        {
+            "date": "2024-12-19",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$54.76",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.04",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.04",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-18",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$55.29",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-18",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$55.29",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-18",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$41.04",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-11",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$58.35",
+            "pnl": "+0.57%"
+        },
+        {
+            "date": "2024-12-11",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$58.35",
+            "pnl": "+0.72%"
+        },
+        {
+            "date": "2024-12-11",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$58.35",
+            "pnl": "+3.59%"
+        },
+        {
+            "date": "2024-12-10",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$56.33",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-10",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$56.33",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-12-09",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$56.74",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-11-29",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$54.10",
+            "pnl": "+0.33%"
+        },
+        {
+            "date": "2024-11-27",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$53.22",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-11-19",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$52.90",
+            "pnl": "-0.44%"
+        },
+        {
+            "date": "2024-11-19",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$52.90",
+            "pnl": "+0.56%"
+        },
+        {
+            "date": "2024-11-19",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$52.90",
+            "pnl": "-2.20%"
+        },
+        {
+            "date": "2024-11-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.88",
+            "pnl": "-1.07%"
+        },
+        {
+            "date": "2024-11-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.88",
+            "pnl": "+0.40%"
+        },
+        {
+            "date": "2024-11-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.88",
+            "pnl": "+0.40%"
+        },
+        {
+            "date": "2024-11-18",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$37.88",
+            "pnl": "+2.02%"
+        },
+        {
+            "date": "2024-11-15",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$37.13",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-11-15",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$37.13",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-11-15",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$51.47",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-11-15",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$37.13",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-11-14",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$40.03",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-11-14",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$54.09",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-11-14",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$54.09",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-11-05",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$50.78",
+            "pnl": "+0.67%"
+        },
+        {
+            "date": "2024-11-05",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$50.78",
+            "pnl": "+3.34%"
+        },
+        {
+            "date": "2024-11-01",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$35.47",
+            "pnl": "+0.43%"
+        },
+        {
+            "date": "2024-11-01",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$35.47",
+            "pnl": "+0.43%"
+        },
+        {
+            "date": "2024-11-01",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$35.47",
+            "pnl": "+0.43%"
+        },
+        {
+            "date": "2024-11-01",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$35.47",
+            "pnl": "+2.16%"
+        },
+        {
+            "date": "2024-10-31",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$34.72",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-31",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$34.72",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-31",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$34.72",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-31",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$49.14",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-31",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$49.14",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-31",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$34.72",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-25",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$51.55",
+            "pnl": "+0.32%"
+        },
+        {
+            "date": "2024-10-25",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$51.55",
+            "pnl": "+0.55%"
+        },
+        {
+            "date": "2024-10-25",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$51.55",
+            "pnl": "+2.77%"
+        },
+        {
+            "date": "2024-10-24",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$36.75",
+            "pnl": "+0.47%"
+        },
+        {
+            "date": "2024-10-24",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$36.75",
+            "pnl": "+0.47%"
+        },
+        {
+            "date": "2024-10-24",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$36.75",
+            "pnl": "+2.37%"
+        },
+        {
+            "date": "2024-10-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$35.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-23",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$35.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-23",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$50.16",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-23",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$50.16",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-23",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$35.90",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-17",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$36.67",
+            "pnl": "+0.06%"
+        },
+        {
+            "date": "2024-10-16",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$36.56",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-15",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$50.75",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-08",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$50.51",
+            "pnl": "+0.60%"
+        },
+        {
+            "date": "2024-10-08",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Sell Exit",
+            "price": "$489.30",
+            "pnl": "+1.49%"
+        },
+        {
+            "date": "2024-10-07",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$49.04",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-07",
+            "strategy": "Turnaround Tuesday",
+            "etf": "QQQ",
+            "action": "Buy Entry",
+            "price": "$482.10",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$35.99",
+            "pnl": "+0.74%"
+        },
+        {
+            "date": "2024-10-04",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$50.17",
+            "pnl": "+0.51%"
+        },
+        {
+            "date": "2024-10-04",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$50.17",
+            "pnl": "+2.56%"
+        },
+        {
+            "date": "2024-10-02",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$34.84",
+            "pnl": "+0.07%"
+        },
+        {
+            "date": "2024-10-02",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$34.84",
+            "pnl": "+0.37%"
+        },
+        {
+            "date": "2024-10-01",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$34.71",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-01",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$34.71",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-01",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$48.92",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-01",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$48.92",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-10-01",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$34.71",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-09-19",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$35.29",
+            "pnl": "+1.51%"
+        },
+        {
+            "date": "2024-09-18",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$32.81",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-09-10",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$44.58",
+            "pnl": "-1.46%"
+        },
+        {
+            "date": "2024-09-10",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$44.58",
+            "pnl": "-1.15%"
+        },
+        {
+            "date": "2024-09-10",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$44.58",
+            "pnl": "-0.32%"
+        },
+        {
+            "date": "2024-09-10",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$44.58",
+            "pnl": "+0.87%"
+        },
+        {
+            "date": "2024-09-10",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Sell Exit",
+            "price": "$44.58",
+            "pnl": "-5.77%"
+        },
+        {
+            "date": "2024-09-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$29.56",
+            "pnl": "-1.03%"
+        },
+        {
+            "date": "2024-09-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$29.56",
+            "pnl": "-1.03%"
+        },
+        {
+            "date": "2024-09-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$29.56",
+            "pnl": "+0.74%"
+        },
+        {
+            "date": "2024-09-09",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$29.56",
+            "pnl": "+0.74%"
+        },
+        {
+            "date": "2024-09-09",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$29.56",
+            "pnl": "-5.17%"
+        },
+        {
+            "date": "2024-09-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$28.50",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-09-06",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$28.50",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-09-06",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$42.72",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-09-05",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$31.01",
+            "pnl": "+0.06%"
+        },
+        {
+            "date": "2024-09-04",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$30.91",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-09-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$31.17",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-09-03",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$31.17",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-09-03",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$45.31",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-09-03",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$31.17",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-08-30",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$34.31",
+            "pnl": "+0.58%"
+        },
+        {
+            "date": "2024-08-30",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$34.31",
+            "pnl": "+0.58%"
+        },
+        {
+            "date": "2024-08-30",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Sell Exit",
+            "price": "$34.31",
+            "pnl": "+2.88%"
+        },
+        {
+            "date": "2024-08-28",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.35",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-08-28",
+            "strategy": "RSI UlcerShield",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.35",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-08-28",
+            "strategy": "LowHigh UlcerShield",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$47.31",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-08-28",
+            "strategy": "LowHigh",
+            "etf": "QLD",
+            "action": "Buy Entry",
+            "price": "$47.31",
+            "pnl": "\u2014"
+        },
+        {
+            "date": "2024-08-28",
+            "strategy": "RSI Threshold",
+            "etf": "TQQQ",
+            "action": "Buy Entry",
+            "price": "$33.35",
+            "pnl": "\u2014"
+        }
+    ]
+}

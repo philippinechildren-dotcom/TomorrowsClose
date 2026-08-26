@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trading Journal Widget</title>
+    <style>
+        .journal-container {
+            font-family: Arial, sans-serif;
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
+            padding: 12px;
+            background: #ffffff;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        .journal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .journal-header h3 {
+            margin: 0;
+            font-size: 15px;
+            color: #222222;
+            font-weight: bold;
+        }
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #333333;
+        }
+        .filter-select {
+            padding: 4px 8px;
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+            border-radius: 4px;
+            border: 1px solid #cccccc;
+            background-color: #ffffff;
+            cursor: pointer;
+        }
+        .journal-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+            table-layout: auto;
+        }
+        .journal-table th {
+            background: #f4f4f4;
+            text-align: left;
+            padding: 6px 8px;
+            color: #444444;
+            font-weight: bold;
+            border-bottom: 2px solid #cccccc;
+            white-space: nowrap;
+        }
+        .journal-table td {
+            padding: 6px 8px;
+            border-bottom: 1px solid #e2e2e2;
+            color: #222222;
+            white-space: nowrap;
+        }
+        .action-entry {
+            color: #0056b3;
+            font-weight: bold;
+        }
+        .action-exit {
+            color: #555555;
+            font-weight: bold;
+        }
+        /* Color highlighting for Profit/Loss values */
+        .pnl-pos {
+            color: #1e7e34 !important;
+            font-weight: bold;
+        }
+        .pnl-neg {
+            color: #bd2130 !important;
+            font-weight: bold;
+        }
+        .pnl-neutral {
+            color: #888888;
+        }
+    </style>
+</head>
+<body>
+
+<div class="journal-container">
+    <div class="journal-header">
+        <h3>Trading Journal</h3>
+        <div class="filter-group">
+            <label for="strategy-filter"><strong>Strategy:</strong></label>
+            <select id="strategy-filter" class="filter-select" onchange="filterLog()">
+                <option value="ALL">All Strategies</option>
+                <option value="RSI Threshold">RSI Threshold</option>
+                <option value="RSI UlcerShield">RSI UlcerShield</option>
+                <option value="LowHigh">LowHigh</option>
+                <option value="LowHigh UlcerShield">LowHigh UlcerShield</option>
+                <option value="Turnaround Tuesday">Turnaround Tuesday</option>  
+            </select>
+        </div>
+    </div>
+
+    <table class="journal-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Strategy</th>
+                <th>ETF</th>
+                <th>Action</th>
+                <th>Price</th>
+                <th>Profit/Loss</th>
+            </tr>
+        </thead>
+        <tbody id="journal-rows">
+            <tr><td colspan="6">Loading journal logs...</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+let masterLogs = [];
+
+function renderTable(logs) {
+    const tbody = document.getElementById("journal-rows");
+    if (!logs || logs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6">No trade executions found.</td></tr>';
+        return;
+    }
+
+    tbody.innerHTML = logs.map(row => {
+        const isEntry = row.action.includes('Entry');
+        const actionClass = isEntry ? 'action-entry' : 'action-exit';
+        
+        // Target either row.campaign_pnl or row.pnl property from JSON
+        const pnlValue = row.campaign_pnl || row.pnl || "—";
+        
+        let pnlClass = 'pnl-neutral';
+        if (pnlValue.includes('+')) pnlClass = 'pnl-pos';
+        if (pnlValue.includes('-')) pnlClass = 'pnl-neg';
+
+        return `
+            <tr>
+                <td>${row.date}</td>
+                <td>${row.strategy}</td>
+                <td><strong>${row.etf}</strong></td>
+                <td class="${actionClass}">${row.action}</td>
+                <td>${row.price}</td>
+                <td class="${pnlClass}">${pnlValue}</td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function filterLog() {
+    const selected = document.getElementById("strategy-filter").value;
+    if (selected === "ALL") {
+        renderTable(masterLogs);
+    } else {
+        const filtered = masterLogs.filter(item => item.strategy === selected);
+        renderTable(filtered);
+    }
+}
+
+fetch("/json/trading-journal")
+    .then(res => res.json())
+    .then(data => {
+        masterLogs = data.journal || [];
+        renderTable(masterLogs);
+    })
+    .catch(err => {
+        document.getElementById("journal-rows").innerHTML = '<tr><td colspan="6">Error loading trading journal data.</td></tr>';
+    });
+</script>
+
+</body>
+</html>
