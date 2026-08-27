@@ -381,12 +381,7 @@ document.getElementById("pricesolver_button").addEventListener(
     "click",
     function(){
 
-        window.open(
-            build_url(
-                "https://tomorrowsclose.blogspot.com/p/donchian-lowhigh-pricesolver.html"
-            ),
-            "_blank"
-        );
+        window.top.location.href = build_url("https://tomorrowsclose.blogspot.com/p/donchian-lowhigh-pricesolver.html");
 
     }
 );

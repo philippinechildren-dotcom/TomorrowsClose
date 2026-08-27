@@ -63,19 +63,38 @@
             {{ result.threshold }}
         </div>
 
-        <div style="
-            margin-top:12px;
-            padding-top:10px;
-            border-top:1px solid #dddddd;
-            color:#777777;
-            font-size:12px;
-            line-height:1.4;
-        ">
-            Return to the dashboard to adjust parameter settings.
-        </div>
+        <hr style="border:none; border-top:1px solid #e0e0e0; margin:15px 0;">
+
+<button id="change_parameters_button" 
+    onclick="returnToDashboard();"
+    style="background-color: #1976d2; 
+        color: #ffffff; 
+        border: none; 
+        padding: 10px 14px; 
+        border-radius: 4px; 
+        font-weight: bold; 
+        cursor: pointer;
+        width: 100%;">
+    Change Parameters on Dashboard
+</button>
 
     </div>
 
 </div>
 
 </div>
+
+<script>
+function returnToDashboard() {
+    // 1. Grabs the live Jinja parameters rendered on this page
+    const ticker = "{{ result.ticker }}";
+    const entry = "{{ result.entry_lookback }}";
+    const exit = "{{ result.exit_lookback }}";
+
+    // 2. Exact Blogspot URL for this strategy's dashboard page
+    const dashboardUrl = "https://tomorrowsclose.blogspot.com/p/rsi-threshold-mean-reversion-strategy.html";
+
+    // 3. Redirects top browser window with current parameters attached
+    window.top.location.href = `${dashboardUrl}?etf=${ticker}&entry_lookback=${entry}&exit_lookback=${exit}`;
+}
+</script>
