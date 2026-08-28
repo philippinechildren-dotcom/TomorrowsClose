@@ -54,17 +54,48 @@ body{
     text-align:center;
 }
 
-.defaults{
-    margin-top:15px;
-    display:flex;
-    gap:10px;
+/* ACTION BUTTONS COLUMN (LEFT SIDE) */
+
+.action_buttons_column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-top: 15px;
 }
 
-.defaults button{
-    padding:8px 14px;
-    font-size:14px;
-    font-weight:bold;
-    cursor:pointer;
+.action_buttons_row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+/* Primary Centered/Wider Calculate Button */
+.calc_btn_wide {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* Secondary Smaller Settings Buttons */
+.settings_btn {
+    flex: 1;
+    padding: 5px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #444;
+    background-color: #f1f3f4;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.settings_btn:hover {
+    background-color: #e4e6e8;
 }
 
 .parameters_right{
@@ -287,11 +318,20 @@ body{
 
         </div>
 
-        <div class="defaults">
+        <div class="action_buttons_column">
 
-            <button id="calculate_button">
+            <button id="calculate_button" class="calc_btn_wide">
                 Calculate
             </button>
+
+            <div class="action_buttons_row">
+                <button id="save_settings_button" class="settings_btn" type="button">
+                    Save Settings
+                </button>
+                <button id="restore_defaults_button" class="settings_btn" type="button">
+                    Restore Defaults
+                </button>
+            </div>
 
         </div>
 
@@ -329,6 +369,22 @@ body{
 
 
 <script>
+
+// Store baseline defaults supplied by Flask for restoration
+const DEFAULT_SETTINGS = {
+    etf: "{{ parameters.etf }}",
+    rsi_1_period: "{{ parameters.rsi_1_period }}",
+    rsi_1_threshold: "{{ parameters.rsi_1_threshold }}",
+    rsi_2_period: "{{ parameters.rsi_2_period }}",
+    rsi_2_threshold: "{{ parameters.rsi_2_threshold }}",
+    rsi_3_period: "{{ parameters.rsi_3_period }}",
+    rsi_3_threshold: "{{ parameters.rsi_3_threshold }}",
+    rsi_4_period: "{{ parameters.rsi_4_period }}",
+    rsi_4_threshold: "{{ parameters.rsi_4_threshold }}",
+    rsi_5_period: "{{ parameters.rsi_5_period }}",
+    rsi_5_threshold: "{{ parameters.rsi_5_threshold }}",
+    period: "maximum"
+};
 
 function get_parameters(){
 
@@ -439,16 +495,99 @@ function load_metrics(){
 }
 
 
+/*
+    CACHE MANAGEMENT (localStorage)
+*/
+
+function save_settings() {
+    const settings = {
+        etf: document.querySelector(".etf_input").value,
+        rsi_1_period: document.querySelector(".rsi_1_period_input").value,
+        rsi_1_threshold: document.querySelector(".rsi_1_threshold_input").value,
+        rsi_2_period: document.querySelector(".rsi_2_period_input").value,
+        rsi_2_threshold: document.querySelector(".rsi_2_threshold_input").value,
+        rsi_3_period: document.querySelector(".rsi_3_period_input").value,
+        rsi_3_threshold: document.querySelector(".rsi_3_threshold_input").value,
+        rsi_4_period: document.querySelector(".rsi_4_period_input").value,
+        rsi_4_threshold: document.querySelector(".rsi_4_threshold_input").value,
+        rsi_5_period: document.querySelector(".rsi_5_period_input").value,
+        rsi_5_threshold: document.querySelector(".rsi_5_threshold_input").value,
+        period: document.querySelector(".time_period").value
+    };
+    localStorage.setItem("rsi_ulcershield_saved_settings", JSON.stringify(settings));
+    alert("Settings saved to browser cache!");
+}
+
+function restore_defaults() {
+    document.querySelector(".etf_input").value = DEFAULT_SETTINGS.etf;
+    document.querySelector(".rsi_1_period_input").value = DEFAULT_SETTINGS.rsi_1_period;
+    document.querySelector(".rsi_1_threshold_input").value = DEFAULT_SETTINGS.rsi_1_threshold;
+    document.querySelector(".rsi_2_period_input").value = DEFAULT_SETTINGS.rsi_2_period;
+    document.querySelector(".rsi_2_threshold_input").value = DEFAULT_SETTINGS.rsi_2_threshold;
+    document.querySelector(".rsi_3_period_input").value = DEFAULT_SETTINGS.rsi_3_period;
+    document.querySelector(".rsi_3_threshold_input").value = DEFAULT_SETTINGS.rsi_3_threshold;
+    document.querySelector(".rsi_4_period_input").value = DEFAULT_SETTINGS.rsi_4_period;
+    document.querySelector(".rsi_4_threshold_input").value = DEFAULT_SETTINGS.rsi_4_threshold;
+    document.querySelector(".rsi_5_period_input").value = DEFAULT_SETTINGS.rsi_5_period;
+    document.querySelector(".rsi_5_threshold_input").value = DEFAULT_SETTINGS.rsi_5_threshold;
+    document.querySelector(".time_period").value = DEFAULT_SETTINGS.period;
+    
+    localStorage.removeItem("rsi_ulcershield_saved_settings");
+    load_metrics();
+}
+
+function load_saved_settings() {
+    const saved = localStorage.getItem("rsi_ulcershield_saved_settings");
+    if (saved) {
+        try {
+            const settings = JSON.parse(saved);
+            if (settings.etf) document.querySelector(".etf_input").value = settings.etf;
+            if (settings.rsi_1_period) document.querySelector(".rsi_1_period_input").value = settings.rsi_1_period;
+            if (settings.rsi_1_threshold) document.querySelector(".rsi_1_threshold_input").value = settings.rsi_1_threshold;
+            if (settings.rsi_2_period) document.querySelector(".rsi_2_period_input").value = settings.rsi_2_period;
+            if (settings.rsi_2_threshold) document.querySelector(".rsi_2_threshold_input").value = settings.rsi_2_threshold;
+            if (settings.rsi_3_period) document.querySelector(".rsi_3_period_input").value = settings.rsi_3_period;
+            if (settings.rsi_3_threshold) document.querySelector(".rsi_3_threshold_input").value = settings.rsi_3_threshold;
+            if (settings.rsi_4_period) document.querySelector(".rsi_4_period_input").value = settings.rsi_4_period;
+            if (settings.rsi_4_threshold) document.querySelector(".rsi_4_threshold_input").value = settings.rsi_4_threshold;
+            if (settings.rsi_5_period) document.querySelector(".rsi_5_period_input").value = settings.rsi_5_period;
+            if (settings.rsi_5_threshold) document.querySelector(".rsi_5_threshold_input").value = settings.rsi_5_threshold;
+            if (settings.period) document.querySelector(".time_period").value = settings.period;
+        } catch (e) {
+            console.error("Error loading saved settings:", e);
+        }
+    }
+}
+
+
+/*
+    Initial dashboard load.
+    Checks cache first, otherwise falls back to Flask defaults.
+*/
+
+load_saved_settings();
 load_metrics();
 
+
+/*
+    EVENT LISTENERS
+*/
 
 document.getElementById("calculate_button").addEventListener(
     "click",
     function(){
-
         load_metrics();
-
     }
+);
+
+document.getElementById("save_settings_button").addEventListener(
+    "click",
+    save_settings
+);
+
+document.getElementById("restore_defaults_button").addEventListener(
+    "click",
+    restore_defaults
 );
 
 

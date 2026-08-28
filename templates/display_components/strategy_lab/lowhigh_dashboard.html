@@ -49,17 +49,48 @@ body{
     width:15ch;
 }
 
-.defaults{
-    margin-top:15px;
-    display:flex;
-    gap:10px;
+/* ACTION BUTTONS COLUMN (LEFT SIDE) */
+
+.action_buttons_column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-top: 15px;
 }
 
-.defaults button{
-    padding:8px 14px;
-    font-size:14px;
-    font-weight:bold;
-    cursor:pointer;
+.action_buttons_row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+/* Primary Centered/Wider Calculate Button */
+.calc_btn_wide {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* Secondary Smaller Settings Buttons */
+.settings_btn {
+    flex: 1;
+    padding: 5px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #444;
+    background-color: #f1f3f4;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.settings_btn:hover {
+    background-color: #e4e6e8;
 }
 
 .parameters_right{
@@ -220,11 +251,20 @@ body{
 
         </div>
 
-        <div class="defaults">
+        <div class="action_buttons_column">
 
-            <button id="calculate_button">
+            <button id="calculate_button" class="calc_btn_wide">
                 Calculate
             </button>
+
+            <div class="action_buttons_row">
+                <button id="save_settings_button" class="settings_btn" type="button">
+                    Save Settings
+                </button>
+                <button id="restore_defaults_button" class="settings_btn" type="button">
+                    Restore Defaults
+                </button>
+            </div>
 
         </div>
 
@@ -262,6 +302,14 @@ body{
 
 
 <script>
+
+// Store baseline defaults supplied by Flask for restoration
+const DEFAULT_SETTINGS = {
+    etf: "{{ parameters.etf }}",
+    entry_lookback: "{{ parameters.entry_lookback }}",
+    exit_lookback: "{{ parameters.exit_lookback }}",
+    period: "maximum"
+};
 
 function get_parameters(){
 
@@ -349,27 +397,74 @@ function load_metrics(){
 
 
 /*
-    Initial dashboard load.
-    Uses the defaults supplied by the Flask route.
+    CACHE MANAGEMENT (localStorage)
 */
 
+function save_settings() {
+    const settings = {
+        etf: document.querySelector(".etf_input").value,
+        entry_lookback: document.querySelector(".entry_input").value,
+        exit_lookback: document.querySelector(".exit_input").value,
+        period: document.querySelector(".time_period").value
+    };
+    localStorage.setItem("lowhigh_saved_settings", JSON.stringify(settings));
+    alert("Settings saved to browser cache!");
+}
+
+function restore_defaults() {
+    document.querySelector(".etf_input").value = DEFAULT_SETTINGS.etf;
+    document.querySelector(".entry_input").value = DEFAULT_SETTINGS.entry_lookback;
+    document.querySelector(".exit_input").value = DEFAULT_SETTINGS.exit_lookback;
+    document.querySelector(".time_period").value = DEFAULT_SETTINGS.period;
+    
+    localStorage.removeItem("lowhigh_saved_settings");
+    load_metrics();
+}
+
+function load_saved_settings() {
+    const saved = localStorage.getItem("lowhigh_saved_settings");
+    if (saved) {
+        try {
+            const settings = JSON.parse(saved);
+            if (settings.etf) document.querySelector(".etf_input").value = settings.etf;
+            if (settings.entry_lookback) document.querySelector(".entry_input").value = settings.entry_lookback;
+            if (settings.exit_lookback) document.querySelector(".exit_input").value = settings.exit_lookback;
+            if (settings.period) document.querySelector(".time_period").value = settings.period;
+        } catch (e) {
+            console.error("Error loading saved settings:", e);
+        }
+    }
+}
+
+
+/*
+    Initial dashboard load.
+    Checks cache first, otherwise falls back to Flask defaults.
+*/
+
+load_saved_settings();
 load_metrics();
 
 
 /*
-    CALCULATE
-
-    Stay inside the dashboard.
-    Recalculate Small Metrics using the current inputs.
+    EVENT LISTENERS
 */
 
 document.getElementById("calculate_button").addEventListener(
     "click",
     function(){
-
         load_metrics();
-
     }
+);
+
+document.getElementById("save_settings_button").addEventListener(
+    "click",
+    save_settings
+);
+
+document.getElementById("restore_defaults_button").addEventListener(
+    "click",
+    restore_defaults
 );
 
 
