@@ -62,15 +62,16 @@ def normalize_equity_curve(
 # Build Chart Data
 # ==========================================================
 
+import math
+
 def build_chart_data(
     history,
     strategy_curve,
     benchmark_curve,
 ):
     """
-    Combine dates with normalized curves.
+    Combine dates with normalized curves, replacing any NaN values with 0.0.
     """
-
     chart_data = []
 
     for date, strategy_value, benchmark_value in zip(
@@ -78,12 +79,15 @@ def build_chart_data(
         strategy_curve,
         benchmark_curve,
     ):
+        # Convert NaN values safely to 0.0 to prevent invalid JSON responses
+        s_val = 0.0 if math.isnan(strategy_value) else round(strategy_value, 2)
+        b_val = 0.0 if math.isnan(benchmark_value) else round(benchmark_value, 2)
 
         chart_data.append(
             {
                 "date": str(date.date()),
-                "strategy": round(strategy_value, 2),
-                "benchmark": round(benchmark_value, 2),
+                "strategy": s_val,
+                "benchmark": b_val,
             }
         )
 
