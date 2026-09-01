@@ -70,18 +70,31 @@ def build_chart_data(
     benchmark_curve,
 ):
     """
-    Combine dates with normalized curves, replacing any NaN values with 0.0.
+    Combine dates with normalized curves, forward-filling missing benchmark/strategy values.
     """
     chart_data = []
+
+    last_strat = 0.0
+    last_bench = 0.0
 
     for date, strategy_value, benchmark_value in zip(
         history.index,
         strategy_curve,
         benchmark_curve,
     ):
-        # Convert NaN values safely to 0.0 to prevent invalid JSON responses
-        s_val = 0.0 if math.isnan(strategy_value) else round(strategy_value, 2)
-        b_val = 0.0 if math.isnan(benchmark_value) else round(benchmark_value, 2)
+        # 1. Handle Strategy Value: use value, or forward-fill from previous valid price
+        if math.isnan(strategy_value) or strategy_value == 0.0:
+            s_val = last_strat
+        else:
+            s_val = round(strategy_value, 2)
+            last_strat = s_val
+
+        # 2. Handle Benchmark Value: use value, or forward-fill from previous valid price
+        if math.isnan(benchmark_value) or benchmark_value == 0.0:
+            b_val = last_bench
+        else:
+            b_val = round(benchmark_value, 2)
+            last_bench = b_val
 
         chart_data.append(
             {
