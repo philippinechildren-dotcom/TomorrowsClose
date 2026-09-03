@@ -64,7 +64,7 @@ def process_system_trades(system_info):
         result = system_info["runner"]()
     except Exception as e:
         print(f"Error executing {strategy_name}: {e}")
-        return []
+        raise
 
     trades = result.get("trades", [])
     if not trades:

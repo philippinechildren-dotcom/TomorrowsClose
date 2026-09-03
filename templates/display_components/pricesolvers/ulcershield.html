@@ -1,12 +1,18 @@
 <div style="font-family:Arial,sans-serif; font-size:14px; margin:0; padding:0;">
 
-{% if result.market_state == "settlement" %}
+        {% if result.market_state == "settlement" %}
 
-    <p style="font-size:1.3em;">
-        ⏳ New Signal Zones available around 4:30 PM ET.
-    </p>
+            <p style="font-size:1.3em;">
+            ⏳ New Signal Zones available around 4:30 PM ET.
+            </p>
 
-{% else %}
+        {% elif result.market_state == "invalid_data" %}
+
+            <p style="font-size:1.3em;">
+            ⚠️ Today's closing price from the data provider has not been validated yet.
+            </p>
+
+        {% else %}
 
     {% for component in result.components %}
 

@@ -5,32 +5,28 @@ Rankings/build_rankings_json.py
 import json
 from pathlib import Path
 from datetime import datetime
+import pandas as pd
 
 from StrategyLab.Benchmarks.buy_and_hold import (
     build_result as build_buy_and_hold_result,
 )
-
 from StrategyLab.Strategies.lowhigh import (
     build_result as build_lowhigh_result,
 )
-
 from StrategyLab.Strategies.rsi_threshold import (
     build_result as build_rsi_threshold_result,
 )
-
 from StrategyLab.Strategies.ulcershield import (
     build_result as build_ulcershield_result,
 )
-
 from StrategyLab.Strategies.turnaround_tuesday import (
     build_result as build_turnaround_tuesday_result,
 )
-
 from StrategyLab.Strategies.lowhigh_ulcershield import (
     build_result as build_lowhigh_ulcershield_result,
 )
-
 from Rankings.rankings import build_rankings
+from Utilities.market_data import get_market_data
 
 
 TIME_PERIODS = [
@@ -46,46 +42,42 @@ TIME_PERIODS = [
 ]
 
 
+def _validate_market_data():
+    for ticker in ["QQQ", "SPY", "QLD", "TQQQ"]:
+        data = get_market_data(ticker)
+        for field in ["open", "high", "low", "close", "volume"]:
+            if pd.isna(data[field]):
+                raise ValueError(
+                    f"Invalid market data for {ticker}: {field} is NaN."
+                )
+
+
 def build_rankings_json():
+    print("Building rankings JSON...")
+    _validate_market_data()
+
     rankings_json = {
         "updated": datetime.today().strftime("%Y-%m-%d"),
     }
 
     for period_name, period in TIME_PERIODS:
-
         buy_and_hold_qqq = build_buy_and_hold_result(
             ticker="QQQ",
             period=period,
         )
-
         buy_and_hold_qqq["name"] = "QQQ Buy & Hold"
 
         buy_and_hold_spy = build_buy_and_hold_result(
             ticker="SPY",
             period=period,
         )
-
         buy_and_hold_spy["name"] = "SPY Buy & Hold"
 
-        lowhigh = build_lowhigh_result(
-            period=period,
-        )
-
-        rsi_threshold = build_rsi_threshold_result(
-            period=period,
-        )
-
-        ulcershield = build_ulcershield_result(
-            period=period,
-        )
-
-        turnaround_tuesday = build_turnaround_tuesday_result(
-            period=period,
-        )
-
-        lowhigh_ulcershield = build_lowhigh_ulcershield_result(
-            period=period,
-        )
+        lowhigh = build_lowhigh_result(period=period)
+        rsi_threshold = build_rsi_threshold_result(period=period)
+        ulcershield = build_ulcershield_result(period=period)
+        turnaround_tuesday = build_turnaround_tuesday_result(period=period)
+        lowhigh_ulcershield = build_lowhigh_ulcershield_result(period=period)
 
         rankings = build_rankings(
             [
@@ -103,9 +95,7 @@ def build_rankings_json():
         rankings_json[period_name] = []
 
         for result in rankings:
-
             metrics = result["metrics"]
-
             expectancy_percent = metrics["expectancy_percent"]
 
             if (
@@ -135,22 +125,16 @@ def build_rankings_json():
                 }
             )
 
-    output_file = (
-        Path(__file__).parent
-        / "rankings.json"
-    )
+    output_file = Path(__file__).parent / "rankings.json"
 
-    with open(
-        output_file,
-        "w",
-    ) as file:
+    with open(output_file, "w") as file:
+        json.dump(rankings_json, file, indent=4)
 
-        json.dump(
-            rankings_json,
-            file,
-            indent=4,
-        )
+    print(f"Successfully generated {output_file}")
 
 
 if __name__ == "__main__":
-    build_rankings_json()
+    try:
+        build_rankings_json()
+    except Exception as error:
+        print(f"Rankings build skipped: {error}")
