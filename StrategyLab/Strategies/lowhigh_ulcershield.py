@@ -179,10 +179,27 @@ def build_lowhigh_ulcershield(
     ending_equity = equity_curve[-1] if equity_curve else starting_equity
     years = len(history) / 252.0 if len(history) > 0 else 1.0
 
-    # Total days in market across all open position days
-    total_days = len(history)
-    exposure_days = sum(1 for e in equity_curve if e != starting_equity)
-    exposure = exposure_days / total_days if total_days > 0 else 0.0
+    # ==========================================================
+    # EXPOSURE
+    # ==========================================================
+    # Count trading bars for each holding campaign.
+    # Pyramided tranches are counted as one campaign.
+    exposure_bars = 0
+    last_exit_date = None
+
+    for trade in trades:
+        if trade.exit_date != last_exit_date:
+            exposure_bars += (
+                (history.index > trade.entry_date) &
+                (history.index <= trade.exit_date)
+            ).sum()
+            last_exit_date = trade.exit_date
+
+    total_bars = len(history)
+
+    exposure = (
+        exposure_bars / total_bars
+    ) if total_bars > 0 else 0.0
 
     metrics = build_metrics(
         equity_curve=equity_curve,
