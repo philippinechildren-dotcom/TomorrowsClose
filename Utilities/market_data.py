@@ -210,8 +210,21 @@ def _download_current_history(ticker):
             f"No market data found for ticker '{ticker}'."
         )
 
-    return history
+    latest_date = history.index[-1].date()
+    if _market_session_complete(latest_date):
+        latest_close = history.iloc[-1]["Close"]
 
+        if pd.isna(latest_close):
+            regular_market_price = stock.history_metadata.get(
+                "regularMarketPrice"
+            )
+
+            if regular_market_price is not None:
+                history.loc[history.index[-1], "Close"] = float(
+                    regular_market_price
+                )
+
+    return history
 
 def _store_history(ticker, history):
     """Validate, normalize, and store full history in the cache."""
@@ -282,6 +295,18 @@ def _refresh_history_if_needed(ticker):
                 ):
                     full_history = _download_full_history(ticker)
 
+                    matching_rows = full_history.index.date == latest_date
+
+                    if matching_rows.any():
+                        latest_index = full_history.index[matching_rows][-1]
+
+                        if pd.isna(
+                            full_history.loc[latest_index, "Close"]
+                        ):
+                            full_history.loc[
+                                latest_index, "Close"
+                            ] = latest_close
+
                     if _store_history(ticker, full_history):
                         if (
                             _market_history_cache[ticker].index[-1].date()
@@ -295,7 +320,6 @@ def _refresh_history_if_needed(ticker):
             sleep(DATA_REFRESH_RETRY_DELAY_SECONDS)
 
     return False
-
 
 def get_market_data(ticker):
     """
